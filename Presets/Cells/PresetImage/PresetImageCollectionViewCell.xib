@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="EuclidCircularA-Medium.ttf">
+            <string>EuclidCircularA-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PresetImageCollectionViewCell" id="gTV-IL-0wX" customClass="PresetImageCollectionViewCell" customModule="Presets" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="321" height="390"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="321" height="390"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dw-1Z-k59">
+                        <rect key="frame" x="0.0" y="0.0" width="321" height="390"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOC-4W-Yno">
+                                <rect key="frame" x="0.0" y="0.0" width="321" height="390"/>
+                                <imageReference key="image" image="preset-image1"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4D-f0-spg">
+                                <rect key="frame" x="0.0" y="0.0" width="321" height="390"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lbv-je-M46">
+                                        <rect key="frame" x="31" y="169" width="259.5" height="52.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HandPointing" translatesAutoresizingMaskIntoConstraints="NO" id="v4c-Ox-nfS">
+                                                <rect key="frame" x="117.5" y="0.0" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="4bO-2A-sDd"/>
+                                                    <constraint firstAttribute="height" constant="24" id="Vxu-xk-DjT"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold your finger to view the preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PX1-Qq-90g">
+                                                <rect key="frame" x="0.0" y="32" width="259.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularA-Medium" family="Euclid Circular A" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.031372549019607843" green="0.047058823529411764" blue="0.13333333333333333" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Lbv-je-M46" firstAttribute="centerY" secondItem="M4D-f0-spg" secondAttribute="centerY" id="p2m-O8-BEE"/>
+                                    <constraint firstItem="Lbv-je-M46" firstAttribute="centerX" secondItem="M4D-f0-spg" secondAttribute="centerX" id="tzf-SB-hAe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aOC-4W-Yno" firstAttribute="centerY" secondItem="0dw-1Z-k59" secondAttribute="centerY" id="2R2-oj-2j7"/>
+                            <constraint firstItem="M4D-f0-spg" firstAttribute="centerY" secondItem="0dw-1Z-k59" secondAttribute="centerY" id="7ni-h5-TSD"/>
+                            <constraint firstAttribute="bottom" secondItem="M4D-f0-spg" secondAttribute="bottom" id="Fdd-nV-KQq"/>
+                            <constraint firstAttribute="bottom" secondItem="aOC-4W-Yno" secondAttribute="bottom" id="JTs-ih-xHE"/>
+                            <constraint firstItem="aOC-4W-Yno" firstAttribute="leading" secondItem="0dw-1Z-k59" secondAttribute="leading" id="JyP-bb-7Nn"/>
+                            <constraint firstItem="aOC-4W-Yno" firstAttribute="top" secondItem="0dw-1Z-k59" secondAttribute="top" id="KBu-pu-5mt"/>
+                            <constraint firstItem="aOC-4W-Yno" firstAttribute="centerX" secondItem="0dw-1Z-k59" secondAttribute="centerX" id="LPw-XW-oYR"/>
+                            <constraint firstAttribute="trailing" secondItem="aOC-4W-Yno" secondAttribute="trailing" id="M76-q8-KZZ"/>
+                            <constraint firstItem="M4D-f0-spg" firstAttribute="leading" secondItem="0dw-1Z-k59" secondAttribute="leading" id="TCa-Io-thw"/>
+                            <constraint firstItem="M4D-f0-spg" firstAttribute="centerX" secondItem="0dw-1Z-k59" secondAttribute="centerX" id="Wej-0d-Dq3"/>
+                            <constraint firstItem="M4D-f0-spg" firstAttribute="top" secondItem="0dw-1Z-k59" secondAttribute="top" id="iLP-bg-kqA"/>
+                            <constraint firstAttribute="trailing" secondItem="M4D-f0-spg" secondAttribute="trailing" id="xOS-ZL-H4N"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="0dw-1Z-k59" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KIg-fQ-319"/>
+                <constraint firstItem="0dw-1Z-k59" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ppl-M2-O0U"/>
+                <constraint firstAttribute="bottom" secondItem="0dw-1Z-k59" secondAttribute="bottom" id="xRb-oZ-o27"/>
+                <constraint firstAttribute="trailing" secondItem="0dw-1Z-k59" secondAttribute="trailing" id="yvd-dD-RQW"/>
+            </constraints>
+            <size key="customSize" width="321" height="390"/>
+            <connections>
+                <outlet property="backgroundCellView" destination="0dw-1Z-k59" id="ZaU-As-gfk"/>
+                <outlet property="imageView" destination="aOC-4W-Yno" id="09X-Sa-m8k"/>
+                <outlet property="openPresetView" destination="M4D-f0-spg" id="Hds-XV-tt0"/>
+            </connections>
+            <point key="canvasLocation" x="128.2608695652174" y="132.58928571428572"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="HandPointing" width="24" height="24"/>
+        <image name="preset-image1" width="280" height="412"/>
+    </resources>
+</document>

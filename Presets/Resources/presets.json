@@ -1,0 +1,154 @@
+[
+	{
+        "id": 1,
+		"name": "Amber",
+        "titleImage": "grid-amber.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+	},
+    {
+        "id": 2,
+        "name": "BLVCK",
+        "titleImage": "grid-blvck.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 3,
+        "name": "Boho",
+        "titleImage": "grid-boho.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 4,
+        "name": "Boho Wedding",
+        "titleImage": "grid-boho-wedding.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 5,
+        "name": "Coffee",
+        "titleImage": "grid-coffee.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 6,
+        "name": "Cream White",
+        "titleImage": "grid-cream-white.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 7,
+        "name": "Dark Moody",
+        "titleImage": "grid-dark-moody.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 8,
+        "name": "Dark Orange",
+        "titleImage": "grid-dark-orange.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 9,
+        "name": "Earthy Tones",
+        "titleImage": "grid-earthy-tones.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 10,
+        "name": "Minimal Style",
+        "titleImage": "grid-minimal-style.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 11,
+        "name": "Moody Blue",
+        "titleImage": "grid-moody-blue.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 12,
+        "name": "Nature",
+        "titleImage": "grid-nature.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 13,
+        "name": "Night Bar",
+        "titleImage": "grid-night-bar.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 14,
+        "name": "Nordic",
+        "titleImage": "grid-nordic.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 15,
+        "name": "Paradise",
+        "titleImage": "grid-paradise.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 16,
+        "name": "Rich Black",
+        "titleImage": "grid-rich-black.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 17,
+        "name": "Summer",
+        "titleImage": "grid-summer.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 18,
+        "name": "True Black",
+        "titleImage": "grid-true-black.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    },
+    {
+        "id": 19,
+        "name": "Vintage Film",
+        "titleImage": "grid-vintage-film.jpeg",
+        "isFree": false,
+        "images": [],
+        "presets": []
+    }
+]
