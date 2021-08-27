@@ -1,6 +1,6 @@
 import UIKit
 
-func gradientColor(bounds: CGRect, colors: [CGColor]) -> UIColor? {
+func getGradientColor(bounds: CGRect, colors: [CGColor]) -> UIColor? {
     
     let gradient = CAGradientLayer()
     gradient.frame = bounds

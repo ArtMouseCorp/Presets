@@ -89,7 +89,7 @@ class PresetViewController: BaseViewController {
             
             addToMyButton.isUserInteractionEnabled = true
             
-            let gradientColor = gradientColor(bounds: addToMyButton.bounds, colors: [
+            let gradientColor = getGradientColor(bounds: addToMyButton.bounds, colors: [
                 CGColor(red: 68/255, green: 143/255, blue: 1, alpha: 1),
                 CGColor(red: 22/255, green: 36/255, blue: 114/255, alpha: 1),
             ])

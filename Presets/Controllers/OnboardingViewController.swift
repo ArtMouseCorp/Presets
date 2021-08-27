@@ -48,11 +48,12 @@ class OnboardingViewController: UIViewController {
         switch currentIntroducePage {
         case 0:
             overlayImage.image = Images.circleBackground1
+            introduceSubtitle.text = "Import presets into Lightroom"
         case 1:
             overlayImage.image = Images.circleBackground2
             mainImage.image = Images.onboardingImage2
             introduceTitle.text = "Select a style and apply it"
-            introduceSubtitle.text = "A small subtitle"
+            introduceSubtitle.text = "Style your work"
         case 2:
             imageTopConstraint.constant = 0
             imageLeftConstraint.constant = 0
@@ -60,7 +61,7 @@ class OnboardingViewController: UIViewController {
             mainImage.image = Images.onboardingImage3
             mainImage.contentMode = .bottom
             introduceTitle.text = "Enjoy +100 presets Lightroom"
-            introduceSubtitle.text = "A small subtitle"
+            introduceSubtitle.text = "Beginner friendly"
         default:
             let mainVC = UINavigationController.load(from: .mainNav)
             mainVC.modalPresentationStyle = .fullScreen
