@@ -15,12 +15,7 @@ class UserPresetsViewController: BaseViewController {
     // Buttons
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var selectPresetButton: BlueGradientButton!
-        
-    // MARK: - Variables
-    
-    var presetCount = 1
-    var images = ["preset1", "preset2"]
-    
+            
     // MARK: - Awake functions
     
     override func viewDidLoad() {
@@ -31,9 +26,9 @@ class UserPresetsViewController: BaseViewController {
     // MARK: - Custom functions
     
     func configureView() {
-        toHideView.isHidden = !(presetCount == 0)
-        tableView.isHidden = presetCount == 0
-        if presetCount != 0 {
+        toHideView.isHidden = !(State.favouritePresets.count == 0)
+        tableView.isHidden = State.favouritePresets.count == 0
+        if State.favouritePresets.count != 0 {
             configureTableView()
         }
     }
@@ -60,7 +55,7 @@ class UserPresetsViewController: BaseViewController {
 extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return State.favouritePresets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,9 +63,18 @@ extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource 
         cell.completion = {
             let popup = DefaultPopupViewController.load(from: .defaultPopup)
             popup.initialize(as: .deletePresetPopup)
+            popup.deleteIndex = indexPath.row
+            popup.completion = {
+                hapticFeedback(.success)
+                self.tableView.reloadData()
+                self.configureView()
+            }
             self.showPopup(popup)
         }
-        cell.presetImage.image = UIImage(named: images[indexPath.row])
+        
+        let indexOfPreset = State.favouritePresets[indexPath.row]
+        cell.presetImage.image = Preset.all[indexOfPreset].getTitleImage()
+        
         cell.presetButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         cell.presetButton.setImage(Images.Icons.trash, for: .normal)
         cell.presetButton.backgroundColor = UIColor(red: 249/255, green: 48/255, blue: 48/255, alpha: 1)
@@ -79,7 +83,8 @@ extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = tableView.dequeueReusableCell(withIdentifier: Cell.preset.rawValue, for: indexPath) as! PresetTableViewCell
+        let indexOfPreset = State.favouritePresets[indexPath.row]
+        State.selectedPreset = Preset.all[indexOfPreset]
         let presetVC = PresetViewController.load(from: .preset)
         self.navigationController?.pushViewController(presetVC, animated: true)
     }

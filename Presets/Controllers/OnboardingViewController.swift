@@ -28,6 +28,7 @@ class OnboardingViewController: UIViewController {
     let screen_width = UIScreen.main.bounds.size.width
     let screen_height = UIScreen.main.bounds.size.height
     var overlayImage = UIImageView()
+    let mainVC = UINavigationController.load(from: .mainNav)
     
     // MARK: - Awake functions
     
@@ -48,12 +49,15 @@ class OnboardingViewController: UIViewController {
         switch currentIntroducePage {
         case 0:
             overlayImage.image = Images.circleBackground1
+            mainImage.image = Images.onboardingImage1
             introduceSubtitle.text = "Import presets into Lightroom"
+            animateIn()
         case 1:
             overlayImage.image = Images.circleBackground2
             mainImage.image = Images.onboardingImage2
             introduceTitle.text = "Select a style and apply it"
             introduceSubtitle.text = "Style your work"
+            animateIn()
         case 2:
             imageTopConstraint.constant = 0
             imageLeftConstraint.constant = 0
@@ -62,12 +66,31 @@ class OnboardingViewController: UIViewController {
             mainImage.contentMode = .bottom
             introduceTitle.text = "Enjoy +100 presets Lightroom"
             introduceSubtitle.text = "Beginner friendly"
+            animateIn()
         default:
-            let mainVC = UINavigationController.load(from: .mainNav)
             mainVC.modalPresentationStyle = .fullScreen
             self.present(mainVC, animated: true, completion: nil)
         }
         configureDots()
+    }
+    
+    func animateIn() {
+        // Animate image
+//        self.mainImage.transform = CGAffineTransform(translationX: 0, y: -self.view.frame.height)
+//        UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseIn) {
+//            self.mainImage.transform = .identity
+//        }
+        
+        // Animate text
+        self.mainImage.alpha = 0.0
+        self.introduceTitle.alpha = 0.0
+        self.introduceSubtitle.alpha = 0.0
+        UIView.animate(withDuration: 0.8, delay: 0, options: .curveEaseInOut, animations: {
+            self.introduceTitle.alpha = 1
+            self.introduceSubtitle.alpha = 1
+            self.mainImage.alpha = 1
+        })
+        
     }
     
     func configureDots() {

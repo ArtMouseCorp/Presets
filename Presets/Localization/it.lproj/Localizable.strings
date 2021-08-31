@@ -1,1 +1,128 @@
 
+// Italian Localization
+
+// MARK: - Onboarding
+
+"onboarding.title.first"            = "Foto fantastiche in pochi minuti";
+"onboarding.subtitle.first"         = "Importa predefiniti in Lightroom";
+
+"onboarding.title.second"           = "Seleziona uno stile e applicalo";
+"onboarding.subtitle.second"        = "Dai stile al tuo lavoro";
+
+"onboarding.title.three"            = "Goditi più di 100 predefiniti di Lightroom";
+"onboarding.subtitle.three"         = "Adatto ai principianti";
+
+// SEGNALE: - Abbonamenti
+
+"subscription.title"                = "Diventa professionista!";
+"subscription.subtitle"             = "Più di 100 preimpostazioni di qualità";
+
+"subscription.button.next"          = "Avanti";
+"subscription.button.restore"       = "Ripristina";
+"subscription.button.privacy"       = "Privacy";
+"subscription.button.terms"         = "Termini";
+
+"subscription.failed.title"         = "Ops!";
+"subscription.failed.subtitle"      = "Acquisto non riuscito :(";
+"subscription.failed.title2"        = "Visualizza annunci in";
+"subscription.failed.limitedVersion"= "Acquista versione limitata di esecuzione";
+"subscription.failed.trial.title"   = "...oppure prova l'accesso completo con una prova gratuita di 3 giorni";
+"subscription.failed.button.trial"  = "Prova 3 giorni di accesso";
+"subscription.failed.cancelInfo"    = "Annulla o metti in pausa in qualsiasi momento";
+
+"subscription.interval.day.one"     = "giorno"; // 1 giorno - 1 giorno
+"subscription.interval.day.two"     = "giorni"; // 2 giorni - 2 giorni
+"subscription.interval.day.five"    = "giorni"; // 5 giorni - 5 giorni
+"subscription.interval.week.one"    = "settimana"; // 1 settimana - 1 giorno
+"subscription.interval.week.two"    = "settimane"; // 2 settimane - 2 giorni
+"subscription.interval.week.five"   = "settimane"; // 5 settimane - 5 giorni
+"subscription.interval.month.one"   = "mese"; // 1 mese - 1 mese
+"subscription.interval.month.two"   = "mesi"; // 2 mesi - 2 mesi
+"subscription.interval.month.five"  = "mesi"; // 5 mesi - 5 mesi
+"subscription.interval.year.one"    = "anno"; // 1 anno - 1 од
+"subscription.interval.year.two"    = "anni"; // 2 anni - 2 giorni
+"subscription.interval.year.five"   = "anni"; // 3 anni - 5 anni
+
+// SEGNALA: - Schermata principale
+
+"main.title"                        = "Lightroom presets";
+"main.allPresets"                   = "Tutti";
+"main.freePresets"                  = "Libero";
+"main.premiumPresets"               = "Premium";
+
+// MARK: - I miei preset
+
+"myPresets.title"                   = "I miei preset";
+"myPresets.placeholder"             = "Ecco le preimpostazioni salvate";
+"myPresets.button.select"           = "Seleziona una preimpostazione";
+
+// SEGNALA: - Elimina popup preimpostato
+
+"delete.title"                      = "Elimina preset?";
+"delete.button.confirm"             = "Sì, elimina";
+"delete.button.cancel"              = "No, annulla";
+
+// SEGNALA: - Schermata preimpostata
+
+"preset.count.one"                  = "preimpostato"; // 1 preset - 1 пресет
+"preset.count.two"                  = "preimpostazioni"; // 2 preset - 2 пресета
+"preset.count.five"                 = "preimpostazioni"; // 5 preset - 5 пресетов
+
+"preset.tapHint"                    = "Tocca per aprire il preset";
+"preset.button.addToMyPresets"      = "Aggiungi ai miei preset";
+"preset.addedPreset"                = "Aggiunto!";
+"preset.button.subscription"        = "Accedi a più di 100 preset";
+"preset.button.manual"              = "Come si usa?";
+
+// SEGNALA: - Apri popup preset
+
+"openPreset.title"                  = "Sai come usare i predefiniti?";
+"openPreset.button.open"            = "Sì, apri un preset";
+"openPreset.button.manual"          = "No, apri il manuale";
+
+// SEGNALA: - Impostazioni
+
+"settings.title"                    = "Impostazioni";
+"settings.button.manual"            = "Come si usa?";
+"settings.button.serviceTerms"      = "Termini di servizio";
+"settings.button.policy"            = "Norme sulla privacy";
+"settings.button.subscriptionTerms" = "Termini di abbonamento";
+"settings.button.restorePurchase"   = "Recupera i tuoi acquisti";
+
+// CONTRASSEGNO: - Termini di servizio
+
+"serviceTerms.title"                = "Termini di servizio";
+
+// CONTRASSEGNO: - Informativa sulla privacy
+
+"privacy.title"                     = "Informativa sulla privacy";
+
+// MARK: - How To Use
+
+"manual.title"                      = "Come si usa?";
+"manual.button.videoTutorial"       = "Guarda l'esercitazione video";
+"manual.step.first"                 = "1. Installa Adobe Lightroom dall'App Store";
+"manual.button.lightroom"           = "Installa Adobe Lightroom";
+"manual.step.second"                = "2. Seleziona un predefinito e fai clic su \"Copia in Lightroom\"";
+"manual.step.three"                 = "3. La preimpostazione si aprirà in Lightroom, fai clic sul pulsante Altro e seleziona \"Copia impostazioni\"";
+"manual.step.fourth"                = "4. Premi il pulsante \"Indietro\" per tornare alla schermata precedente, quindi premi il pulsante \"Importa\" e seleziona una foto dalla tua libreria";
+"manual.step.fifth"                 = "5. Quando la foto è stata aggiunta, fai clic sul pulsante \"Altro\" e seleziona \"Inserisci impostazioni\"";
+"manual.step.sixth"                 = "6. Ottimo! Ora puoi salvare la foto o condividerla con gli iscritti";
+"manual.hint.first"                 = "* I preset sono visualizzati con il segno DNG";
+"manual.hint.second"                = "** Sentiti libero di provare diversi preset e modificare le impostazioni per rendere la tua foto perfetta";
+
+// MARCO: - Avvisi
+
+"alert.action.ok"                   = "Ok";
+
+"alert.connection.title"            = "Nessuna connessione Internet";
+"alert.connection.message"          = "Non c'è connessione a Internet. Connettiti alla rete e riprova.";
+
+"alert.subscribe.title"             = "Iscritto";
+"alert.subscribe.message"           = "Sei già iscritto. Tutte le funzionalità sono disponibili.";
+
+"alert.restored.title"              = "Ripristinato";
+"alert.restored.message"            = "Hai ripristinato con successo il tuo abbonamento. Tutte le funzionalità sono ora disponibili.";
+
+"alert.notSubscriber.title"         = "Non può essere ripristinato";
+"alert.notSubscriber.message"       = "Spiacenti, non puoi ripristinare il tuo acquisto perché non hai un abbonamento attivo.";

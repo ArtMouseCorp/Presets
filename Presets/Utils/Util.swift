@@ -16,3 +16,24 @@ func getGradientColor(bounds: CGRect, colors: [CGColor]) -> UIColor? {
     //get gradient UIcolor from gradient UIImage
     return UIColor(patternImage: image!)
 }
+
+public func readLocalJSONFile(forName name: String) -> Data? {
+    do {
+        if let filePath = Bundle.main.path(forResource: name, ofType: "json") {
+            let fileUrl = URL(fileURLWithPath: filePath)
+            let data = try Data(contentsOf: fileUrl)
+            return data
+        }
+    } catch {
+        print("error: \(error)")
+    }
+    return nil
+}
+
+public func getLocalImage(forName name: String, ofType type: String) -> UIImage? {
+
+    if let filePath = Bundle.main.path(forResource: name, ofType: type) {
+        return UIImage(contentsOfFile: filePath)
+    }
+    return nil
+}

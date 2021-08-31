@@ -43,5 +43,10 @@ class GradientButton: UIButton {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        flash()
+    }
+    
     
 }

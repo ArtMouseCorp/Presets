@@ -14,9 +14,14 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
-    func setGesture(target: Any?, action: Selector?) {
-        let gesture = UIGestureRecognizer(target: target, action: action)
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(gesture)
+    func flash() {
+        let flash = CABasicAnimation(keyPath: "opacity")
+        flash.duration = 0.1
+        flash.fromValue = 1
+        flash.toValue = 0.6
+        flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        flash.autoreverses = true
+        flash.repeatCount = 1
+        layer.add(flash, forKey: nil)
     }
 }

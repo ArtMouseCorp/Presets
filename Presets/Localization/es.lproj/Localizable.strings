@@ -1,1 +1,129 @@
 
+// Spanish Localization
+
+// MARK: - Onboarding
+
+"onboarding.title.first" = "Fotos increíbles en minutos";
+"onboarding.subtitle.first" = "Importar ajustes preestablecidos en Lightroom";
+
+"onboarding.title.second" = "Seleccione un estilo y aplíquelo";
+"onboarding.subtitle.second" = "Da estilo a tu trabajo";
+
+"onboarding.title.third" = "Disfrute de más de 100 ajustes preestablecidos de Lightroom";
+"onboarding.subtitle.third" = "Apto para principiantes";
+
+// MARK: - Suscripciones
+
+"subscription.title" = "¡Conviértase en profesional!";
+"subscription.subtitle" = "Más de 100 preajustes de calidad";
+
+"subscription.button.next" = "Siguiente";
+"subscription.button.restore" = "Restaurar";
+"subscription.button.privacy" = "Privacidad";
+"subscription.button.terms" = "Condiciones";
+
+"subscription.failed.title" = "¡Vaya!";
+"subscription.failed.subtitle" = "Compra fallida :(";
+"subscription.failed.title2" = "Ver anuncios en";
+"subscription.failed.limitedVersion" = "Compra ejecutar una versión limitada";
+"subscription.failed.trial.title" = "... o pruebe el acceso completo con una prueba gratuita de 3 días";
+"subscription.failed.button.trial" = "Pruebe 3 días de acceso";
+"subscription.failed.cancelInfo" = "Cancelar o pausar en cualquier momento";
+
+"subscription.interval.day.one" = "día"; // 1 día - 1 día
+"subscription.interval.day.two" = "días"; // 2 días - 2 дня
+"subscription.interval.day.five" = "días"; // 5 días - 5 дней
+"subscription.interval.week.one" = "semana"; // 1 semana - 1 неделя
+"subscription.interval.week.two" = "semanas"; // 2 semanas - 2 недели
+"subscription.interval.week.five" = "semanas"; // 5 semanas - 5 недель
+"subscription.interval.month.one" = "mes"; // 1 mes - 1 mes
+"subscription.interval.month.two" = "meses"; // 2 meses - 2 meses
+"subscription.interval.month.five" = "meses"; // 5 meses - 5 месяцев
+"subscription.interval.year.one" = "año"; // 1 año - 1 год
+"subscription.interval.year.two" = "años"; // 2 años - 2 года
+"subscription.interval.year.five" = "años"; // 3 años - 5 лет
+
+// MARCA: - Pantalla principal
+
+"main.title" = "Lightroom presets";
+"main.allPresets" = "Todos";
+"main.freePresets" = "Gratis";
+"main.premiumPresets" = "Premium";
+
+// MARCA: - Mis preajustes
+
+"myPresets.title" = "Mis ajustes preestablecidos";
+"myPresets.placeholder" = "Aquí estarán los ajustes preestablecidos guardados";
+"myPresets.button.select" = "Seleccionar un preset";
+
+// MARCA: - Eliminar ventana emergente preestablecida
+
+"delete.title" = "¿Eliminar preset?";
+"delete.button.confirm" = "Sí, eliminar";
+"delete.button.cancel" = "No, cancelar";
+
+// MARCA: - Pantalla preestablecida
+
+"preset.count.one" = "preset"; // 1 preset - 1 пресет
+"preset.count.two" = "presets"; // 2 presets - 2 пресета
+"preset.count.five" = "presets"; // 5 presets - 5 пресетов
+
+"preset.tapHint" = "Toque para abrir el preset";
+"preset.button.addToMyPresets" = "Agregar a mis presets";
+"preset.addedPreset" = "¡Agregado!";
+"preset.button.subscription" = "Obtenga acceso a más de 100 presets";
+"preset.button.manual" = "¿Cómo usarlo?";
+
+// MARCA: - Abrir ventana emergente preestablecida
+
+"openPreset.title" = "¿Sabe cómo utilizar los ajustes preestablecidos?";
+"openPreset.button.open" = "Sí, abrir un preset";
+"openPreset.button.manual" = "No, abra el manual";
+
+// MARCA: - Configuración
+
+"settings.title" = "Configuración";
+"settings.button.manual" = "¿Cómo usarlo?";
+"settings.button.serviceTerms" = "Condiciones de servicio";
+"settings.button.policy" = "Política de privacidad";
+"settings.button.subscriptionTerms" = "Condiciones de suscripción";
+"settings.button.restorePurchase" = "Recupere sus compras";
+
+// MARCA: - Condiciones de servicio
+
+"serviceTerms.title" = "Condiciones de servicio";
+
+// MARCA: - Política de privacidad
+
+"privacy.title" = "Política de privacidad";
+
+// MARK: - How To Use
+
+"manual.title" = "¿Cómo usarlo?";
+"manual.button.videoTutorial" = "Ver video tutorial";
+"manual.step.first" = "1. Instale Adobe Lightroom desde App Store";
+"manual.button.lightroom" = "Instalar Adobe Lightroom";
+"manual.step.second" = "2. Seleccione un ajuste preestablecido y haga clic en \"Copiar en Lightroom\"";
+"manual.step.third" = "3. El ajuste preestablecido se abrirá en Lightroom, haga clic en el botón Más y seleccione \"Copiar configuración\"";
+"manual.step.fourth" = "4. Presione el botón \"Atrás\" para volver a la pantalla anterior, luego presione el botón \"Importar\" y seleccione una foto de su biblioteca";
+"manual.step.fifth" = "5. Cuando agregue la foto, haga clic en el botón \"Más\" y seleccione \"Insertar configuración\"";
+"manual.step.sixth" = "6. ¡Genial! Ahora puedes guardar la foto o compartirla con los suscriptores";
+"manual.hint.first" = "* Los preajustes se muestran con la marca DNG";
+"manual.hint.second" = "** No dudes en probar diferentes ajustes preestablecidos y cambiar la configuración para que tu foto sea perfecta";
+
+// MARCA: - Alertas
+
+"alert.action.ok" = "Ok";
+
+"alert.connection.title" = "Sin conexión a Internet";
+"alert.connection.message" = "No hay conexión a Internet. Conéctese a la red y vuelva a intentarlo.";
+
+"alert.subscriptions.title" = "Suscrito";
+"alert.subscriptions.message" = "Ya está suscrito. Todas las funciones están disponibles para usted.";
+
+"alert.restored.title" = "Restaurado";
+"alert.restored.message" = "Ha restaurado correctamente su suscripción. Ahora tiene todas las funciones disponibles.";
+
+"alert.notSubscriber.title" = "No se puede restaurar";
+"alert.notSubscriber.message" = "Lo sentimos, no puede restaurar su compra porque no tiene una suscripción activa.";
+

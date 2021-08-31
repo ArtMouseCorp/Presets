@@ -1,1 +1,129 @@
 
+// Thai Localization
+
+// MARK: - Onboarding
+
+"onboarding.title.first" = "ภาพถ่ายสุดอัศจรรย์ในเวลาไม่กี่นาที";
+"onboarding.subtitle.first" = "นำเข้าพรีเซ็ตไปยัง Lightroom";
+
+"onboarding.title.second" = "เลือกสไตล์และนำไปใช้";
+"onboarding.subtitle.second" = "จัดรูปแบบงานของคุณ";
+
+"onboarding.title.third" = "เพลิดเพลินกับค่าที่ตั้งไว้ล่วงหน้าของ Lightroom กว่า 100 ค่า";
+"onboarding.subtitle.third" = "เหมาะสำหรับผู้เริ่มต้น";
+
+// MARK: - การสมัครสมาชิก
+
+"subscription.title" = "กลายเป็นมือโปร!";
+"subscription.subtitle" = "พรีเซ็ตคุณภาพมากกว่า 100 รายการ";
+
+"subscription.button.next" = "ถัดไป";
+"subscription.button.restore" = "กู้คืน";
+"subscription.button.privacy" = "ความเป็นส่วนตัว";
+"subscription.button.terms" = "ข้อกำหนด";
+
+"subscription.failed.title" = "อ๊ะ!";
+"subscription.failed.subtitle" = "การซื้อล้มเหลว :(";
+"subscription.failed.title2" = "ดูโฆษณาไปยัง";
+"subscription.failed.limitedVersion"= "สั่งซื้อแบบจำกัดรุ่น";
+"subscription.failed.trial.title" = "...หรือลองเข้าถึงแบบเต็มด้วยการทดลองใช้ฟรี 3 วัน";
+"subscription.failed.button.trial" = "ลองใช้การเข้าถึง 3 วัน";
+"subscription.failed.cancelInfo" = "ยกเลิกหรือหยุดชั่วคราวเมื่อใดก็ได้";
+
+"subscription.interval.day.one" = "วัน"; // 1 วัน - 1 วัน
+"subscription.interval.day.two" = "วัน"; // 2 วัน - 2 วัน
+"subscription.interval.day.five" = "วัน"; // 5 วัน - 5 วัน
+"subscription.interval.week.one" = "สัปดาห์"; // 1 สัปดาห์ - 1 วัน
+"subscription.interval.week.two" = "สัปดาห์"; // 2 สัปดาห์ - 2 วัน
+"subscription.interval.week.five" = "สัปดาห์"; // 5 สัปดาห์ - 5 วัน
+"subscription.interval.month.one" = "เดือน"; // 1 เดือน - 1 เดือน
+"subscription.interval.month.two" = "เดือน"; // 2 เดือน - 2 เดือน
+"subscription.interval.month.five" = "เดือน"; // 5 เดือน - 5 เดือน
+"subscription.interval.year.one" = "ปี"; // 1 ปี - 1 ปี
+"subscription.interval.year.two" = "ปี"; // 2 ปี - 2 ปี
+"subscription.interval.year.five" = "ปี"; // 3 ปี - 5 лет
+
+// MARK: - หน้าจอหลัก
+
+"main.title" = "พรีเซ็ต Lightroom";
+"main.allPresets" = "ทั้งหมด";
+"main.freePresets" = "ฟรี";
+"main.premiumPresets" = "พรีเมียม";
+
+// MARK: - ค่าที่ตั้งไว้ของฉัน
+
+"myPresets.title" = "พรีเซ็ตของฉัน";
+"myPresets.placeholder" = "ต่อไปนี้จะเป็นพรีเซ็ตที่บันทึกไว้";
+"myPresets.button.select" = "เลือกพรีเซ็ต";
+
+// MARK: - ลบป๊อปอัปที่ตั้งไว้ล่วงหน้า
+
+"delete.title" = "ลบค่าที่ตั้งไว้ล่วงหน้า";
+"delete.button.confirm" = "ใช่ ลบ";
+"delete.button.cancel" = "ไม่ ยกเลิก";
+
+// MARK: - หน้าจอที่ตั้งไว้ล่วงหน้า
+
+"preset.count.one" = "พรีเซ็ต"; // 1 ที่ตั้งไว้ล่วงหน้า - 1 пресет
+"preset.count.two" = "ค่าที่ตั้งไว้ล่วงหน้า"; // 2 สถานีที่ตั้งไว้ - 2 пресета
+"preset.count.five" = "ค่าที่ตั้งไว้ล่วงหน้า"; // 5 ที่ตั้งไว้ล่วงหน้า - 5 пресетов
+
+"preset.tapHint" = "แตะเพื่อเปิดพรีเซ็ต";
+"preset.button.addToMyPresets" = "เพิ่มไปยังค่าที่ตั้งล่วงหน้าของฉัน";
+"preset.addedPreset" = "เพิ่มแล้ว!";
+"preset.button.subscription" = "เข้าถึงพรีเซ็ตมากกว่า 100 รายการ";
+"preset.button.manual" = "วิธีใช้";
+
+// MARK: - เปิดป๊อปอัปที่ตั้งไว้ล่วงหน้า
+
+"openPreset.title" = "คุณทราบวิธีใช้พรีเซ็ตหรือไม่";
+"openPreset.button.open" = "ใช่ เปิดพรีเซ็ต";
+"openPreset.button.manual" = "ไม่ เปิดคู่มือ";
+
+// MARK: - การตั้งค่า
+
+"settings.title" = "การตั้งค่า";
+"settings.button.manual" = "วิธีใช้";
+"settings.button.serviceTerms" = "ข้อกำหนดในการให้บริการ";
+"settings.button.policy" = "นโยบายความเป็นส่วนตัว";
+"settings.button.subscriptionTerms" = "เงื่อนไขการสมัครสมาชิก";
+"settings.button.restorePurchase" = "กู้คืนการซื้อของคุณ";
+
+// MARK: - ข้อกำหนดในการให้บริการ
+
+"serviceTerms.title" = "ข้อกำหนดในการให้บริการ";
+
+// MARK: - นโยบายความเป็นส่วนตัว
+
+"privacy.title" = "นโยบายความเป็นส่วนตัว";
+
+// MARK: - How To Use
+
+"manual.title" = "วิธีใช้";
+"manual.button.videoTutorial" = "ดูวิดีโอแนะนำการใช้งาน";
+"manual.step.first" = "1. ติดตั้ง Adobe Lightroom จาก App Store";
+"manual.button.lightroom" = "ติดตั้ง Adobe Lightroom";
+"manual.step.second" = "2. เลือกพรีเซ็ตและคลิก \"คัดลอกไปยัง Lightroom\"";
+"manual.step.third" = "3. พรีเซ็ตจะเปิดใน Lightroom ให้คลิกปุ่มเพิ่มเติมและเลือก \"คัดลอกการตั้งค่า\"";
+"manual.step.fourth" = "4. กดปุ่ม \"ย้อนกลับ\" เพื่อกลับไปยังหน้าจอก่อนหน้า จากนั้นกดปุ่ม \"นำเข้า\" และเลือกรูปภาพจากคลังของคุณ";
+"manual.step.fifth" = "5. เมื่อเพิ่มรูปภาพแล้ว ให้คลิกปุ่ม \"เพิ่มเติม\" และเลือก \"แทรกการตั้งค่า\"";
+"manual.step.sixth" = "6. เยี่ยมมาก ตอนนี้คุณสามารถบันทึกรูปภาพหรือแบ่งปันกับสมาชิก";
+"manual.hint.first" = "* ค่าที่ตั้งไว้จะแสดงด้วยเครื่องหมาย DNG";
+"manual.hint.second" = "** ลองตั้งค่าล่วงหน้าต่างๆ และเปลี่ยนการตั้งค่าเพื่อทำให้รูปภาพของคุณสมบูรณ์แบบ";
+
+// MARK: - การแจ้งเตือน
+
+"alert.action.ok" = "ตกลง";
+
+"alert.connection.title" = "ไม่มีการเชื่อมต่ออินเทอร์เน็ต";
+"alert.connection.message" = "ไม่มีการเชื่อมต่ออินเทอร์เน็ต โปรดเชื่อมต่อกับเครือข่ายและลองอีกครั้ง";
+
+"alert.subscribed.title" = "สมัครแล้ว";
+"alert.subscribed.message" = "คุณสมัครรับข้อมูลแล้ว ฟังก์ชันทั้งหมดพร้อมใช้งานสำหรับคุณ";
+
+"alert.restored.title" = "กู้คืน";
+"alert.restored.message" = "คุณกู้คืนการสมัครรับข้อมูลของคุณสำเร็จแล้ว ฟังก์ชันทั้งหมดพร้อมใช้งานสำหรับคุณแล้ว";
+
+"alert.notSubscriber.title" = "ไม่สามารถกู้คืนได้";
+"alert.notSubscriber.message" = "ขออภัย คุณไม่สามารถกู้คืนการสั่งซื้อของคุณได้เนื่องจากคุณไม่มีการสมัครรับข้อมูลที่ใช้งานอยู่";
+

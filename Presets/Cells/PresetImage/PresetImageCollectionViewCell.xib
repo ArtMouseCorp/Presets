@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,23 +27,22 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aOC-4W-Yno">
                                 <rect key="frame" x="0.0" y="0.0" width="321" height="390"/>
-                                <imageReference key="image" image="preset-image1"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4D-f0-spg">
                                 <rect key="frame" x="0.0" y="0.0" width="321" height="390"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lbv-je-M46">
-                                        <rect key="frame" x="31" y="169" width="259.5" height="52.5"/>
+                                        <rect key="frame" x="75.5" y="169" width="170.5" height="52.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HandPointing" translatesAutoresizingMaskIntoConstraints="NO" id="v4c-Ox-nfS">
-                                                <rect key="frame" x="117.5" y="0.0" width="24" height="24"/>
+                                                <rect key="frame" x="73" y="0.0" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="4bO-2A-sDd"/>
                                                     <constraint firstAttribute="height" constant="24" id="Vxu-xk-DjT"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hold your finger to view the preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PX1-Qq-90g">
-                                                <rect key="frame" x="0.0" y="32" width="259.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to open the preset" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PX1-Qq-90g">
+                                                <rect key="frame" x="0.0" y="32" width="170.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="EuclidCircularA-Medium" family="Euclid Circular A" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -95,6 +93,5 @@
     </objects>
     <resources>
         <image name="HandPointing" width="24" height="24"/>
-        <image name="preset-image1" width="280" height="412"/>
     </resources>
 </document>

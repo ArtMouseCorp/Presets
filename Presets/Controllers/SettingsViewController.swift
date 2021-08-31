@@ -19,7 +19,7 @@ class SettingsViewController: BaseViewController {
     @IBOutlet weak var privacyPolicyView: UIView!
     @IBOutlet weak var subscriptionTermsView: UIView!
     @IBOutlet weak var recoverPurchaseView: UIView!
-    
+            
     // MARK: - Awake functions
     
     override func viewDidLoad() {
@@ -62,23 +62,24 @@ class SettingsViewController: BaseViewController {
     @objc func termsOfServicesTapped() {
         let popup = SettingsPopupViewController.load(from: .settingsPopup)
         popup.titleLabelText = "Terms of Service"
+        popup.mainText = FullTermsOfUse
         self.showPopup(popup)
     }
     
     @objc func privacyPolicyTapped() {
         let popup = SettingsPopupViewController.load(from: .settingsPopup)
         popup.titleLabelText = "Privacy Policy"
+        popup.mainText = FullPrivacyPolicy
         self.showPopup(popup)
     }
     
     @objc func subscriptionTermsTapped() {
-        let popup = SettingsPopupViewController.load(from: .settingsPopup)
-        popup.titleLabelText = "Subscription Terms"
-        self.showPopup(popup)
+        guard let url = URL(string: "https://artpoldev.com/#contact") else { return }
+        UIApplication.shared.open(url)
     }
     
     @objc func recoverPurchaseTapped() {
-
+        // TODO: - Recover Purchase
     }
     
     // MARK: - @IBActions
@@ -87,3 +88,4 @@ class SettingsViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
 }
+

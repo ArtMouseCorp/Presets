@@ -69,12 +69,14 @@ class PurchaseFailedViewController: BaseViewController {
     @IBAction func privacyButtonPressed(_ sender: Any) {
         let popup = SettingsPopupViewController.load(from: .settingsPopup)
         popup.titleLabelText = "Privacy Policy"
+        popup.mainText = FullPrivacyPolicy
         self.showPopup(popup)
     }
     
     @IBAction func termsButtonPressed(_ sender: Any) {
         let popup = SettingsPopupViewController.load(from: .settingsPopup)
         popup.titleLabelText = "Terms of Service"
+        popup.mainText = FullTermsOfUse
         self.showPopup(popup)
     }
     

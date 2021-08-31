@@ -1,1 +1,129 @@
 
+// Vietnamese Localization
+
+// MARK: - Onboarding
+
+"onboarding.title.first"            = "Những bức ảnh tuyệt vời trong vài phút";
+"onboarding.subtitle.first"         = "Nhập cài đặt trước vào Lightroom";
+
+"onboarding.title.second"           = "Chọn kiểu và áp dụng";
+"onboarding.subtitle.second"        = "Tạo kiểu cho công việc của bạn";
+
+"onboarding.title.third"            = "Tận hưởng hơn 100 cài đặt trước Lightroom";
+"onboarding.subtitle.third"         = "Thân thiện với người mới bắt đầu";
+
+// ĐÁNH DẤU: - Đăng ký
+
+"subscription.title"                = "Trở thành chuyên nghiệp!";
+"subscription.subtitle"             = "Hơn 100 cài đặt trước chất lượng hơn";
+
+"subscription.button.next"          = "Tiếp theo";
+"subscription.button.restore"       = "Khôi phục";
+"subscription.button.privacy"       = "Bảo mật";
+"subscription.button.terms"         = "Điều khoản";
+
+"subscription.failed.title"         = "Rất tiếc!";
+"subscription.failed.subtitle"      = "Không mua được :(";
+"subscription.failed.title2"        = "Xem quảng cáo tới";
+"subscription.failed.limitedVersion"= "Mua chạy phiên bản giới hạn";
+"subscription.failed.trial.title"   = "... hoặc thử truy cập đầy đủ với bản dùng thử miễn phí 3 ngày";
+"subscription.failed.button.trial"  = "Dùng thử 3 ngày truy cập";
+"subscription.failed.cancelInfo"    = "Hủy hoặc tạm dừng bất cứ lúc nào";
+
+"subscription.interval.day.one"     = "ngày"; // 1 ngày - 1 день
+"subscription.interval.day.two"     = "ngày"; // 2 ngày - 2 дня
+"subscription.interval.day.five"    = "ngày"; // 5 ngày - 5 дней
+"subscription.interval.week.one"    = "tuần"; // 1 tuần - 1 неделя
+"subscription.interval.week.two"    = "tuần"; // 2 tuần - 2 недели
+"subscription.interval.week.five"   = "tuần"; // 5 tuần - 5 недель
+"subscription.interval.month.one"   = "tháng"; // 1 tháng - 1 месяц
+"subscription.interval.month.two"   = "tháng"; // 2 tháng - 2 месяца
+"subscription.interval.month.five"  = "tháng"; // 5 tháng - 5 месяцев
+"subscription.interval.year.one"    = "năm"; // 1 năm - 1 năm
+"subscription.interval.year.two"    = "năm"; // 2 năm - 2 года
+"subscription.interval.year.five"   = "năm"; // 3 năm - 5 лет
+
+// ĐÁNH DẤU: - Màn hình chính
+
+"main.title"                        = "Lightroom presets";
+"main.allPresets"                   = "Tất cả";
+"main.freePresets"                  = "Miễn phí";
+"main.premiumPresets"               = "Cao cấp";
+
+// ĐÁNH DẤU: - Cài đặt sẵn của tôi
+
+"myPresets.title"                   = "Cài đặt sẵn của tôi";
+"myPresets.placeholder"             = "Đây sẽ là các giá trị đặt trước đã lưu";
+"myPresets.button.select"           = "Chọn giá trị đặt trước";
+
+// ĐÁNH DẤU: - Xóa cửa sổ bật lên cài sẵn
+
+"delete.title"                      = "Xóa giá trị đặt trước?";
+"delete.button.confirm"             = "Có, xóa";
+"delete.button.cancel"              = "Không, hủy bỏ";
+
+// ĐÁNH DẤU: - Màn hình cài sẵn
+
+"preset.count.one"                  = "đặt trước"; // 1 giá trị đặt trước - 1 пресет
+"preset.count.two"                  = "giá trị đặt trước"; // 2 cài đặt trước - 2 пресета
+"preset.count.five"                 = "giá trị đặt trước"; // 5 cài đặt trước - 5 пресетов
+
+"preset.tapHint"                    = "Nhấn để mở cài đặt trước";
+"preset.button.addToMyPresets"      = "Thêm vào giá trị đặt trước của tôi";
+"preset.addedPreset"                = "Đã thêm!";
+"preset.button.subscription"        = "Có quyền truy cập vào hơn 100 cài đặt trước";
+"preset.button.manual"              = "Cách sử dụng?";
+
+// ĐÁNH DẤU: - Mở cửa sổ bật lên cài sẵn
+
+"openPreset.title"                  = "Bạn có biết cách sử dụng các cài đặt trước không?";
+"openPreset.button.open"            = "Có, mở một cài đặt trước";
+"openPreset.button.manual"          = "Không, mở sách hướng dẫn";
+
+// ĐÁNH DẤU: - Cài đặt
+
+"settings.title"                    = "Cài đặt";
+"settings.button.manual"            = "Cách sử dụng?";
+"settings.button.serviceTerms"      = "Điều khoản Dịch vụ";
+"settings.button.policy"            = "Chính sách Bảo mật";
+"settings.button.subscriptionTerms" = "Điều khoản Đăng ký";
+"settings.button.restorePurchase"   = "Khôi phục giao dịch mua của bạn";
+
+// ĐÁNH DẤU: - Điều khoản Dịch vụ
+
+"serviceTerms.title"                = "Điều khoản Dịch vụ";
+
+// ĐÁNH DẤU: - Chính sách Bảo mật
+
+"privacy.title"                     = "Chính sách Bảo mật";
+
+// MARK: - How To Use
+
+"manual.title"                      = "Làm thế nào để sử dụng?";
+"manual.button.videoTutorial"       = "Xem video hướng dẫn";
+"manual.step.first"                 = "1. Cài đặt Adobe Lightroom từ App Store";
+"manual.button.lightroom"           = "Cài đặt Adobe Lightroom";
+"manual.step.second"                = "2. Chọn một giá trị đặt trước và nhấp vào \"Sao chép vào Lightroom\"";
+"manual.step.third"                 = "3. Cài đặt trước sẽ mở trong Lightroom, nhấp vào nút khác và chọn \"Sao chép Cài đặt\"";
+"manual.step.fourth"                = "4. Nhấn nút \"Back\" để quay lại màn hình trước đó, sau đó nhấn nút \"Import\" và chọn ảnh từ thư viện của bạn";
+"manual.step.fifth"                 = "5. Khi ảnh được thêm vào, hãy nhấp vào nút \"Thêm\" và chọn \"Chèn cài đặt\"";
+"manual.step.sixth"                 = "6. Tuyệt vời! Bây giờ bạn có thể lưu ảnh hoặc chia sẻ nó với người đăng ký";
+"manual.hint.first"                 = "* Các giá trị đặt trước được hiển thị với dấu DNG";
+"manual.hint.second"                = "** Hãy thử các cài đặt trước khác nhau và thay đổi cài đặt để làm cho bức ảnh của bạn trở nên hoàn hảo";
+
+// ĐÁNH DẤU: - Cảnh báo
+
+"alert.action.ok"                   = "Được";
+
+"alert.connection.title"            = "Không có kết nối internet";
+"alert.connection.message"          = "Không có kết nối internet. Vui lòng kết nối với mạng và thử lại.";
+
+"alert.subscribe.title"             = "Đã đăng ký";
+"alert.subscribe.message"           = "Bạn đã đăng ký. Tất cả các chức năng đều có sẵn cho bạn.";
+
+"alert.restored.title"              = "Đã khôi phục";
+"alert.restored.message"            = "Bạn đã khôi phục thành công đăng ký của mình. Tất cả các chức năng hiện có sẵn cho bạn.";
+
+"alert.notSubscriber.title"         = "Không thể khôi phục";
+"alert.notSubscriber.message"       = "Xin lỗi, bạn không thể khôi phục giao dịch mua của mình vì bạn không có đăng ký đang hoạt động.";
+

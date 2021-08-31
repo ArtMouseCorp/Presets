@@ -1,1 +1,129 @@
 
+// Russian Localization
+
+// MARK: - Onboarding
+
+"onboarding.title.first"            = "Потрясающие фотографии за считанные минуты";
+"onboarding.subtitle.first"         = "Импортируйте пресеты в Lightroom";
+
+"onboarding.title.second"           = "Выберите стиль и примените его";
+"onboarding.subtitle.second"        = "Стилизуйте ваши работы";
+
+"onboarding.title.third"            = "Более 100 пресетов для Lightroom";
+"onboarding.subtitle.third"         = "Подходит для начинающих";
+
+// MARK: - Подписки
+
+"subscription.title"                = "Станьте профессионалом!";
+"subscription.subtitle"             = "Более 100+ качественных пресетов";
+
+"subscription.button.next"          = "Далее";
+"subscription.button.restore"       = "Восстановить";
+"subscription.button.privacy"       = "Конфиденциальность";
+"subscription.button.terms"         = "Условия";
+
+"subscription.failed.title"         = "Упс!";
+"subscription.failed.subtitle"      = "Ошибка покупки :(";
+"subscription.failed.title2"        = "Просмотреть рекламу в";
+"subscription.failed.limitedVersion"= "Купить ограниченную версию";
+"subscription.failed.trial.title"   = "... или попробуйте полный доступ с 3-дневной бесплатной пробной версией";
+"subscription.failed.button.trial"  = "Попробуйте 3 дня доступа";
+"subscription.failed.cancelInfo"    = "Отменить или приостановить в любое время";
+
+"subscription.interval.day.one"     = "день";
+"subscription.interval.day.two"     = "дня";
+"subscription.interval.day.five"    = "дней";
+"subscription.interval.week.one"    = "неделя";
+"subscription.interval.week.two"    = "недели";
+"subscription.interval.week.five"   = "недель";
+"subscription.interval.month.one"   = "месяц";
+"subscription.interval.month.two"   = "месяца";
+"subscription.interval.month.five"  = "месяцев";
+"subscription.interval.year.one"    = "год";
+"subscription.interval.year.two"    = "года";
+"subscription.interval.year.five"   = "лет";
+
+// MARK: - Главный экран
+
+"main.title"                        = "Lightroom presets";
+"main.allPresets"                   = "Все";
+"main.freePresets"                  = "Бесплатно";
+"main.premiumPresets"               = "Премиум";
+
+// MARK: - Мои пресеты
+
+"myPresets.title"                   = "Мои пресеты";
+"myPresets.placeholder"             = "Здесь будут сохраненные пресеты";
+"myPresets.button.select"           = "Выбрать пресет";
+
+// MARK: - Удалить предустановленное всплывающее окно
+
+"delete.title"                      = "Удалить пресет?";
+"delete.button.confirm"             = "Да, удалить";
+"delete.button.cancel"              = "Нет, отменить";
+
+// MARK: - Экран предустановок
+
+"preset.count.one"                  = "пресет"; // 1 пресет - 1 пресет
+"preset.count.two"                  = "пресета"; // 2 пресета - 2 пресета
+"preset.count.five"                 = "пресетов"; // 5 пресетов - 5 пресетов
+
+"preset.tapHint"                    = "Нажмите, чтобы открыть пресет";
+"preset.button.addToMyPresets"      = "Добавить в мои пресеты";
+"preset.addedPreset"                = "Добавлено!";
+"preset.button.subscription"        = "Получите доступ к более 100+ качественных пресетов";
+"preset.button.manual"              = "Как пользоваться?";
+
+// MARK: - Открыть предустановленное всплывающее окно
+
+"openPreset.title"                  = "Вы умеете использовать пресеты?";
+"openPreset.button.open"            = "Да, открыть пресет";
+"openPreset.button.manual"          = "Нет, открыть руководство";
+
+// MARK: - Настройки
+
+"settings.title"                    = "Настройки";
+"settings.button.manual"            = "Как пользоваться?";
+"settings.button.serviceTerms"      = "Условия использования";
+"settings.button.policy"            = "Политика конфиденциальности";
+"settings.button.subscriptionTerms" = "Условия подписки";
+"settings.button.restorePurchase"   = "Восстановить свои покупки";
+
+// MARK: - Условия использования
+
+"serviceTerms.title"                = "Условия использования";
+
+// MARK: - Политика конфиденциальности
+
+"privacy.title"                     = "Политика конфиденциальности";
+
+// MARK: - Как использовать
+
+"manual.title"                      = "Как пользоваться?";
+"manual.button.videoTutorial"       = "Посмотреть видеоурок";
+"manual.step.first"                 = "1. Установите Adobe Lightroom из App Store";
+"manual.button.lightroom"           = "Установить Adobe Lightroom";
+"manual.step.second"                = "2. Выберите пресет и нажмите \"Копировать в Lightroom\"";
+"manual.step.third"                 = "3. Предустановка откроется в Lightroom, нажмите кнопку \"Дополнительно\" и выберите \"Копировать настройки\"";
+"manual.step.fourth"                = "4. Нажмите кнопку \"Назад\", чтобы вернуться к предыдущему экрану, затем нажмите кнопку \"Импорт\" и выберите фотографию из своей библиотеки»";
+"manual.step.fifth"                 = "5. Когда фотография будет добавлена, нажмите кнопку \"Еще\" и выберите \"Вставить настройки\"";
+"manual.step.sixth"                 = "6. Отлично! Теперь вы можете сохранить фото или поделиться им с подписчиками";
+"manual.hint.first"                 = "* Пресеты отображаются с пометкой DNG";
+"manual.hint.second"                = "** Не стесняйтесь пробовать различные предустановки и изменять настройки, чтобы сделать вашу фотографию идеальной";
+
+// MARK: - Предупреждения
+
+"alert.action.ok"                   = "Хорошо";
+
+"alert.connection.title"            = "Нет подключения к Интернету";
+"alert.connection.message"          = "Нет подключения к Интернету. Подключитесь к сети и повторите попытку.";
+
+"alert.subscribed.title"            = "Подписка";
+"alert.subscribed.message"          = "Вы уже подписаны. Вам доступны все функции.";
+
+"alert.restored.title"              = "Восстановлено";
+"alert.restored.message"            = "Вы успешно восстановили подписку. Теперь вам доступны все функции.";
+
+"alert.notSubscriber.title"         = "Невозможно восстановить";
+"alert.notSubscriber.message"       = "К сожалению, вы не можете восстановить свою покупку, потому что у вас нет активной подписки.";
+

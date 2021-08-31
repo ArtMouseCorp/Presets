@@ -1,4 +1,6 @@
 import UIKit
+import AVKit
+import AVFoundation
 
 class ManualViewController: BaseViewController {
     
@@ -121,6 +123,19 @@ class ManualViewController: BaseViewController {
         installLightroomView.addGestureRecognizer(tapOnInstallLightroom)
     }
     
+    func playVideo() {
+        guard let path = Bundle.main.path(forResource: "tutorial", ofType:"mov") else {
+            debugPrint("Error 404 : tutorial.mov was not found")
+            return
+        }
+        let player = AVPlayer(url: URL(fileURLWithPath: path))
+        let playerController = AVPlayerViewController()
+        playerController.player = player
+        present(playerController, animated: true) {
+            player.play()
+        }
+    }
+    
     // MARK: - Gesture actions
     
     @objc func installLightroomTapped() {
@@ -136,7 +151,7 @@ class ManualViewController: BaseViewController {
     }
     
     @IBAction func watchVideoButtonPressed(_ sender: Any) {
-        // TODO: - Open video tutorial
+        playVideo()
     }
     
 }

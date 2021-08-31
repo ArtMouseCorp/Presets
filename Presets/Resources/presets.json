@@ -1,154 +1,417 @@
 [
 	{
-        "id": 1,
+		"id": 1,
 		"name": "Amber",
-        "titleImage": "grid-amber.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
+		"titleImage": "grid-amber.jpeg",
+		"isFree": false,
+		"images": [
+			"image-amber-1.jpeg",
+			"image-amber-2.jpeg",
+			"image-amber-3.jpeg",
+			"image-amber-4.jpeg",
+			"image-amber-5.jpeg"
+		],
+		"presets": [
+			"preset-amber-1",
+			"preset-amber-2",
+			"preset-amber-3",
+			"preset-amber-4",
+			"preset-amber-5"
+		]
 	},
-    {
-        "id": 2,
-        "name": "BLVCK",
-        "titleImage": "grid-blvck.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 3,
-        "name": "Boho",
-        "titleImage": "grid-boho.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 4,
-        "name": "Boho Wedding",
-        "titleImage": "grid-boho-wedding.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 5,
-        "name": "Coffee",
-        "titleImage": "grid-coffee.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 6,
-        "name": "Cream White",
-        "titleImage": "grid-cream-white.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 7,
-        "name": "Dark Moody",
-        "titleImage": "grid-dark-moody.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 8,
-        "name": "Dark Orange",
-        "titleImage": "grid-dark-orange.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 9,
-        "name": "Earthy Tones",
-        "titleImage": "grid-earthy-tones.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 10,
-        "name": "Minimal Style",
-        "titleImage": "grid-minimal-style.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 11,
-        "name": "Moody Blue",
-        "titleImage": "grid-moody-blue.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 12,
-        "name": "Nature",
-        "titleImage": "grid-nature.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 13,
-        "name": "Night Bar",
-        "titleImage": "grid-night-bar.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 14,
-        "name": "Nordic",
-        "titleImage": "grid-nordic.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 15,
-        "name": "Paradise",
-        "titleImage": "grid-paradise.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 16,
-        "name": "Rich Black",
-        "titleImage": "grid-rich-black.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 17,
-        "name": "Summer",
-        "titleImage": "grid-summer.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 18,
-        "name": "True Black",
-        "titleImage": "grid-true-black.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    },
-    {
-        "id": 19,
-        "name": "Vintage Film",
-        "titleImage": "grid-vintage-film.jpeg",
-        "isFree": false,
-        "images": [],
-        "presets": []
-    }
+	{
+		"id": 2,
+		"name": "BLVCK",
+		"titleImage": "grid-blvck.jpeg",
+		"isFree": false,
+		"images": [
+			"image-blvck-1.jpeg",
+			"image-blvck-2.jpeg",
+			"image-blvck-3.jpeg",
+			"image-blvck-4.jpeg",
+			"image-blvck-5.jpeg",
+			"image-blvck-6.jpeg",
+			"image-blvck-7.jpeg",
+			"image-blvck-8.jpeg",
+			"image-blvck-9.jpeg",
+			"image-blvck-10.jpeg",
+			"image-blvck-11.jpeg"
+		],
+		"presets": [
+			"preset-blvck-1",
+			"preset-blvck-2",
+			"preset-blvck-3",
+			"preset-blvck-4",
+			"preset-blvck-5",
+			"preset-blvck-6",
+			"preset-blvck-7",
+			"preset-blvck-8",
+			"preset-blvck-9",
+			"preset-blvck-10",
+			"preset-blvck-11"
+		]
+	},
+	{
+		"id": 3,
+		"name": "Boho",
+		"titleImage": "grid-boho.jpeg",
+		"isFree": false,
+		"images": [
+			"image-boho-1.jpeg",
+			"image-boho-2.jpeg",
+			"image-boho-3.jpeg",
+			"image-boho-4.jpeg",
+			"image-boho-5.jpeg"
+		],
+		"presets": [
+			"preset-boho-1",
+			"preset-boho-2",
+			"preset-boho-3",
+			"preset-boho-4",
+			"preset-boho-5"
+		]
+	},
+	{
+		"id": 4,
+		"name": "Boho Wedding",
+		"titleImage": "grid-boho-wedding.jpeg",
+		"isFree": false,
+		"images": [
+			"image-boho-wedding-1.jpeg",
+			"image-boho-wedding-2.jpeg",
+			"image-boho-wedding-3.jpeg",
+			"image-boho-wedding-4.jpeg",
+			"image-boho-wedding-5.jpeg"
+		],
+		"presets": [
+			"preset-boho-wedding-1",
+			"preset-boho-wedding-2",
+			"preset-boho-wedding-3",
+			"preset-boho-wedding-4",
+			"preset-boho-wedding-5"
+		]
+	},
+	{
+		"id": 5,
+		"name": "Coffee",
+		"titleImage": "grid-coffee.jpeg",
+		"isFree": false,
+		"images": [
+			"image-coffee-1.jpeg",
+			"image-coffee-2.jpeg",
+			"image-coffee-3.jpeg",
+			"image-coffee-4.jpeg",
+			"image-coffee-5.jpeg",
+			"image-coffee-6.jpeg",
+			"image-coffee-7.jpeg",
+			"image-coffee-8.jpeg",
+			"image-coffee-9.jpeg",
+			"image-coffee-10.jpeg"
+		],
+		"presets": [
+			"preset-coffee-1",
+			"preset-coffee-2",
+			"preset-coffee-3",
+			"preset-coffee-4",
+			"preset-coffee-5",
+			"preset-coffee-6",
+			"preset-coffee-7",
+			"preset-coffee-8",
+			"preset-coffee-9",
+			"preset-coffee-10"
+		]
+	},
+	{
+		"id": 6,
+		"name": "Cream White",
+		"titleImage": "grid-cream-white.jpeg",
+		"isFree": false,
+		"images": [
+			"image-cream-white-1.jpeg",
+			"image-cream-white-2.jpeg",
+			"image-cream-white-3.jpeg",
+			"image-cream-white-4.jpeg",
+			"image-cream-white-5.jpeg"
+		],
+		"presets": [
+			"preset-cream-white-1",
+			"preset-cream-white-2",
+			"preset-cream-white-3",
+			"preset-cream-white-4",
+			"preset-cream-white-5"
+		]
+	},
+	{
+		"id": 7,
+		"name": "Dark Moody",
+		"titleImage": "grid-dark-moody.jpg",
+		"isFree": false,
+		"images": [
+			"image-dark-moody-1.jpg",
+			"image-dark-moody-2.jpg",
+			"image-dark-moody-3.jpg",
+			"image-dark-moody-4.jpg",
+			"image-dark-moody-5.jpg",
+			"image-dark-moody-6.jpg",
+			"image-dark-moody-7.jpg"
+		],
+		"presets": [
+			"preset-dark-moody-1",
+			"preset-dark-moody-2",
+			"preset-dark-moody-3",
+			"preset-dark-moody-4",
+			"preset-dark-moody-5",
+			"preset-dark-moody-6",
+			"preset-dark-moody-7"
+		]
+	},
+	{
+		"id": 8,
+		"name": "Dark Orange",
+		"titleImage": "grid-dark-orange.jpeg",
+		"isFree": false,
+		"images": [
+			"image-dark-orange-1.jpeg",
+			"image-dark-orange-2.jpeg",
+			"image-dark-orange-3.jpeg",
+			"image-dark-orange-4.jpeg",
+			"image-dark-orange-5.jpeg"
+		],
+		"presets": [
+			"preset-dark-orange-1",
+			"preset-dark-orange-2",
+			"preset-dark-orange-3",
+			"preset-dark-orange-4",
+			"preset-dark-orange-5"
+		]
+	},
+	{
+		"id": 9,
+		"name": "Earthy Tones",
+		"titleImage": "grid-earthy-tones.jpeg",
+		"isFree": false,
+		"images": [
+			"image-earthy-tones-1.jpeg",
+			"image-earthy-tones-2.jpeg",
+			"image-earthy-tones-3.jpeg",
+			"image-earthy-tones-4.jpeg",
+			"image-earthy-tones-5.jpeg"
+		],
+		"presets": [
+			"preset-earthy-tones-1",
+			"preset-earthy-tones-2",
+			"preset-earthy-tones-3",
+			"preset-earthy-tones-4",
+			"preset-earthy-tones-5"
+		]
+	},
+	{
+		"id": 10,
+		"name": "Minimal Style",
+		"titleImage": "grid-minimal-style.jpeg",
+		"isFree": false,
+		"images": [
+			"image-minimal-style-1.jpeg",
+			"image-minimal-style-2.jpeg",
+			"image-minimal-style-3.jpeg",
+			"image-minimal-style-4.jpeg",
+			"image-minimal-style-5.jpeg"
+		],
+		"presets": [
+			"preset-minimal-style-1",
+			"preset-minimal-style-2",
+			"preset-minimal-style-3",
+			"preset-minimal-style-4",
+			"preset-minimal-style-5"
+		]
+	},
+	{
+		"id": 11,
+		"name": "Moody Blue",
+		"titleImage": "grid-moody-blue.jpeg",
+		"isFree": false,
+		"images": [
+			"image-moody-blue-1.jpeg",
+			"image-moody-blue-2.jpeg",
+			"image-moody-blue-3.jpeg",
+			"image-moody-blue-4.jpeg",
+			"image-moody-blue-5.jpeg",
+			"image-moody-blue-6.jpeg"
+		],
+		"presets": [
+			"preset-moody-blue-1",
+			"preset-moody-blue-2",
+			"preset-moody-blue-3",
+			"preset-moody-blue-4",
+			"preset-moody-blue-5",
+			"preset-moody-blue-6"
+		]
+	},
+	{
+		"id": 12,
+		"name": "Nature",
+		"titleImage": "grid-nature.jpeg",
+		"isFree": false,
+		"images": [
+			"image-nature-1.jpeg",
+			"image-nature-2.jpeg",
+			"image-nature-3.jpeg",
+			"image-nature-4.jpeg",
+			"image-nature-5.jpeg"
+		],
+		"presets": [
+			"preset-nature-1",
+			"preset-nature-2",
+			"preset-nature-3",
+			"preset-nature-4",
+			"preset-nature-5"
+		]
+	},
+	{
+		"id": 13,
+		"name": "Night Bar",
+		"titleImage": "grid-night-bar.jpeg",
+		"isFree": false,
+		"images": [
+			"image-night-bar-1.jpeg",
+			"image-night-bar-2.jpeg",
+			"image-night-bar-3.jpeg",
+			"image-night-bar-4.jpeg",
+			"image-night-bar-5.jpeg"
+		],
+		"presets": [
+			"preset-night-bar-1",
+			"preset-night-bar-2",
+			"preset-night-bar-3",
+			"preset-night-bar-4",
+			"preset-night-bar-5"
+		]
+	},
+	{
+		"id": 14,
+		"name": "Nordic",
+		"titleImage": "grid-nordic.jpeg",
+		"isFree": false,
+		"images": [
+			"image-nordic-1.jpeg",
+			"image-nordic-2.jpeg",
+			"image-nordic-3.jpeg",
+			"image-nordic-4.jpeg",
+			"image-nordic-5.jpeg"
+		],
+		"presets": [
+			"preset-nordic-1",
+			"preset-nordic-2",
+			"preset-nordic-3",
+			"preset-nordic-4",
+			"preset-nordic-5"
+		]
+	},
+	{
+		"id": 15,
+		"name": "Paradise",
+		"titleImage": "grid-paradise.jpeg",
+		"isFree": false,
+		"images": [
+			"image-paradise-1.jpeg",
+			"image-paradise-2.jpeg",
+			"image-paradise-3.jpeg",
+			"image-paradise-4.jpeg",
+			"image-paradise-5.jpeg"
+		],
+		"presets": [
+			"preset-paradise-1",
+			"preset-paradise-2",
+			"preset-paradise-3",
+			"preset-paradise-4",
+			"preset-paradise-5"
+		]
+	},
+	{
+		"id": 16,
+		"name": "Rich Black",
+		"titleImage": "grid-rich-black.jpeg",
+		"isFree": false,
+		"images": [
+			"image-rich-black-1.jpeg",
+			"image-rich-black-2.jpeg",
+			"image-rich-black-3.jpeg",
+			"image-rich-black-4.jpeg",
+			"image-rich-black-5.jpeg",
+			"image-rich-black-6.jpeg"
+		],
+		"presets": [
+			"preset-rich-black-1",
+			"preset-rich-black-2",
+			"preset-rich-black-3",
+			"preset-rich-black-4",
+			"preset-rich-black-5",
+			"preset-rich-black-6"
+		]
+	},
+	{
+		"id": 17,
+		"name": "Summer",
+		"titleImage": "grid-summer.jpeg",
+		"isFree": false,
+		"images": [
+			"image-summer-1.jpeg",
+			"image-summer-2.jpeg",
+			"image-summer-3.jpeg",
+			"image-summer-4.jpeg",
+			"image-summer-5.jpeg",
+			"image-summer-6.jpeg"
+		],
+		"presets": [
+			"preset-summer-1",
+			"preset-summer-2",
+			"preset-summer-3",
+			"preset-summer-4",
+			"preset-summer-5"
+		]
+	},
+	{
+		"id": 18,
+		"name": "True Black",
+		"titleImage": "grid-true-black.jpeg",
+		"isFree": false,
+		"images": [
+			"image-true-black-1.jpeg",
+			"image-true-black-2.jpeg",
+			"image-true-black-3.jpeg",
+			"image-true-black-4.jpeg",
+			"image-true-black-5.jpeg",
+			"image-true-black-6.jpeg",
+			"image-true-black-7.jpeg"
+		],
+		"presets": [
+			"preset-true-black-1",
+			"preset-true-black-2",
+			"preset-true-black-3",
+			"preset-true-black-4",
+			"preset-true-black-5",
+			"preset-true-black-6",
+			"preset-true-black-7"
+		]
+	},
+	{
+		"id": 19,
+		"name": "Vintage Film",
+		"titleImage": "grid-vintage-film.jpeg",
+		"isFree": false,
+		"images": [
+			"image-vintage-film-1.jpeg",
+			"image-vintage-film-2.jpeg",
+			"image-vintage-film-3.jpeg",
+			"image-vintage-film-4.jpeg",
+			"image-vintage-film-5.jpeg"
+		],
+		"presets": [
+			"preset-vintage-film-1",
+			"preset-vintage-film-2",
+			"preset-vintage-film-3",
+			"preset-vintage-film-4",
+			"preset-vintage-film-5"
+		]
+	}
 ]
