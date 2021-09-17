@@ -88,9 +88,9 @@ class RCValues {
         
         let key = RCValueKey.organicSubscriptionPage.rawValue
         
-        let value = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
+        let jsonValue = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
         
-        guard let value = value else {
+        guard let value = jsonValue else {
             return OrganicSubscriptionPage.default
         }
         
@@ -131,9 +131,9 @@ class RCValues {
         
         let key = RCValueKey.subscriptionPlansPage.rawValue
         
-        let value = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
+        let jsonValue = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
         
-        guard let value = value else {
+        guard let value = jsonValue else {
             return SubscriptionPlansPage.default
         }
         

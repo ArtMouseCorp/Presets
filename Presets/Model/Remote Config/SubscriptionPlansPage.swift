@@ -4,7 +4,7 @@ struct SubscriptionPlansPage: Codable {
     
     let titleLabel: String
     let subtitleLabel: String
-    let closeDelay: CGFloat
+    let closeDelay: Double
     let priceLabelFontSize: CGFloat
     let priceLabelOpacity: CGFloat
     let buttonLabel: String

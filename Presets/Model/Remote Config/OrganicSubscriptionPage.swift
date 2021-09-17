@@ -4,7 +4,7 @@ struct OrganicSubscriptionPage: Codable {
     
     let titleLabel: String
     let subtitleLabel: String
-    let closeDelay: CGFloat
+    let closeDelay: Double
     let priceLabel: String
     let priceLabelFontSize: CGFloat
     let priceLabelOpacity: CGFloat

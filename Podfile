@@ -4,8 +4,8 @@ target 'Presets' do
 
 use_frameworks!
 
-pod "Amplitude"
-pod "OneSignalXCFramework"
+pod 'Amplitude'
+pod 'OneSignalXCFramework'
 pod 'AppsFlyerFramework'
 
 pod 'Firebase/Analytics'
