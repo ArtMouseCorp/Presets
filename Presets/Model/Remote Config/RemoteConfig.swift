@@ -98,7 +98,7 @@ class RCValues {
         
         let titleLabel: String              = json[RCValueKey.OrganicSubscriptionPage.titleLabel.rawValue].stringValue
         let subtitleLabel: String           = json[RCValueKey.OrganicSubscriptionPage.subtitleLabel.rawValue].stringValue
-        let closeDelay: CGFloat             = CGFloat(json[RCValueKey.OrganicSubscriptionPage.closeDelay.rawValue].floatValue)
+        let closeDelay: Double             = Double(json[RCValueKey.OrganicSubscriptionPage.closeDelay.rawValue].floatValue)
         let priceLabel: String              = json[RCValueKey.OrganicSubscriptionPage.priceLabel.rawValue].stringValue
         let priceLabelFontSize: CGFloat     = CGFloat(json[RCValueKey.OrganicSubscriptionPage.priceLabelFontSize.rawValue].floatValue)
         let priceLabelOpacity: CGFloat      = CGFloat(json[RCValueKey.OrganicSubscriptionPage.priceLabelOpacity.rawValue].floatValue)
@@ -141,7 +141,7 @@ class RCValues {
         
         let titleLabel: String              = json[RCValueKey.SubscriptionPlansPage.titleLabel.rawValue].stringValue
         let subtitleLabel: String           = json[RCValueKey.SubscriptionPlansPage.subtitleLabel.rawValue].stringValue
-        let closeDelay: CGFloat             = CGFloat(json[RCValueKey.SubscriptionPlansPage.closeDelay.rawValue].floatValue)
+        let closeDelay: Double             = Double(json[RCValueKey.SubscriptionPlansPage.closeDelay.rawValue].floatValue)
         let priceLabelFontSize: CGFloat     = CGFloat(json[RCValueKey.SubscriptionPlansPage.priceLabelFontSize.rawValue].floatValue)
         let priceLabelOpacity: CGFloat      = CGFloat(json[RCValueKey.SubscriptionPlansPage.priceLabelOpacity.rawValue].floatValue)
         let buttonLabel: String             = json[RCValueKey.SubscriptionPlansPage.buttonLabel.rawValue].stringValue
