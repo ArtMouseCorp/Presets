@@ -4,30 +4,30 @@
 // MARK: - Onboarding
 
 "onboarding.title.first"            = "Потрясающие фотографии за считанные минуты";
-"onboarding.subtitle.first"         = "Импортируйте пресеты в Lightroom";
+"onboarding.subtitle.first"         = "Импортируй пресеты в Lightroom";
 
-"onboarding.title.second"           = "Выберите стиль и примените его";
-"onboarding.subtitle.second"        = "Стилизуйте ваши работы";
+"onboarding.title.second"           = "Выбери эффект и примени его";
+"onboarding.subtitle.second"        = "Создай свой стиль";
 
-"onboarding.title.third"            = "Более 100 пресетов для Lightroom";
-"onboarding.subtitle.third"         = "Подходит для начинающих";
+"onboarding.title.third"            = "Наслаждайся 100+ Lightroom пресетами";
+"onboarding.subtitle.third"         = "Подходит для новичков";
 
 // MARK: - Подписки
 
-"subscription.title"                = "Станьте профессионалом!";
-"subscription.subtitle"             = "Более 100+ качественных пресетов";
+"subscription.title"                = "Стань профи!";
+"subscription.subtitle"             = "Более 100 качественных пресетов";
 
 "subscription.button.next"          = "Далее";
 "subscription.button.restore"       = "Восстановить";
 "subscription.button.privacy"       = "Конфиденциальность";
 "subscription.button.terms"         = "Условия";
 
-"subscription.failed.title"         = "Упс!";
-"subscription.failed.subtitle"      = "Ошибка покупки :(";
-"subscription.failed.title2"        = "Просмотреть рекламу в";
-"subscription.failed.limitedVersion"= "Купить ограниченную версию";
-"subscription.failed.trial.title"   = "... или попробуйте полный доступ с 3-дневной бесплатной пробной версией";
-"subscription.failed.button.trial"  = "Попробуйте 3 дня доступа";
+"subscription.failed.title"         = "Ой!";
+"subscription.failed.subtitle"      = "Покупка не удалась :(";
+"subscription.failed.title2"        = "Просмотреть рекламу чтобы";
+"subscription.failed.limitedVersion"= "пользоваться ограниченной версией";
+"subscription.failed.trial.title"   = "...или попробуйте полную версию\nс бесплатным триалом на 3 дня";
+"subscription.failed.button.trial"  = "Попробовать 3 дня доступа";
 "subscription.failed.cancelInfo"    = "Отменить или приостановить в любое время";
 
 "subscription.interval.day.one"     = "день";
@@ -45,22 +45,22 @@
 
 // MARK: - Главный экран
 
-"main.title"                        = "Lightroom presets";
+"main.title"                        = "Пресеты Lightroom";
 "main.allPresets"                   = "Все";
-"main.freePresets"                  = "Бесплатно";
-"main.premiumPresets"               = "Премиум";
+"main.freePresets"                  = "Бесплатные";
+"main.premiumPresets"               = "ПРЕМИУМ";
 
 // MARK: - Мои пресеты
 
 "myPresets.title"                   = "Мои пресеты";
 "myPresets.placeholder"             = "Здесь будут сохраненные пресеты";
-"myPresets.button.select"           = "Выбрать пресет";
+"myPresets.button.select"           = "Выберите пресет";
 
 // MARK: - Удалить предустановленное всплывающее окно
 
 "delete.title"                      = "Удалить пресет?";
 "delete.button.confirm"             = "Да, удалить";
-"delete.button.cancel"              = "Нет, отменить";
+"delete.button.cancel"              = "Нет, не удалять";
 
 // MARK: - Экран предустановок
 
@@ -71,14 +71,14 @@
 "preset.tapHint"                    = "Нажмите, чтобы открыть пресет";
 "preset.button.addToMyPresets"      = "Добавить в мои пресеты";
 "preset.addedPreset"                = "Добавлено!";
-"preset.button.subscription"        = "Получите доступ к более 100+ качественных пресетов";
+"preset.button.subscription"        = "Получить доступ к 100+ пресетам";
 "preset.button.manual"              = "Как пользоваться?";
 
 // MARK: - Открыть предустановленное всплывающее окно
 
-"openPreset.title"                  = "Вы умеете использовать пресеты?";
+"openPreset.title"                  = "Вы знаете как пользоваться пресетами?";
 "openPreset.button.open"            = "Да, открыть пресет";
-"openPreset.button.manual"          = "Нет, открыть руководство";
+"openPreset.button.openManual"          = "Нет, открыть инструкцию";
 
 // MARK: - Настройки
 
@@ -86,8 +86,8 @@
 "settings.button.manual"            = "Как пользоваться?";
 "settings.button.serviceTerms"      = "Условия использования";
 "settings.button.policy"            = "Политика конфиденциальности";
-"settings.button.subscriptionTerms" = "Условия подписки";
-"settings.button.restorePurchase"   = "Восстановить свои покупки";
+"settings.button.contact"           = "Контакты";
+"settings.button.restorePurchase"   = "Восстановить покупки";
 
 // MARK: - Условия использования
 
@@ -100,7 +100,7 @@
 // MARK: - Как использовать
 
 "manual.title"                      = "Как пользоваться?";
-"manual.button.videoTutorial"       = "Посмотреть видеоурок";
+"manual.button.videoTutorial"       = "Посмотреть видео-инструкцию";
 "manual.step.first"                 = "1. Установите Adobe Lightroom из App Store";
 "manual.button.lightroom"           = "Установить Adobe Lightroom";
 "manual.step.second"                = "2. Выберите пресет и нажмите \"Копировать в Lightroom\"";
@@ -113,17 +113,17 @@
 
 // MARK: - Предупреждения
 
-"alert.action.ok"                   = "Хорошо";
+"alert.action.ok"                   = "Ок";
 
-"alert.connection.title"            = "Нет подключения к Интернету";
-"alert.connection.message"          = "Нет подключения к Интернету. Подключитесь к сети и повторите попытку.";
+"alert.connection.title"            = "Нет подключения к интернету";
+"alert.connection.message"          = "Нет подключения к интернету.  Пожалуйста, подключитесь к сети и попробуйте еще раз.";
 
-"alert.subscribed.title"            = "Подписка";
-"alert.subscribed.message"          = "Вы уже подписаны. Вам доступны все функции.";
+"alert.subscribed.title"            = "Подписка оформлена";
+"alert.subscribed.message"          = "Вы уже подписаны. Вам доступен весь функционал.";
 
-"alert.restored.title"              = "Восстановлено";
-"alert.restored.message"            = "Вы успешно восстановили подписку. Теперь вам доступны все функции.";
+"alert.restored.title"              = "Восстановлен";
+"alert.restored.message"            = "Вы успешно восстановили подписку. Теперь вам доступен весь функционал.";
 
-"alert.notSubscriber.title"         = "Невозможно восстановить";
+"alert.notSubscriber.title"         = "Не подлежит восстановлению";
 "alert.notSubscriber.message"       = "К сожалению, вы не можете восстановить свою покупку, потому что у вас нет активной подписки.";
 

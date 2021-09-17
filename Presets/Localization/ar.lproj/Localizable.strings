@@ -3,134 +3,127 @@
 
 // MARK: - Onboarding
 
-"onboarding.title1"                 = "Amazing photos in minutes";
-"onboarding.subtitle1"              = "Onboarding screen 1 small subtitle";
+"onboarding.title.first"            = "صورة مذهلة في دقائق";
+"onboarding.subtitle.first"         = "استيراد الإعدادات المسبقة إلى Lightroom";
 
-"onboarding.title2"                 = "Select a style and apply it";
-"onboarding.subtitle2"              = "Onboarding screen 2 small subtitle";
+"onboarding.title.second"           = "تحديد أسلوب وتطبيقه";
+"onboarding.subtitle.second"        = "إضفاء طابع مميز على أعمالك";
 
-"onboarding.title3"                 = "Enjoy 100+ Lightroom presets";
-"onboarding.subtitle3"              = "Onboarding screen 3 small subtitle";
+"onboarding.title.third"            = "استمتع بأكثر من 100 تأثير لتطبيق Lightroom";
+"onboarding.subtitle.third"         = "سهل الاستخدام للمبتدئين";
 
 // MARK: - Subscriptions
 
-"subscription.title"                = "Become pro!";
-"subscription.subtitle"             = "Over 100+ quality presets";
+"subscription.title"                = "احترف!";
+"subscription.subtitle"             = "أكثر من 100 إعداد مسبق ذي جودة عالية";
 
-"subscription.button.next"          = "Next";
-"subscription.button.restore"       = "Restore";
-"subscription.button.privacy"       = "Privacy";
+"subscription.button.next"          = "التالي";
+"subscription.button.restore"       = "يعيد";
+"subscription.button.privacy"       = "خصوصية";
 "subscription.button.terms"         = "Terms";
 
-"subscription.failed.title"         = "Oooops!";
-"subscription.failed.subtitle"      = "Purchase failed :(";
-"subscription.failed.title2"        = "View ads to";
-"subscription.failed.limitedVersion"= "Purchase run limited version";
-"subscription.failed.trial.title"   = "...or try full access with a 3-day free trial";
-"subscription.failed.button.trial"  = "Try 3 days of access";
-"subscription.failed.cancelInfo"    = "Cancel or pause at any time";
+"subscription.failed.title"         = "عذرًا!";
+"subscription.failed.subtitle"      = "فشل الشراء :(";
+"subscription.failed.title2"        = "عرض الإعلانات لأجل";
+"subscription.failed.limitedVersion"= "شراء الإصدار المحدود";
+"subscription.failed.trial.title"   = "...أو جرب الرعاية الكاملة\nمن خلال الإصدار التجريبي لمدة 3 أيام";
+"subscription.failed.button.trial"  = "جرب 3 أيام من الوصول";
+"subscription.failed.cancelInfo"    = "يمكنك الإلغاء أو الإيقاف المؤقت في أي وقت";
 
-"subscription.interval.day.one"     = "day";    // 1 day    - 1 день
-"subscription.interval.day.two"     = "days";   // 2 days   - 2 дня
-"subscription.interval.day.five"    = "days";   // 5 days   - 5 дней
-"subscription.interval.week.one"    = "week";   // 1 week   - 1 неделя
-"subscription.interval.week.two"    = "weeks";  // 2 weeks  - 2 недели
-"subscription.interval.week.five"   = "weeks";  // 5 weeks  - 5 недель
-"subscription.interval.month.one"   = "month";  // 1 month  - 1 месяц
-"subscription.interval.month.two"   = "months"; // 2 months - 2 месяца
-"subscription.interval.month.five"  = "months"; // 5 months - 5 месяцев
-"subscription.interval.year.one"    = "year";   // 1 year   - 1 год
-"subscription.interval.year.two"    = "years";  // 2 years  - 2 года
-"subscription.interval.year.five"   = "years";  // 3 years  - 5 лет
+"subscription.interval.day.one"     = "يوم واحد";
+"subscription.interval.day.two"     = "يومان";
+"subscription.interval.day.five"    = "أيام";
+"subscription.interval.week.one"    = "أسبو";
+"subscription.interval.week.two"    = "أسبوعان";
+"subscription.interval.week.five"   = "أسابيع";
+"subscription.interval.month.one"   = "شه";
+"subscription.interval.month.two"   = "شهران";
+"subscription.interval.month.five"  = "أشهر";
+"subscription.interval.year.one"    = "عام واحد";
+"subscription.interval.year.two"    = "عامان";
+"subscription.interval.year.five"   = "أعوام";
 
 // MARK: - Main Screen
 
-"main.title"                        = "Lightroom presets";
-"main.allPresets"                   = "All";
-"main.freePresets"                  = "Free";
-"main.premiumPresets"               = "Premium";
+"main.title"                        = "الإعدادات المسبقة لتطبيق Lightroom";
+"main.allPresets"                   = "الكل";
+"main.freePresets"                  = "مجانًا";
+"main.premiumPresets"               = "ممتاز";
 
 // MARK: - My Presets
 
-"myPresets.title"                   = "My Presets";
-"myPresets.placeholder"             = "Here will be the saved presets";
-"myPresets.button.select"           = "Select a preset";
+"myPresets.title"                   = "إعداداتي المسبقة";
+"myPresets.placeholder"             = "سيتم حفظ الإعدادات المسبقة هنا";
+"myPresets.button.select"           = "تحديد إعداد مسبق";
 
 // MARK: - Delete Preset Popup
 
-"delete.title"                      = "Delete preset?";
-"delete.button.confirm"             = "Yes, delete";
-"delete.button.cancel"              = "No, cancel";
+"delete.title"                      = "هل تريد حذف الإعداد المسبق؟";
+"delete.button.confirm"             = "نعم، حذف";
+"delete.button.cancel"              = "لا، إلغاء";
 
 // MARK: - Preset Screen
 
-"preset.count.one"                  = "preset";     // 1 preset  - 1 пресет
-"preset.count.two"                  = "presets";    // 2 presets - 2 пресета
-"preset.count.five"                 = "presets";    // 5 presets - 5 пресетов
+"preset.count.one"                  = "إعداد مسبق واحد";
+"preset.count.two"                  = "إعدادان مسبقان";
+"preset.count.five"                 = "إعدادات مسبقة";
 
-"preset.tapHint"                    = "Tap to open the preset";
-"preset.button.addToMyPresets"      = "Add to my presets";
-"preset.addedPreset"                = "Added!";
-"preset.button.subscription"        = "Get access to 100+ presets";
-"preset.button.manual"              = "How to use?";
+"preset.tapHint"                    = "اضغط لفتح الإعداد المسبق";
+"preset.button.addToMyPresets"      = "إضافة إلى إعداداتي المسبقة";
+"preset.addedPreset"                = "تمت الإضافة";
+"preset.button.subscription"        = "احصل على إمكانية الوصول إلى أكثر من 100 إعداد مسبق";
+"preset.button.manual"              = "طريقة الاستخدام؟";
 
 // MARK: - Open Preset Popup
 
-"openPreset.title"                  = "Do you know how to use presets?";
-"openPreset.button.open"            = "Yes, open a preset";
-"openPreset.button.manual"          = "No, open the manual";
+"openPreset.title"                  = "هل تعرف كيف تستخدم الإعدادات المسبقة؟";
+"openPreset.button.open"            = "نعم، فتح إعداد مسبق";
+"openPreset.button.openManual"          = "لا، فتح الدليل";
 
 // MARK: - Settings
 
-"settings.title"                    = "Settings";
-"settings.button.manual"            = "How to use?";
-"settings.button.serviceTerms"      = "Terms of Service";
-"settings.button.policy"            = "Privacy Policy";
-"settings.button.subscriptionTerms" = "Subscription Terms";
-"settings.button.restorePurchase"   = "Recover your purchases";
+"settings.title"                    = "‫الإعدادا";
+"settings.button.manual"            = "طريقة الاستخدام؟";
+"settings.button.serviceTerms"      = "‫أحكام الاستخدا";
+"settings.button.policy"            = "‫سياسة الخصوصي";
+"settings.button.contact"           = "تواصل معنا";
+"settings.button.restorePurchase"   = "استعادة مشترياتك";
 
 // MARK: - Terms of Service
 
-"serviceTerms.title"                = "Terms of Service";
-"serviceTerms.body"                 = "1. Subscription name: \"Pro Version\"\n\n2. Payment will be charged to iTunes Account at confirmation of purchase\n\n3. Subscription automatically renews unless auto- renew is turned off at least 24-hours before the end of the current period\n\n4. Account will be charged for renewal within 24- hours prior to the end of the current period, and identify the cost of the renewal\n\n5. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase\n\n6. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication";
-
-// MARK: - Subscription Terms
-
-"subscriptionTerms.title"           = "Subscription Terms";
-"subscriptionTerms.body"            = "1. Subscription name: \"Pro Version\"\n\n2. Payment will be charged to iTunes Account at confirmation of purchase\n\n3. Subscription automatically renews unless auto- renew is turned off at least 24-hours before the end of the current period\n\n4. Account will be charged for renewal within 24- hours prior to the end of the current period, and identify the cost of the renewal\n\n5. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase\n\n6. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication";
+"serviceTerms.title"                = "‫أحكام الاستخدا";
 
 // MARK: - Privacy Policy
 
-"privacy.title"                     = "Privacy Policy";
-"privacy.body"                      = "1. Subscription name: \"Pro Version\"\n\n2. Payment will be charged to iTunes Account at confirmation of purchase\n\n3. Subscription automatically renews unless auto- renew is turned off at least 24-hours before the end of the current period\n\n4. Account will be charged for renewal within 24- hours prior to the end of the current period, and identify the cost of the renewal\n\n5. Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase\n\n6. Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication";
+"privacy.title"                     = "‫سياسة الخصوصي";
 
 // MARK: - How To Use
 
-"manual.title"                      = "How to use?";
-"manual.button.videoTutorial"       = "Watch video tutorial";
-"manual.step.first"                 = "1. Install Adobe Lightroom from the App Store";
-"manual.button.lightroom"           = "Install Adobe Lightroom";
-"manual.step.second"                = "2. Select a preset and click \"Copy to Lightroom\"";
-"manual.step.third"                 = "3. The preset will open in Lightroom, click the more button and select \"Copy Settings\"";
-"manual.step.fourth"                = "4. Press the \"Back\" button to return to the previous screen, then press the \"Import\" button and select a photo from your library";
-"manual.step.fifth"                 = "5. When the photo is added, click the \"More\" button and select \"Insert settings\"";
-"manual.step.sixth"                 = "6. Great! Now you can save the photo or share it with subscribers";
-"manual.hint.first"                 = "* Presets are displayed with DNG mark";
-"manual.hint.second"                = "** Feel free to try different presets and change settings to make your photo perfect";
+"manual.title"                      = "طريقة الاستخدام؟";
+"manual.button.videoTutorial"       = "شاهد الفيديو التعليمي";
+"manual.step.first"                 = "1. ثبِّت تطبيق Adobe Lightroom من متجر App Store";
+"manual.button.lightroom"           = "تثبيت تطبيق Adobe Lightroom";
+"manual.step.second"                = "2. حدِّد إعدادًا مسبقًا وانقر على \نسخ إلى Lightroom\"";
+"manual.step.third"                 = "3. سيتم فتح الإعداد المسبق في تطبيق Lightroom، انقر على زر المزيد وحدِّد \نسخ الإعدادات\"";
+"manual.step.fourth"                = "4. اضغط على زر \العودة\" للرجوع إلى الشاشة السابقة، ثم اضغط على الزر \"استيراد\" وحدِّد صورة من مكتبتك";
+"manual.step.fifth"                 = "5. عند إضافة الصورة، اضغط على زر \المزيد\" وحدِّد \"إدخال الإعدادات\"";
+"manual.step.sixth"                 = "6. رائع! يمكنك الآن حفظ الصورة أو مشاركتها مع المشتركين";
+"manual.hint.first"                 = "* يتم عرض الإعدادات المسبقة بعلامة DNG";
+"manual.hint.second"                = "** لا تتردد في تجربة إعدادات مسبقة مختلفة وتغيير الإعدادات لجعل صورتك مثالية";
 
 // MARK: - Alerts
 
-"alert.action.ok"                   = "Ok";
+"alert.action.ok"                   = "حسنًا";
 
-"alert.connection.title"            = "No internet connection";
-"alert.connection.message"          = "There is no internet connection. Please connect to the network and try again.";
+"alert.connection.title"            = "لا يوجد اتصال بالإنترنت";
+"alert.connection.message"          = "لا يوجد اتصال بالإنترنت. يُرجى الاتصال بالشبكة وإعادة المحاولة";
 
-"alert.subscribed.title"            = "Subscribed";
-"alert.subscribed.message"          = "You are already subscribed. All functionality is available to you.";
+"alert.subscribed.title"            = "تم الاشتراك";
+"alert.subscribed.message"          = "أنت مشترك بالفعل. جميع الوظائف متوفرة لك.";
 
-"alert.restored.title"              = "Restored";
-"alert.restored.message"            = "You have successfully restored your subscription. All functionality is now available to you.";
+"alert.restored.title"              = "تمت الاستعادة";
+"alert.restored.message"            = "لقد استعدت اشتراكك بنجاح. وأصبحت جميع الوظائف متوفرة لك الآن.";
 
-"alert.notSubscriber.title"         = "Cannot be restored";
-"alert.notSubscriber.message"       = "Sorry, you cannot restore your purchase because you do not have an active subscription.";
+"alert.notSubscriber.title"         = "تتعذَّر الاستعادة";
+"alert.notSubscriber.message"       = "عذرًا، لا يمكنك استعادة مشترياتك لأنك لا تملك اشتراكًا نشطًا.";
 

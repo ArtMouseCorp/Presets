@@ -3,30 +3,30 @@
 
 // MARK: - Onboarding
 
-"onboarding.title.first"            = "Foto luar biasa dalam hitungan menit";
+"onboarding.title.first"            = "Foto menakjubkan dalam hitungan menit";
 "onboarding.subtitle.first"         = "Impor preset ke Lightroom";
 
 "onboarding.title.second"           = "Pilih gaya dan terapkan";
-"onboarding.subtitle.second"        = "Gayakan pekerjaan Anda";
+"onboarding.subtitle.second"        = "Buat karya Anda bergaya";
 
 "onboarding.title.third"            = "Nikmati 100+ preset Lightroom";
-"onboarding.subtitle.third"         = "Pemula ramah";
+"onboarding.subtitle.third"         = "Ramah pemula";
 
 // TANDA: - Langganan
 
-"subscription.title"                = "Jadilah profesional!";
-"subscription.subtitle"             = "Lebih dari 100+ preset kualitas";
+"subscription.title"                = "Jadilah pro!";
+"subscription.subtitle"             = "Lebih dari 100+ preset bermutu tinggi";
 
-"subscription.button.next"          = "Selanjutnya";
+"subscription.button.next"          = "Lebih jauh";
 "subscription.button.restore"       = "Pulihkan";
 "subscription.button.privacy"       = "Privasi";
 "subscription.button.terms"         = "Persyaratan";
 
-"subscription.failed.title"         = "Ooops!";
+"subscription.failed.title"         = "Ups!";
 "subscription.failed.subtitle"      = "Pembelian gagal :(";
-"subscription.failed.title2"        = "Lihat iklan ke";
+"subscription.failed.title2"        = "Lihat iklan untuk";
 "subscription.failed.limitedVersion"= "Pembelian menjalankan versi terbatas";
-"subscription.failed.trial.title"   = "...atau coba akses penuh dengan uji coba gratis 3 hari";
+"subscription.failed.trial.title"   = "....atau coba Fully Care (Fitur Lengkap)\ndengan Percobaan Gratis selama 3 hari";
 "subscription.failed.button.trial"  = "Coba akses 3 hari";
 "subscription.failed.cancelInfo"    = "Batalkan atau jeda kapan saja";
 
@@ -45,20 +45,20 @@
 
 // TANDA: - Layar Utama
 
-"main.title"                        = "Lightroom presets";
+"main.title"                        = "Preset Lightroom";
 "main.allPresets"                   = "Semua";
 "main.freePresets"                  = "Gratis";
-"main.premiumPresets"               = "Premium";
+"main.premiumPresets"               = "PREMIUM";
 
 // TANDAI: - Preset Saya
 
 "myPresets.title"                   = "Preset Saya";
-"myPresets.placeholder"             = "Ini akan menjadi prasetel yang disimpan";
-"myPresets.button.select"           = "Pilih prasetel";
+"myPresets.placeholder"             = "Ini akan menjadi preset yang disimpan";
+"myPresets.button.select"           = "Pilih preset";
 
 // MARK: - Hapus Popup Preset
 
-"delete.title"                      = "Hapus prasetel?";
+"delete.title"                      = "Hapus preset?";
 "delete.button.confirm"             = "Ya, hapus";
 "delete.button.cancel"              = "Tidak, batalkan";
 
@@ -68,30 +68,30 @@
 "preset.count.two"                  = "preset"; // 2 preset - 2 есета
 "preset.count.five"                 = "preset"; // 5 preset - 5 есетов
 
-"preset.tapHint"                    = "Ketuk untuk membuka prasetel";
+"preset.tapHint"                    = "Ketuk untuk membuka preset";
 "preset.button.addToMyPresets"      = "Tambahkan ke preset saya";
 "preset.addedPreset"                = "Ditambahkan!";
 "preset.button.subscription"        = "Dapatkan akses ke 100+ preset";
-"preset.button.manual"              = "Bagaimana cara menggunakan?";
+"preset.button.manual"              = "Bagaimana menggunakannya?";
 
 // MARK: - Buka Popup Preset
 
 "openPreset.title"                  = "Apakah Anda tahu cara menggunakan preset?";
-"openPreset.button.open"            = "Ya, buka prasetel";
-"openPreset.button.manual"          = "Tidak, buka manual";
+"openPreset.button.open"            = "Ya, buka preset";
+"openPreset.button.openManual"          = "Tidak, buka manualnya";
 
 // TANDA: - Pengaturan
 
 "settings.title"                    = "Pengaturan";
 "settings.button.manual"            = "Bagaimana cara menggunakan?";
-"settings.button.serviceTerms"      = "Persyaratan Layanan";
+"settings.button.serviceTerms"      = "Syarat Penggunaan";
 "settings.button.policy"            = "Kebijakan Privasi";
-"settings.button.subscriptionTerms" = "Persyaratan Langganan";
+"settings.button.contact"           = "Hubungi kami";
 "settings.button.restorePurchase"   = "Pulihkan pembelian Anda";
 
 // TANDA: - Persyaratan Layanan
 
-"serviceTerms.title"                = "Persyaratan Layanan";
+"serviceTerms.title"                = "Syarat Penggunaan";
 
 // TANDA: - Kebijakan Privasi
 
@@ -99,30 +99,30 @@
 
 // MARK: - How To Use
 
-"manual.title"                      = "Bagaimana cara menggunakan?";
+"manual.title"                      = "Bagaimana menggunakannya?";
 "manual.button.videoTutorial"       = "Tonton video tutorial";
 "manual.step.first"                 = "1. Instal Adobe Lightroom dari App Store";
 "manual.button.lightroom"           = "Instal Adobe Lightroom";
-"manual.step.second"                = "2. Pilih prasetel dan klik \"Salin ke Lightroom\"";
-"manual.step.third"                 = "3. Prasetel akan terbuka di Lightroom, klik tombol lainnya dan pilih \"Pengaturan Salin\"";
-"manual.step.fourth"                = "4. Tekan tombol \"Kembali\" untuk kembali ke layar sebelumnya, lalu tekan tombol \"Impor\" dan pilih foto dari perpustakaan Anda";
-"manual.step.fifth"                 = "5. Saat foto ditambahkan, klik tombol \"Lainnya\" dan pilih \"Sisipkan pengaturan\"";
-"manual.step.sixth"                 = "6. Bagus! Sekarang Anda dapat menyimpan foto atau membagikannya dengan pelanggan";
+"manual.step.second"                = "2. Pilih preset dan klik \"Copy to Lightroom\" (Salin ke Lightroom)";
+"manual.step.third"                 = "3. Preset akan terbuka di Lightroom, klik tombol lainnya dan pilih \Copy Settings\" (Salin Pengaturan);";
+"manual.step.fourth"                = "4. Tekan tombol \"Back\" (Kembali) untuk kembali ke layar sebelumnya, lalu tekan tombol \"Import\" (Impor) dan pilih foto dari perpustakaan Anda";
+"manual.step.fifth"                 = "5. Saat foto ditambahkan, klik tombol \"More\" (Lainnya) dan pilih \"Insert settings\" (Masukkan pengaturan)";
+"manual.step.sixth"                 = "6. Bagus! Sekarang Anda dapat menyimpan foto atau membagikannya dengan pengikut";
 "manual.hint.first"                 = "* Preset ditampilkan dengan tanda DNG";
-"manual.hint.second"                = "** Jangan ragu untuk mencoba berbagai prasetel dan mengubah pengaturan untuk menyempurnakan foto Anda";
+"manual.hint.second"                = "** Jangan ragu untuk mencoba berbagai preset dan mengubah pengaturan untuk membuat foto Anda sempurna";
 
 // TANDAI: - Peringatan
 
 "alert.action.ok"                   = "Oke";
 
 "alert.connection.title"            = "Tidak ada koneksi internet";
-"alert.connection.message"          = "Tidak ada koneksi internet. Sambungkan ke jaringan dan coba lagi.";
+"alert.connection.message"          = "Tidak ada koneksi internet. Hubungkan ke jaringan, lalu coba lagi.";
 
 "alert.subscribed.title"            = "Berlangganan";
-"alert.subscribed.message"          = "Anda sudah berlangganan. Semua fungsi tersedia untuk Anda.";
+"alert.subscribed.message"          = "Anda sudah berlangganan. Semua fungsionalitas tersedia untuk Anda.";
 
 "alert.restored.title"              = "Dipulihkan";
 "alert.restored.message"            = "Anda telah berhasil memulihkan langganan Anda. Semua fungsi sekarang tersedia untuk Anda.";
 
 "alert.notSubscriber.title"         = "Tidak dapat dipulihkan";
-"alert.notSubscriber.message"       = "Maaf, Anda tidak dapat memulihkan pembelian karena Anda tidak memiliki langganan aktif.";
+"alert.notSubscriber.message"       = "Maaf, Anda tidak dapat memulihkan pembelian Anda karena Anda tidak memiliki langganan aktif.";

@@ -48,7 +48,7 @@
 "main.title"                        = "Lightroom presets";
 "main.allPresets"                   = "All";
 "main.freePresets"                  = "Free";
-"main.premiumPresets"               = "Premium";
+"main.premiumPresets"               = "PREMIUM";
 
 // MARK: - My Presets
 
@@ -78,7 +78,7 @@
 
 "openPreset.title"                  = "Do you know how to use presets?";
 "openPreset.button.open"            = "Yes, open a preset";
-"openPreset.button.manual"          = "No, open the manual";
+"openPreset.button.openManual"      = "No, open the manual";
 
 // MARK: - Settings
 

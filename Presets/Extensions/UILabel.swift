@@ -1,7 +1,8 @@
 import UIKit
 
 extension UILabel {
-    func setLineHeight(lineHeight: CGFloat) {
+    
+    public func setLineHeight(lineHeight: CGFloat) {
         let text = self.text
         if let text = text {
             let attributeString = NSMutableAttributedString(string: text)
@@ -11,5 +12,9 @@ extension UILabel {
             attributeString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSMakeRange(0, text.count))
             self.attributedText = attributeString
         }
+    }
+    
+    public func localize(with localizedString: String) {
+        self.text = localizedString
     }
 }

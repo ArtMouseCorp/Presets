@@ -1,7 +1,7 @@
 import UIKit
 
 class MainViewController: BaseViewController {
-
+    
     // MARK: - @IBOutlets
     
     // Views
@@ -21,18 +21,33 @@ class MainViewController: BaseViewController {
     var lastCategotID = 0
     var items: [String] = []
     
+    let ALL = L10n.Main.allPresets
+    let FREE = L10n.Main.freePresets
+    let PREMIUM = L10n.Main.premiumPresets
+    
     // MARK: - Awake functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let paywallConfig = RCValues.sharedInstance.organicSubscriptionPage()
+        State.currentProductId = paywallConfig.subscriptionId
+        checkSubscription()
+        localize()
         setupItemsArray()
         configureCollectionView()
         configureTableView()
-        let popup = SubscriptionSecondViewController.load(from: .subscription2)
-        self.showPopup(popup)
+        callPaywall()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
     }
     
     // MARK: - Custom functions
+    
+    private func localize() {
+        self.titleLabel.localize(with: L10n.Main.title)
+    }
     
     func configureCollectionView() {
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -50,10 +65,16 @@ class MainViewController: BaseViewController {
     }
     
     func setupItemsArray() {
-        items = Preset.free.count == 0 ? ["All", "Premium"] : ["All", "Free", "Premium"]
+        items = Preset.free.count == 0 ? [ALL, PREMIUM] : [ALL, FREE, PREMIUM]
         Preset.all.forEach { preset in
             items.append(preset.name)
         }
+    }
+    
+    private func callPaywall() {
+        guard !State.isSubscribed else { return }
+        let subscription = SubscriptionViewController.load(from: .subscription)
+        self.showPopup(subscription)
     }
     
     // MARK: - @IBActions
@@ -68,6 +89,8 @@ class MainViewController: BaseViewController {
         self.navigationController?.pushViewController(userPresetsVC, animated: true)
     }
 }
+
+
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
@@ -128,9 +151,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if currentCategoryID == 0 {
             return Preset.all.count
-        } else if items[currentCategoryID] == "Free" {
+        } else if items[currentCategoryID] == FREE {
             return Preset.free.count
-        } else if items[currentCategoryID] == "Premium" {
+        } else if items[currentCategoryID] == PREMIUM {
             return Preset.premium.count
         } else {
             return 1
@@ -142,9 +165,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         if currentCategoryID == 0 {
             cell.presetImage.image = Preset.all[indexPath.row].getTitleImage()
-        } else if items[currentCategoryID] == "Free" {
+        } else if items[currentCategoryID] == FREE {
             cell.presetImage.image = Preset.free[indexPath.row].getTitleImage()
-        } else if items[currentCategoryID] == "Premium" {
+        } else if items[currentCategoryID] == PREMIUM {
             cell.presetImage.image = Preset.premium[indexPath.row].getTitleImage()
         } else {
             Preset.all.forEach { preset in
@@ -153,12 +176,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
-            
+        
         if Preset.all[indexPath.row].isFree {
-            cell.presetButton.setTitle("FREE PRESETS", for: .normal)
+            cell.presetButton.setTitle(FREE, for: .normal)
             cell.presetButton.backgroundColor = UIColor(red: 1, green: 71/255, blue: 181/255, alpha: 1)
         } else {
-            cell.presetButton.setTitle("PREMIUM PRESETS", for: .normal)
+            cell.presetButton.setTitle(PREMIUM, for: .normal)
             cell.presetButton.backgroundColor = UIColor(red: 1, green: 71/255, blue: 71/255, alpha: 1)
         }
         
@@ -172,9 +195,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         if currentCategoryID == 0 {
             State.selectedPreset = Preset.all[indexPath.row]
-        } else if items[currentCategoryID] == "Free" {
+        } else if items[currentCategoryID] == FREE {
             State.selectedPreset = Preset.free[indexPath.row]
-        } else if items[currentCategoryID] == "Premium" {
+        } else if items[currentCategoryID] == PREMIUM {
             State.selectedPreset = Preset.premium[indexPath.row]
         } else {
             Preset.all.forEach { preset in
@@ -185,7 +208,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let presetVC = PresetViewController.load(from: .preset)
-        presetVC.presetIndex = indexPath.row
+        presetVC.presetId = State.selectedPreset.id
         self.navigationController?.pushViewController(presetVC, animated: true)
+        
     }
 }

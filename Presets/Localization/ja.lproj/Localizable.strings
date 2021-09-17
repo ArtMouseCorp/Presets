@@ -3,32 +3,32 @@
 
 // MARK: - Onboarding
 
-"onboarding.title.first" = "驚くべき写真を数分で";
-"onboarding.subtitle.first" = "プリセットをLightroomにインポート";
+"onboarding.title.first" = "ほんの数分で素晴らしい写真を";
+"onboarding.subtitle.first" = "Lightroomに プリセットをインポート";
 
-"onboarding.title.second" = "スタイルを選択して適用する";
-"onboarding.subtitle.second" = "あなたの作品のスタイルを整える";
+"onboarding.title.second" = "スタイルを選択して適用";
+"onboarding.subtitle.second" = "作品をスタイリング";
 
-"onboarding.title.third" = "100以上のLightroomプリセットをお楽しみください";
-"onboarding.subtitle.third" = "初心者向け";
+"onboarding.title.third" = "100以上のLightroomプリセットをご利用ください";
+"onboarding.subtitle.third" = "初心者に やさしい";
 
 //マーク：-サブスクリプション
 
-"subscription.title"                = "プロになる！";
-"subscription.subtitle"             = "100以上の品質プリセット";
+"subscription.title"                = "プロになろう!";
+"subscription.subtitle"             = "100以上の高品質なプリセット";
 
-"subscription.button.next"          = "次へ";
+"subscription.button.next"          = "次";
 "subscription.button.restore"       = "復元";
 "subscription.button.privacy"       = "プライバシー";
 "subscription.button.terms"         = "用語";
 
-"subscription.failed.title"         = "おっと！";
-"subscription.failed.subtitle"      = "購入に失敗しました:(";
-"subscription.failed.title2"        = "広告を表示する";
-"subscription.failed.limitedVersion"= "購入実行限定バージョン";
-"subscription.failed.trial.title"   = "...または3日間の無料トライアルでフルアクセスを試してください";
-"subscription.failed.button.trial"  = "3日間のアクセスを試してください";
-"subscription.failed.cancelInfo"    = "いつでもキャンセルまたは一時停止";
+"subscription.failed.title"         = "ごめんなさい！";
+"subscription.failed.subtitle"      = "購入できませんでした:(";
+"subscription.failed.title2"        = "広告を表示：";
+"subscription.failed.limitedVersion"= "購入者限定バージョン";
+"subscription.failed.trial.title"   = "または3日間の無料試用で完全ケアをお試しください";
+"subscription.failed.button.trial"  = "3日間のアクセスを試す";
+"subscription.failed.cancelInfo"    = "いつでもキャンセルや一時停止できます";
 
 "subscription.interval.day.one"     = "日"; // 1日-1日
 "subscription.interval.day.two"     = "日"; // 2日-2日
@@ -45,22 +45,22 @@
 
 //マーク：-メイン画面
 
-"main.title"                        = "Lightroom presets";
-"main.allPresets"                   = "すべて";
+"main.title"                        = "Lightroomプリセット";
+"main.allPresets"                   = "全て";
 "main.freePresets"                  = "無料";
 "main.premiumPresets"               = "プレミアム";
 
 //マーク：-マイプリセット
 
 "myPresets.title"                   = "マイプリセット";
-"myPresets.placeholder"             = "ここに保存されたプリセットがあります";
+"myPresets.placeholder"             = "ここにプリセットを保存します";
 "myPresets.button.select"           = "プリセットを選択";
 
 //マーク：-プリセットポップアップを削除します
 
 "delete.title"                      = "プリセットを削除しますか？";
 "delete.button.confirm"             = "はい、削除します";
-"delete.button.cancel"              = "いいえ、キャンセルします";
+"delete.button.cancel"              = "いいえ、削除しません";
 
 //マーク：-プリセット画面
 
@@ -68,30 +68,30 @@
 "preset.count.two"                  = "プリセット"; // 2つのプリセット-2つのпресета
 "preset.count.five"                 = "プリセット"; // 5つのプリセット-5つのпресетов
 
-"preset.tapHint"                    = "タップしてプリセットを開きます";
+"preset.tapHint"                    = "タップしてプリセットを開く";
 "preset.button.addToMyPresets"      = "プリセットに追加";
-"preset.addedPreset"                = "追加されました！";
+"preset.addedPreset"                = "追加済！";
 "preset.button.subscription"        = "100以上のプリセットにアクセスできます";
-"preset.button.manual"              = "使用方法は？";
+"preset.button.manual"              = "使い方";
 
 //マーク：-プリセットポップアップを開く
 
-"openPreset.title"                  = "プリセットの使用方法を知っていますか？";
+"openPreset.title"                  = "プリセットの使い方をご存知ですか？";
 "openPreset.button.open"            = "はい、プリセットを開きます";
-"openPreset.button.manual"          = "いいえ、マニュアルを開きます";
+"openPreset.button.openManual"          = "いいえ、マニュアルを開きます";
 
 //マーク：-設定
 
 "settings.title"                    = "設定";
-"settings.button.manual"            = "使用方法は？";
-"settings.button.serviceTerms"      = "利用規約";
+"settings.button.manual"            = "使い方";
+"settings.button.serviceTerms"      = "利用諸条件";
 "settings.button.policy"            = "プライバシーポリシー";
-"settings.button.subscriptionTerms" = "サブスクリプション条件";
+"settings.button.contact"           = "お問い合わせ";
 "settings.button.restorePurchase"   = "購入を回復する";
 
 //マーク：-利用規約
 
-"serviceTerms.title"                = "利用規約";
+"serviceTerms.title"                = "利用諸条件";
 
 //マーク：-プライバシーポリシー
 
@@ -99,7 +99,7 @@
 
 // MARK: - How To Use
 
-"manual.title"                      = "使用方法は？";
+"manual.title"                      = "使い方";
 "manual.button.videoTutorial"       = "ビデオチュートリアルを見る";
 "manual.step.first"                 = "1. AppStoreからAdobeLightroomをインストールします";
 "manual.button.lightroom"           = "AdobeLightroomのインストール";
@@ -115,15 +115,15 @@
 
 "alert.action.ok"                   = "OK";
 
-"alert.connection.title"            = "インターネット接続がありません";
-"alert.connection.message"          = "インターネットに接続されていません。ネットワークに接続して再試行してください。";
+"alert.connection.title"            = "インターネット接続なし";
+"alert.connection.message"          = "インターネット接続がありません　ネットワークに接続して再試行してください";
 
-"alert.subscribed.title"            = "購読済み";
-"alert.subscribed.message"          = "あなたはすでに購読しています。すべての機能を利用できます。";
+"alert.subscribed.title"            = "登録済";
+"alert.subscribed.message"          = "既に登録されています　全ての機能を利用できます";
 
-"alert.restored.title"              = "復元済み";
-"alert.restored.message"            = "サブスクリプションが正常に復元されました。すべての機能が利用できるようになりました。";
+"alert.restored.title"              = "復元済";
+"alert.restored.message"            = "登録が正常に復元されました　すべての機能が利用できるようになりました";
 
 "alert.notSubscriber.title"         = "復元できません";
-"alert.notSubscriber.message"       = "申し訳ありませんが、アクティブなサブスクリプションがないため、購入を復元できません。";
+"alert.notSubscriber.message"       = "申し訳ありませんが、有効な登録がないため、購入を復元することはできません";
 

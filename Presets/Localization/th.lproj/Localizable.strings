@@ -3,32 +3,32 @@
 
 // MARK: - Onboarding
 
-"onboarding.title.first" = "ภาพถ่ายสุดอัศจรรย์ในเวลาไม่กี่นาที";
-"onboarding.subtitle.first" = "นำเข้าพรีเซ็ตไปยัง Lightroom";
+"onboarding.title.first" = "รูปที่น่าทึ่งในไม่กี่นาที";
+"onboarding.subtitle.first" = "นำเข้าพรีเซ็ตลงใน Lightroom";
 
-"onboarding.title.second" = "เลือกสไตล์และนำไปใช้";
-"onboarding.subtitle.second" = "จัดรูปแบบงานของคุณ";
+"onboarding.title.second" = "เลือกสไตล์แล้วนำไปใช้";
+"onboarding.subtitle.second" = "แต่งสไตล์งานของคุณ";
 
-"onboarding.title.third" = "เพลิดเพลินกับค่าที่ตั้งไว้ล่วงหน้าของ Lightroom กว่า 100 ค่า";
-"onboarding.subtitle.third" = "เหมาะสำหรับผู้เริ่มต้น";
+"onboarding.title.third" = "เพลิดเพลินกับพรีเซ็ต Lightroom 100+ พรีเซ็ต";
+"onboarding.subtitle.third" = "เป็นมิตรกับผู้เริ่มต้น";
 
 // MARK: - การสมัครสมาชิก
 
-"subscription.title" = "กลายเป็นมือโปร!";
-"subscription.subtitle" = "พรีเซ็ตคุณภาพมากกว่า 100 รายการ";
+"subscription.title" = "มาเป็นมืออาชีพ!";
+"subscription.subtitle" = "พรีเซ็ตคุณภาพกว่า 100+ พรีเซ็ต";
 
-"subscription.button.next" = "ถัดไป";
+"subscription.button.next" = "ไกลออกไป";
 "subscription.button.restore" = "กู้คืน";
 "subscription.button.privacy" = "ความเป็นส่วนตัว";
 "subscription.button.terms" = "ข้อกำหนด";
 
-"subscription.failed.title" = "อ๊ะ!";
+"subscription.failed.title" = "โอ๊ะ!";
 "subscription.failed.subtitle" = "การซื้อล้มเหลว :(";
-"subscription.failed.title2" = "ดูโฆษณาไปยัง";
-"subscription.failed.limitedVersion"= "สั่งซื้อแบบจำกัดรุ่น";
-"subscription.failed.trial.title" = "...หรือลองเข้าถึงแบบเต็มด้วยการทดลองใช้ฟรี 3 วัน";
-"subscription.failed.button.trial" = "ลองใช้การเข้าถึง 3 วัน";
-"subscription.failed.cancelInfo" = "ยกเลิกหรือหยุดชั่วคราวเมื่อใดก็ได้";
+"subscription.failed.title2" = "ดูโฆษณาเพื่อ";
+"subscription.failed.limitedVersion"= "ซื้อการเรียกใช้ในเวอร์ชันที่จำกัด";
+"subscription.failed.trial.title" = "...หรือลอง การดูแลเต็มรูปแบบ\nด้วยการทดลองใช้ฟรี 3 วัน";
+"subscription.failed.button.trial" = "ลองเข้าถึงเป็นเวลา 3 วัน";
+"subscription.failed.cancelInfo" = "ยกเลิกหรือหยุดชั่วคราวได้ตลอดเวลา";
 
 "subscription.interval.day.one" = "วัน"; // 1 วัน - 1 วัน
 "subscription.interval.day.two" = "วัน"; // 2 วัน - 2 วัน
@@ -53,45 +53,45 @@
 // MARK: - ค่าที่ตั้งไว้ของฉัน
 
 "myPresets.title" = "พรีเซ็ตของฉัน";
-"myPresets.placeholder" = "ต่อไปนี้จะเป็นพรีเซ็ตที่บันทึกไว้";
+"myPresets.placeholder" = "พรีเซ็ตที่บันทึกไว้จะอยู่ที่นี่";
 "myPresets.button.select" = "เลือกพรีเซ็ต";
 
 // MARK: - ลบป๊อปอัปที่ตั้งไว้ล่วงหน้า
 
-"delete.title" = "ลบค่าที่ตั้งไว้ล่วงหน้า";
+"delete.title" = "ลบพรีเซ็ตหรือไม่?";
 "delete.button.confirm" = "ใช่ ลบ";
 "delete.button.cancel" = "ไม่ ยกเลิก";
 
 // MARK: - หน้าจอที่ตั้งไว้ล่วงหน้า
 
 "preset.count.one" = "พรีเซ็ต"; // 1 ที่ตั้งไว้ล่วงหน้า - 1 пресет
-"preset.count.two" = "ค่าที่ตั้งไว้ล่วงหน้า"; // 2 สถานีที่ตั้งไว้ - 2 пресета
-"preset.count.five" = "ค่าที่ตั้งไว้ล่วงหน้า"; // 5 ที่ตั้งไว้ล่วงหน้า - 5 пресетов
+"preset.count.two" = "พรีเซ็ต"; // 2 สถานีที่ตั้งไว้ - 2 пресета
+"preset.count.five" = "พรีเซ็ต"; // 5 ที่ตั้งไว้ล่วงหน้า - 5 пресетов
 
 "preset.tapHint" = "แตะเพื่อเปิดพรีเซ็ต";
-"preset.button.addToMyPresets" = "เพิ่มไปยังค่าที่ตั้งล่วงหน้าของฉัน";
+"preset.button.addToMyPresets" = "เพิ่มลงในพรีเซ็ตของฉัน";
 "preset.addedPreset" = "เพิ่มแล้ว!";
-"preset.button.subscription" = "เข้าถึงพรีเซ็ตมากกว่า 100 รายการ";
-"preset.button.manual" = "วิธีใช้";
+"preset.button.subscription" = "รับการเข้าถึง 100+ พรีเซ็ต";
+"preset.button.manual" = "จะใช้ได้อย่างไร?";
 
 // MARK: - เปิดป๊อปอัปที่ตั้งไว้ล่วงหน้า
 
-"openPreset.title" = "คุณทราบวิธีใช้พรีเซ็ตหรือไม่";
+"openPreset.title" = "คุณรู้วิธีใช้พรีเซ็ตหรือไม่?";
 "openPreset.button.open" = "ใช่ เปิดพรีเซ็ต";
-"openPreset.button.manual" = "ไม่ เปิดคู่มือ";
+"openPreset.button.openManual" = "ไม่ เปิดคู่มือ";
 
 // MARK: - การตั้งค่า
 
 "settings.title" = "การตั้งค่า";
-"settings.button.manual" = "วิธีใช้";
-"settings.button.serviceTerms" = "ข้อกำหนดในการให้บริการ";
+"settings.button.manual" = "จะใช้ได้อย่างไร?";
+"settings.button.serviceTerms" = "ข้อกำหนดในการใช้งาน";
 "settings.button.policy" = "นโยบายความเป็นส่วนตัว";
-"settings.button.subscriptionTerms" = "เงื่อนไขการสมัครสมาชิก";
+"settings.button.contact" = "ติดต่อเรา";
 "settings.button.restorePurchase" = "กู้คืนการซื้อของคุณ";
 
 // MARK: - ข้อกำหนดในการให้บริการ
 
-"serviceTerms.title" = "ข้อกำหนดในการให้บริการ";
+"serviceTerms.title" = "ข้อกำหนดในการใช้งาน";
 
 // MARK: - นโยบายความเป็นส่วนตัว
 
@@ -99,8 +99,8 @@
 
 // MARK: - How To Use
 
-"manual.title" = "วิธีใช้";
-"manual.button.videoTutorial" = "ดูวิดีโอแนะนำการใช้งาน";
+"manual.title" = "จะใช้ได้อย่างไร?";
+"manual.button.videoTutorial" = "รับชมวิดีโอสอนใช้งาน";
 "manual.step.first" = "1. ติดตั้ง Adobe Lightroom จาก App Store";
 "manual.button.lightroom" = "ติดตั้ง Adobe Lightroom";
 "manual.step.second" = "2. เลือกพรีเซ็ตและคลิก \"คัดลอกไปยัง Lightroom\"";
@@ -116,14 +116,14 @@
 "alert.action.ok" = "ตกลง";
 
 "alert.connection.title" = "ไม่มีการเชื่อมต่ออินเทอร์เน็ต";
-"alert.connection.message" = "ไม่มีการเชื่อมต่ออินเทอร์เน็ต โปรดเชื่อมต่อกับเครือข่ายและลองอีกครั้ง";
+"alert.connection.message" = "ไม่มีการเชื่อมต่ออินเทอร์เน็ต กรุณาเชื่อมต่อเน็ตเวิร์ก แล้วลองอีกครั้ง";
 
-"alert.subscribed.title" = "สมัครแล้ว";
-"alert.subscribed.message" = "คุณสมัครรับข้อมูลแล้ว ฟังก์ชันทั้งหมดพร้อมใช้งานสำหรับคุณ";
+"alert.subscribed.title" = "สมัครสมาชิกแล้ว";
+"alert.subscribed.message" = "คุณสมัครสมาชิกไปแล้ว การทำงานทุกอย่างพร้อมให้คุณใช้งานแล้ว";
 
-"alert.restored.title" = "กู้คืน";
-"alert.restored.message" = "คุณกู้คืนการสมัครรับข้อมูลของคุณสำเร็จแล้ว ฟังก์ชันทั้งหมดพร้อมใช้งานสำหรับคุณแล้ว";
+"alert.restored.title" = "กู้คืนแล้ว";
+"alert.restored.message" = "คุณกู้คืนการสมัครสมาชิกของคุณเรียบร้อยแล้ว การทำงานทุกอย่างพร้อมให้คุณใช้งานแล้ว";
 
 "alert.notSubscriber.title" = "ไม่สามารถกู้คืนได้";
-"alert.notSubscriber.message" = "ขออภัย คุณไม่สามารถกู้คืนการสั่งซื้อของคุณได้เนื่องจากคุณไม่มีการสมัครรับข้อมูลที่ใช้งานอยู่";
+"alert.notSubscriber.message" = "ขออภัย คุณไม่สามารถกู้คืนการซื้อของคุณได้ เนื่องจากคุณไม่มีการสมัครสมาชิกที่ใช้งานอยู่";
 

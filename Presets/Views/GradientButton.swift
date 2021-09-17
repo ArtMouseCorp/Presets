@@ -48,5 +48,4 @@ class GradientButton: UIButton {
         flash()
     }
     
-    
 }

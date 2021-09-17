@@ -5,8 +5,12 @@ struct State {
     // MARK: - Variables
     
     private static var appLaunch: Int = 0
-    static var language: Language = .en
-    static var favouritePresets: [Int] = []
+    
+    public static var isSubscribed: Bool = false
+    public static var currentProductId: String = ""
+    
+    public static var language: Language = .en
+    public static var favouritePresets: [Int] = []
     
     static var selectedPreset: Preset = .defaultPreset
     

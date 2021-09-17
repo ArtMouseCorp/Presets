@@ -9,5 +9,9 @@ extension UIButton {
             self.imageView?.contentMode = .scaleAspectFit
         }
     }
+    
+    public func localize(with localizedString: String) {
+        self.setTitle(localizedString, for: .normal)
+    }
 
 }

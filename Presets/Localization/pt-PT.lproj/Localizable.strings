@@ -7,28 +7,28 @@
 "onboarding.subtitle.first"         = "Importar predefinições para o Lightroom";
 
 "onboarding.title.second"           = "Selecione um estilo e aplique-o";
-"onboarding.subtitle.second"        = "Estilize seu trabalho";
+"onboarding.subtitle.second"        = "Estilize o seu trabalho";
 
 "onboarding.title.third"            = "Desfrute de mais de 100 predefinições do Lightroom";
-"onboarding.subtitle.third"         = "Amigável para iniciantes";
+"onboarding.subtitle.third"         = "Fácil para os principiantes";
 
 // MARK: - Assinaturas
 
 "subscription.title"                = "Torne-se profissional!";
 "subscription.subtitle"             = "Mais de 100 predefinições de qualidade";
 
-"subscription.button.next"          = "Avançar";
+"subscription.button.next"          = "Próximo";
 "subscription.button.restore"       = "Restaurar";
 "subscription.button.privacy"       = "Privacidade";
 "subscription.button.terms"         = "Termos";
 
 "subscription.failed.title"         = "Oooops!";
 "subscription.failed.subtitle"      = "A compra falhou :(";
-"subscription.failed.title2"        = "Exibir anúncios para";
-"subscription.failed.limitedVersion"= "Compra executar versão limitada";
-"subscription.failed.trial.title"   = "... ou tente o acesso completo com um teste gratuito de 3 dias";
+"subscription.failed.title2"        = "Mostrar anúncios para";
+"subscription.failed.limitedVersion"= "Comprar versão de execução limitada";
+"subscription.failed.trial.title"   = "...ou experimente o Cuidado Total\ncom 3 dias de Experiência Grátis";
 "subscription.failed.button.trial"  = "Experimente 3 dias de acesso";
-"subscription.failed.cancelInfo"    = "Cancelar ou pausar a qualquer momento";
+"subscription.failed.cancelInfo"    = "Cancele ou pause a qualquer momento";
 
 "subscription.interval.day.one"     = "dia"; // 1 dia - 1 день
 "subscription.interval.day.two"     = "dias"; // 2 dias - 2 дня
@@ -45,53 +45,53 @@
 
 // MARK: - Tela principal
 
-"main.title"                        = "Lightroom presets";
-"main.allPresets"                   = "Todos";
+"main.title"                        = "Predefinições do Lightroom";
+"main.allPresets"                   = "Tudo";
 "main.freePresets"                  = "Grátis";
-"main.premiumPresets"               = "Premium";
+"main.premiumPresets"               = "PREMIUM";
 
 // MARK: - Meus Presets
 
-"myPresets.title"                   = "Minhas predefinições";
-"myPresets.placeholder"             = "Aqui estão as predefinições salvas";
+"myPresets.title"                   = "As Minhas Predefinições";
+"myPresets.placeholder"             = "As predefinições guardadas serão mostradas aqui";
 "myPresets.button.select"           = "Selecione uma predefinição";
 
 // MARK: - Excluir pop-up predefinido
 
-"delete.title"                      = "Excluir predefinição?";
-"delete.button.confirm"             = "Sim, exclua";
+"delete.title"                      = "Eliminar predefinição?";
+"delete.button.confirm"             = "Sim, eliminar";
 "delete.button.cancel"              = "Não, cancelar";
 
 // MARK: - Tela predefinida
 
-"preset.count.one"                  = "predefinido"; // 1 predefinição - 1 пресет
+"preset.count.one"                  = "predefinição"; // 1 predefinição - 1 пресет
 "preset.count.two"                  = "predefinições"; // 2 predefinições - 2 пресета
 "preset.count.five"                 = "predefinições"; // 5 predefinições - 5 пресетов
 
 "preset.tapHint"                    = "Toque para abrir a predefinição";
 "preset.button.addToMyPresets"      = "Adicionar às minhas predefinições";
-"preset.addedPreset"                = "Adicionado!";
+"preset.addedPreset"                = "Adicionada!";
 "preset.button.subscription"        = "Obtenha acesso a mais de 100 predefinições";
-"preset.button.manual"              = "Como usar?";
+"preset.button.manual"              = "Como utilizar?";
 
 // MARK: - Abrir pop-up predefinido
 
-"openPreset.title"                  = "Você sabe como usar predefinições?";
-"openPreset.button.open"            = "Sim, abra uma predefinição";
-"openPreset.button.manual"          = "Não, abra o manual";
+"openPreset.title"                  = "Sabe como utilizar predefinições?";
+"openPreset.button.open"            = "Sim, abrir uma predefinição";
+"openPreset.button.openManual"      = "Não, abrir o manual";
 
 // MARK: - Configurações
 
 "settings.title"                    = "Configurações";
-"settings.button.manual"            = "Como usar?";
-"settings.button.serviceTerms"      = "Termos do serviço";
+"settings.button.manual"            = "Como utilizar?";
+"settings.button.serviceTerms"      = "Termos de uso";
 "settings.button.policy"            = "Política de privacidade";
-"settings.button.subscriptionTerms" = "Termos de assinatura";
-"settings.button.restorePurchase"   = "Recupere suas compras";
+"settings.button.contact"           = "Contate-nos";
+"settings.button.restorePurchase"   = "Recupere as suas compras";
 
 // MARK: - Termos de Serviço
 
-"serviceTerms.title"                = "Termos do serviço";
+"serviceTerms.title"                = "Termos de uso";
 
 // MARK: - Política de privacidade
 
@@ -99,8 +99,8 @@
 
 // MARK: - How To Use
 
-"manual.title"                      = "Como usar?";
-"manual.button.videoTutorial"       = "Assistir ao tutorial em vídeo";
+"manual.title"                      = "Como utilizar?";
+"manual.button.videoTutorial"       = "Assista ao tutorial em vídeo";
 "manual.step.first"                 = "1. Instale o Adobe Lightroom na App Store";
 "manual.button.lightroom"           = "Instalar Adobe Lightroom";
 "manual.step.second"                = "2. Selecione uma predefinição e clique em \"Copiar para o Lightroom\"";
@@ -115,15 +115,15 @@
 
 "alert.action.ok"                   = "Ok";
 
-"alert.connection.title"            = "Sem conexão com a Internet";
-"alert.connection.message"          = "Não há conexão com a Internet. Conecte-se à rede e tente novamente.";
+"alert.connection.title"            = "Sem ligação à internet";
+"alert.connection.message"          = "Não está ligado à internet. Ligue-se à rede e tente novamente.";
 
-"alert.subscribed.title"            = "Inscrito";
-"alert.subscribed.message"          = "Você já está inscrito. Todas as funcionalidades estão disponíveis para você.";
+"alert.subscribed.title"            = "Subscrito";
+"alert.subscribed.message"          = "Já está subscrito. Todas as funcionalidades estão à sua disposição.";
 
 "alert.restored.title"              = "Restaurado";
-"alert.restored.message"            = "Você restaurou sua assinatura com sucesso. Todas as funcionalidades agora estão disponíveis para você.";
+"alert.restored.message"            = "A sua assinatura foi restaurada com sucesso. Todas as funcionalidades estão agora disponíveis para si.";
 
 "alert.notSubscriber.title"         = "Não pode ser restaurado";
-"alert.notSubscriber.message"       = "Desculpe, você não pode restaurar sua compra porque você não possui uma assinatura ativa.";
+"alert.notSubscriber.message"       = "Lamentamos, não pode restabelecer a sua compra porque não tem uma subscrição ativa.";
 

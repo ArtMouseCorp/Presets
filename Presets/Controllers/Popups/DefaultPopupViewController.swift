@@ -44,17 +44,17 @@ class DefaultPopupViewController: PopupViewController {
         case .deletePresetPopup:
             confirmButton.initialize(as: .redGradientButton)
 
-            titleLabel.text = "Delete preset?"
-            confirmButton.setTitle("Yes, delete", for: .normal)
-            cancelButton.setTitle("No, cancel", for: .normal)
+            titleLabel.localize(with: L10n.Delete.title)
+            confirmButton.localize(with: L10n.Delete.Button.confirm)
+            cancelButton.localize(with: L10n.Delete.Button.cancel)
             cancelButton.setImage(nil, for: .normal)
             
         case .openPresetPopup:
             confirmButton.initialize(as: .blueGradientButton)
 
-            titleLabel.text = "Do you know how to use presets?"
-            confirmButton.setTitle("Yes, open a preset", for: .normal)
-            cancelButton.setTitle("No, open the manual", for: .normal)
+            titleLabel.localize(with: L10n.OpenPreset.title)
+            confirmButton.localize(with: L10n.OpenPreset.Button.open)
+            cancelButton.localize(with: L10n.OpenPreset.Button.openManual)
             cancelButton.setImage(Images.Icons.note, for: .normal)
         }
     }

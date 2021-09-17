@@ -14,6 +14,7 @@ class ManualViewController: BaseViewController {
 
     // Labels
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var installLightroomLabel: UILabel!
     @IBOutlet weak var stepOneLabel: UILabel!
     @IBOutlet weak var stepTwoLabel: UILabel!
     @IBOutlet weak var stepThreeLabel: UILabel!
@@ -44,6 +45,7 @@ class ManualViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        localize()
         configureGradientButton()
         setupGestures()
     }
@@ -61,6 +63,19 @@ class ManualViewController: BaseViewController {
     }
     
     // MARK: - Custom functions
+    
+    private func localize() {
+        self.titleLabel.localize(with: L10n.Manual.title)
+        self.watchVideoTutorialButton.localize(with: L10n.Manual.Button.videoTutorial)
+        self.installLightroomLabel.localize(with: L10n.Manual.Button.lightroom)
+        self.stepOneLabel.localize(with: L10n.Manual.Step.first)
+        self.stepTwoLabel.localize(with: L10n.Manual.Step.second)
+        self.stepThreeLabel.localize(with: L10n.Manual.Step.third)
+        self.stepFourLabel.localize(with: L10n.Manual.Step.fourth)
+        self.stepFiveLabel.localize(with: L10n.Manual.Step.fifth)
+        self.stepSixLabel.localize(with: L10n.Manual.Step.sixth)
+        self.stepSixDescriptionLabel.localize(with: "\(L10n.Manual.Hint.first)\n\n\(L10n.Manual.Hint.second)")
+    }
     
     func setupLabels() {
         setupLabel(label: stepOneLabel, constraint: firstStepHeightConstraint)

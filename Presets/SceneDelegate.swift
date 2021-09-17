@@ -1,4 +1,5 @@
 import UIKit
+import Amplitude
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,12 +14,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         
-//        if State.isFirstLaunch() {
+        if State.isFirstLaunch() {
             window.rootViewController = OnboardingViewController.load(from: .onboarding)
-//        } else {
-//            window.rootViewController = UINavigationController.load(from: .mainNav)
-//        }
-//
+            Amplitude.instance().logEvent(AmplitudeEvents.firstTimeLaunch)
+        } else {
+            window.rootViewController = UINavigationController.load(from: .mainNav)
+            Amplitude.instance().logEvent(AmplitudeEvents.appLaunch)
+        }
+
         self.window = window
         window.makeKeyAndVisible()
         

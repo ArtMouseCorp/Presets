@@ -20,6 +20,7 @@ class UserPresetsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        localize()
         configureView()
     }
     
@@ -31,6 +32,12 @@ class UserPresetsViewController: BaseViewController {
         if State.favouritePresets.count != 0 {
             configureTableView()
         }
+    }
+    
+    private func localize() {
+        self.titleLabel.localize(with: L10n.MyPresets.title)
+        self.hereWillBePresetsLabel.localize(with: L10n.MyPresets.placeholder)
+        self.selectPresetButton.localize(with: L10n.MyPresets.Button.select)
     }
     
     func configureTableView() {
@@ -72,7 +79,10 @@ extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource 
             self.showPopup(popup)
         }
         
-        let indexOfPreset = State.favouritePresets[indexPath.row]
+        let presetId = State.favouritePresets[indexPath.row]
+        
+        guard let indexOfPreset = Preset.all.firstIndex(where: { $0.id == presetId }) else { return cell }
+        
         cell.presetImage.image = Preset.all[indexOfPreset].getTitleImage()
         
         cell.presetButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -83,9 +93,11 @@ extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexOfPreset = State.favouritePresets[indexPath.row]
-        State.selectedPreset = Preset.all[indexOfPreset]
+        let presetId = State.favouritePresets[indexPath.row]
+        guard let preset = Preset.all.first(where: {$0.id == presetId}) else { return }
+        State.selectedPreset = preset
         let presetVC = PresetViewController.load(from: .preset)
+        presetVC.presetId = presetId
         self.navigationController?.pushViewController(presetVC, animated: true)
     }
     

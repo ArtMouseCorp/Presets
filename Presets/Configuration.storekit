@@ -1,0 +1,105 @@
+{
+  "identifier" : "62924F00",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "852A3A71",
+      "localizations" : [
+
+      ],
+      "name" : "Full access",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "7DDEB4EF",
+          "introductoryOffer" : {
+            "internalID" : "2DC9D63D",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P2M"
+          },
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.temporary.week",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "Weekly Full Access",
+          "subscriptionGroupID" : "852A3A71",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "20.49",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "1E61E820",
+          "introductoryOffer" : {
+            "internalID" : "CBF09EF2",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3D"
+          },
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.temporary.month",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly Full Access",
+          "subscriptionGroupID" : "852A3A71",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "39.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "F3B6C7B1",
+          "introductoryOffer" : {
+            "internalID" : "1364928E",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3D"
+          },
+          "localizations" : [
+            {
+              "description" : "",
+              "displayName" : "",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.temporary.year",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Annual Full Access",
+          "subscriptionGroupID" : "852A3A71",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

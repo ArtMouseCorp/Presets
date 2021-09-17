@@ -27,7 +27,7 @@ class PresetViewController: BaseViewController {
     
     var inMyPresets = false
     var didLayoutSubviews = true
-    var presetIndex = 0
+    var presetId = 0
     var isTapped = false
     
     // MARK: - Constants
@@ -41,30 +41,51 @@ class PresetViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        inMyPresets = State.favouritePresets.contains(presetIndex)
-        getAccessButton.setImage(Images.Icons.note, for: .normal)
+        localize()
+        
+        inMyPresets = State.favouritePresets.contains(presetId)
         
         howToUseButton.layer.cornerRadius = 8
         howToUseButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         presetsCountView.layer.cornerRadius = presetsCountView.frame.height / 2
-        
         self.updateUI()
     }
     
     override func viewDidLayoutSubviews() {
         if didLayoutSubviews {
-            configureCollectionView()
-            collectionView.reloadData()
-            didLayoutSubviews = false
+            DispatchQueue.main.async {
+                self.configureCollectionView()
+                self.collectionView.reloadData()
+                self.didLayoutSubviews = false
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.updateUI()
+                self.howToUseButton.updateGradient()
+            }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.titleLabel.text = State.selectedPreset.name
-        self.presetsCountLabel.text = "\(State.selectedPreset.getImages().count) presets"
+        
+        
+        let presetsCount = State.selectedPreset.getImages().count
+        let presetNoun = getNoun(
+            number: presetsCount,
+            one: L10n.Preset.Count.one,
+            two: L10n.Preset.Count.two,
+            five: L10n.Preset.Count.five
+        )
+        
+        self.presetsCountLabel.text = "\(presetsCount) \(presetNoun)"
     }
     
     // MARK: - Custom functions
+    
+    private func localize() {
+        self.howToUseButton.localize(with: L10n.Preset.Button.manual)
+        self.getAccessButton.localize(with: L10n.Preset.Button.subscription)
+    }
     
     func configureCollectionView() {
         
@@ -91,7 +112,7 @@ class PresetViewController: BaseViewController {
             addToMyButton.isUserInteractionEnabled = false
             
             addToMyButton.setImage(Images.Icons.done, for: .normal)
-            addToMyButton.setTitle("Added!", for: .normal)
+            addToMyButton.setTitle(L10n.Preset.addedPreset, for: .normal)
             addToMyButton.setTitleColor(UIColor(red: 128/255, green: 240/255, blue: 131/255, alpha: 1), for: .normal)
             
         } else {
@@ -104,7 +125,7 @@ class PresetViewController: BaseViewController {
             ])
             
             addToMyButton.setImage(Images.Icons.gradientAdd, for: .normal)
-            addToMyButton.setTitle("Add to my presets", for: .normal)
+            addToMyButton.setTitle(L10n.Preset.Button.addToMyPresets, for: .normal)
             addToMyButton.setTitleColor(gradientColor, for: .normal)
             
         }
@@ -120,15 +141,16 @@ class PresetViewController: BaseViewController {
     }
     
     @IBAction func addToMyButtonPressed(_ sender: Any) {
-        State.favouritePresets.append(presetIndex)
+        
+        State.favouritePresets.append(presetId)
         userDefaults.set(State.favouritePresets, forKey: UDKeys.favouritePresets)
         hapticFeedback(.success)
         self.updateUI()
     }
     
     @IBAction func getAccessButtonPressed(_ sender: Any) {
-        let controller = SubscriptionSecondViewController.load(from: .subscription2)
-        controller.closeButtonIsHidden = true
+        let controller = SubscriptionViewController.load(from: .subscription)
+        controller.modalPresentationStyle = .fullScreen
         self.navigationController?.present(controller, animated: true, completion: nil)
     }
     

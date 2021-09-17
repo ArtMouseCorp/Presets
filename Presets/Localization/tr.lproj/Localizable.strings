@@ -7,26 +7,26 @@
 "onboarding.subtitle.first"         = "Ön ayarları Lightroom'a aktarın";
 
 "onboarding.title.second"           = "Bir stil seçin ve uygulayın";
-"onboarding.subtitle.second"        = "Çalışmanızın stilini belirleyin";
+"onboarding.subtitle.second"        = "Çalışmanıza stil katın";
 
-"onboarding.title. Third"           = "100'den fazla Lightroom ön ayarının keyfini çıkarın";
-"onboarding.subtitle. Third"        = "Yeni başlayanlara uygun";
+"onboarding.title.third"            = "100'den fazla Lightroom ön ayarının keyfini çıkarın";
+"onboarding.subtitle.third"         = "Yeni başlayan dostu";
 
 // MARK: - Abonelikler
 
 "subscription.title"                = "Profesyonel olun!";
 "subscription.subtitle"             = "100'den fazla kalite ön ayarı";
 
-"subscription.button.next"          = "Sonraki";
+"subscription.button.next"          = "Daha ileri";
 "subscription.button.restore"       = "Geri Yükle";
 "subscription.button.privacy"       = "Gizlilik";
 "subscription.button.terms"         = "Şartlar";
 
-"subscription.failed.title"         = "Hata!";
+"subscription.failed.title"         = "Hay aksi!";
 "subscription.failed.subtitle"      = "Satın alma başarısız oldu :(";
 "subscription.failed.title2"        = "Reklamları görüntüle";
-"subscription.failed.limitedVersion"= "Sınırlı sürüm çalıştırma satın alın";
-"subscription.failed.trial.title"   = "...veya 3 günlük ücretsiz deneme ile tam erişimi deneyin";
+"subscription.failed.limitedVersion"= "Sınırlı sürüm çalıştırması satın alın";
+"subscription.failed.trial.title"   = "...veya 3 günlük Ücretsiz Deneme ile\nFully Care'i deneyin";
 "subscription.failed.button.trial"  = "3 günlük erişimi deneyin";
 "subscription.failed.cancelInfo"    = "İstediğiniz zaman iptal edin veya duraklatın";
 
@@ -40,20 +40,20 @@
 "subscription.interval.month.two"   = "ay"; // 2 ay - 2 месяца
 "subscription.interval.month.beş"   = "ay"; // 5 ay - 5 месяцев
 "subscription.interval.year.one"    = "yıl"; // 1 yıl - 1 год
-"subscription.interval.year.two"    = "yıllar"; // 2 yıl - 2 года
-"subscription.interval.year.five"   = "yıllar"; // 3 yıl - 5 gün
+"subscription.interval.year.two"    = "yıl"; // 2 yıl - 2 года
+"subscription.interval.year.five"   = "yıl"; // 3 yıl - 5 gün
 
 // İŞARET: - Ana Ekran
 
-"main.title"                        = "Lightroom presets";
+"main.title"                        = "Lightroom ön ayarları";
 "main.allPresets"                   = "Tümü";
 "main.freePresets"                  = "Ücretsiz";
-"main.premiumPresets"               = "Premium";
+"main.premiumPresets"               = "PREMIUM";
 
 // MARK: - Ön Ayarlarım
 
 "myPresets.title"                   = "Ön Ayarlarım";
-"myPresets.placeholder"             = "İşte kaydedilen ön ayarlar olacak";
+"myPresets.placeholder"             = "Kaydedilen ön ayarlar burada olacak";
 "myPresets.button.select"           = "Bir ön ayar seçin";
 
 // MARK: - Ön Ayar Açılır Penceresini Sil
@@ -65,33 +65,33 @@
 // MARK: - Ön Ayar Ekranı
 
 "preset.count.one"                  = "ön ayar"; // 1 ön ayar - 1 gün
-"preset.count.two"                  = "ön ayarlar"; // 2 ön ayar - 2 ön ayar
-"preset.count.five"                 = "ön ayarlar"; // 5 ön ayar - 5 gün
+"preset.count.two"                  = "ön ayar"; // 2 ön ayar - 2 ön ayar
+"preset.count.five"                 = "ön ayar"; // 5 ön ayar - 5 gün
 
 "preset.tapHint"                    = "Ön ayarı açmak için dokunun";
 "preset.button.addToMyPresets"      = "Ön ayarlarıma ekle";
 "preset.addedPreset"                = "Eklendi!";
-"preset.button.subscription"        = "100'den fazla ön ayara erişim sağlayın";
+"preset.button.subscription"        = "100'den fazla ön ayara erişin";
 "preset.button.manual"              = "Nasıl kullanılır?";
 
 // MARK: - Ön Ayar Açılır Penceresini Aç
 
-"openPreset.title"                  = "Ön ayarların nasıl kullanılacağını biliyor musunuz?";
-"openPreset.button.open"            = "Evet, bir ön ayar açın";
-"openPreset.button.manual"          = "Hayır, kılavuzu açın";
+"openPreset.title"                  = "Hazır ayarları nasıl kullanacağınızı biliyor musunuz?";
+"openPreset.button.open"            = "Evet, bir ön ayar aç";
+"openPreset.button.openManual"          = "Hayır, kılavuzu aç";
 
 // İŞARET: - Ayarlar
 
 "settings.title"                    = "Ayarlar";
 "settings.button.manual"            = "Nasıl kullanılır?";
-"settings.button.serviceTerms"      = "Hizmet Şartları";
+"settings.button.serviceTerms"      = "Kullanım Şartları";
 "settings.button.policy"            = "Gizlilik Politikası";
-"settings.button.subscriptionTerms" = "Abonelik Koşulları";
-"settings.button.restorePurchase"   = "Satın aldıklarınızı kurtarın";
+"settings.button.contact"           = "Bize ulaşın";
+"settings.button.restorePurchase"   = "Satın alımlarınızı kurtarın";
 
 // MARK: - Hizmet Şartları
 
-"serviceTerms.title"                = "Hizmet Şartları";
+"serviceTerms.title"                = "Kullanım Şartları";
 
 // MARK: - Gizlilik Politikası
 
@@ -100,7 +100,7 @@
 // MARK: - How To Use
 
 "manuel.title"                      = "Nasıl kullanılır?";
-"manual.button.videoTutorial"       = "Eğitim videosu izle";
+"manual.button.videoTutorial"       = "Video eğitimini izleyin";
 "manual.step.first"                 = "1. Adobe Lightroom'u App Store'dan yükleyin";
 "manual.button.lightroom"           = "Adobe Lightroom'u yükleyin";
 "manual.step.second"                = "2. Bir ön ayar seçin ve \"Lightroom'a Kopyala\" ya tıklayın";
@@ -116,14 +116,14 @@
 "alert.action.ok"                   = "Tamam";
 
 "alert.connection.title"            = "İnternet bağlantısı yok";
-"alert.connection.message"          = "İnternet bağlantısı yok. Lütfen ağa bağlanın ve yeniden deneyin.";
+"alert.connection.message"          = "İnternet bağlantısı yok. Lütfen ağa bağlanın ve tekrar deneyin.";
 
 "alert.subscribed.title"            = "Abone olundu";
-"alert.subscribed.message"          = "Zaten abonesiniz. Tüm işlevlerden yararlanabilirsiniz.";
+"alert.subscribed.message"          = "Daha önce abone oldunuz. Tüm işlevsellikleri kullanabilirsiniz.";
 
 "alert.restored.title"              = "Geri yüklendi";
-"alert.restored.message"            = "Aboneliğinizi başarıyla geri yüklediniz. Artık tüm işlevlerden yararlanabilirsiniz.";
+"alert.restored.message"            = "Aboneliğinizi başarıyla geri yüklediniz. Tüm işlevsellik artık sizin için kullanılabilir.";
 
 "alert.notSubscriber.title"         = "Geri yüklenemez";
-"alert.notSubscriber.message"       = "Üzgünüz, aktif bir aboneliğiniz olmadığı için satın alma işleminizi geri yükleyemezsiniz.";
+"alert.notSubscriber.message"       = "Maalesef, aktif bir aboneliğiniz olmadığı için satın alma işleminizi geri yükleyemezsiniz.";
 

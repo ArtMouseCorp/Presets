@@ -7,8 +7,8 @@ public enum Storyboard: String {
 public enum Screen {
     case splash
     case onboarding
-    case subscription1
-    case subscription2
+    case subscription
+    case subscriptionPlans
     case main
     case userPresets
     case defaultPopup
@@ -28,12 +28,12 @@ extension Screen {
             return ("SplashViewController", .Main)
         case .onboarding:
             return ("OnboardingViewController", .Main)
-        case .subscription1:
+        case .subscription:
             return ("SubscriptionViewController", .Main)
         case .defaultPopup:
             return ("DefaultPopupViewController", .Main)
-        case .subscription2:
-            return ("SubscriptionSecondViewController", .Main)
+        case .subscriptionPlans:
+            return ("SubscriptionPlansViewController", .Main)
         case .main:
             return ("MainViewController", .Main)
         case .userPresets:

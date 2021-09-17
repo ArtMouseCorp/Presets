@@ -3,31 +3,31 @@
 
 // MARK: - Onboarding
 
-"onboarding.title.first"            = "Erstaunliche Fotos in Minuten";
-"onboarding.subtitle.first"         = "Voreinstellungen in Lightroom importieren";
+"onboarding.title.first"            = "Erstaunliche Fotos in wenigen Minuten";
+"onboarding.subtitle.first"         = "Importiere deine Voreinstellungen nach Lightroom";
 
-"onboarding.title.second"           = "Stil auswählen und anwenden";
-"onboarding.subtitle.second"        = "Ihre Arbeit gestalten";
+"onboarding.title.second"           = "Wähle einen Stil aus und wende ihn an";
+"onboarding.subtitle.second"        = "Style deine Arbeit";
 
-"onboarding.title.third"            = "Mehr als 100 Lightroom-Voreinstellungen genießen";
+"onboarding.title.third"            = "Genieße über 100 Lightroom-Voreinstellungen";
 "onboarding.subtitle.third"         = "Anfängerfreundlich";
 
 // MARK: - Abonnements
 
-"subscription.title"                = "Profi werden!";
-"subscription.subtitle"             = "Über 100 Qualitätsvoreinstellungen";
+"subscription.title"                = "Werde ein Profi!";
+"subscription.subtitle"             = "Über 100 Voreinstellungen in bester Qualität";
 
 "subscription.button.next"          = "Weiter";
 "subscription.button.restore"       = "Wiederherstellen";
 "subscription.button.privacy"       = "Datenschutz";
 "subscription.button.terms"         = "Bedingungen";
 
-"subscription.failed.title"         = "Ooops!";
-"subscription.failed.subtitle"      = "Kauf fehlgeschlagen :(";
-"subscription.failed.title2"        = "Anzeigen anzeigen für";
-"subscription.failed.limitedVersion"= "Beschränkte Version kaufen";
-"subscription.failed.trial.title"   = "...oder versuchen Sie den vollen Zugriff mit einer 3-tägigen kostenlosen Testversion";
-"subscription.failed.button.trial"  = "Versuchen Sie 3 Tage lang Zugriff";
+"subscription.failed.title"         = "Hoppla!";
+"subscription.failed.subtitle"      = "Kauf gescheitert :(";
+"subscription.failed.title2"        = "Werbung ansehen für";
+"subscription.failed.limitedVersion"= "Begrenzte Version kaufen";
+"subscription.failed.trial.title"   = "... oder versuchen Sie Vollversorgung\mit einem 3-Tage-Gratis-Test";
+"subscription.failed.button.trial"  = "3 Tage Zugang testen";
 "subscription.failed.cancelInfo"    = "Jederzeit abbrechen oder pausieren";
 
 "subscription.interval.day.one"     = "Tag";        // 1 Tag    -   1 Tag
@@ -45,88 +45,84 @@
 
 // MARK: - Hauptbildschirm
 
-"main.title"                        = "Lightroom presets";
+"main.title"                        = "Voreinstellungen von Lightroom";
 "main.allPresets"                   = "Alle";
 "main.freePresets"                  = "Kostenlos";
-"main.premiumPresets"               = "Premium";
+"main.premiumPresets"               = "PREMIUM";
 
 // MARK: - Meine Voreinstellungen
 
 "myPresets.title"                   = "Meine Voreinstellungen";
-"myPresets.placeholder"             = "Hier werden die gespeicherten Voreinstellungen sein";
-"myPresets.button.select"           = "Wählen Sie eine Voreinstellung";
+"myPresets.placeholder"             = "Hier findest du die gespeicherten Voreinstellungen";
+"myPresets.button.select"           = "Wähle eine Voreinstellung";
 
 // MARK: - Preset Popup löschen
 
-"delete.title"                      = "Vorgabe löschen?";
+"delete.title"                      = "Voreinstellung löschen?";
 "delete.button.confirm"             = "Ja, löschen";
 "delete.button.cancel"              = "Nein, abbrechen";
 
 // MARK: - Preset-Bildschirm
 
-"preset.count.one"                  = "preset";     // 1 Voreinstellung     - 1 ресет
-"preset.count.two"                  = "presets";    // 2 Voreinstellungen   - 2 пресета
-"preset.count.five"                 = "presets";    // 5 Voreinstellungen   - 5 ресетов
+"preset.count.one"                  = "Voreinstellung";     // 1 Voreinstellung     - 1 ресет
+"preset.count.two"                  = "Voreinstellungen";    // 2 Voreinstellungen   - 2 пресета
+"preset.count.five"                 = "Voreinstellungen";    // 5 Voreinstellungen   - 5 ресетов
 
-"preset.tapHint"                    = "Tippen, um die Voreinstellung zu öffnen";
+"preset.tapHint"                    = "Tippe hier, um die Voreinstellung zu öffnen";
 "preset.button.addToMyPresets"      = "Zu meinen Voreinstellungen hinzufügen";
 "preset.addedPreset"                = "Hinzugefügt!";
-"preset.button.subscription"        = "Zugriff auf über 100 Voreinstellungen erhalten";
-"preset.button.manual"              = "Wie benutzt man?";
+"preset.button.subscription"        = "Erhalte Zugriff auf über 100 Voreinstellungen";
+"preset.button.manual"              = "Wie benutzt man das?";
 
 // MARK: - Preset Popup öffnen
 
-"openPreset.title"                  = "Wissen Sie, wie man Voreinstellungen verwendet?";
-"openPreset.button.open"            = "Ja, öffne eine Voreinstellung";
-"openPreset.button.manual"          = "Nein, öffne das Handbuch";
+"openPreset.title"                  = "Weißt du, wie man Voreinstellungen benutzt?";
+"openPreset.button.open"            = "Ja, eine Voreinstellung öffnen";
+"openPreset.button.openManual"          = "Nein, die Anleitung öffnen";
 
 // MARK: - Einstellungen
 
 "settings.title"                    = "Einstellungen";
-"settings.button.manual"            = "Wie benutzt man?";
+"settings.button.manual"            = "Wie benutzt man das?";
 "settings.button.serviceTerms"      = "Nutzungsbedingungen";
 "settings.button.policy"            = "Datenschutzerklärung";
-"settings.button.subscriptionTerms" = "Abonnementbedingungen";
-"settings.button.restorePurchase"   = "Ihre Einkäufe wiederherstellen";
+"settings.button.contact"           = "Kontaktiere uns";
+"settings.button.restorePurchase"   = "Stelle deine Einkäufe wieder her";
 
 // MARK: - Nutzungsbedingungen
 
-"serviceTerms.title"                = "Nutzungsbedingungen";
-
-// MARK: - Subscription Terms
-
-"subscriptionTerms.title"           = "Abonnementbedingungen";
+"serviceTerms.title"                = "AGB";
 
 // MARK: - Datenschutzerklärung
 
-"privacy.title"                     = "Datenschutzerklärung";
+"privacy.title"                     = "Datenschutz";
 
 // MARK: - Wie zu verwenden
 
-"manual.title"                      = "Wie benutzt man?";
+"manual.title"                      = "Wie benutzt man das?";
 "manual.button.videoTutorial"       = "Video-Tutorial ansehen";
-"manual.step.first"                 = "1. Installieren Sie Adobe Lightroom aus dem App Store";
+"manual.step.first"                 = "1. Installiere Adobe Lightroom aus dem App Store";
 "manual.button.lightroom"           = "Adobe Lightroom installieren";
-"manual.step.second"                = "2. Wählen Sie eine Voreinstellung aus und klicken Sie auf \"In Lightroom kopieren\"";
-"manual.step.third"                 = "3. Die Vorgabe wird in Lightroom geöffnet, klicken Sie auf die Schaltfläche Mehr und wählen Sie \"Einstellungen kopieren\"";
-"manual.step.fourth"                = "4. Drücken Sie die Schaltfläche \"Zurück\", um zum vorherigen Bildschirm zurückzukehren, drücken Sie dann die Schaltfläche \"Importieren\" und wählen Sie ein Foto aus Ihrer Bibliothek aus";
-"manual.step.fifth"                 = "5. Wenn das Foto hinzugefügt wurde, klicken Sie auf die Schaltfläche \"Mehr\" und wählen Sie \"Einstellungen einfügen\"";
-"manual.step.sixth"                 = "6. Großartig! Jetzt können Sie das Foto speichern oder mit Abonnenten teilen";
+"manual.step.second"                = "2. Wähle eine Voreinstellung aus und klicke auf \"Nach Lightroom kopieren\"";
+"manual.step.third"                 = "3. Die Voreinstellung wird in Lightroom geöffnet, klicke auf die Schaltfläche Mehr und wähle \"Einstellungen kopieren\"";
+"manual.step.fourth"                = "4. Drücke die Schaltfläche \"Zurück\", um zum vorherigen Bildschirm zurückzukehren, drücke dann die Schaltfläche \"Import\" und wähle ein Foto aus deiner Bibliothek";
+"manual.step.fifth"                 = "5. Wenn das Foto hinzugefügt wurde, klicke auf die Schaltfläche \"Mehr\" und wähle \"Einstellungen einfügen\"";
+"manual.step.sixth"                 = "6. Sehr gut! Jetzt kannst du das Foto speichern oder mit Abonnenten teilen";
 "manual.hint.first"                 = "* Voreinstellungen werden mit DNG-Markierung angezeigt";
-"manual.hint.second"                = "** Probieren Sie verschiedene Voreinstellungen aus und ändern Sie die Einstellungen, um Ihr Foto perfekt zu machen";
+"manual.hint.second"                = "** Probiere verschiedene Voreinstellungen aus und ändere die Einstellungen, um dein Foto perfekt zu machen";
 
 // MARK: - Warnungen
 
 "alert.action.ok"                   = "Ok";
 
 "alert.connection.title"            = "Keine Internetverbindung";
-"alert.connection.message"          = "Es besteht keine Internetverbindung. Bitte verbinden Sie sich mit dem Netzwerk und versuchen Sie es erneut.";
+"alert.connection.message"          = "Es besteht keine Internetverbindung. Bitte verbinde dich mit dem Netzwerk und versuche es erneut.";
 
 "alert.subscribed.title"            = "Abonniert";
-"alert.subscribed.message"          = "Sie sind bereits abonniert. Alle Funktionen stehen Ihnen zur Verfügung.";
+"alert.subscribed.message"          = "Du hast bereits ein Abonnement. Alle Funktionen stehen dir zur Verfügung.";
 
 "alert.restored.title"              = "Wiederhergestellt";
-"alert.restored.message"            = "Sie haben Ihr Abonnement erfolgreich wiederhergestellt. Alle Funktionen stehen Ihnen jetzt zur Verfügung.";
+"alert.restored.message"            = "Du hast dein Abonnement erfolgreich wiederhergestellt. Alle Funktionen stehen dir jetzt zur Verfügung.";
 
 "alert.notSubscriber.title"         = "Kann nicht wiederhergestellt werden";
-"alert.notSubscriber.message"       = "Sie können Ihren Einkauf leider nicht wiederherstellen, da Sie kein aktives Abonnement haben.";
+"alert.notSubscriber.message"       = "Du kannst deinen Einkauf leider nicht wiederherstellen, da du kein aktives Abonnement hast.";

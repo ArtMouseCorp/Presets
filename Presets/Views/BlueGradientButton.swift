@@ -10,6 +10,11 @@ class BlueGradientButton: GradientButton {
         super.configureButton()
         
         layer.shadowColor = CGColor(red: 52/255, green: 77/255, blue: 215/255, alpha: 0.25)
+        updateGradient()
+    }
+    
+    public func updateGradient() {
+        titleLabel?.textAlignment = .center
         applyGradient(colors: [
             CGColor(red: 68/255, green: 143/255, blue: 1, alpha: 1),
             CGColor(red: 22/255, green: 36/255, blue: 114/255, alpha: 1)

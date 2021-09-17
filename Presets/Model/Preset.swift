@@ -1,6 +1,6 @@
 import UIKit
 
-struct Preset: Codable {
+struct Preset: Codable, Equatable {
     
     let id: Int
     let name: String

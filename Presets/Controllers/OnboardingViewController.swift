@@ -1,4 +1,5 @@
 import UIKit
+import Amplitude
 
 class OnboardingViewController: UIViewController {
 
@@ -34,29 +35,32 @@ class OnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locelize()
         overlayImage.frame = CGRect(x: 0, y: 0, width: screen_width, height:screen_height)
         self.view.insertSubview(overlayImage, at: 0)
-        setPageContent()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        introduceTitle.numberOfLines = 0
         setPageContent()
     }
     
     // MARK: - Custom functions
     
+    private func locelize() {
+        self.nextButton.localize(with: L10n.Subscription.Button.next)
+    }
+    
     func setPageContent() {
+        
         switch currentIntroducePage {
         case 0:
             overlayImage.image = Images.circleBackground1
             mainImage.image = Images.onboardingImage1
-            introduceSubtitle.text = "Import presets into Lightroom"
-            animateIn()
+            introduceTitle.localize(with: L10n.Onboarding.Title.first)
+            introduceSubtitle.localize(with: L10n.Onboarding.Subtitle.first)
         case 1:
             overlayImage.image = Images.circleBackground2
             mainImage.image = Images.onboardingImage2
-            introduceTitle.text = "Select a style and apply it"
-            introduceSubtitle.text = "Style your work"
+            introduceTitle.localize(with: L10n.Onboarding.Title.second)
+            introduceSubtitle.localize(with: L10n.Onboarding.Subtitle.second)
             animateIn()
         case 2:
             imageTopConstraint.constant = 0
@@ -64,14 +68,22 @@ class OnboardingViewController: UIViewController {
             imageRightConstraint.constant = 0
             mainImage.image = Images.onboardingImage3
             mainImage.contentMode = .bottom
-            introduceTitle.text = "Enjoy +100 presets Lightroom"
-            introduceSubtitle.text = "Beginner friendly"
+            introduceTitle.localize(with: L10n.Onboarding.Title.third)
+            introduceSubtitle.localize(with: L10n.Onboarding.Subtitle.third)
             animateIn()
         default:
             mainVC.modalPresentationStyle = .fullScreen
             self.present(mainVC, animated: true, completion: nil)
+            return
         }
+        
+        Amplitude.instance().logEvent(
+            AmplitudeEvents.onboarding,
+            withEventProperties: [ "Onboarding page number": currentIntroducePage ]
+        )
+        
         configureDots()
+        
     }
     
     func animateIn() {

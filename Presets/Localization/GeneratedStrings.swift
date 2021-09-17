@@ -58,7 +58,7 @@ internal enum L10n {
     internal static let allPresets = L10n.tr("Localizable", "main.allPresets")
     /// Free
     internal static let freePresets = L10n.tr("Localizable", "main.freePresets")
-    /// Premium
+    /// PREMIUM
     internal static let premiumPresets = L10n.tr("Localizable", "main.premiumPresets")
     /// Lightroom presets
     internal static let title = L10n.tr("Localizable", "main.title")
@@ -129,10 +129,10 @@ internal enum L10n {
     /// Do you know how to use presets?
     internal static let title = L10n.tr("Localizable", "openPreset.title")
     internal enum Button {
-      /// No, open the manual
-      internal static let manual = L10n.tr("Localizable", "openPreset.button.manual")
       /// Yes, open a preset
       internal static let `open` = L10n.tr("Localizable", "openPreset.button.open")
+      /// No, open the manual
+      internal static let openManual = L10n.tr("Localizable", "openPreset.button.openManual")
     }
   }
 
