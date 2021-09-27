@@ -24,6 +24,13 @@ enum Keys {
     
     static let appleAppId: String               = "1581576260"
     
+    // RevenueCat
+    internal enum RevenueCat {
+//        static let apiKey: String               = "tRLwqURoAceMzyFpDyjwjsOVimeAajBy" // DEBUG
+        static let apiKey: String               = "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX" // RELEASE
+        static let entitlementId: String        = "premium"
+    }
+    
     // Amplitude
     internal enum Amplitude {
         static let apiKey: String               = "57daf38d4f5529a9d79bfc46d341ad31"
@@ -37,12 +44,14 @@ enum Keys {
     // AdMob
     internal enum AdmMod {
         static let appId: String                = "ca-app-pub-9686541093041732~7231766062"
-        static let unitId: String               = "ca-app-pub-3940256099942544/4411468910" //"ca-app-pub-9686541093041732~7231766062"
+        static let unitId: String               = "ca-app-pub-3940256099942544/4411468910" // DEBUG
+//        static let unitId: String               = "ca-app-pub-9686541093041732~7231766062" // RELEASE
     }
     
     // AppsFlyer
     internal enum AppsFlyer {
-        static let devKey: String               = "5VCYcU4KGxS56mN9DjpnoN"
+//        static let devKey: String               = "HC375dSqjhViQMeSB8miEN" // DEBUG
+        static let devKey: String               = "5VCYcU4KGxS56mN9DjpnoN" // RELEASE
     }
     
     internal enum Prodinfire {

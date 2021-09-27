@@ -1,5 +1,4 @@
 import UIKit
-import SwiftyStoreKit
 
 class SettingsViewController: BaseViewController {
 
@@ -40,6 +39,7 @@ class SettingsViewController: BaseViewController {
         self.privacyPolicyLabel.localize(with: L10n.Settings.Button.policy)
         self.contactLabel.localize(with: L10n.Settings.Button.contact)
         self.recoverPurchaseLabel.localize(with: L10n.Settings.Button.restorePurchase)
+        self.subscriptionPlansLabel.localize(with: L10n.Settings.Button.subscriptionPlans)
     }
     
     func configureGestures() {
@@ -76,20 +76,11 @@ class SettingsViewController: BaseViewController {
     }
     
     @objc func termsOfServicesTapped() {
-//        let popup = SettingsPopupViewController.load(from: .settingsPopup)
-//        popup.titleLabelText = L10n.ServiceTerms.title
-//        popup.mainText = FullTermsOfUse
-//        self.showPopup(popup)
         guard let url = URL(string: "https://artpoldev.com/terms.html") else { return }
         UIApplication.shared.open(url)
     }
     
     @objc func privacyPolicyTapped() {
-//        let popup = SettingsPopupViewController.load(from: .settingsPopup)
-//        popup.titleLabelText = L10n.Privacy.title
-//        popup.mainText = FullPrivacyPolicy
-//        self.showPopup(popup)
-        
         guard let url = URL(string: "https://artpoldev.com/privacy.html") else { return }
         UIApplication.shared.open(url)
     }
@@ -101,34 +92,25 @@ class SettingsViewController: BaseViewController {
     
     @objc func recoverPurchaseTapped() {
         
-        SwiftyStoreKit.restorePurchases(atomically: true) { results in
-            if results.restoreFailedPurchases.count > 0 {
-                print("Restore Failed: \(results.restoreFailedPurchases)")
-                
-                State.isSubscribed = false
-                
-            } else if results.restoredPurchases.count > 0 {
-                print("Restore Success: \(results.restoredPurchases)")
-                
-                State.isSubscribed = true
-                self.showRestoredAlert(completion: nil)
-                
-            } else {
-                print("Nothing to Restore")
-                
-                State.isSubscribed = false
-                self.showNotSubscriberAlert(completion: nil)
-                
-            }
+        guard isConnectedToNetwork() else {
+            showNetworkConnectionAlert(completion: nil)
+            return
         }
+        
+        guard !State.isSubscribed else {
+            showAlreadySubscribedAlert(completion: nil)
+            return
+        }
+        
+        StoreManager.restore()
         
     }
     
     @objc private func subscriptionPlansTapped() {
-        
+//        self.showPaywall(single: false)
         let subscriptionPlansVC = SubscriptionPlansViewController.load(from: .subscriptionPlans)
-        self.navigationController?.pushViewController(subscriptionPlansVC, animated: true)
-        
+        subscriptionPlansVC.modalPresentationStyle = .fullScreen
+        self.present(subscriptionPlansVC, animated: true)
     }
     
     // MARK: - @IBActions

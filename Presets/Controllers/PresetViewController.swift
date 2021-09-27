@@ -142,6 +142,11 @@ class PresetViewController: BaseViewController {
     
     @IBAction func addToMyButtonPressed(_ sender: Any) {
         
+        guard State.isSubscribed || State.selectedPreset.isFree else {
+            self.showPaywall()
+            return
+        }
+        
         State.favouritePresets.append(presetId)
         userDefaults.set(State.favouritePresets, forKey: UDKeys.favouritePresets)
         hapticFeedback(.success)
@@ -149,9 +154,13 @@ class PresetViewController: BaseViewController {
     }
     
     @IBAction func getAccessButtonPressed(_ sender: Any) {
-        let controller = SubscriptionViewController.load(from: .subscription)
-        controller.modalPresentationStyle = .fullScreen
-        self.navigationController?.present(controller, animated: true, completion: nil)
+        
+        if State.isSubscribed {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.showPaywall()
+        }
+            
     }
     
     @IBAction func howToUseButtonPressed(_ sender: Any) {
@@ -208,6 +217,13 @@ extension PresetViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        dots.currentPage = Int((collectionView.contentOffset.x / collectionView.frame.width).rounded(.toNearestOrAwayFromZero))
+        
+        let pageIndex = (scrollView.contentOffset.x / collectionView.frame.width).rounded(.up)
+        dots.currentPage = Int(pageIndex)
+        
+        print(scrollView.contentOffset)
+        
+        
+//        dots.currentPage = Int(((collectionView.contentOffset.x + 150) / collectionView.frame.width).rounded(.toNearestOrAwayFromZero))
     }
 }

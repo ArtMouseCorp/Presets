@@ -24,7 +24,7 @@ extension SKProduct {
         return formatter.string(from: price)
     }
     
-    func getSubscriptionPeriod() -> String {
+    func getSubscriptionPeriod(showOne: Bool = false) -> String {
         
         let perdiod = self.subscriptionPeriod
         let numberOfUnits = perdiod?.numberOfUnits ?? 0
@@ -61,7 +61,11 @@ extension SKProduct {
             unit = "N/A"
         }
         
-        return numberOfUnits > 1 ? "\(numberOfUnits) " + unit : unit
+        if showOne {
+            return "\(numberOfUnits) " + unit
+        } else {
+            return numberOfUnits > 1 ? "\(numberOfUnits) " + unit : unit
+        }
     }
     
     func getTrialPeriod() -> String? {

@@ -2,7 +2,8 @@ import UIKit
 import GoogleMobileAds
 import Amplitude
 import StoreKit
-import SwiftyStoreKit
+import Purchases
+import AVFoundation
 
 class SubscriptionViewController: BaseViewController {
     
@@ -12,6 +13,8 @@ class SubscriptionViewController: BaseViewController {
     @IBOutlet weak var blackWhiteGradient: UIView!
     @IBOutlet weak var firstOfferView: UIView!
     @IBOutlet weak var secondOfferView: UIView!
+    
+    @IBOutlet var dotViews: [UIView]!
     
     // Labels
     @IBOutlet weak var titleLabel: UILabel!
@@ -37,19 +40,21 @@ class SubscriptionViewController: BaseViewController {
     
     var closeTimer: Timer = Timer()
     
-    var product: SKProduct?
+    var package: Purchases.Package = Purchases.Package()
     
     // MARK: - Awake functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        localize()
+        
         createAndLoadInterstitialAd()
         configureGestures()
         firstOfferView.isHidden = true
         
         self.pageConfig = RCValues.sharedInstance.organicSubscriptionPage()
-
+        
         getProduct()
         
     }
@@ -85,6 +90,13 @@ class SubscriptionViewController: BaseViewController {
         nextButton.setTitle(pageConfig.buttonLabel, for: .normal)
         nextButton.titleLabel?.font = UIFont(name: "EuclidCircularA-SemiBold", size: pageConfig.buttonFontSize)
         
+        privacyButton.isHidden = !pageConfig.showTerms
+        termsButton.isHidden = !pageConfig.showTerms
+        
+        dotViews.forEach { dotView in
+            dotView.isHidden = !pageConfig.showTerms
+        }
+    
     }
     
     private func localize() {
@@ -133,7 +145,7 @@ class SubscriptionViewController: BaseViewController {
         
         let request = GADRequest()
         
-        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910", request: request) { [self] ad, error in
+        GADInterstitialAd.load(withAdUnitID: Keys.AdmMod.unitId, request: request) { [self] ad, error in
             if let error = error {
                 print("Failed to load interstitial ad with error: \(error.localizedDescription)")
                 return
@@ -200,37 +212,23 @@ class SubscriptionViewController: BaseViewController {
     
     private func getProduct() {
         
-        // TODO: - Replace ID with purchase ID from pageConfig
-        //        SwiftyStoreKit.retrieveProductsInfo([pageConfig.subscriptionId]) { result in
-        SwiftyStoreKit.retrieveProductsInfo(["com.temporary.week"]) { result in
-            if let product = result.retrievedProducts.first {
-                self.product = product
-                
-                // Product price
-                let price = product.localizedPrice ?? product.price.stringValue
-                
-                let subscriptionPeriod = product.getSubscriptionPeriod()
-                let trialPeriod = product.getTrialPeriod()
-                
-                let finalString = self.pageConfig.priceLabel
-                    .replacingOccurrences(of: "%trial_period%", with: trialPeriod ?? "")
-                    .replacingOccurrences(of: "%subscription_price%", with: price)
-                    .replacingOccurrences(of: "%subscription_period%", with: subscriptionPeriod)
-                
-                self.subscriptionLabel.text = finalString
-                
-                
-            } else if let invalidProductId = result.invalidProductIDs.first {
-                print("Invalid product identifier: \(invalidProductId)")
-                let purchaseFailedVC = PurchaseFailedViewController.load(from: .purchaseFailed)
-                purchaseFailedVC.modalPresentationStyle = .fullScreen
-                self.present(purchaseFailedVC, animated: true)
-            } else {
-                print("Error: \(String(describing: result.error))")
-                let purchaseFailedVC = PurchaseFailedViewController.load(from: .purchaseFailed)
-                purchaseFailedVC.modalPresentationStyle = .fullScreen
-                self.present(purchaseFailedVC, animated: true)
-            }
+        guard isConnectedToNetwork() else {
+            showNetworkConnectionAlert(completion: nil)
+            return
+        }
+        
+        StoreManager.getProducts(for: [pageConfig.subscriptionId]) { products in
+//        StoreManager.getProducts(for: ["com.temporary.week"]) { products in
+            
+            let finalString = self.pageConfig.priceLabel
+                .replacingOccurrences(of: "%trial_period%", with: products[0].trialPeriod ?? "")
+                .replacingOccurrences(of: "%subscription_price%", with: products[0].price)
+                .replacingOccurrences(of: "%subscription_period%", with: products[0].subscriptionPeriod)
+            
+            self.subscriptionLabel.text = finalString
+            
+            self.package = products[0].purchasesPackage
+            
         }
         
     }
@@ -262,97 +260,42 @@ class SubscriptionViewController: BaseViewController {
             return
         }
         
-        guard let product = product else {
-            return
-        }
-        
         Amplitude.instance().logEvent(AmplitudeEvents.subscriptionButtonTap)
         
-        SwiftyStoreKit.purchaseProduct(product) { purchaseResult in
-            
-            switch purchaseResult {
-            case .success(let purchase):
-                print("Purchase Success: \(purchase.productId)")
-                
-                Amplitude.instance().logEvent("Subscription purchased",
-                                              withEventProperties: [
-                                                "Transaction identifier": purchase.transaction.transactionIdentifier ?? "",
-                                                "Transaction date": purchase.transaction.transactionDate ?? Date()
-                                              ])
-                State.isSubscribed = true
-                let mainNav = UINavigationController.load(from: .mainNav)
-                mainNav.modalPresentationStyle = .fullScreen
-                self.present(mainNav, animated: true)
-                
-            case .error(let error):
-                switch error.code {
-                case .paymentCancelled: return
-                case .unknown: print("Unknown error. Please contact support")
-                case .clientInvalid: print("Not allowed to make the payment")
-                case .paymentInvalid: print("The purchase identifier was invalid")
-                case .paymentNotAllowed: print("The device is not allowed to make the payment")
-                case .storeProductNotAvailable: print("The product is not available in the current storefront")
-                case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
-                case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
-                case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
-                default: print((error as NSError).localizedDescription)
-                }
-                
-                let purchaseFailedVC = PurchaseFailedViewController.load(from: .purchaseFailed)
-                purchaseFailedVC.modalPresentationStyle = .fullScreen
-                self.present(purchaseFailedVC, animated: true)
-            }
-            
+        StoreManager.purchase(package: self.package) {
+            self.view.removeFromSuperview()
         }
         
     }
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
         
-        SwiftyStoreKit.restorePurchases(atomically: true) { results in
-            if results.restoreFailedPurchases.count > 0 {
-                print("Restore Failed: \(results.restoreFailedPurchases)")
-                
-                State.isSubscribed = false
-                let purchaseFailedVC = PurchaseFailedViewController.load(from: .purchaseFailed)
-                purchaseFailedVC.modalPresentationStyle = .fullScreen
-                self.present(purchaseFailedVC, animated: true)
-                
-            } else if results.restoredPurchases.count > 0 {
-                print("Restore Success: \(results.restoredPurchases)")
-                
-                State.isSubscribed = true
-                self.showRestoredAlert {
-                    let mainNav = UINavigationController.load(from: .mainNav)
-                    mainNav.modalPresentationStyle = .fullScreen
-                    self.present(mainNav, animated: true)
-                }
-                
-            } else {
-                print("Nothing to Restore")
-                
-                State.isSubscribed = false
-                self.showNotSubscriberAlert(completion: nil)
-                
+        guard isConnectedToNetwork() else {
+            showNetworkConnectionAlert(completion: nil)
+            return
+        }
+        
+        guard !State.isSubscribed else {
+            showAlreadySubscribedAlert() {
+                let mainNav = UINavigationController.load(from: .mainNav)
+                mainNav.modalPresentationStyle = .fullScreen
+                self.present(mainNav, animated: true)
             }
+            return
+        }
+        
+        StoreManager.restore() {
+            self.view.removeFromSuperview()
         }
         
     }
     
     @IBAction func privacyButtonPressed(_ sender: Any) {
-        //        let popup = SettingsPopupViewController.load(from: .settingsPopup)
-        //        popup.titleLabelText = L10n.Privacy.title
-        //        popup.mainText = FullPrivacyPolicy
-        //        self.showPopup(popup)
         guard let url = URL(string: "https://artpoldev.com/privacy.html") else { return }
         UIApplication.shared.open(url)
     }
     
     @IBAction func termsButtonPressed(_ sender: Any) {
-        //        let popup = SettingsPopupViewController.load(from: .settingsPopup)
-        //        popup.titleLabelText = L10n.ServiceTerms.title
-        //        popup.mainText = FullTermsOfUse
-        //        self.showPopup(popup)
         guard let url = URL(string: "https://artpoldev.com/terms.html") else { return }
         UIApplication.shared.open(url)
     }
@@ -361,22 +304,7 @@ class SubscriptionViewController: BaseViewController {
 // MARK: - GADFullScreenContentDelegate
 
 extension SubscriptionViewController: GADFullScreenContentDelegate {
-    
-    // Tells the delegate that the ad failed to present full screen content.
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-    }
-    
-    // Tells the delegate that the ad presented full screen content.
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-    }
-    
-    // Tells the delegate that the ad dismissed full screen content.
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
-    }
-    
+
     func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad will dismiss full screen content.")
         self.view.removeFromSuperview()

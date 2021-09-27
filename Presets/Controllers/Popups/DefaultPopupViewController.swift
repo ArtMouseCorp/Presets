@@ -104,6 +104,12 @@ class DefaultPopupViewController: PopupViewController {
             animateOut()
             completion()
         case .openPresetPopup:
+            
+            guard State.isSubscribed || State.selectedPreset.isFree else {
+                self.showPaywall()
+                return
+            }
+            
             guard let fileURL = Bundle.main.url(forResource: State.selectedPreset.presets[indexOfImagePreset] , withExtension: "dng") else {
                 animateOut()
                 return

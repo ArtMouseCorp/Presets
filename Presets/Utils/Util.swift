@@ -1,5 +1,4 @@
 import UIKit
-import SwiftyStoreKit
 import SystemConfiguration
 
 func getGradientColor(bounds: CGRect, colors: [CGColor]) -> UIColor? {
@@ -96,38 +95,12 @@ public func isConnectedToNetwork() -> Bool {
     
 }
 
-public func checkSubscription() {
+public func activeController() -> UIViewController {
+    let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
     
-    // TODO: - Pass right SHARED SECRET and PRODUCT ID
-    
-    let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "your-shared-secret")
-    SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
-        switch result {
-        case .success(let receipt):
-            let productId = State.currentProductId
-            // Verify the purchase of a Subscription
-            let purchaseResult = SwiftyStoreKit.verifySubscription(
-                ofType: .autoRenewable,
-                productId: productId,
-                inReceipt: receipt)
-                
-            switch purchaseResult {
-            case .purchased(let expiryDate, let items):
-                print("\(productId) is valid until \(expiryDate)\n\(items)\n")
-                State.isSubscribed = true
-            case .expired(let expiryDate, let items):
-                print("\(productId) is expired since \(expiryDate)\n\(items)\n")
-                State.isSubscribed = false
-            case .notPurchased:
-                print("The user has never purchased \(productId)")
-                State.isSubscribed = false
-            }
-
-        case .error(let error):
-            print("Receipt verification failed: \(error)")
-            State.isSubscribed = false
-        }
+    var topController = keyWindow?.rootViewController!
+    while let presentedViewController = topController?.presentedViewController {
+        topController = presentedViewController
     }
-
-    
+    return topController!
 }

@@ -43,6 +43,8 @@
 "subscription.interval.year.two"    = "Jahre";      // 2 Jahre  -   2 Jahre
 "subscription.interval.year.five"   = "Jahre";      // 3 Jahre  -   5 лет
 
+"subscription.total"                = "Gesamt";
+
 // MARK: - Hauptbildschirm
 
 "main.title"                        = "Voreinstellungen von Lightroom";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms"      = "Nutzungsbedingungen";
 "settings.button.policy"            = "Datenschutzerklärung";
 "settings.button.contact"           = "Kontaktiere uns";
+"settings.button.subscriptionPlans" = "Abonnementpläne";
 "settings.button.restorePurchase"   = "Stelle deine Einkäufe wieder her";
 
 // MARK: - Nutzungsbedingungen

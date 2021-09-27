@@ -43,6 +43,8 @@
 "subscription.interval.year.two"    = "عامان";
 "subscription.interval.year.five"   = "أعوام";
 
+"subscription.total"                = "المجموع";
+
 // MARK: - Main Screen
 
 "main.title"                        = "الإعدادات المسبقة لتطبيق Lightroom";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms"      = "‫أحكام الاستخدا";
 "settings.button.policy"            = "‫سياسة الخصوصي";
 "settings.button.contact"           = "تواصل معنا";
+"settings.button.subscriptionPlans" = "خطط الاشتراك";
 "settings.button.restorePurchase"   = "استعادة مشترياتك";
 
 // MARK: - Terms of Service

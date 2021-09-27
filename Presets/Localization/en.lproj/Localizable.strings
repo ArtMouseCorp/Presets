@@ -43,6 +43,8 @@
 "subscription.interval.year.two"    = "years";  // Два года
 "subscription.interval.year.five"   = "years";  // Пять лет
 
+"subscription.total"                = "Total";
+
 // MARK: - Main Screen
 
 "main.title"                        = "Lightroom presets";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms"      = "Terms of Service";
 "settings.button.policy"            = "Privacy Policy";
 "settings.button.contact"           = "Contact us";
+"settings.button.subscriptionPlans" = "Subscription plans";
 "settings.button.restorePurchase"   = "Recover your purchases";
 
 // MARK: - Terms of Service

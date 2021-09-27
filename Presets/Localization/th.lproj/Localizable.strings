@@ -43,6 +43,8 @@
 "subscription.interval.year.two" = "ปี"; // 2 ปี - 2 ปี
 "subscription.interval.year.five" = "ปี"; // 3 ปี - 5 лет
 
+"subscription.total"                = "รวม";
+
 // MARK: - หน้าจอหลัก
 
 "main.title" = "พรีเซ็ต Lightroom";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms" = "ข้อกำหนดในการใช้งาน";
 "settings.button.policy" = "นโยบายความเป็นส่วนตัว";
 "settings.button.contact" = "ติดต่อเรา";
+"settings.button.subscriptionPlans" = "แผนการสมัครสมาชิก";
 "settings.button.restorePurchase" = "กู้คืนการซื้อของคุณ";
 
 // MARK: - ข้อกำหนดในการให้บริการ

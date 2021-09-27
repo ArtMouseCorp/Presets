@@ -183,6 +183,8 @@ internal enum L10n {
       internal static let restorePurchase = L10n.tr("Localizable", "settings.button.restorePurchase")
       /// Terms of Service
       internal static let serviceTerms = L10n.tr("Localizable", "settings.button.serviceTerms")
+      /// Subscription plans
+      internal static let subscriptionPlans = L10n.tr("Localizable", "settings.button.subscriptionPlans")
     }
   }
 
@@ -191,6 +193,8 @@ internal enum L10n {
     internal static let subtitle = L10n.tr("Localizable", "subscription.subtitle")
     /// Become pro!
     internal static let title = L10n.tr("Localizable", "subscription.title")
+    /// Total
+    internal static let total = L10n.tr("Localizable", "subscription.total")
     internal enum Button {
       /// Next
       internal static let next = L10n.tr("Localizable", "subscription.button.next")

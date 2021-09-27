@@ -1,6 +1,7 @@
 import UIKit
-import SwiftyStoreKit
+import Purchases
 import StoreKit
+import Amplitude
 
 class SubscriptionPlansViewController: BaseViewController {
     
@@ -12,9 +13,17 @@ class SubscriptionPlansViewController: BaseViewController {
     @IBOutlet weak var secondOfferView: UIView!
     @IBOutlet weak var thirdOfferView: UIView!
     
+    @IBOutlet var dotViews: [UIView]!
+    
+    @IBOutlet var offerViews: [UIView]!
+    
     // Labels
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    
+    @IBOutlet var durationLabels: [UILabel]!
+    @IBOutlet var priceLabels: [UILabel]!
+    @IBOutlet var totalPriceLabels: [UILabel]!
     
     // Buttons
     @IBOutlet weak var closeButton: UIButton!
@@ -33,9 +42,10 @@ class SubscriptionPlansViewController: BaseViewController {
     
     var didLayoutCalled = true
     
-    var closeTimer: Timer = Timer()
     var pageConfig: SubscriptionPlansPage = .default
-    var products: [SKProduct] = []
+    
+    var products: [StoreManager.Product] = []
+    var selectedProductIndex: Int = 0
     
     // MARK: - Awake functions
     
@@ -43,8 +53,9 @@ class SubscriptionPlansViewController: BaseViewController {
         super.viewDidLoad()
         configureGestures()
         
-        self.pageConfig = RCValues.sharedInstance.subscriptionPlansPage()
+        localize()
         
+        self.pageConfig = RCValues.sharedInstance.subscriptionPlansPage()
         self.getProducts()
     }
     
@@ -60,11 +71,37 @@ class SubscriptionPlansViewController: BaseViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        configureUI()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        startCloseTimer()
+        showCloseButton()
     }
     
     // MARK: - Custom functions
+    
+    private func configureUI() {
+        titleLabel.text = pageConfig.titleLabel
+        subtitleLabel.text = pageConfig.subtitleLabel
+        closeButton.isHidden = true
+        
+        nextButton.setTitle(pageConfig.buttonLabel, for: .normal)
+        nextButton.titleLabel?.font = UIFont(name: "EuclidCircularA-SemiBold", size: pageConfig.buttonFontSize)
+        
+        privacyButton.isHidden = !pageConfig.showTerms
+        termsButton.isHidden = !pageConfig.showTerms
+        
+        dotViews.forEach { dotView in
+            dotView.isHidden = !pageConfig.showTerms
+        }
+    }
+    
+    private func localize() {
+        self.restoreButton.localize(with: L10n.Subscription.Button.restore)
+        self.privacyButton.localize(with: L10n.Subscription.Button.privacy)
+        self.termsButton.localize(with: L10n.Subscription.Button.terms)
+    }
     
     func configureGestures() {
         let firstOfferTapped = UITapGestureRecognizer(target: self, action: #selector(choosedFirst))
@@ -123,52 +160,49 @@ class SubscriptionPlansViewController: BaseViewController {
         }
     }
     
-    private func startCloseTimer() {
+    private func showCloseButton() {
         
-        closeTimer = Timer.scheduledTimer(timeInterval: pageConfig.closeDelay,
-                                          target: self,
-                                          selector: #selector(showCloseButton),
-                                          userInfo: nil, repeats: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + pageConfig.closeDelay) {
+            self.closeButton.isHidden = false
+        }
         
-    }
-    
-    @objc private func showCloseButton() {
-        closeButton.isHidden = false
-        closeTimer.invalidate()
     }
     
     private func getProducts() {
         
-        // TODO: - Replace ID with purchase ID from pageConfig
+        print("Getting products")
         
-                let subscriptionIds = Set<String>([
-                    pageConfig.firstSubscriptionId,
-                    pageConfig.secondSubscriptionId,
-                    pageConfig.thirdSubscriptionId
-                ])
-        
-//        let subscriptionIds = Set<String>([ "com.temporary.week", "com.temporary.month", "com.temporary.year" ])
-        
-        SwiftyStoreKit.retrieveProductsInfo(subscriptionIds) { result in
-            
-            for product in result.retrievedProducts {
-                
-                guard subscriptionIds.contains(product.productIdentifier) else { continue }
-                
-                self.products.append(product)
-                print(self.products)
-                
-            }
-            
-            self.updateSubscriptionsUI()
-            
+        guard isConnectedToNetwork() else {
+            showNetworkConnectionAlert(completion: nil)
+            return
         }
+        
+        let ids = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId]
+        
+//        let testIds = ["com.temporary.week", "com.temporary.month", "com.temporary.year"]
+        
+        StoreManager.getProducts(for: ids) { products in
+            self.products = products
+            self.updateSubscriptionsUI()
+        }
+        
         
     }
     
     private func updateSubscriptionsUI() {
         
+        offerViews.forEach { offerView in
+            offerView.isHidden = true
+        }
         
+        for i in 0 ..< self.products.count {
+            
+            durationLabels[i].text = products[i].skProduct.getSubscriptionPeriod(showOne: true)
+            priceLabels[i].text = "\(products[i].price) \(products[i].subscriptionPeriod)"
+            totalPriceLabels[i].text = "\(L10n.Subscription.total): \(products[i].price)"
+            offerViews[i].isHidden = false
+            
+        }
         
     }
     
@@ -181,6 +215,7 @@ class SubscriptionPlansViewController: BaseViewController {
         thirdTick.isHidden = true
         removeGradient(from: secondOfferView)
         removeGradient(from: thirdOfferView)
+        selectedProductIndex = 0
     }
     
     @objc func choosedSecond() {
@@ -190,6 +225,7 @@ class SubscriptionPlansViewController: BaseViewController {
         thirdTick.isHidden = true
         removeGradient(from: firstOfferView)
         removeGradient(from: thirdOfferView)
+        selectedProductIndex = 1
     }
     
     @objc func choosedThird() {
@@ -199,68 +235,64 @@ class SubscriptionPlansViewController: BaseViewController {
         thirdTick.isHidden = false
         removeGradient(from: firstOfferView)
         removeGradient(from: secondOfferView)
+        selectedProductIndex = 2
     }
     
     // MARK: - @IBActions
     
     @IBAction func closeButtonPressed(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.view.removeFromSuperview()
+        self.dismiss(animated: true)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-//        let popup = PurchaseFailedViewController.load(from: .purchaseFailed)
-//        popup.completion = {
+
+        guard isConnectedToNetwork() else {
+            self.showNetworkConnectionAlert(completion: nil)
+            return
+        }
+        
+        guard !State.isSubscribed else {
+            self.showAlreadySubscribedAlert(completion: nil)
+            return
+        }
+        
+        let package = self.products[selectedProductIndex].purchasesPackage
+        
+        Amplitude.instance().logEvent(AmplitudeEvents.subscriptionButtonTap)
+        
+        StoreManager.purchase(package: package) {
 //            self.view.removeFromSuperview()
-//        }
-//        self.showPopup(popup)
+            self.dismiss(animated: true)
+        }
+        
     }
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
         
-        SwiftyStoreKit.restorePurchases(atomically: true) { results in
-            if results.restoreFailedPurchases.count > 0 {
-                print("Restore Failed: \(results.restoreFailedPurchases)")
-                
-                State.isSubscribed = false
-                let purchaseFailedVC = PurchaseFailedViewController.load(from: .purchaseFailed)
-                purchaseFailedVC.modalPresentationStyle = .fullScreen
-                self.present(purchaseFailedVC, animated: true)
-                
-            } else if results.restoredPurchases.count > 0 {
-                print("Restore Success: \(results.restoredPurchases)")
-                
-                State.isSubscribed = true
-                self.showRestoredAlert {
-                    let mainNav = UINavigationController.load(from: .mainNav)
-                    mainNav.modalPresentationStyle = .fullScreen
-                    self.present(mainNav, animated: true)
-                }
-                
-            } else {
-                print("Nothing to Restore")
-                
-                State.isSubscribed = false
-                self.showNotSubscriberAlert(completion: nil)
-                
-            }
+        guard isConnectedToNetwork() else {
+            showNetworkConnectionAlert(completion: nil)
+            return
+        }
+        
+        guard !State.isSubscribed else {
+            showAlreadySubscribedAlert(completion: nil)
+            return
+        }
+        
+        StoreManager.restore() {
+//            self.view.removeFromSuperview()
+            self.dismiss(animated: true)
         }
         
     }
     
     @IBAction func privacyButtonPressed(_ sender: Any) {
-        //        let popup = SettingsPopupViewController.load(from: .settingsPopup)
-        //        popup.titleLabelText = L10n.Privacy.title
-        //        popup.mainText = FullPrivacyPolicy
-        //        self.showPopup(popup)
         guard let url = URL(string: "https://artpoldev.com/privacy.html") else { return }
         UIApplication.shared.open(url)
     }
     
     @IBAction func termsButtonPressed(_ sender: Any) {
-        //        let popup = SettingsPopupViewController.load(from: .settingsPopup)
-        //        popup.titleLabelText = L10n.ServiceTerms.title
-        //        popup.mainText = FullTermsOfUse
-        //        self.showPopup(popup)
         guard let url = URL(string: "https://artpoldev.com/terms.html") else { return }
         UIApplication.shared.open(url)
     }

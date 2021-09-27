@@ -32,12 +32,13 @@ class MainViewController: BaseViewController {
         
         let paywallConfig = RCValues.sharedInstance.organicSubscriptionPage()
         State.currentProductId = paywallConfig.subscriptionId
-        checkSubscription()
+        StoreManager.updateStatus()
         localize()
         setupItemsArray()
         configureCollectionView()
         configureTableView()
         callPaywall()
+     
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,8 +74,7 @@ class MainViewController: BaseViewController {
     
     private func callPaywall() {
         guard !State.isSubscribed else { return }
-        let subscription = SubscriptionViewController.load(from: .subscription)
-        self.showPopup(subscription)
+        self.showPaywall(animated: false)
     }
     
     // MARK: - @IBActions
@@ -130,6 +130,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.categoryNameLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             cell.lineView.isHidden = false
             tableView.reloadData()
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             return
         }
         oldCell.categoryNameLabel.textColor = UIColor(red: 97/255, green: 103/255, blue: 134/255, alpha: 1)
@@ -140,7 +141,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.lineView.isHidden = false
         
         tableView.reloadData()
-        
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
 }
 
@@ -163,21 +164,25 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.preset.rawValue, for: indexPath) as! PresetTableViewCell
         
+        var currentPreset = Preset.all[0]
+        
         if currentCategoryID == 0 {
-            cell.presetImage.image = Preset.all[indexPath.row].getTitleImage()
+            currentPreset = Preset.all[indexPath.row]
         } else if items[currentCategoryID] == FREE {
-            cell.presetImage.image = Preset.free[indexPath.row].getTitleImage()
+            currentPreset = Preset.free[indexPath.row]
         } else if items[currentCategoryID] == PREMIUM {
-            cell.presetImage.image = Preset.premium[indexPath.row].getTitleImage()
+            currentPreset = Preset.premium[indexPath.row]
         } else {
             Preset.all.forEach { preset in
                 if preset.name == items[currentCategoryID] {
-                    cell.presetImage.image = preset.getTitleImage()
+                    currentPreset = preset
                 }
             }
         }
         
-        if Preset.all[indexPath.row].isFree {
+        cell.presetImage.image = currentPreset.getTitleImage()
+
+        if currentPreset.isFree {
             cell.presetButton.setTitle(FREE, for: .normal)
             cell.presetButton.backgroundColor = UIColor(red: 1, green: 71/255, blue: 181/255, alpha: 1)
         } else {

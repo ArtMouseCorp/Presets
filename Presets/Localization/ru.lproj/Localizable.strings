@@ -43,6 +43,8 @@
 "subscription.interval.year.two"    = "года";
 "subscription.interval.year.five"   = "лет";
 
+"subscription.total"                = "Суммарно";
+
 // MARK: - Главный экран
 
 "main.title"                        = "Пресеты Lightroom";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms"      = "Условия использования";
 "settings.button.policy"            = "Политика конфиденциальности";
 "settings.button.contact"           = "Контакты";
+"settings.button.subscriptionPlans" = "Планы подписки";
 "settings.button.restorePurchase"   = "Восстановить покупки";
 
 // MARK: - Условия использования

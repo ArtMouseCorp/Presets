@@ -11,6 +11,12 @@ extension UIViewController {
         popup.didMove(toParent: self)
     }
     
+    public func showPaywall(animated: Bool = true, single: Bool = true) {
+        let subscription = SubscriptionViewController.load(from: .subscription)
+        let subPlans = SubscriptionPlansViewController.load(from: .subscriptionPlans)
+        showPopup(single ? subscription : subPlans)
+    }
+    
     static func load(from screen: Screen) -> Self {
         return screen.storyboard.instantiateViewController(withIdentifier: screen.info.id) as! Self
     }

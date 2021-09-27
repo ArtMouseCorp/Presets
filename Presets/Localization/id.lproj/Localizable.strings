@@ -43,6 +43,8 @@
 "subscription.interval.year.two"    = "tahun"; // 2 tahun - 2 ода
 "subscription.interval.year.five"   = "tahun"; // 3 tahun - 5 е
 
+"subscription.total"                = "Total";
+
 // TANDA: - Layar Utama
 
 "main.title"                        = "Preset Lightroom";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms"      = "Syarat Penggunaan";
 "settings.button.policy"            = "Kebijakan Privasi";
 "settings.button.contact"           = "Hubungi kami";
+"settings.button.subscriptionPlans" = "Paket berlangganan";
 "settings.button.restorePurchase"   = "Pulihkan pembelian Anda";
 
 // TANDA: - Persyaratan Layanan

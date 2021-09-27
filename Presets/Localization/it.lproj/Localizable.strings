@@ -43,6 +43,8 @@
 "subscription.interval.year.two"    = "anni"; // 2 anni - 2 giorni
 "subscription.interval.year.five"   = "anni"; // 3 anni - 5 anni
 
+"subscription.total"                = "Totale";
+
 // SEGNALA: - Schermata principale
 
 "main.title"                        = "Preset di Lightroom";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms"      = "Termini d’utilizzo";
 "settings.button.policy"            = "Informativa sulla privacy";
 "settings.button.contact"           = "Contattaci";
+"settings.button.subscriptionPlans" = "Piani di abbonamento";
 "settings.button.restorePurchase"   = "Recupera i tuoi acquisti";
 
 // CONTRASSEGNO: - Termini di servizio

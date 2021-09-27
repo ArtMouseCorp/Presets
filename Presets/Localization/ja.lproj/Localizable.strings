@@ -43,6 +43,8 @@
 "subscription.interval.year.two"    = "年"; // 2年-2年
 "subscription.interval.year.five"   = "年"; // 3年-5年
 
+"subscription.total"                = "合計";
+
 //マーク：-メイン画面
 
 "main.title"                        = "Lightroomプリセット";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms"      = "利用諸条件";
 "settings.button.policy"            = "プライバシーポリシー";
 "settings.button.contact"           = "お問い合わせ";
+"settings.button.subscriptionPlans" = "サブスクリプションプラン";
 "settings.button.restorePurchase"   = "購入を回復する";
 
 //マーク：-利用規約

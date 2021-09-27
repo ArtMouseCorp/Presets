@@ -43,6 +43,8 @@
 "subscription.interval.year.two" = "años"; // 2 años - 2 года
 "subscription.interval.year.five" = "años"; // 3 años - 5 лет
 
+"subscription.total"                = "Total";
+
 // MARCA: - Pantalla principal
 
 "main.title" = "Ajustes preestablecidos de Lightroom";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms" = "Condiciones de uso";
 "settings.button.policy" = "Política de privacidad";
 "settings.button.contact" = "Contáctanos";
+"settings.button.subscriptionPlans" = "Planes de suscripción";
 "settings.button.restorePurchase" = "Recuperar tus compras";
 
 // MARCA: - Condiciones de servicio

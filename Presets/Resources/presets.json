@@ -3,7 +3,7 @@
 		"id": 1,
 		"name": "Amber",
 		"titleImage": "grid-amber.jpeg",
-		"isFree": false,
+		"isFree": true,
 		"images": [
 			"image-amber-1.jpeg",
 			"image-amber-2.jpeg",
@@ -23,7 +23,7 @@
 		"id": 2,
 		"name": "BLVCK",
 		"titleImage": "grid-blvck.jpeg",
-		"isFree": false,
+		"isFree": true,
 		"images": [
 			"image-blvck-1.jpeg",
 			"image-blvck-2.jpeg",

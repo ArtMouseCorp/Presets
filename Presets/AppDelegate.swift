@@ -4,7 +4,9 @@ import OneSignal
 import AppsFlyerLib
 import Firebase
 import GoogleMobileAds
-import SwiftyStoreKit
+import Purchases
+import AppTrackingTransparency
+import SkarbSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,12 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         State.newAppLaunch()
         
-        registerTransactionObserver()
-//        connectAmplitude()
+        // TODO: - Integrate Amplitude
+        
+        connectAmplitude()
+        connectRevenueCat()
         connectOneSignal(with: launchOptions)
         connectAppsFlyer()
         connectFirebase()
         connectGoogleMobileAds()
+        connectProdinfire()
         
         _ = RCValues.sharedInstance
         
@@ -50,23 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Custom functions
     
-    private func registerTransactionObserver() {
-    SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
-            for purchase in purchases {
-                switch purchase.transaction.transactionState {
-                case .purchased, .restored:
-                    if purchase.needsFinishTransaction {
-                        // Deliver content from server, then:
-                        SwiftyStoreKit.finishTransaction(purchase.transaction)
-                    }
-                    // Unlock content
-                case .failed, .purchasing, .deferred:
-                    break // do nothing
-                @unknown default:
-                    break // do nothing
-                }
-            }
-        }
+    private func connectRevenueCat() {
+        
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: Keys.RevenueCat.apiKey)
+        
     }
     
     private func connectAmplitude() {
@@ -76,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func connectOneSignal(with launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         // Remove this method to stop OneSignal Debugging
-        OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+//        OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
         
         // OneSignal initialization
         OneSignal.initWithLaunchOptions(launchOptions)
@@ -100,6 +93,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: 60)
         
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { (status) in }
+        }
+        
         // SceneDelegate support
         NotificationCenter.default.addObserver(self, selector: NSSelectorFromString("sendLaunch"), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
@@ -111,6 +108,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func connectGoogleMobileAds() {
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+    }
+    
+    private func connectProdinfire() {
+        SkarbSDK.initialize(clientId: Keys.Prodinfire.apiKey, isObservable: true)
+        
+        func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
+            SkarbSDK.sendSource(broker: .appsflyer, features: conversionInfo)
+        }
     }
     
     

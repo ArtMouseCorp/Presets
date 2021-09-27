@@ -43,6 +43,8 @@
 "subscription.interval.year.two"    = "yıl"; // 2 yıl - 2 года
 "subscription.interval.year.five"   = "yıl"; // 3 yıl - 5 gün
 
+"subscription.total"                = "Toplam";
+
 // İŞARET: - Ana Ekran
 
 "main.title"                        = "Lightroom ön ayarları";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms"      = "Kullanım Şartları";
 "settings.button.policy"            = "Gizlilik Politikası";
 "settings.button.contact"           = "Bize ulaşın";
+"settings.button.subscriptionPlans" = "Abonelik planları";
 "settings.button.restorePurchase"   = "Satın alımlarınızı kurtarın";
 
 // MARK: - Hizmet Şartları

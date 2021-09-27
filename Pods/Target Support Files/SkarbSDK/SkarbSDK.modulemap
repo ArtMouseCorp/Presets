@@ -1,0 +1,6 @@
+framework module SkarbSDK {
+  umbrella header "SkarbSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

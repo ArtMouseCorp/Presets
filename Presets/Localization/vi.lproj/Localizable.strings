@@ -43,6 +43,8 @@
 "subscription.interval.year.two"    = "năm"; // 2 năm - 2 года
 "subscription.interval.year.five"   = "năm"; // 3 năm - 5 лет
 
+"subscription.total"                = "Toàn bộ";
+
 // ĐÁNH DẤU: - Màn hình chính
 
 "main.title"                        = "Thiết lập sẵn cho Lightroom";
@@ -87,6 +89,7 @@
 "settings.button.serviceTerms"      = "Điều khoản Sử dụng";
 "settings.button.policy"            = "Chính sách Quyền Riêng tư";
 "settings.button.contact"           = "Liên hệ với chúng tôi";
+"settings.button.subscriptionPlans" = "Gói đăng ký";
 "settings.button.restorePurchase"   = "Khôi phục đơn hàng của bạn";
 
 // ĐÁNH DẤU: - Điều khoản Dịch vụ
