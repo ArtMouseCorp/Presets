@@ -40,3 +40,5 @@ ${BUILT_PRODUCTS_DIR}/_NIODataStructures/_NIODataStructures.framework
 ${BUILT_PRODUCTS_DIR}/gRPC-Swift/GRPC.framework
 ${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/OneSignal/OneSignal.framework/OneSignal
+${PODS_XCFRAMEWORKS_BUILD_DIR}/YandexMobileMetrica/YandexMobileMetrica.framework/YandexMobileMetrica
+${PODS_XCFRAMEWORKS_BUILD_DIR}/YandexMobileMetricaCrashes/YandexMobileMetricaCrashes.framework/YandexMobileMetricaCrashes

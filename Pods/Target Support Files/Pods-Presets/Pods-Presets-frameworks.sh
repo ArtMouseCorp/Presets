@@ -216,6 +216,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/gRPC-Swift/GRPC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/OneSignal/OneSignal.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/YandexMobileMetrica/YandexMobileMetrica.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/YandexMobileMetricaCrashes/YandexMobileMetricaCrashes.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Amplitude/Amplitude.framework"
@@ -259,6 +261,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/gRPC-Swift/GRPC.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
   install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/OneSignal/OneSignal.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/YandexMobileMetrica/YandexMobileMetrica.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/YandexMobileMetricaCrashes/YandexMobileMetricaCrashes.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

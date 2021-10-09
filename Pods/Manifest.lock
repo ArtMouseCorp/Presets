@@ -185,6 +185,12 @@ PODS:
     - SwiftNIOTLS (< 3, >= 2.32.0)
   - SwiftProtobuf (1.17.0)
   - SwiftyJSON (5.0.1)
+  - YandexMobileMetrica/Dynamic (4.0.0):
+    - YandexMobileMetrica/Dynamic/Core (= 4.0.0)
+    - YandexMobileMetrica/Dynamic/Crashes (= 4.0.0)
+  - YandexMobileMetrica/Dynamic/Core (4.0.0)
+  - YandexMobileMetrica/Dynamic/Crashes (4.0.0):
+    - YandexMobileMetrica/Dynamic/Core
 
 DEPENDENCIES:
   - Amplitude
@@ -196,6 +202,7 @@ DEPENDENCIES:
   - Purchases
   - SkarbSDK
   - SwiftyJSON
+  - YandexMobileMetrica/Dynamic
 
 SPEC REPOS:
   trunk:
@@ -246,6 +253,7 @@ SPEC REPOS:
     - SwiftNIOTransportServices
     - SwiftProtobuf
     - SwiftyJSON
+    - YandexMobileMetrica
 
 SPEC CHECKSUMS:
   _NIODataStructures: e2077c7dc7c1d6c93e698c85fe04d663a17f53a4
@@ -295,7 +303,8 @@ SPEC CHECKSUMS:
   SwiftNIOTransportServices: 1fbbdb58510af3c53a838a1dbea98f18132dc952
   SwiftProtobuf: 9c85136c6ba74b0a1b84279dbf0f6db8efb714e0
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+  YandexMobileMetrica: 85ba4c1a6839985d58bf45ec7f915e433525b094
 
-PODFILE CHECKSUM: 134f001c638ea41454644191444fd9adb6bf8d3c
+PODFILE CHECKSUM: d5b9708ed4ade56dd342cc738243d473e168950f
 
 COCOAPODS: 1.10.2

@@ -7,6 +7,7 @@ import GoogleMobileAds
 import Purchases
 import AppTrackingTransparency
 import SkarbSDK
+import YandexMobileMetrica
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         connectFirebase()
         connectGoogleMobileAds()
         connectProdinfire()
+        connectAppMetrika()
         
         _ = RCValues.sharedInstance
         
@@ -118,6 +120,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    private func connectAppMetrika() {
+        // Initializing the AppMetrica SDK.
+        let configuration = YMMYandexMetricaConfiguration.init(apiKey: Keys.AppMetrika.apiKey)
+        YMMYandexMetrica.activate(with: configuration!)
+    }
     
 }
 

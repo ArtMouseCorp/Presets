@@ -25,4 +25,6 @@ pod 'Purchases'
 
 pod 'SkarbSDK'
 
+pod 'YandexMobileMetrica/Dynamic'
+
 end

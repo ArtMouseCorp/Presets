@@ -44,8 +44,8 @@ enum Keys {
     // AdMob
     internal enum AdmMod {
         static let appId: String                = "ca-app-pub-9686541093041732~7231766062"
-        static let unitId: String               = "ca-app-pub-3940256099942544/4411468910" // DEBUG
-//        static let unitId: String               = "ca-app-pub-9686541093041732~7231766062" // RELEASE
+//        static let unitId: String               = "ca-app-pub-3940256099942544/4411468910" // DEBUG
+        static let unitId: String               = "ca-app-pub-9686541093041732~7231766062" // RELEASE
     }
     
     // AppsFlyer
@@ -56,6 +56,10 @@ enum Keys {
     
     internal enum Prodinfire {
         static let apiKey: String               = "!G245JF7fh9s4tnFSwd83rJDKn"
+    }
+    
+    internal enum AppMetrika {
+        static let apiKey: String               = "6d534592368c4f1c93479f7e67a5b08e"
     }
     
 }

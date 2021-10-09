@@ -20,7 +20,7 @@
 "subscription.button.next"          = "التالي";
 "subscription.button.restore"       = "يعيد";
 "subscription.button.privacy"       = "خصوصية";
-"subscription.button.terms"         = "Terms";
+"subscription.button.terms"         = "مصطلحات";
 
 "subscription.failed.title"         = "عذرًا!";
 "subscription.failed.subtitle"      = "فشل الشراء :(";
