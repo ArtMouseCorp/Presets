@@ -59,7 +59,7 @@ enum Keys {
     }
     
     internal enum AppMetrika {
-        static let apiKey: String               = "6d534592368c4f1c93479f7e67a5b08e"
+        static let apiKey: String               = "44ff71f5-2dc7-4854-b0ce-a28d53d6331a"
     }
     
 }

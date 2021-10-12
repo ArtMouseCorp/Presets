@@ -123,6 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func connectAppMetrika() {
         // Initializing the AppMetrica SDK.
         let configuration = YMMYandexMetricaConfiguration.init(apiKey: Keys.AppMetrika.apiKey)
+        configuration?.revenueAutoTrackingEnabled = true
         YMMYandexMetrica.activate(with: configuration!)
     }
     
