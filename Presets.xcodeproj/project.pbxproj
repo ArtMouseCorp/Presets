@@ -291,7 +291,6 @@
 		4A266A6726C6D5B300318A8D /* SettingsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A266A6626C6D5B300318A8D /* SettingsPopupViewController.swift */; };
 		4A27D3A126C69CCC00A4D069 /* PresetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A27D3A026C69CCC00A4D069 /* PresetTableViewCell.xib */; };
 		4A46A56926C5A9AD005EBD85 /* SubscriptionPlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46A56826C5A9AD005EBD85 /* SubscriptionPlansViewController.swift */; };
-		4A46A56C26C5D35C005EBD85 /* PurchaseFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46A56B26C5D35C005EBD85 /* PurchaseFailedViewController.swift */; };
 		4A46A56E26C5D701005EBD85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46A56D26C5D701005EBD85 /* MainViewController.swift */; };
 		4A46A57126C5DEFE005EBD85 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46A56F26C5DEFE005EBD85 /* CategoryCollectionViewCell.swift */; };
 		4A46A57226C5DEFE005EBD85 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A46A57026C5DEFE005EBD85 /* CategoryCollectionViewCell.xib */; };
@@ -658,7 +657,6 @@
 		4A266A6626C6D5B300318A8D /* SettingsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopupViewController.swift; sourceTree = "<group>"; };
 		4A27D3A026C69CCC00A4D069 /* PresetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresetTableViewCell.xib; sourceTree = "<group>"; };
 		4A46A56826C5A9AD005EBD85 /* SubscriptionPlansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansViewController.swift; sourceTree = "<group>"; };
-		4A46A56B26C5D35C005EBD85 /* PurchaseFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseFailedViewController.swift; sourceTree = "<group>"; };
 		4A46A56D26C5D701005EBD85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4A46A56F26C5DEFE005EBD85 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A46A57026C5DEFE005EBD85 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1241,7 +1239,6 @@
 			children = (
 				4A02E90726C542FA00E3FCF0 /* SubscriptionViewController.swift */,
 				4A46A56826C5A9AD005EBD85 /* SubscriptionPlansViewController.swift */,
-				4A46A56B26C5D35C005EBD85 /* PurchaseFailedViewController.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -1849,7 +1846,6 @@
 				2823317326C6DAE0002EB4C2 /* PresetImageCollectionViewCell.swift in Sources */,
 				4A266A6726C6D5B300318A8D /* SettingsPopupViewController.swift in Sources */,
 				285452EB26C562AE0097B9B2 /* Constants.swift in Sources */,
-				4A46A56C26C5D35C005EBD85 /* PurchaseFailedViewController.swift in Sources */,
 				4AF7612F26DD11D30060D705 /* UINavigationController.swift in Sources */,
 				28F1331326CA7BFF00DB7142 /* UILabel.swift in Sources */,
 				285452F526C572440097B9B2 /* DefaultPopupViewController.swift in Sources */,

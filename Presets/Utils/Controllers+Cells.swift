@@ -16,7 +16,6 @@ public enum Screen {
     case settings
     case preset
     case settingsPopup
-    case purchaseFailed
     case mainNav
 }
 
@@ -46,8 +45,6 @@ extension Screen {
             return ("PresetViewController", .Main)
         case .settingsPopup:
             return("SettingsPopupViewController", .Main)
-        case .purchaseFailed:
-            return ("PurchaseFailedViewController", .Main)
         case .mainNav:
             return ("MainNavigationController", .Main)
         }
