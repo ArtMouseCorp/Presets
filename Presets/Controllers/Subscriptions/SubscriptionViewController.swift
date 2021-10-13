@@ -96,7 +96,7 @@ class SubscriptionViewController: BaseViewController {
         dotViews.forEach { dotView in
             dotView.isHidden = !pageConfig.showTerms
         }
-    
+        
     }
     
     private func localize() {
@@ -160,6 +160,7 @@ class SubscriptionViewController: BaseViewController {
         
         guard let interstitial = interstitial else {
             print("Ad wasn't ready")
+            self.view.removeFromSuperview()
             return
         }
         
@@ -218,7 +219,7 @@ class SubscriptionViewController: BaseViewController {
         }
         
         StoreManager.getProducts(for: [pageConfig.subscriptionId]) { products in
-//        StoreManager.getProducts(for: ["com.temporary.week"]) { products in
+            //        StoreManager.getProducts(for: ["com.temporary.week"]) { products in
             
             let finalString = self.pageConfig.priceLabel
                 .replacingOccurrences(of: "%trial_period%", with: products[0].trialPeriod ?? "")
@@ -304,10 +305,14 @@ class SubscriptionViewController: BaseViewController {
 // MARK: - GADFullScreenContentDelegate
 
 extension SubscriptionViewController: GADFullScreenContentDelegate {
-
+    
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did present full screen content.")
+        self.view.removeFromSuperview()
+    }
+    
     func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad will dismiss full screen content.")
-        self.view.removeFromSuperview()
     }
     
 }

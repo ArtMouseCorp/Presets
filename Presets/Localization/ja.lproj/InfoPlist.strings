@@ -1,7 +1,2 @@
-/* 
-  InfoPlist.strings
-  Presets
 
-  Created by Kolya Libak on 16.08.21.
-  
-*/
+"NSUserTrackingUsageDescription" = "あなたのデータはあなたの興味に合わせてカスタマイズされた体験を作成するために使用されます";

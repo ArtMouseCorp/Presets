@@ -34,6 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // SceneDelegate support - start AppsFlyer SDK
     @objc func sendLaunch() {
+        
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { (status) in }
+        }
+        
         AppsFlyerLib.shared().start()
     }
     
@@ -94,10 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppsFlyerLib.shared().delegate = self
         
         AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: 60)
-        
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { (status) in }
-        }
         
         // SceneDelegate support
         NotificationCenter.default.addObserver(self, selector: NSSelectorFromString("sendLaunch"), name: UIApplication.didBecomeActiveNotification, object: nil)
