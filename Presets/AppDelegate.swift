@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         State.newAppLaunch()
         
-        // TODO: - Integrate Amplitude
-        
         connectAmplitude()
         connectRevenueCat()
         connectOneSignal(with: launchOptions)
