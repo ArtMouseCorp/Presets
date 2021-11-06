@@ -129,3 +129,5 @@
 
 "alert.notSubscriber.title"         = "Impossible à restaurer";
 "alert.notSubscriber.message"       = "Désolé, vous ne pouvez pas restaurer votre achat car vous n'avez pas d'abonnement actif.";
+
+"alert.loading.message"             = "S'il vous plaît, attendez...";

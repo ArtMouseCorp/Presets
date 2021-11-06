@@ -116,6 +116,8 @@ class OnboardingViewController: UIViewController {
     // MARK: - @IBActions
     
     @IBAction func nextButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         currentIntroducePage += 1
         setPageContent()
     }

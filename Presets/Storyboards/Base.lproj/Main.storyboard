@@ -8,6 +8,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -877,9 +878,11 @@
                                             <constraint firstAttribute="height" constant="24" id="Oa1-ce-7mp"/>
                                             <constraint firstAttribute="width" constant="24" id="jjs-hE-cJp"/>
                                         </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal">
-                                            <imageReference key="image" image="grid"/>
+                                        <state key="normal" image="bookmark" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
                                         <connections>
                                             <action selector="userPresetsButtonPressed:" destination="Wds-Es-eda" eventType="touchUpInside" id="eca-Y9-VuH"/>
@@ -907,12 +910,6 @@
                                     <constraint firstItem="slu-AD-gwg" firstAttribute="top" secondItem="Kks-J0-a18" secondAttribute="bottom" constant="15" id="o0A-LO-Va1"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lOr-bN-dtT">
-                                <rect key="frame" x="0.0" y="222" width="414" height="674"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                             <collectionView clipsSubviews="YES" contentMode="scaleAspectFit" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ho2-7f-Gn4">
                                 <rect key="frame" x="0.0" y="168" width="414" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -927,10 +924,53 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="frs-Tx-QXt">
+                                <rect key="frame" x="0.0" y="222" width="414" height="674"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PYB-wS-L0q">
+                                    <size key="itemSize" width="414" height="381"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PresetCategoryCollectionViewCell" id="97f-iO-CUU" customClass="PresetCategoryCollectionViewCell" customModule="Presets" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="146.5" width="414" height="381"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1GY-I1-oZm">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="381"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="un4-id-iXC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="381"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="381" id="2cU-Ep-u6L"/>
+                                                        <constraint firstAttribute="width" constant="414" id="3Hs-wB-TMf"/>
+                                                    </constraints>
+                                                </tableView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="un4-id-iXC" firstAttribute="leading" secondItem="1GY-I1-oZm" secondAttribute="leading" id="Swa-6v-hEV"/>
+                                                <constraint firstAttribute="trailing" secondItem="un4-id-iXC" secondAttribute="trailing" id="nnv-UQ-hTq"/>
+                                                <constraint firstItem="un4-id-iXC" firstAttribute="top" secondItem="1GY-I1-oZm" secondAttribute="top" id="rXv-Sa-iuv"/>
+                                                <constraint firstAttribute="bottom" secondItem="un4-id-iXC" secondAttribute="bottom" id="z1c-Sq-jeZ"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="381"/>
+                                        <connections>
+                                            <outlet property="tableView" destination="un4-id-iXC" id="Dtk-Or-QH1"/>
+                                            <outlet property="tableViewHeightConstraint" destination="2cU-Ep-u6L" id="nOh-bP-Cks"/>
+                                            <outlet property="tableViewWidthConstraint" destination="3Hs-wB-TMf" id="TrU-xs-hLi"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JLe-Ot-dxl"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="frs-Tx-QXt" secondAttribute="bottom" id="4Ys-S0-4gl"/>
                             <constraint firstItem="xrU-2E-7jM" firstAttribute="leading" secondItem="JLe-Ot-dxl" secondAttribute="leading" id="BjM-gV-3hE"/>
                             <constraint firstItem="Op1-ER-VlB" firstAttribute="top" secondItem="JLe-Ot-dxl" secondAttribute="top" constant="18" id="Rjy-nT-sq0"/>
                             <constraint firstItem="Kks-J0-a18" firstAttribute="top" secondItem="JLe-Ot-dxl" secondAttribute="top" constant="18" id="Rlw-Ou-MHh"/>
@@ -938,11 +978,10 @@
                             <constraint firstItem="Ho2-7f-Gn4" firstAttribute="top" secondItem="xrU-2E-7jM" secondAttribute="bottom" constant="24" id="ZTJ-YF-nCm"/>
                             <constraint firstItem="JLe-Ot-dxl" firstAttribute="trailing" secondItem="Ho2-7f-Gn4" secondAttribute="trailing" id="ZlG-2D-Ybf"/>
                             <constraint firstItem="xrU-2E-7jM" firstAttribute="top" secondItem="Dva-mV-cZQ" secondAttribute="top" id="eQW-hI-iZd"/>
-                            <constraint firstAttribute="bottom" secondItem="lOr-bN-dtT" secondAttribute="bottom" id="jU7-D3-I8e"/>
-                            <constraint firstItem="JLe-Ot-dxl" firstAttribute="trailing" secondItem="lOr-bN-dtT" secondAttribute="trailing" id="lB6-ha-qvO"/>
-                            <constraint firstItem="lOr-bN-dtT" firstAttribute="top" secondItem="Ho2-7f-Gn4" secondAttribute="bottom" constant="24" id="o9B-vs-pXU"/>
                             <constraint firstItem="JLe-Ot-dxl" firstAttribute="trailing" secondItem="xrU-2E-7jM" secondAttribute="trailing" id="qGQ-LT-FJD"/>
-                            <constraint firstItem="lOr-bN-dtT" firstAttribute="leading" secondItem="JLe-Ot-dxl" secondAttribute="leading" id="sjX-Ub-b84"/>
+                            <constraint firstItem="JLe-Ot-dxl" firstAttribute="trailing" secondItem="frs-Tx-QXt" secondAttribute="trailing" id="qtI-Bb-owB"/>
+                            <constraint firstItem="frs-Tx-QXt" firstAttribute="top" secondItem="Ho2-7f-Gn4" secondAttribute="bottom" constant="24" id="sDJ-6X-GHg"/>
+                            <constraint firstItem="frs-Tx-QXt" firstAttribute="leading" secondItem="JLe-Ot-dxl" secondAttribute="leading" id="wiB-XA-4kg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lightroom presets" id="aZX-8j-sv1">
@@ -955,8 +994,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Ho2-7f-Gn4" id="wg2-8p-y48"/>
+                        <outlet property="presetsCollectionView" destination="frs-Tx-QXt" id="02F-Dt-NNK"/>
                         <outlet property="settingsButton" destination="Eye-0I-RO3" id="Hnv-vN-k3S"/>
-                        <outlet property="tableView" destination="lOr-bN-dtT" id="ArU-M6-ERi"/>
                         <outlet property="titleLabel" destination="slu-AD-gwg" id="zyY-q2-PaJ"/>
                         <outlet property="userPresetsButton" destination="EMb-iQ-cxo" id="kXE-Md-WH0"/>
                     </connections>
@@ -1432,6 +1471,7 @@
                             <constraint firstItem="9Kx-qh-2pu" firstAttribute="trailing" secondItem="Me7-pi-Rtz" secondAttribute="trailing" constant="16" id="yEh-pg-bFQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="FiF-dd-M9j"/>
                     <connections>
                         <outlet property="backButon" destination="BcV-yY-rui" id="ovF-8h-7Hz"/>
                         <outlet property="contactLabel" destination="c58-jg-QrV" id="Sbe-0Y-zn6"/>
@@ -1451,7 +1491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ni6-SQ-HI5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6932" y="-609"/>
+            <point key="canvasLocation" x="7664" y="-609"/>
         </scene>
         <!--Settings Popup View Controller-->
         <scene sceneID="chf-Sc-Hfg">
@@ -1542,7 +1582,7 @@ will be forfeited when the user purchases a subscription to that publication</st
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1o-Ze-mJH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7665" y="-609"/>
+            <point key="canvasLocation" x="8387" y="-609"/>
         </scene>
         <!--Manual View Controller-->
         <scene sceneID="Xc8-pX-Xa0">
@@ -1891,7 +1931,7 @@ will be forfeited when the user purchases a subscription to that publication</st
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6O-LD-93S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8393" y="185"/>
+            <point key="canvasLocation" x="9119" y="185"/>
         </scene>
         <!--Preset View Controller-->
         <scene sceneID="6O9-3P-WNg">
@@ -2063,10 +2103,28 @@ will be forfeited when the user purchases a subscription to that publication</st
             </objects>
             <point key="canvasLocation" x="6931.884057971015" y="789.50892857142856"/>
         </scene>
+        <!--Settings Navigation Controller-->
+        <scene sceneID="VTD-1g-LdF">
+            <objects>
+                <navigationController storyboardIdentifier="SettingsNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="j7b-FM-1JI" customClass="SettingsNavigationController" customModule="Presets" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JRt-wd-86p">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ekr-vT-7NX" kind="relationship" relationship="rootViewController" id="bI9-G6-aAd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uun-oZ-ctd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6931.884057971015" y="-609.375"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow-right" width="24" height="24"/>
         <image name="back" width="24" height="24"/>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="clipboard" width="106" height="106"/>
         <image name="close" width="24" height="24"/>
         <image name="gradient-add" width="24" height="24"/>

@@ -59,12 +59,16 @@ class SettingsPopupViewController: PopupViewController {
     // MARK: - Override
     
     override func backgroundTapped() {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         animateOut()
     }
     
     // MARK: - @IBActions
 
     @IBAction func closeButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         animateOut()
     }
 }

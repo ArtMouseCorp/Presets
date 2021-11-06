@@ -13,7 +13,6 @@ class SubscriptionViewController: BaseViewController {
     @IBOutlet weak var blackWhiteGradient: UIView!
     @IBOutlet weak var firstOfferView: UIView!
     @IBOutlet weak var secondOfferView: UIView!
-    
     @IBOutlet var dotViews: [UIView]!
     
     // Labels
@@ -46,7 +45,6 @@ class SubscriptionViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         localize()
         
         createAndLoadInterstitialAd()
@@ -82,7 +80,6 @@ class SubscriptionViewController: BaseViewController {
     // MARK: - Custom functions
     
     private func configureUI() {
-        
         titleLabel.text = pageConfig.titleLabel
         subtitleLabel.text = pageConfig.subtitleLabel
         closeButton.isHidden = true
@@ -214,12 +211,15 @@ class SubscriptionViewController: BaseViewController {
     private func getProduct() {
         
         guard isConnectedToNetwork() else {
-            showNetworkConnectionAlert(completion: nil)
+            showNetworkConnectionAlert() {
+                
+            }
             return
         }
         
-        StoreManager.getProducts(for: [pageConfig.subscriptionId]) { products in
-            //        StoreManager.getProducts(for: ["com.temporary.week"]) { products in
+        let productId = DEBUG ? "com.temporary.week" : pageConfig.subscriptionId
+        
+        StoreManager.getProducts(for: [productId]) { products in
             
             let finalString = self.pageConfig.priceLabel
                 .replacingOccurrences(of: "%trial_period%", with: products[0].trialPeriod ?? "")
@@ -249,15 +249,18 @@ class SubscriptionViewController: BaseViewController {
     // MARK: - @IBActions
     
     @IBAction func closeButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         Amplitude.instance().logEvent(AmplitudeEvents.paywallClose)
         showInterstitialAd()
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        // TODO: - Purchache subscription
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         
         guard isConnectedToNetwork() else {
-            self.showNetworkConnectionAlert(completion: nil)
+            self.showNetworkConnectionAlert()
             return
         }
         
@@ -270,17 +273,17 @@ class SubscriptionViewController: BaseViewController {
     }
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         
         guard isConnectedToNetwork() else {
-            showNetworkConnectionAlert(completion: nil)
+            showNetworkConnectionAlert()
             return
         }
         
         guard !State.isSubscribed else {
             showAlreadySubscribedAlert() {
-                let mainNav = UINavigationController.load(from: .mainNav)
-                mainNav.modalPresentationStyle = .fullScreen
-                self.present(mainNav, animated: true)
+                self.view.removeFromSuperview()
             }
             return
         }
@@ -292,11 +295,19 @@ class SubscriptionViewController: BaseViewController {
     }
     
     @IBAction func privacyButtonPressed(_ sender: Any) {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         guard let url = URL(string: "https://artpoldev.com/privacy.html") else { return }
         UIApplication.shared.open(url)
     }
     
     @IBAction func termsButtonPressed(_ sender: Any) {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         guard let url = URL(string: "https://artpoldev.com/terms.html") else { return }
         UIApplication.shared.open(url)
     }
@@ -306,6 +317,7 @@ class SubscriptionViewController: BaseViewController {
 
 extension SubscriptionViewController: GADFullScreenContentDelegate {
     
+    /// Tells the delegate that the ad presented full screen content.
     func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did present full screen content.")
         self.view.removeFromSuperview()

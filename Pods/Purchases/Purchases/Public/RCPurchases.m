@@ -233,7 +233,6 @@ static BOOL _automaticAppleSearchAdsAttributionCollection = NO;
                   observerMode:(BOOL)observerMode
                 platformFlavor:(nullable NSString *)platformFlavor
          platformFlavorVersion:(nullable NSString *)platformFlavorVersion {
-    RCStoreKitRequestFetcher *fetcher = [[RCStoreKitRequestFetcher alloc] init];
     RCReceiptFetcher *receiptFetcher = [[RCReceiptFetcher alloc] init];
     RCSystemInfo *systemInfo = [[RCSystemInfo alloc] initWithPlatformFlavor:platformFlavor
                                                       platformFlavorVersion:platformFlavorVersion
@@ -253,6 +252,9 @@ static BOOL _automaticAppleSearchAdsAttributionCollection = NO;
 
     RCDeviceCache *deviceCache = [[RCDeviceCache alloc] initWith:userDefaults];
     RCOperationDispatcher *operationDispatcher = [[RCOperationDispatcher alloc] init];
+    RCStoreKitRequestFetcher *fetcher = [[RCStoreKitRequestFetcher alloc]
+                                         initWithOperationDispatcher:operationDispatcher];
+
     RCIntroEligibilityCalculator *introCalculator = [[RCIntroEligibilityCalculator alloc] init];
     RCReceiptParser *receiptParser = [[RCReceiptParser alloc] init];
     RCPurchaserInfoManager *purchaserInfoManager = [[RCPurchaserInfoManager alloc]
@@ -968,13 +970,14 @@ withPresentedOfferingIdentifier:(nullable NSString *)presentedOfferingIdentifier
     [self.deviceCache setOfferingsCacheTimestampToNow];
     [self.operationDispatcher dispatchOnWorkerThreadWithRandomDelay:isAppBackgrounded block:^{
         [self.backend getOfferingsForAppUserID:self.appUserID
-                                    completion:^(NSDictionary *data, NSError *error) {
-                                        if (error != nil) {
-                                            [self handleOfferingsUpdateError:error completion:completion];
-                                            return;
-                                        }
-                                        [self handleOfferingsBackendResultWithData:data completion:completion];
-                                    }];
+                                    completion:^(NSDictionary *maybeData, NSError *maybeError) {
+            if (maybeData != nil) {
+                [self handleOfferingsBackendResultWithData:maybeData completion:completion];
+                return;
+            }
+            NSError *error = maybeError ? : RCPurchasesErrorUtils.unexpectedBackendResponseError;
+            [self handleOfferingsUpdateError:error completion:completion];
+        }];
     }];
 
 }
@@ -985,7 +988,22 @@ withPresentedOfferingIdentifier:(nullable NSString *)presentedOfferingIdentifier
         [productIdentifiers addObject:productIdentifier];
     }];
 
-    [self productsWithIdentifiers:productIdentifiers.allObjects completionBlock:^(NSArray<SKProduct *> *_Nonnull products) {
+    if (productIdentifiers.count == 0) {
+        NSString *errorMessage = RCStrings.offering.configuration_error_no_products_for_offering;
+        [self handleOfferingsUpdateError:[RCPurchasesErrorUtils configurationErrorWithMessage:errorMessage]
+                              completion:completion];
+        return;
+    }
+
+    [self productsWithIdentifiers:productIdentifiers.allObjects
+                  completionBlock:^(NSArray<SKProduct *> *_Nonnull products) {
+
+        if (products.count == 0) {
+            NSString *errorMessage = RCStrings.offering.configuration_error_skproducts_not_found;
+            [self handleOfferingsUpdateError:[RCPurchasesErrorUtils configurationErrorWithMessage:errorMessage]
+                                  completion:completion];
+            return;
+        }
 
         NSMutableDictionary *productsById = [NSMutableDictionary new];
         for (SKProduct *p in products) {
@@ -1038,7 +1056,7 @@ withPresentedOfferingIdentifier:(nullable NSString *)presentedOfferingIdentifier
         RCDebugLog(@"%@", RCStrings.receipt.refreshing_empty_receipt);
         [self refreshReceipt:completion];
     } else {
-        completion(receiptData);
+        completion(receiptData ?: [NSData data]);
     }
 }
 

@@ -130,3 +130,4 @@
 "alert.notSubscriber.title"         = "Não pode ser restaurado";
 "alert.notSubscriber.message"       = "Lamentamos, não pode restabelecer a sua compra porque não tem uma subscrição ativa.";
 
+"alert.loading.message"             = "Por favor, espere...";

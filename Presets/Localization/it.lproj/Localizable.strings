@@ -129,3 +129,5 @@
 
 "alert.notSubscriber.title"         = "Non può essere ripristinato";
 "alert.notSubscriber.message"       = "Spiacenti, non puoi ripristinare il tuo acquisto perché non hai un abbonamento attivo.";
+
+"alert.loading.message"             = "Attendere prego...";

@@ -25,22 +25,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         connectProdinfire()
         connectAppMetrika()
         
+        fetchData()
+        
         _ = RCValues.sharedInstance
+        _ = StorageManager.sharedInstance
         
         return true
     }
     
     // SceneDelegate support - start AppsFlyer SDK
     @objc func sendLaunch() {
+        AppsFlyerLib.shared().start()
         
         if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { (status) in }
+            ATTrackingManager.requestTrackingAuthorization() { status in }
         }
-        
-        AppsFlyerLib.shared().start()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
+        
         AppsFlyerLib.shared().start()
     }
     
@@ -60,6 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Custom functions
     
+    private func fetchData() {
+        Preset.get()
+        Preset.getFavorites()
+    }
+    
     private func connectRevenueCat() {
         
         Purchases.logLevel = .debug
@@ -74,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func connectOneSignal(with launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         // Remove this method to stop OneSignal Debugging
-//        OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+        //        OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
         
         // OneSignal initialization
         OneSignal.initWithLaunchOptions(launchOptions)
@@ -109,6 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func connectGoogleMobileAds() {
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["1440558f13893d763cad8b1259572f8b"]
     }
     
     private func connectProdinfire() {
@@ -122,9 +131,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func connectAppMetrika() {
         // Initializing the AppMetrica SDK.
         let configuration = YMMYandexMetricaConfiguration.init(apiKey: Keys.AppMetrika.apiKey)
+        configuration?.logs = true
         configuration?.revenueAutoTrackingEnabled = true
         YMMYandexMetrica.activate(with: configuration!)
     }
+    
     
 }
 

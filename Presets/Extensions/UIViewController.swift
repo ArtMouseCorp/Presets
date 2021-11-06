@@ -14,14 +14,36 @@ extension UIViewController {
     public func showPaywall(animated: Bool = true, single: Bool = true) {
         let subscription = SubscriptionViewController.load(from: .subscription)
         let subPlans = SubscriptionPlansViewController.load(from: .subscriptionPlans)
-        showPopup(single ? subscription : subPlans)
+        let toShow = single ? subscription : subPlans
+        
+        self.addChild(toShow)
+        toShow.view.frame = self.view.frame
+        toShow.view.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        self.view.addSubview(toShow.view)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn) {
+            toShow.view.transform = .identity
+        }
+        toShow.didMove(toParent: self)
+    }
+    
+    public func showSettings() {
+        let settingsNavigationController = SettingsNavigationController.load(from: .settingsNav)
+        self.addChild(settingsNavigationController)
+        settingsNavigationController.view.frame = self.view.frame
+        settingsNavigationController.view.transform = CGAffineTransform(translationX: (0 - self.view.frame.width), y: 0)
+        self.view.addSubview(settingsNavigationController.view)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            settingsNavigationController.view.transform = .identity
+        }, completion: nil)
+        settingsNavigationController.didMove(toParent: self)
     }
     
     static func load(from screen: Screen) -> Self {
         return screen.storyboard.instantiateViewController(withIdentifier: screen.info.id) as! Self
     }
     
-    func showNetworkConnectionAlert(completion: (() -> Void)?) {
+    func showNetworkConnectionAlert(completion: (() -> Void)? = nil) {
         let alertOk = UIAlertAction(title: L10n.Alert.Action.ok, style: .default) { action in
             completion?() ?? ()
         }
@@ -33,7 +55,7 @@ extension UIViewController {
         )
     }
     
-    func showAlreadySubscribedAlert(completion: (() -> Void)?) {
+    func showAlreadySubscribedAlert(completion: (() -> Void)? = nil) {
         let alertOk = UIAlertAction(title: L10n.Alert.Action.ok, style: .default) { action in
             completion?() ?? ()
         }
@@ -45,7 +67,7 @@ extension UIViewController {
         )
     }
     
-    func showNotSubscriberAlert(completion: (() -> Void)?) {
+    func showNotSubscriberAlert(completion: (() -> Void)? = nil) {
         let alertOk = UIAlertAction(title: L10n.Alert.Action.ok, style: .default) { action in
             completion?() ?? ()
         }
@@ -57,7 +79,7 @@ extension UIViewController {
         )
     }
     
-    func showRestoredAlert(completion: (() -> Void)?) {
+    func showRestoredAlert(completion: (() -> Void)? = nil) {
         let alertOk = UIAlertAction(title: L10n.Alert.Action.ok, style: .default) { action in
             completion?() ?? ()
         }
@@ -67,6 +89,20 @@ extension UIViewController {
                      animated: true,
                      completion: nil
         )
+    }
+    
+    func showLoader() {
+        let alert = UIAlertController(title: nil, message: L10n.Alert.Loading.message, preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating()
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func hideLoader(completion: (() -> Void)? = nil) {
+        dismiss(animated: false, completion: completion)
     }
     
 }

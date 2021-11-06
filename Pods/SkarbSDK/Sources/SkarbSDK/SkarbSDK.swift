@@ -12,10 +12,11 @@ import UIKit
 public class SkarbSDK {
   
   static let agentName: String = "SkarbSDK-iOS"
-  static let version: String = "0.4.16"
+  static let version: String = "0.5.1"
   
   static var clientId: String = ""
   public static var isLoggingEnabled: Bool = false
+  public static var automaticCollectIDFA: Bool = true
   
   public static func initialize(clientId: String,
                                 isObservable: Bool,
@@ -29,6 +30,7 @@ public class SkarbSDK {
     // because some data are used in other commands and should not be nil
     SKServiceRegistry.migrationService.doMigrationIfNeeded(deviceId: deviceId)
     SKServiceRegistry.commandStore.createInstallCommandIfNeeded(clientId: clientId, deviceId: deviceId)
+    SKServiceRegistry.commandStore.createIDFACommandIfNeeded(automaticCollectIDFA: automaticCollectIDFA)
     SKServiceRegistry.initialize(isObservable: isObservable)
   }
   
@@ -113,6 +115,17 @@ public class SkarbSDK {
     SKServiceRegistry.commandStore.createAutomaticSearchAdsCommand(enable)
   }
   
+  public static func sendIDFA(idfa: String?) {
+    guard !SKServiceRegistry.commandStore.hasIDFACommand else {
+      return
+    }
+    
+    let attributionRequest = Installapi_IDFARequest(idfa: idfa)
+    let idfaV4Command = SKCommand(commandType: .idfaV4,
+                                  status: .pending,
+                                  data: attributionRequest.getData())
+    SKServiceRegistry.commandStore.saveCommand(idfaV4Command)
+  }
   
   private static func generateDeviceId() -> String {
     return UIDevice.current.identifierForVendor?.uuidString ?? "gen-" + UUID().uuidString

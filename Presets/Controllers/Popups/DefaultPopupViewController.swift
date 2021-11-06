@@ -87,6 +87,8 @@ class DefaultPopupViewController: PopupViewController {
     // MARK: - @IBActions
     
     @IBAction func cancelButtonPressed() {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         switch mode {
         case .deletePresetPopup:
             animateOut()
@@ -97,6 +99,8 @@ class DefaultPopupViewController: PopupViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         switch mode {
         case .deletePresetPopup:
             State.favouritePresets.remove(at: deleteIndex)
@@ -122,6 +126,8 @@ class DefaultPopupViewController: PopupViewController {
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         animateOut()
     }
     

@@ -4,9 +4,9 @@ class MainViewController: BaseViewController {
     
     // MARK: - @IBOutlets
     
-    // Views
+    // Collection Views
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var presetsCollectionView: UICollectionView!
     
     // Labels
     @IBOutlet weak var titleLabel: UILabel!
@@ -36,9 +36,7 @@ class MainViewController: BaseViewController {
         localize()
         setupItemsArray()
         configureCollectionView()
-        configureTableView()
         callPaywall()
-     
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,15 +52,13 @@ class MainViewController: BaseViewController {
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.registerCell(.category)
-    }
-    
-    func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerCell(.preset)
+        
+        presetsCollectionView.delegate = self
+        presetsCollectionView.dataSource = self
     }
     
     func setupItemsArray() {
@@ -74,18 +70,21 @@ class MainViewController: BaseViewController {
     
     private func callPaywall() {
         guard !State.isSubscribed else { return }
-        self.showPaywall(animated: false)
+        self.showPaywall()
     }
     
     // MARK: - @IBActions
     
     @IBAction func settingsButtonPressed(_ sender: Any) {
-        let settingsVC = SettingsViewController.load(from: .settings)
-        self.navigationController?.pushViewController(settingsVC, animated: true)
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        self.showSettings()
     }
     
     @IBAction func userPresetsButtonPressed(_ sender: Any) {
         let userPresetsVC = UserPresetsViewController.load(from: .userPresets)
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         self.navigationController?.pushViewController(userPresetsVC, animated: true)
     }
 }
@@ -94,127 +93,154 @@ class MainViewController: BaseViewController {
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Preset.free.count == 0 ? Preset.all.count + 2 : Preset.all.count + 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.category.rawValue, for: indexPath) as! CategoryCollectionViewCell
         
-        cell.categoryNameLabel.text = items[indexPath.item]
+        if collectionView == self.collectionView {
         
-        if currentCategoryID == indexPath.row {
-            cell.categoryNameLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-            cell.lineView.isHidden = false
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.category.rawValue, for: indexPath) as! CategoryCollectionViewCell
+            
+            cell.categoryNameLabel.text = items[indexPath.item]
+            
+            if currentCategoryID == indexPath.row {
+                cell.categoryNameLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+                cell.lineView.isHidden = false
+            } else {
+                cell.categoryNameLabel.textColor = UIColor(red: 97/255, green: 103/255, blue: 134/255, alpha: 1)
+                cell.lineView.isHidden = true
+            }
+            
+            return cell
         } else {
-            cell.categoryNameLabel.textColor = UIColor(red: 97/255, green: 103/255, blue: 134/255, alpha: 1)
-            cell.lineView.isHidden = true
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.presetCategory.rawValue, for: indexPath) as! PresetCategoryCollectionViewCell
+            
+            // MARK: - Number of rows in table view
+            
+            cell.items = items
+            
+            if indexPath.row == 0 {
+                cell.countOfRowsInTableView = Preset.all.count
+            } else if indexPath.row == 1 {
+                cell.countOfRowsInTableView = Preset.free.count
+            } else if indexPath.row == 2 {
+                cell.countOfRowsInTableView = Preset.premium.count
+            } else {
+                cell.countOfRowsInTableView = 1
+            }
+            
+            cell.navigationController = self.navigationController!
+            
+            cell.currentCategoryID = indexPath.row
+            cell.tableViewWidthConstraint.constant = UIScreen.main.bounds.width
+            cell.tableViewHeightConstraint.constant = collectionView.frame.height
+            
+            return cell
         }
-        
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
-        selectionFeedbackGenerator.selectionChanged()
-        
-        lastCategotID = currentCategoryID
-        currentCategoryID = indexPath.row
-        let oldIndexPath = IndexPath(item: lastCategotID, section: 0)
-        
-        guard let oldCell = collectionView.cellForItem(at: oldIndexPath) as? CategoryCollectionViewCell else {
+        if collectionView == self.collectionView {
+            let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+            selectionFeedbackGenerator.selectionChanged()
+            
+            lastCategotID = currentCategoryID
+            currentCategoryID = indexPath.row
+            let oldIndexPath = IndexPath(item: lastCategotID, section: 0)
+            
+            presetsCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                let collectionViewWithTableView = self.presetsCollectionView.cellForItem(at: indexPath) as! PresetCategoryCollectionViewCell
+                collectionViewWithTableView.tableView.reloadData()
+                collectionViewWithTableView.tableView.isHidden = false
+            }
+            
+            guard let oldCell = collectionView.cellForItem(at: oldIndexPath) as? CategoryCollectionViewCell else {
+                let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
+                cell.categoryNameLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+                cell.lineView.isHidden = false
+                
+                return
+            }
+            oldCell.categoryNameLabel.textColor = UIColor(red: 97/255, green: 103/255, blue: 134/255, alpha: 1)
+            oldCell.lineView.isHidden = true
+            
             let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
             cell.categoryNameLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             cell.lineView.isHidden = false
-            tableView.reloadData()
-            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-            return
-        }
-        oldCell.categoryNameLabel.textColor = UIColor(red: 97/255, green: 103/255, blue: 134/255, alpha: 1)
-        oldCell.lineView.isHidden = true
-        
-        let cell = collectionView.cellForItem(at: indexPath) as! CategoryCollectionViewCell
-        cell.categoryNameLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        cell.lineView.isHidden = false
-        
-        tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-    }
-}
-
-// MARK: - UITableViewDelegate, UITableViewDataSource
-
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if currentCategoryID == 0 {
-            return Preset.all.count
-        } else if items[currentCategoryID] == FREE {
-            return Preset.free.count
-        } else if items[currentCategoryID] == PREMIUM {
-            return Preset.premium.count
-        } else {
-            return 1
+            
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Cell.preset.rawValue, for: indexPath) as! PresetTableViewCell
-        
-        var currentPreset = Preset.all[0]
-        
-        if currentCategoryID == 0 {
-            currentPreset = Preset.all[indexPath.row]
-        } else if items[currentCategoryID] == FREE {
-            currentPreset = Preset.free[indexPath.row]
-        } else if items[currentCategoryID] == PREMIUM {
-            currentPreset = Preset.premium[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.collectionView {
+            return 20
         } else {
-            Preset.all.forEach { preset in
-                if preset.name == items[currentCategoryID] {
-                    currentPreset = preset
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.collectionView {
+            return 20
+        } else {
+            return 0
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if let collectionView = scrollView as? UICollectionView {
+            if collectionView == self.presetsCollectionView {
+                let xPoint = scrollView.contentOffset.x + scrollView.frame.width / 2
+                let yPoint = scrollView.frame.height / 2
+                let center = CGPoint(x: xPoint, y: yPoint)
+                
+                if let item = presetsCollectionView.indexPathForItem(at: center) {
+                    lastCategotID = currentCategoryID
+                    currentCategoryID = item.row
+                    
+                    let indexPath = IndexPath(item: currentCategoryID, section: 0)
+                    let oldIndexPath = IndexPath(item: lastCategotID, section: 0)
+                    
+                    guard let collectionViewWithTableView = presetsCollectionView.cellForItem(at: indexPath) as? PresetCategoryCollectionViewCell else {
+                        return
+                    }
+                    collectionViewWithTableView.tableView.reloadData()
+                    collectionViewWithTableView.tableView.isHidden = false
+                    
+                    guard let oldCell = self.collectionView.cellForItem(at: oldIndexPath) as? CategoryCollectionViewCell else {
+                        guard let cell = self.collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else {
+                            return
+                        }
+                        cell.categoryNameLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+                        cell.lineView.isHidden = false
+                        return
+                    }
+                    oldCell.categoryNameLabel.textColor = UIColor(red: 97/255, green: 103/255, blue: 134/255, alpha: 1)
+                    oldCell.lineView.isHidden = true
+                    
+                    guard let cell = self.collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else {
+                        return
+                    }
+                    cell.categoryNameLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+                    cell.lineView.isHidden = false
+                    
+                    self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+                    
                 }
             }
         }
-        
-        cell.presetImage.image = currentPreset.getTitleImage()
-
-        if currentPreset.isFree {
-            cell.presetButton.setTitle(FREE, for: .normal)
-            cell.presetButton.backgroundColor = UIColor(red: 1, green: 71/255, blue: 181/255, alpha: 1)
-        } else {
-            cell.presetButton.setTitle(PREMIUM, for: .normal)
-            cell.presetButton.backgroundColor = UIColor(red: 1, green: 71/255, blue: 71/255, alpha: 1)
-        }
-        
-        cell.presetButton.isUserInteractionEnabled = false
-        cell.completion = {}
-        
-        return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if currentCategoryID == 0 {
-            State.selectedPreset = Preset.all[indexPath.row]
-        } else if items[currentCategoryID] == FREE {
-            State.selectedPreset = Preset.free[indexPath.row]
-        } else if items[currentCategoryID] == PREMIUM {
-            State.selectedPreset = Preset.premium[indexPath.row]
-        } else {
-            Preset.all.forEach { preset in
-                if preset.name == items[currentCategoryID] {
-                    State.selectedPreset = preset
-                }
-            }
-        }
-        
-        let presetVC = PresetViewController.load(from: .preset)
-        presetVC.presetId = State.selectedPreset.id
-        self.navigationController?.pushViewController(presetVC, animated: true)
-        
-    }
 }
+
+    

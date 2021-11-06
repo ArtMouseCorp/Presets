@@ -154,6 +154,8 @@ class ManualViewController: BaseViewController {
     // MARK: - Gesture actions
     
     @objc func installLightroomTapped() {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         if let url = URL(string: "itms-apps://apple.com/app/id878783582") {
             UIApplication.shared.open(url)
         }
@@ -162,10 +164,14 @@ class ManualViewController: BaseViewController {
     // MARK: - @IBActions
     
     @IBAction func backButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func watchVideoButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         playVideo()
     }
     

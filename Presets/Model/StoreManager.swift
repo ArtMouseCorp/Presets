@@ -65,8 +65,13 @@ struct StoreManager {
     }
     
     public static func purchase(package: Purchases.Package, completion: (() -> ())? = nil) {
-
+        
+        topController().showLoader()
+        
         Purchases.shared.purchasePackage(package) { (transaction, purchaserInfo, error, userCancelled) in
+            
+            topController().hideLoader()
+            
             if purchaserInfo?.entitlements[self.entitlementId]?.isActive == true {
                 
                 print("Purchase Success: \(package.product.productIdentifier)")
@@ -88,21 +93,28 @@ struct StoreManager {
     
     public static func restore(completion: (() -> ())? = nil) {
         
+        topController().showLoader()
+        
         Purchases.shared.restoreTransactions { purchaserInfo, error in
-            //... check purchaserInfo to see if entitlement is now active
-            guard let purchaserInfo = purchaserInfo, error == nil else {
-                return
-            }
             
-            if purchaserInfo.entitlements[self.entitlementId]?.isActive == true {
+            topController().hideLoader() {
                 
-                State.isSubscribed = true
-                activeController().showRestoredAlert() {
-                    completion?() ?? ()
+                //... check purchaserInfo to see if entitlement is now active
+                guard let purchaserInfo = purchaserInfo, error == nil else {
+                    return
                 }
                 
-            } else {
-                activeController().showNotSubscriberAlert(completion: nil)
+                if purchaserInfo.entitlements[self.entitlementId]?.isActive == true {
+                    
+                    State.isSubscribed = true
+                    topController().showRestoredAlert() {
+                        completion?() ?? ()
+                    }
+                    
+                } else {
+                    topController().showNotSubscriberAlert()
+                }
+                
             }
             
         }

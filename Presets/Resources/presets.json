@@ -12,11 +12,11 @@
 			"image-amber-5.jpeg"
 		],
 		"presets": [
-			"preset-amber-1",
-			"preset-amber-2",
-			"preset-amber-3",
-			"preset-amber-4",
-			"preset-amber-5"
+			"preset-amber-1.dng",
+			"preset-amber-2.dng",
+			"preset-amber-3.dng",
+			"preset-amber-4.dng",
+			"preset-amber-5.dng"
 		]
 	},
 	{
@@ -25,30 +25,30 @@
 		"titleImage": "grid-blvck.jpeg",
 		"isFree": true,
 		"images": [
-			"image-blvck-1.jpeg",
-			"image-blvck-2.jpeg",
-			"image-blvck-3.jpeg",
-			"image-blvck-4.jpeg",
-			"image-blvck-5.jpeg",
-			"image-blvck-6.jpeg",
-			"image-blvck-7.jpeg",
-			"image-blvck-8.jpeg",
-			"image-blvck-9.jpeg",
-			"image-blvck-10.jpeg",
-			"image-blvck-11.jpeg"
+			"image-blvck-1.jpeg.dng",
+			"image-blvck-2.jpeg.dng",
+			"image-blvck-3.jpeg.dng",
+			"image-blvck-4.jpeg.dng",
+			"image-blvck-5.jpeg.dng",
+			"image-blvck-6.jpeg.dng",
+			"image-blvck-7.jpeg.dng",
+			"image-blvck-8.jpeg.dng",
+			"image-blvck-9.jpeg.dng",
+			"image-blvck-10.jpeg.dng",
+			"image-blvck-11.jpeg.dng"
 		],
 		"presets": [
-			"preset-blvck-1",
-			"preset-blvck-2",
-			"preset-blvck-3",
-			"preset-blvck-4",
-			"preset-blvck-5",
-			"preset-blvck-6",
-			"preset-blvck-7",
-			"preset-blvck-8",
-			"preset-blvck-9",
-			"preset-blvck-10",
-			"preset-blvck-11"
+			"preset-blvck-1.dng",
+			"preset-blvck-2.dng",
+			"preset-blvck-3.dng",
+			"preset-blvck-4.dng",
+			"preset-blvck-5.dng",
+			"preset-blvck-6.dng",
+			"preset-blvck-7.dng",
+			"preset-blvck-8.dng",
+			"preset-blvck-9.dng",
+			"preset-blvck-10.dng",
+			"preset-blvck-11.dng"
 		]
 	},
 	{
@@ -64,11 +64,11 @@
 			"image-boho-5.jpeg"
 		],
 		"presets": [
-			"preset-boho-1",
-			"preset-boho-2",
-			"preset-boho-3",
-			"preset-boho-4",
-			"preset-boho-5"
+			"preset-boho-1.dng",
+			"preset-boho-2.dng",
+			"preset-boho-3.dng",
+			"preset-boho-4.dng",
+			"preset-boho-5.dng"
 		]
 	},
 	{
@@ -84,11 +84,11 @@
 			"image-boho-wedding-5.jpeg"
 		],
 		"presets": [
-			"preset-boho-wedding-1",
-			"preset-boho-wedding-2",
-			"preset-boho-wedding-3",
-			"preset-boho-wedding-4",
-			"preset-boho-wedding-5"
+			"preset-boho-wedding-1.dng",
+			"preset-boho-wedding-2.dng",
+			"preset-boho-wedding-3.dng",
+			"preset-boho-wedding-4.dng",
+			"preset-boho-wedding-5.dng"
 		]
 	},
 	{
@@ -109,16 +109,16 @@
 			"image-coffee-10.jpeg"
 		],
 		"presets": [
-			"preset-coffee-1",
-			"preset-coffee-2",
-			"preset-coffee-3",
-			"preset-coffee-4",
-			"preset-coffee-5",
-			"preset-coffee-6",
-			"preset-coffee-7",
-			"preset-coffee-8",
-			"preset-coffee-9",
-			"preset-coffee-10"
+			"preset-coffee-1.dng",
+			"preset-coffee-2.dng",
+			"preset-coffee-3.dng",
+			"preset-coffee-4.dng",
+			"preset-coffee-5.dng",
+			"preset-coffee-6.dng",
+			"preset-coffee-7.dng",
+			"preset-coffee-8.dng",
+			"preset-coffee-9.dng",
+			"preset-coffee-10.dng"
 		]
 	},
 	{
@@ -134,11 +134,11 @@
 			"image-cream-white-5.jpeg"
 		],
 		"presets": [
-			"preset-cream-white-1",
-			"preset-cream-white-2",
-			"preset-cream-white-3",
-			"preset-cream-white-4",
-			"preset-cream-white-5"
+			"preset-cream-white-1.dng",
+			"preset-cream-white-2.dng",
+			"preset-cream-white-3.dng",
+			"preset-cream-white-4.dng",
+			"preset-cream-white-5.dng"
 		]
 	},
 	{
@@ -156,13 +156,13 @@
 			"image-dark-moody-7.jpg"
 		],
 		"presets": [
-			"preset-dark-moody-1",
-			"preset-dark-moody-2",
-			"preset-dark-moody-3",
-			"preset-dark-moody-4",
-			"preset-dark-moody-5",
-			"preset-dark-moody-6",
-			"preset-dark-moody-7"
+			"preset-dark-moody-1.dng",
+			"preset-dark-moody-2.dng",
+			"preset-dark-moody-3.dng",
+			"preset-dark-moody-4.dng",
+			"preset-dark-moody-5.dng",
+			"preset-dark-moody-6.dng",
+			"preset-dark-moody-7.dng"
 		]
 	},
 	{
@@ -178,11 +178,11 @@
 			"image-dark-orange-5.jpeg"
 		],
 		"presets": [
-			"preset-dark-orange-1",
-			"preset-dark-orange-2",
-			"preset-dark-orange-3",
-			"preset-dark-orange-4",
-			"preset-dark-orange-5"
+			"preset-dark-orange-1.dng",
+			"preset-dark-orange-2.dng",
+			"preset-dark-orange-3.dng",
+			"preset-dark-orange-4.dng",
+			"preset-dark-orange-5.dng"
 		]
 	},
 	{
@@ -198,11 +198,11 @@
 			"image-earthy-tones-5.jpeg"
 		],
 		"presets": [
-			"preset-earthy-tones-1",
-			"preset-earthy-tones-2",
-			"preset-earthy-tones-3",
-			"preset-earthy-tones-4",
-			"preset-earthy-tones-5"
+			"preset-earthy-tones-1.dng",
+			"preset-earthy-tones-2.dng",
+			"preset-earthy-tones-3.dng",
+			"preset-earthy-tones-4.dng",
+			"preset-earthy-tones-5.dng"
 		]
 	},
 	{
@@ -218,11 +218,11 @@
 			"image-minimal-style-5.jpeg"
 		],
 		"presets": [
-			"preset-minimal-style-1",
-			"preset-minimal-style-2",
-			"preset-minimal-style-3",
-			"preset-minimal-style-4",
-			"preset-minimal-style-5"
+			"preset-minimal-style-1.dng",
+			"preset-minimal-style-2.dng",
+			"preset-minimal-style-3.dng",
+			"preset-minimal-style-4.dng",
+			"preset-minimal-style-5.dng"
 		]
 	},
 	{
@@ -239,12 +239,12 @@
 			"image-moody-blue-6.jpeg"
 		],
 		"presets": [
-			"preset-moody-blue-1",
-			"preset-moody-blue-2",
-			"preset-moody-blue-3",
-			"preset-moody-blue-4",
-			"preset-moody-blue-5",
-			"preset-moody-blue-6"
+			"preset-moody-blue-1.dng",
+			"preset-moody-blue-2.dng",
+			"preset-moody-blue-3.dng",
+			"preset-moody-blue-4.dng",
+			"preset-moody-blue-5.dng",
+			"preset-moody-blue-6.dng"
 		]
 	},
 	{
@@ -260,11 +260,11 @@
 			"image-nature-5.jpeg"
 		],
 		"presets": [
-			"preset-nature-1",
-			"preset-nature-2",
-			"preset-nature-3",
-			"preset-nature-4",
-			"preset-nature-5"
+			"preset-nature-1.dng",
+			"preset-nature-2.dng",
+			"preset-nature-3.dng",
+			"preset-nature-4.dng",
+			"preset-nature-5.dng"
 		]
 	},
 	{
@@ -280,11 +280,11 @@
 			"image-night-bar-5.jpeg"
 		],
 		"presets": [
-			"preset-night-bar-1",
-			"preset-night-bar-2",
-			"preset-night-bar-3",
-			"preset-night-bar-4",
-			"preset-night-bar-5"
+			"preset-night-bar-1.dng",
+			"preset-night-bar-2.dng",
+			"preset-night-bar-3.dng",
+			"preset-night-bar-4.dng",
+			"preset-night-bar-5.dng"
 		]
 	},
 	{
@@ -300,11 +300,11 @@
 			"image-nordic-5.jpeg"
 		],
 		"presets": [
-			"preset-nordic-1",
-			"preset-nordic-2",
-			"preset-nordic-3",
-			"preset-nordic-4",
-			"preset-nordic-5"
+			"preset-nordic-1.dng",
+			"preset-nordic-2.dng",
+			"preset-nordic-3.dng",
+			"preset-nordic-4.dng",
+			"preset-nordic-5.dng"
 		]
 	},
 	{
@@ -320,11 +320,11 @@
 			"image-paradise-5.jpeg"
 		],
 		"presets": [
-			"preset-paradise-1",
-			"preset-paradise-2",
-			"preset-paradise-3",
-			"preset-paradise-4",
-			"preset-paradise-5"
+			"preset-paradise-1.dng",
+			"preset-paradise-2.dng",
+			"preset-paradise-3.dng",
+			"preset-paradise-4.dng",
+			"preset-paradise-5.dng"
 		]
 	},
 	{
@@ -341,12 +341,12 @@
 			"image-rich-black-6.jpeg"
 		],
 		"presets": [
-			"preset-rich-black-1",
-			"preset-rich-black-2",
-			"preset-rich-black-3",
-			"preset-rich-black-4",
-			"preset-rich-black-5",
-			"preset-rich-black-6"
+			"preset-rich-black-1.dng",
+			"preset-rich-black-2.dng",
+			"preset-rich-black-3.dng",
+			"preset-rich-black-4.dng",
+			"preset-rich-black-5.dng",
+			"preset-rich-black-6.dng"
 		]
 	},
 	{
@@ -363,11 +363,11 @@
 			"image-summer-6.jpeg"
 		],
 		"presets": [
-			"preset-summer-1",
-			"preset-summer-2",
-			"preset-summer-3",
-			"preset-summer-4",
-			"preset-summer-5"
+			"preset-summer-1.dng",
+			"preset-summer-2.dng",
+			"preset-summer-3.dng",
+			"preset-summer-4.dng",
+			"preset-summer-5.dng"
 		]
 	},
 	{
@@ -385,13 +385,13 @@
 			"image-true-black-7.jpeg"
 		],
 		"presets": [
-			"preset-true-black-1",
-			"preset-true-black-2",
-			"preset-true-black-3",
-			"preset-true-black-4",
-			"preset-true-black-5",
-			"preset-true-black-6",
-			"preset-true-black-7"
+			"preset-true-black-1.dng",
+			"preset-true-black-2.dng",
+			"preset-true-black-3.dng",
+			"preset-true-black-4.dng",
+			"preset-true-black-5.dng",
+			"preset-true-black-6.dng",
+			"preset-true-black-7.dng"
 		]
 	},
 	{
@@ -407,11 +407,11 @@
 			"image-vintage-film-5.jpeg"
 		],
 		"presets": [
-			"preset-vintage-film-1",
-			"preset-vintage-film-2",
-			"preset-vintage-film-3",
-			"preset-vintage-film-4",
-			"preset-vintage-film-5"
+			"preset-vintage-film-1.dng",
+			"preset-vintage-film-2.dng",
+			"preset-vintage-film-3.dng",
+			"preset-vintage-film-4.dng",
+			"preset-vintage-film-5.dng"
 		]
 	}
 ]

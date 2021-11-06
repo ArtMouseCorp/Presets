@@ -22,6 +22,10 @@ internal enum L10n {
       /// No internet connection
       internal static let title = L10n.tr("Localizable", "alert.connection.title")
     }
+    internal enum Loading {
+      /// Please wait...
+      internal static let message = L10n.tr("Localizable", "alert.loading.message")
+    }
     internal enum NotSubscriber {
       /// Sorry, you cannot restore your purchase because you do not have an active subscription.
       internal static let message = L10n.tr("Localizable", "alert.notSubscriber.message")

@@ -2,6 +2,8 @@ import UIKit
 
 let userDefaults = UserDefaults.standard
 
+let DEBUG: Bool = false
+
 enum UDKeys {
     static let appLaunchCount: String           = "appLaunchCount"
     static let favouritePresets: String         = "favouritePresets"
@@ -26,8 +28,11 @@ enum Keys {
     
     // RevenueCat
     internal enum RevenueCat {
-//        static let apiKey: String               = "tRLwqURoAceMzyFpDyjwjsOVimeAajBy" // DEBUG
-        static let apiKey: String               = "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX" // RELEASE
+        
+//        static let apiKey: String               = "DETukuMSYjcwKcUwHHXpJnDvLlQHzKgV" // DEBUG
+//        static let apiKey: String               = "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX" // RELEASE
+        
+        static let apiKey: String               = DEBUG ? "DETukuMSYjcwKcUwHHXpJnDvLlQHzKgV" : "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX"
         static let entitlementId: String        = "premium"
     }
     
@@ -44,8 +49,11 @@ enum Keys {
     // AdMob
     internal enum AdmMod {
         static let appId: String                = "ca-app-pub-9686541093041732~7231766062"
+        
+        static let unitId: String               = DEBUG ? "ca-app-pub-3940256099942544/4411468910" : "ca-app-pub-9686541093041732/2300386476"
+        
 //        static let unitId: String               = "ca-app-pub-3940256099942544/4411468910" // DEBUG
-        static let unitId: String               = "ca-app-pub-9686541093041732/2300386476" // RELEASE
+//        static let unitId: String               = "ca-app-pub-9686541093041732/2300386476" // RELEASE
     }
     
     // AppsFlyer
@@ -61,7 +69,6 @@ enum Keys {
     internal enum AppMetrika {
         static let apiKey: String               = "44ff71f5-2dc7-4854-b0ce-a28d53d6331a"
     }
-    
 }
 
 public func hapticFeedback(_ type: UINotificationFeedbackGenerator.FeedbackType) {

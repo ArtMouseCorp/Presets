@@ -49,10 +49,14 @@ class UserPresetsViewController: BaseViewController {
     // MARK: - @IBActions
     
     @IBAction func backButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func selectPresetButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         navigationController?.popViewController(animated: true)
     }
 }
@@ -83,7 +87,9 @@ extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource 
         
         guard let indexOfPreset = Preset.all.firstIndex(where: { $0.id == presetId }) else { return cell }
         
-        cell.presetImage.image = Preset.all[indexOfPreset].getTitleImage()
+        cell.presetImage.load(from: Preset.all[indexOfPreset].titleImageURL) {
+            cell.activityIndicator.stopAnimating()
+        }
         
         cell.presetButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         cell.presetButton.setImage(Images.Icons.trash, for: .normal)
@@ -93,6 +99,10 @@ extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         let presetId = State.favouritePresets[indexPath.row]
         guard let preset = Preset.all.first(where: {$0.id == presetId}) else { return }
         State.selectedPreset = preset

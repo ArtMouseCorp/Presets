@@ -129,3 +129,5 @@
 
 "alert.notSubscriber.title"         = "Cannot be restored";
 "alert.notSubscriber.message"       = "Sorry, you cannot restore your purchase because you do not have an active subscription.";
+
+"alert.loading.message"             = "Please wait...";

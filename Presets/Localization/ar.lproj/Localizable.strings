@@ -130,3 +130,4 @@
 "alert.notSubscriber.title"         = "تتعذَّر الاستعادة";
 "alert.notSubscriber.message"       = "عذرًا، لا يمكنك استعادة مشترياتك لأنك لا تملك اشتراكًا نشطًا.";
 
+"alert.loading.message"             = "...ارجوك انتظر";

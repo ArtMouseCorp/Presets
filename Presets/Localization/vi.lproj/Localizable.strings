@@ -130,3 +130,4 @@
 "alert.notSubscriber.title"         = "Không thể được khôi phục";
 "alert.notSubscriber.message"       = "Rất tiếc, bạn không thể khôi phục đơn hàng của mình bởi bạn không có một gói đăng ký đang hoạt động.";
 
+"alert.loading.message"             = "Vui lòng chờ...";

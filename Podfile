@@ -18,13 +18,13 @@ pod 'AppsFlyerFramework'
 
 pod 'Firebase/Analytics'
 pod 'Firebase/RemoteConfig'
+pod 'Firebase/Storage'
 pod 'Google-Mobile-Ads-SDK'
 
 pod 'SwiftyJSON'
 pod 'Purchases'
 
 pod 'SkarbSDK'
-
 pod 'YandexMobileMetrica/Dynamic'
 
 end

@@ -129,3 +129,5 @@
 
 "alert.notSubscriber.title"         = "Kann nicht wiederhergestellt werden";
 "alert.notSubscriber.message"       = "Du kannst deinen Einkauf leider nicht wiederherstellen, da du kein aktives Abonnement hast.";
+
+"alert.loading.message"             = "Warten Sie mal...";

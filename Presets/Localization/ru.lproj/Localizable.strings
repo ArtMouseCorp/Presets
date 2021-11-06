@@ -130,3 +130,4 @@
 "alert.notSubscriber.title"         = "Не подлежит восстановлению";
 "alert.notSubscriber.message"       = "К сожалению, вы не можете восстановить свою покупку, потому что у вас нет активной подписки.";
 
+"alert.loading.message"             = "Минуточку...";

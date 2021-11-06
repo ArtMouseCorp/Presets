@@ -66,6 +66,14 @@ class SKCommandStore {
     return result
   }
   
+  var hasIDFACommand: Bool {
+    var result = false
+    exclusionSerialQueue.sync {
+      result = localAppgateCommands.first(where: { $0.commandType == .idfaV4 }) != nil
+    }
+    return result
+  }
+  
   func hasSendSourceV4Command(broker: SKBroker) -> Bool {
     var result = false
     let decoder = JSONDecoder()
@@ -115,8 +123,8 @@ class SKCommandStore {
       }
     }
     // if new command was added we want to execute all pending
-    // commands ASAP in one transaction
-    if isNew {
+    // commands ASAP in one transaction, except logging command
+    if isNew && command.commandType != .logging {
       resetFireDateAndRetryCountForPendingCommands()
       SKServiceRegistry.syncService.syncAllCommands()
     }
@@ -144,7 +152,6 @@ class SKCommandStore {
   }
   
   func saveState() {
-    SKLogger.logInfo("SKCommandStore saveState: called")
     exclusionSerialQueue.sync {
       let data = localAppgateCommands.map { $0.getData() }.compactMap { $0 }
       SKServiceRegistry.userDefaultsService.setValue(data, forKey: .appgateComands)
@@ -278,8 +285,56 @@ class SKCommandStore {
     SKServiceRegistry.commandStore.saveCommand(searchAdsCommand)
   }
   
+  func createIDFACommandIfNeeded(automaticCollectIDFA: Bool) {
+    guard automaticCollectIDFA else {
+      deleteAllCommand(by: .idfaV4)
+      deleteAllCommand(by: .fetchIdfa)
+      return
+    }
+    
+    // No need to sent idfa to the server twice
+    guard getAllCommands(by: .idfaV4).count == 0 else {
+      return
+    }
+    
+    /// Want to delay 3 commands only after the first launch.
+    /// After it jsut one time per launch
+    let fetchIdfaCommandsCount = getAllCommands(by: .fetchIdfa).count
+    if fetchIdfaCommandsCount == 0 {
+      let sec5Command: SKCommand = SKCommand(commandType: .fetchIdfa,
+                                             status: .pending,
+                                             data: "5".data(using: .utf8),
+                                             retryCount: 0,
+                                             fireDate: Date().addingTimeInterval(5),
+                                             fireDateRessetable: false)
+      let sec15Command: SKCommand = SKCommand(commandType: .fetchIdfa,
+                                             status: .pending,
+                                             data: "15".data(using: .utf8),
+                                             retryCount: 0,
+                                             fireDate: Date().addingTimeInterval(15),
+                                             fireDateRessetable: false)
+      let sec60Command: SKCommand = SKCommand(commandType: .fetchIdfa,
+                                             status: .pending,
+                                             data: "60".data(using: .utf8),
+                                             retryCount: 0,
+                                             fireDate: Date().addingTimeInterval(60),
+                                             fireDateRessetable: false)
+      saveCommand(sec5Command)
+      saveCommand(sec15Command)
+      saveCommand(sec60Command)
+    } else {
+      let fetchIdfaCommand: SKCommand = SKCommand(commandType: .fetchIdfa,
+                                                  status: .pending,
+                                                  data: nil,
+                                                  retryCount: 0,
+                                                  fireDate: Date(),
+                                                  fireDateRessetable: false)
+      saveCommand(fetchIdfaCommand)
+    }
+  }
+  
   func resetFireDateAndRetryCountForPendingCommands() {
-    let commands: [SKCommand] = getAllCommands(by: .pending)
+    let commands: [SKCommand] = getAllCommands(by: .pending).filter { $0.fireDateRessetable }
     for command in commands {
       var editedCommand = command
       editedCommand.updateFireDate(Date())

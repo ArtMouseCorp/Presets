@@ -25,6 +25,8 @@
 #import "AMPIdentify.h"
 #import "AMPRevenue.h"
 #import "AMPTrackingOptions.h"
+#import "AMPPlan.h"
+#import "AMPServerZone.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -625,6 +627,9 @@ typedef void (^AMPInitCompletionBlock)(void);
 
 /**
  Sends events to a different URL other than kAMPEventLogUrl. Used for proxy servers
+ 
+ We now have a new method setServerZone. To send data to Amplitude's EU servers, recommend to use setServerZone
+ method like [client setServerZone:EU]
  */
 - (void)setServerUrl:(NSString *)serverUrl;
 
@@ -634,6 +639,20 @@ typedef void (^AMPInitCompletionBlock)(void);
 - (void)setContentTypeHeader:(NSString *)contentType;
 
 - (void)setBearerToken:(NSString *)token;
+
+- (void)setPlan:(AMPPlan *)plan;
+
+/**
+ * Set Amplitude Server Zone, switch to zone related configuration, including dynamic configuration and server url.
+ * To send data to Amplitude's EU servers, you need to configure the serverZone to EU like [client setServerZone:EU]
+ */
+- (void)setServerZone:(AMPServerZone)serverZone;
+
+/**
+ * Set Amplitude Server Zone, switch to zone related configuration, including dynamic configuration and server url.
+ * If updateServerUrl is true, including server url as well. Recommend to keep updateServerUrl to be true for alignment.
+ */
+- (void)setServerZone:(AMPServerZone)serverZone updateServerUrl:(BOOL)updateServerUrl;
 
 /**-----------------------------------------------------------------------------
  * @name Other Methods

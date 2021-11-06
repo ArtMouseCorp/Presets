@@ -19,10 +19,6 @@ struct State {
     public static func newAppLaunch() {
         self.appLaunch = self.getAppLaunchCount() + 1
         userDefaults.set(self.appLaunch, forKey: UDKeys.appLaunchCount)
-        
-        Preset.get()
-        Preset.getFavorites()
-        
     }
     
     public static func getAppLaunchCount() -> Int {

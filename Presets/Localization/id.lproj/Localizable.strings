@@ -129,3 +129,5 @@
 
 "alert.notSubscriber.title"         = "Tidak dapat dipulihkan";
 "alert.notSubscriber.message"       = "Maaf, Anda tidak dapat memulihkan pembelian Anda karena Anda tidak memiliki langganan aktif.";
+
+"alert.loading.message"             = "Mohon tunggu...";

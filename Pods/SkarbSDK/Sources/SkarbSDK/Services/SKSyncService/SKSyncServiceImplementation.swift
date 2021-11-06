@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import iAd
 import Reachability
+import AdSupport
+import AppTrackingTransparency
 
 class SKSyncServiceImplementation: SKSyncService {
   
@@ -84,7 +86,7 @@ class SKSyncServiceImplementation: SKSyncService {
       SKLogger.logInfo("Command start executing: \(command.description)")
       
       switch command.commandType {
-        case .install, .source, .test, .purchase, .logging, .installV4, .sourceV4, .testV4, .purchaseV4, .transactionV4, .priceV4:
+        case .install, .source, .test, .purchase, .logging, .installV4, .sourceV4, .testV4, .purchaseV4, .transactionV4, .priceV4, .idfaV4:
           SKServiceRegistry.serverAPI.syncCommand(command, completion: { [weak self] error in
             if let error = error {
               var features: [String: Any] = [:]
@@ -129,6 +131,31 @@ class SKSyncServiceImplementation: SKSyncService {
               command.changeStatus(to: .done)
               SKServiceRegistry.commandStore.saveCommand(command)
             })
+          }
+        case .fetchIdfa:
+          command.changeStatus(to: .done)
+          SKServiceRegistry.commandStore.saveCommand(command)
+          if #available(iOS 14, *) {
+            guard ATTrackingManager.trackingAuthorizationStatus == .authorized else {
+              return
+            }
+          } else if !ASIdentifierManager.shared().isAdvertisingTrackingEnabled {
+            return
+          }
+          let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+          let idfaRequest = Installapi_IDFARequest(idfa: idfa)
+          let idfaCommand = SKCommand(commandType: .idfaV4,
+                                      status: .pending,
+                                      data: idfaRequest.getData())
+          SKServiceRegistry.commandStore.saveCommand(idfaCommand)
+          
+        // also need to set for all other fetchIDFACommands "done" status
+        // no need to send twice idfa to the server
+          let notDoneIDFACommands = SKServiceRegistry.commandStore.getAllCommands(by: .fetchIdfa).filter { $0.status != .done }
+          for idfaCommands in notDoneIDFACommands {
+            var editCommand = idfaCommands
+            editCommand.changeStatus(to: .done)
+            SKServiceRegistry.commandStore.saveCommand(idfaCommand)
           }
       }
     }

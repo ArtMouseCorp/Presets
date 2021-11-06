@@ -95,7 +95,7 @@ public func isConnectedToNetwork() -> Bool {
     
 }
 
-public func activeController() -> UIViewController {
+public func topController() -> UIViewController {
     let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
     
     var topController = keyWindow?.rootViewController!

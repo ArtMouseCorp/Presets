@@ -13,7 +13,7 @@ In addition, you could enrich these events with features obtained from the traff
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate SkarbSDK into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'SkarbSDK'
+pod 'SkarbSDK', '~> 0.5'
 ```
 
 ### Swift Package Manager
@@ -24,7 +24,7 @@ Once you have your Swift package set up, adding SkarbSDK as a dependency is as e
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/bitlica/SkarbSDK.git", .upToNextMajor(from: "0.4.16"))
+    .package(url: "https://github.com/bitlica/SkarbSDK.git", .upToNextMajor(from: "0.5.1"))
 ]
 ```
 
@@ -39,14 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-      SkarbSDK.initialize(clientId: "YOUR_CLIENT_ID", isObservable: true)
+      SkarbSDK.initialize(clientId: "YOUR_CLIENT_ID", isObservable: true, deviceId: "YOUR_DEVICE_ID")
     }
 }
 ```
 #### Params:
 ```clientId``` You could get it in your account dashboard.
 
-```isObservable``` Automatically sends all events about purchases that are in your app. If you want to send a purchase event manually you should set this param to ```false``` and see ```Send purchase event``` section.
+```isObservable``` Automatically sends all events about purchases that are in your app. If you want to send a purchase event manually you should set this param to ```false``` and see ```Send purchase event``` section. Default value is ```true```.
+
+```deviceId``` If you want to can use your own generated deviceId. Default value is ```nil```.
 
 ### Send features 
 
@@ -66,7 +68,7 @@ SkarbSDK.sendSource(broker: SKBroker,
 
 ### Send purchase event 
 
-You have to use this call if ```isObservable``` during initialization is ```false```
+You have to use this call if ```isObservable``` during initialization is ```false```.
 
 ```swift
 import SkarbSDK
@@ -107,6 +109,26 @@ SkarbSDK.sendTest(name: String,
 
 ```group``` Group name of A/B test. For example: control group, B, etc.
 
+
+### IDFA
+SkarbSDK automaticaly collects IDFA. If you want to disable it, please set ```false``` before ```SkarbSDK.initialize()``` method. The default value is ```true```
+```swift
+import SkarbSDK
+
+SkarbSDK.automaticCollectIDFA = false
+```
+Also you can sent idfa after getting ```status``` from ```ATTrackingManager.requestTrackingAuthorization()``` and if the the ```status``` is ```.authorized``` get idfa from ```ASIdentifierManager.shared().advertisingIdentifier.uuidString``` and use this method:
+```swift
+SkarbSDK.sendIDFA(idfa: String?)
+```
+
+### Logging
+If you want to see errors and warning from SkarbSDK , please use set ```true``` before  ```SkarbSDK.initialize()``` method.  The default value is ```false```
+```swift
+import SkarbSDK
+
+SkarbSDK.isLoggingEnabled = true
+```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

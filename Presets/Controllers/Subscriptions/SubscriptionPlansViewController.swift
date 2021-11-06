@@ -32,7 +32,7 @@ class SubscriptionPlansViewController: BaseViewController {
     @IBOutlet weak var termsButton: UIButton!
     @IBOutlet weak var nextButton: BlueGradientButton!
     
-    // ImageViews
+    // Image Views
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var firstTick: UIImageView!
     @IBOutlet weak var secondTick: UIImageView!
@@ -52,7 +52,6 @@ class SubscriptionPlansViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureGestures()
-        
         localize()
         
         self.pageConfig = RCValues.sharedInstance.subscriptionPlansPage()
@@ -177,17 +176,17 @@ class SubscriptionPlansViewController: BaseViewController {
             return
         }
         
-        let ids = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId]
+        let testIds = ["com.temporary.week", "com.temporary.month", "com.temporary.year"]
+        let releseIds = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId]
         
-//        let testIds = ["com.temporary.week", "com.temporary.month", "com.temporary.year"]
-        
-        StoreManager.getProducts(for: ids) { products in
+        StoreManager.getProducts(for: DEBUG ? testIds : releseIds) { products in
             self.products = products
             self.updateSubscriptionsUI()
         }
-        
+
         
     }
+
     
     private func updateSubscriptionsUI() {
         
@@ -209,6 +208,10 @@ class SubscriptionPlansViewController: BaseViewController {
     // MARK: - Gesture actions
     
     @objc func choosedFirst() {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         addGradient(to: firstOfferView)
         firstTick.isHidden = false
         secondTick.isHidden = true
@@ -219,6 +222,10 @@ class SubscriptionPlansViewController: BaseViewController {
     }
     
     @objc func choosedSecond() {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         addGradient(to: secondOfferView)
         firstTick.isHidden = true
         secondTick.isHidden = false
@@ -229,6 +236,10 @@ class SubscriptionPlansViewController: BaseViewController {
     }
     
     @objc func choosedThird() {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         addGradient(to: thirdOfferView)
         firstTick.isHidden = true
         secondTick.isHidden = true
@@ -241,19 +252,18 @@ class SubscriptionPlansViewController: BaseViewController {
     // MARK: - @IBActions
     
     @IBAction func closeButtonPressed(_ sender: Any) {
-//        self.view.removeFromSuperview()
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         self.dismiss(animated: true)
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
 
-        guard isConnectedToNetwork() else {
-            self.showNetworkConnectionAlert(completion: nil)
-            return
-        }
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         
-        guard !State.isSubscribed else {
-            self.showAlreadySubscribedAlert(completion: nil)
+        guard isConnectedToNetwork() else {
+            self.showNetworkConnectionAlert()
             return
         }
         
@@ -262,7 +272,6 @@ class SubscriptionPlansViewController: BaseViewController {
         Amplitude.instance().logEvent(AmplitudeEvents.subscriptionButtonTap)
         
         StoreManager.purchase(package: package) {
-//            self.view.removeFromSuperview()
             self.dismiss(animated: true)
         }
         
@@ -270,29 +279,39 @@ class SubscriptionPlansViewController: BaseViewController {
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
         
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         guard isConnectedToNetwork() else {
-            showNetworkConnectionAlert(completion: nil)
+            showNetworkConnectionAlert()
             return
         }
         
         guard !State.isSubscribed else {
-            showAlreadySubscribedAlert(completion: nil)
+            showAlreadySubscribedAlert()
             return
         }
         
         StoreManager.restore() {
-//            self.view.removeFromSuperview()
             self.dismiss(animated: true)
         }
         
     }
     
     @IBAction func privacyButtonPressed(_ sender: Any) {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         guard let url = URL(string: "https://artpoldev.com/privacy.html") else { return }
         UIApplication.shared.open(url)
     }
     
     @IBAction func termsButtonPressed(_ sender: Any) {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         guard let url = URL(string: "https://artpoldev.com/terms.html") else { return }
         UIApplication.shared.open(url)
     }

@@ -59,6 +59,9 @@
 #import "AMPIdentify.h"
 #import "AMPRevenue.h"
 #import "AMPTrackingOptions.h"
+#import "AMPPlan.h"
+#import "AMPServerZone.h"
+#import "AMPServerZoneUtil.h"
 #import <math.h>
 #import <CommonCrypto/CommonDigest.h>
 
@@ -133,6 +136,8 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 
     NSString *_serverUrl;
     NSString *_token;
+    AMPPlan *_plan;
+    AMPServerZone _serverZone;
 }
 
 #pragma clang diagnostic push
@@ -195,6 +200,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
         _backoffUpload = NO;
         _offline = NO;
         _serverUrl = kAMPEventLogUrl;
+        _serverZone = US;
         self.libraryName = kAMPLibrary;
         self.libraryVersion = kAMPVersion;
         self.contentTypeHeader = kAMPContentTypeHeader;
@@ -658,6 +664,10 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
     [event setValue:library forKey:@"library"];
     [event setValue:[AMPUtils generateUUID] forKey:@"uuid"];
     [event setValue:[NSNumber numberWithLongLong:[self getNextSequenceNumber]] forKey:@"sequence_number"];
+    
+    if (_plan) {
+        [event setValue:[_plan toNSDictionary] forKey:@"plan"];
+    }
 
     NSMutableDictionary *apiProperties = [event valueForKey:@"api_properties"];
 
@@ -829,7 +839,7 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
                 return;
             }
             strongSelf->_serverUrl = [AMPConfigManager sharedInstance].ingestionEndpoint;
-        }];
+        } serverZone:_serverZone];
     }
 }
 
@@ -1420,6 +1430,21 @@ static NSString *const SEQUENCE_NUMBER = @"sequence_number";
 
 - (void)useAdvertisingIdForDeviceId {
     _useAdvertisingIdForDeviceId = YES;
+}
+
+- (void)setPlan:(AMPPlan *)plan {
+    _plan = plan;
+}
+
+- (void)setServerZone:(AMPServerZone)serverZone {
+    [self setServerZone:serverZone updateServerUrl:YES];
+}
+
+- (void)setServerZone:(AMPServerZone)serverZone updateServerUrl:(BOOL)updateServerUrl {
+    _serverZone = serverZone;
+    if (updateServerUrl) {
+        [self setServerUrl:[AMPServerZoneUtil getEventLogApi:serverZone]];
+    }
 }
 
 #pragma mark - Getters for device data

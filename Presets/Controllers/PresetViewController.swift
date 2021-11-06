@@ -137,10 +137,15 @@ class PresetViewController: BaseViewController {
     // MARK: - @IBActions
     
     @IBAction func backButtonPressed(_ sender: Any) {
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func addToMyButtonPressed(_ sender: Any) {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         
         guard State.isSubscribed || State.selectedPreset.isFree else {
             self.showPaywall()
@@ -155,6 +160,9 @@ class PresetViewController: BaseViewController {
     
     @IBAction func getAccessButtonPressed(_ sender: Any) {
         
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         if State.isSubscribed {
             self.navigationController?.popViewController(animated: true)
         } else {
@@ -164,6 +172,10 @@ class PresetViewController: BaseViewController {
     }
     
     @IBAction func howToUseButtonPressed(_ sender: Any) {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
+        
         let manualVC = ManualViewController.load(from: .manual)
         self.navigationController?.pushViewController(manualVC, animated: true)
     }
@@ -196,6 +208,9 @@ extension PresetViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
+        selectionFeedbackGenerator.selectionChanged()
         
         guard let firstCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? PresetImageCollectionViewCell else {
             let popup = DefaultPopupViewController.load(from: .defaultPopup)

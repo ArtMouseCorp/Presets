@@ -17,6 +17,7 @@
 #import "AMPDeviceInfo.h"
 #import "Amplitude+SSLPinning.h"
 #import "AmplitudePrivate.h"
+#import "AMPServerZoneUtil.h"
 #import "AMPURLConnection.h"
 #import "AMPURLSession.h"
 #import "AMPUtils.h"
@@ -25,7 +26,9 @@
 #import "ISPPinnedNSURLSessionDelegate.h"
 #import "AMPIdentify.h"
 #import "Amplitude.h"
+#import "AMPPlan.h"
 #import "AMPRevenue.h"
+#import "AMPServerZone.h"
 #import "AMPTrackingOptions.h"
 
 FOUNDATION_EXPORT double AmplitudeVersionNumber;

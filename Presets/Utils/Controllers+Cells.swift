@@ -17,6 +17,7 @@ public enum Screen {
     case preset
     case settingsPopup
     case mainNav
+    case settingsNav
 }
 
 extension Screen {
@@ -47,6 +48,8 @@ extension Screen {
             return("SettingsPopupViewController", .Main)
         case .mainNav:
             return ("MainNavigationController", .Main)
+        case .settingsNav:
+            return ("SettingsNavigationController", .Main)
         }
     }
     
@@ -59,6 +62,7 @@ public enum Cell: String {
     case preset         = "PresetTableViewCell"
     case presetImage    = "PresetImageCollectionViewCell"
     case category       = "CategoryCollectionViewCell"
+    case presetCategory = "PresetCategoryCollectionViewCell"
 }
 
 extension Cell {

@@ -130,3 +130,4 @@
 "alert.notSubscriber.title"         = "復元できません";
 "alert.notSubscriber.message"       = "申し訳ありませんが、有効な登録がないため、購入を復元することはできません";
 
+"alert.loading.message"             = "お待ちください...";

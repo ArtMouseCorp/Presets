@@ -130,3 +130,4 @@
 "alert.notSubscriber.title" = "ไม่สามารถกู้คืนได้";
 "alert.notSubscriber.message" = "ขออภัย คุณไม่สามารถกู้คืนการซื้อของคุณได้ เนื่องจากคุณไม่มีการสมัครสมาชิกที่ใช้งานอยู่";
 
+"alert.loading.message"             = "โปรดรอ...";

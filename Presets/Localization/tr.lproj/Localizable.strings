@@ -130,3 +130,4 @@
 "alert.notSubscriber.title"         = "Geri yüklenemez";
 "alert.notSubscriber.message"       = "Maalesef, aktif bir aboneliğiniz olmadığı için satın alma işleminizi geri yükleyemezsiniz.";
 
+"alert.loading.message"             = "Lütfen bekle...";
