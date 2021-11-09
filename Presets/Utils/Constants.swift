@@ -57,7 +57,7 @@ enum Keys {
     }
     
     internal enum Prodinfire {
-        static let apiKey: String               = "!!G245JF7fh9s4tnFSwd83rJDKn"
+        static let apiKey: String               = "!G245JF7fh9s4tnFSwd83rJDK"
         static let url: String                  = "https://artpoldev.com/api/presets/send.php"
     }
     
