@@ -22,6 +22,7 @@ enum RCValueKey: String {
     internal enum SubscriptionPlansPage: String {
         case titleLabel
         case subtitleLabel
+        case trialPeriodLabel
         case closeDelay
         case priceLabelFontSize
         case priceLabelOpacity
@@ -98,7 +99,7 @@ class RCValues {
         
         let titleLabel: String              = json[RCValueKey.OrganicSubscriptionPage.titleLabel.rawValue].stringValue
         let subtitleLabel: String           = json[RCValueKey.OrganicSubscriptionPage.subtitleLabel.rawValue].stringValue
-        let closeDelay: Double             = Double(json[RCValueKey.OrganicSubscriptionPage.closeDelay.rawValue].floatValue)
+        let closeDelay: Double              = Double(json[RCValueKey.OrganicSubscriptionPage.closeDelay.rawValue].floatValue)
         let priceLabel: String              = json[RCValueKey.OrganicSubscriptionPage.priceLabel.rawValue].stringValue
         let priceLabelFontSize: CGFloat     = CGFloat(json[RCValueKey.OrganicSubscriptionPage.priceLabelFontSize.rawValue].floatValue)
         let priceLabelOpacity: CGFloat      = CGFloat(json[RCValueKey.OrganicSubscriptionPage.priceLabelOpacity.rawValue].floatValue)
@@ -141,19 +142,21 @@ class RCValues {
         
         let titleLabel: String              = json[RCValueKey.SubscriptionPlansPage.titleLabel.rawValue].stringValue
         let subtitleLabel: String           = json[RCValueKey.SubscriptionPlansPage.subtitleLabel.rawValue].stringValue
-        let closeDelay: Double             = Double(json[RCValueKey.SubscriptionPlansPage.closeDelay.rawValue].floatValue)
+        let trialPeriodLabel: String        = json[RCValueKey.SubscriptionPlansPage.trialPeriodLabel.rawValue].stringValue
+        let closeDelay: Double              = Double(json[RCValueKey.SubscriptionPlansPage.closeDelay.rawValue].floatValue)
         let priceLabelFontSize: CGFloat     = CGFloat(json[RCValueKey.SubscriptionPlansPage.priceLabelFontSize.rawValue].floatValue)
         let priceLabelOpacity: CGFloat      = CGFloat(json[RCValueKey.SubscriptionPlansPage.priceLabelOpacity.rawValue].floatValue)
         let buttonLabel: String             = json[RCValueKey.SubscriptionPlansPage.buttonLabel.rawValue].stringValue
         let buttonFontSize: CGFloat         = CGFloat(json[RCValueKey.SubscriptionPlansPage.buttonFontSize.rawValue].floatValue)
         let showTerms: Bool                 = json[RCValueKey.SubscriptionPlansPage.showTerms.rawValue].boolValue
-        let firstSubscriptionId: String          = json[RCValueKey.SubscriptionPlansPage.firstSubscriptionId.rawValue].stringValue
-        let secondSubscriptionId: String          = json[RCValueKey.SubscriptionPlansPage.secondSubscriptionId.rawValue].stringValue
-        let thirdSubscriptionId: String          = json[RCValueKey.SubscriptionPlansPage.thirdSubscriptionId.rawValue].stringValue
+        let firstSubscriptionId: String     = json[RCValueKey.SubscriptionPlansPage.firstSubscriptionId.rawValue].stringValue
+        let secondSubscriptionId: String    = json[RCValueKey.SubscriptionPlansPage.secondSubscriptionId.rawValue].stringValue
+        let thirdSubscriptionId: String     = json[RCValueKey.SubscriptionPlansPage.thirdSubscriptionId.rawValue].stringValue
         
         let subPlansPage = SubscriptionPlansPage(
             titleLabel: titleLabel,
             subtitleLabel: subtitleLabel,
+            trialPeriodLabel: trialPeriodLabel,
             closeDelay: closeDelay,
             priceLabelFontSize: priceLabelFontSize,
             priceLabelOpacity: priceLabelOpacity,

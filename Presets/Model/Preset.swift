@@ -10,6 +10,7 @@ class Preset: Codable, Equatable {
     let presets: [String]
     
     var titleImageURL: URL = URL(string: "apple.com")!
+    var imagesURLs: [URL] = []
     
     init(id: Int, name: String, titleImage: String, isFree: Bool, images: [String], presets: [String]) {
         self.id = id
@@ -49,7 +50,7 @@ class Preset: Codable, Equatable {
         
         all.forEach { preset in
             
-            preset.loadTitleImage()
+//            preset.loadTitleImage()
             
             if preset.isFree {
                 free.append(preset)
@@ -57,6 +58,12 @@ class Preset: Codable, Equatable {
                 premium.append(preset)
             }
         }
+    }
+    
+    public func getTitleImage() -> UIImage? {
+        let imageName = titleImage.components(separatedBy: ".")[0]
+        let imageType = titleImage.components(separatedBy: ".")[1]
+        return getLocalImage(forName: imageName, ofType: imageType)
     }
     
     public func loadTitleImage() {
@@ -72,36 +79,46 @@ class Preset: Codable, Equatable {
         }
     }
     
-//    public func loadPresetFile(completion: @escaping ((Data) -> ())) {
-//
-//        StorageManager.sharedInstance.getData(path: "presets/\(self.name)/\(self.presets[0])") { result in
-//
-//            switch result {
-//
-//            case .success(let data):
-//                completion(data)
-//
-//            case .failure(let error):
-//                print(error)
-//
-//            }
-//
-//        }
-//
-//    }
-    
-    func getImages() -> [UIImage?] {
+    public func loadPresetImages(completion: @escaping (() -> ())) {
         
-        var images = [UIImage?]()
-        self.images.forEach { imageString in
-            let imageName = imageString.components(separatedBy: ".")[0]
-            let imageType = imageString.components(separatedBy: ".")[1]
-            images.append(getLocalImage(forName: imageName, ofType: imageType))
+        let dispatchGroup = DispatchGroup()
+        self.imagesURLs.removeAll()
+        for image in images {
+            dispatchGroup.enter()
+            StorageManager.sharedInstance.getDataURL(path: "presets/\(self.name)/\(image)") { result in
+                
+                switch result {
+                case .success(let url):
+                    self.imagesURLs.append(url)
+                    dispatchGroup.leave()
+                case .failure(let error):
+                    print(error)
+                }
+                
+            }
         }
         
-        return images
+        dispatchGroup.notify(queue: .main) {
+            completion()
+        }
     }
     
+    public func getDNGData(for index: Int, completion: @escaping ((Data) -> ())) {
+        
+        topController().showLoader()
+        StorageManager.sharedInstance.getData(path: "presets/\(self.name)/\(self.presets[index])") { result in
+            
+            switch result {
+            case .success(let data):
+                completion(data)
+            case .failure(let error):
+                topController().hideLoader()
+                print(error)
+            }
+            
+        }
+    }
+
     public static func getFavorites() {
         self.favorites.removeAll()
         State.favouritePresets = userDefaults.array(forKey: UDKeys.favouritePresets) as? [Int] ?? []

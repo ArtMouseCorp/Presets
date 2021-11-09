@@ -26,5 +26,6 @@ pod 'Purchases'
 
 pod 'SkarbSDK'
 pod 'YandexMobileMetrica/Dynamic'
+pod 'Alamofire'
 
 end

@@ -15,7 +15,15 @@ class PresetTableViewCell: UITableViewCell {
     
     // MARK: Variables
     
-    var completion: (() -> ())!
+    internal enum ButtonType {
+        case delete, label
+    }
+    
+    public var onButtonPress: (() -> ())? = nil
+    
+    let ALL = L10n.Main.allPresets
+    let FREE = L10n.Main.freePresets
+    let PREMIUM = L10n.Main.premiumPresets
     
     // MARK: Awake functions
     
@@ -26,13 +34,53 @@ class PresetTableViewCell: UITableViewCell {
     }
 
     override func prepareForReuse() {
-        self.presetImage.image = UIImage()
-        self.activityIndicator.startAnimating()
+//        self.presetImage.image = UIImage()
+//        self.activityIndicator.startAnimating()
+    }
+    
+    // MARK: - Custom functions
+    
+    public func configure(with preset: Preset, button: ButtonType) {
+        
+//        self.presetButton.isHidden = true
+//        self.presetImage.image = UIImage()
+//        self.activityIndicator.startAnimating()
+        
+        
+        switch button {
+        case .delete:
+            
+            self.presetButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            self.presetButton.setImage(Images.Icons.trash, for: .normal)
+            self.presetButton.backgroundColor = UIColor(red: 249/255, green: 48/255, blue: 48/255, alpha: 1)
+            self.presetButton.layer.cornerRadius = 22
+            
+            self.presetButton.isUserInteractionEnabled = true
+            
+        case .label:
+            
+            self.presetButton.setTitle(preset.isFree ? FREE : PREMIUM, for: .normal)
+            self.presetButton.backgroundColor = preset.isFree ? UIColor(red: 1, green: 71/255, blue: 181/255, alpha: 1) : UIColor(red: 1, green: 71/255, blue: 71/255, alpha: 1)
+            
+            self.presetButton.isUserInteractionEnabled = false
+            
+        }
+        
+        
+        self.activityIndicator.stopAnimating()
+        self.presetButton.isHidden = false
+        self.presetImage.image = preset.getTitleImage()
+        
+//        self.presetImage.load(from: preset.titleImageURL) {
+//            self.activityIndicator.stopAnimating()
+//            self.presetButton.isHidden = false
+//        }
+        
     }
     
     // MARK: - @IBActions
     
     @IBAction func presetButtonPressed(_ sender: Any) {
-        completion()
+        self.onButtonPress?() ?? ()
     }
 }

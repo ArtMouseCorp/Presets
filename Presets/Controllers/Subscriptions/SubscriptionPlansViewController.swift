@@ -2,6 +2,7 @@ import UIKit
 import Purchases
 import StoreKit
 import Amplitude
+import GoogleMobileAds
 
 class SubscriptionPlansViewController: BaseViewController {
     
@@ -20,6 +21,7 @@ class SubscriptionPlansViewController: BaseViewController {
     // Labels
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var trialPreriodLabel: UILabel!
     
     @IBOutlet var durationLabels: [UILabel]!
     @IBOutlet var priceLabels: [UILabel]!
@@ -38,11 +40,14 @@ class SubscriptionPlansViewController: BaseViewController {
     @IBOutlet weak var secondTick: UIImageView!
     @IBOutlet weak var thirdTick: UIImageView!
     
+    // Activity Indicators
+    @IBOutlet var activityIndicators: [UIActivityIndicatorView]!
     // MARK: - Variables
     
     var didLayoutCalled = true
     
-    var pageConfig: SubscriptionPlansPage = .default
+    var interstitial: GADInterstitialAd?
+    var pageConfig: SubscriptionPlansPage = State.subscriptionPlansConfig
     
     var products: [StoreManager.Product] = []
     var selectedProductIndex: Int = 0
@@ -52,9 +57,9 @@ class SubscriptionPlansViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureGestures()
+        createAndLoadInterstitialAd()
         localize()
         
-        self.pageConfig = RCValues.sharedInstance.subscriptionPlansPage()
         self.getProducts()
     }
     
@@ -84,6 +89,7 @@ class SubscriptionPlansViewController: BaseViewController {
         titleLabel.text = pageConfig.titleLabel
         subtitleLabel.text = pageConfig.subtitleLabel
         closeButton.isHidden = true
+        closeButton.tintColor = .black//UIColor(red: 8/255, green: 12/255, blue: 34/255, alpha: 1)
         
         nextButton.setTitle(pageConfig.buttonLabel, for: .normal)
         nextButton.titleLabel?.font = UIFont(name: "EuclidCircularA-SemiBold", size: pageConfig.buttonFontSize)
@@ -94,12 +100,24 @@ class SubscriptionPlansViewController: BaseViewController {
         dotViews.forEach { dotView in
             dotView.isHidden = !pageConfig.showTerms
         }
+        
+        animateBackgound()
     }
     
     private func localize() {
         self.restoreButton.localize(with: L10n.Subscription.Button.restore)
         self.privacyButton.localize(with: L10n.Subscription.Button.privacy)
         self.termsButton.localize(with: L10n.Subscription.Button.terms)
+    }
+    
+    private func animateBackgound() {
+        let pulseAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.contentsScale))
+        pulseAnimation.duration = 0.8
+        pulseAnimation.toValue = 3.2
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = .greatestFiniteMagnitude
+        mainImageView.layer.add(pulseAnimation, forKey: "animateOpacity")
     }
     
     func configureGestures() {
@@ -167,19 +185,60 @@ class SubscriptionPlansViewController: BaseViewController {
         
     }
     
-    private func getProducts() {
+    private func createAndLoadInterstitialAd() {
         
-        print("Getting products")
+        let request = GADRequest()
+        
+        GADInterstitialAd.load(withAdUnitID: Keys.AdmMod.unitId, request: request) { [self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            interstitial = ad
+            interstitial?.fullScreenContentDelegate = self
+        }
+        
+    }
+    
+    private func showInterstitialAd() {
+        
+        guard let interstitial = interstitial else {
+            print("Ad wasn't ready")
+            self.view.removeFromSuperview()
+            return
+        }
+        
+        interstitial.present(fromRootViewController: self)
+        Amplitude.instance().logEvent(AmplitudeEvents.afterSubscriptionAd)
+    }
+    
+    private func getProducts() {
         
         guard isConnectedToNetwork() else {
             showNetworkConnectionAlert(completion: nil)
             return
         }
         
-        let testIds = ["com.temporary.week", "com.temporary.month", "com.temporary.year"]
-        let releseIds = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId]
+        trialPreriodLabel.isHidden = true
+        nextButton.isEnabled = false
+        restoreButton.isEnabled = false
         
-        StoreManager.getProducts(for: DEBUG ? testIds : releseIds) { products in
+        for i in 0 ..< self.durationLabels.count {
+            
+            durationLabels[i].isHidden = true
+            priceLabels[i].isHidden = true
+            totalPriceLabels[i].isHidden = true
+            
+        }
+        
+//        let ids = ["com.temporary.month", "com.temporary.week", "com.temporary.year"] // DEBUG
+        let ids = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId] // RELEASE
+        
+        StoreManager.getProducts(for: ids) { products in
+            guard !products.isEmpty else {
+                self.dismiss(animated: true)
+                return
+            }
             self.products = products
             self.updateSubscriptionsUI()
         }
@@ -194,12 +253,27 @@ class SubscriptionPlansViewController: BaseViewController {
             offerView.isHidden = true
         }
         
+        nextButton.isEnabled = true
+        restoreButton.isEnabled = true
+        
         for i in 0 ..< self.products.count {
             
+            activityIndicators[i].stopAnimating()
+            durationLabels[i].isHidden = false
             durationLabels[i].text = products[i].skProduct.getSubscriptionPeriod(showOne: true)
+            priceLabels[i].isHidden = false
             priceLabels[i].text = "\(products[i].price) \(products[i].subscriptionPeriod)"
+            totalPriceLabels[i].isHidden = false
             totalPriceLabels[i].text = "\(L10n.Subscription.total): \(products[i].price)"
             offerViews[i].isHidden = false
+            
+            if let trialPeriod = self.products[i].trialPeriod {
+                trialPreriodLabel.isHidden = false
+                trialPreriodLabel.text = pageConfig.trialPeriodLabel
+                    .replacingOccurrences(of: "%trial_period%", with: trialPeriod)
+                    .lowercased()
+            }
+            
             
         }
         
@@ -252,9 +326,12 @@ class SubscriptionPlansViewController: BaseViewController {
     // MARK: - @IBActions
     
     @IBAction func closeButtonPressed(_ sender: Any) {
+//        self.dismiss(animated: true)
+        
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
-        self.dismiss(animated: true)
+        Amplitude.instance().logEvent(AmplitudeEvents.paywallClose)
+        showInterstitialAd()
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
@@ -314,6 +391,23 @@ class SubscriptionPlansViewController: BaseViewController {
         
         guard let url = URL(string: "https://artpoldev.com/terms.html") else { return }
         UIApplication.shared.open(url)
+    }
+    
+}
+
+// MARK: - GADFullScreenContentDelegate
+
+extension SubscriptionPlansViewController: GADFullScreenContentDelegate {
+    
+    /// Tells the delegate that the ad presented full screen content.
+    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did present full screen content.")
+    }
+    
+    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will dismiss full screen content.")
+        self.dismiss(animated: false)
+        self.dismiss(animated: true)
     }
     
 }

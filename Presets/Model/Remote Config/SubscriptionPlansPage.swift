@@ -4,6 +4,7 @@ struct SubscriptionPlansPage: Codable {
     
     let titleLabel: String
     let subtitleLabel: String
+    let trialPeriodLabel: String
     let closeDelay: Double
     let priceLabelFontSize: CGFloat
     let priceLabelOpacity: CGFloat
@@ -18,6 +19,7 @@ struct SubscriptionPlansPage: Codable {
     public static let `default` = SubscriptionPlansPage(
         titleLabel: "Become Pro!",
         subtitleLabel: "Over 100+ quality presets",
+        trialPeriodLabel: "3 days free",
         closeDelay: 2,
         priceLabelFontSize: 16,
         priceLabelOpacity: 1,

@@ -1,5 +1,6 @@
 PODS:
   - _NIODataStructures (2.32.3)
+  - Alamofire (5.4.4)
   - Amplitude (8.5.0)
   - AppsFlyerFramework (6.4.2):
     - AppsFlyerFramework/Main (= 6.4.2)
@@ -207,6 +208,7 @@ PODS:
     - YandexMobileMetrica/Dynamic/Core
 
 DEPENDENCIES:
+  - Alamofire
   - Amplitude
   - AppsFlyerFramework
   - Firebase/Analytics
@@ -222,6 +224,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - _NIODataStructures
+    - Alamofire
     - Amplitude
     - AppsFlyerFramework
     - CGRPCZlib
@@ -274,6 +277,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   _NIODataStructures: e2077c7dc7c1d6c93e698c85fe04d663a17f53a4
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   Amplitude: ef9ed339ddd33c9183edf63fa4bbaa86cf873321
   AppsFlyerFramework: 2303994c0bda3afa48eba93680ab5fe48f46cd94
   CGRPCZlib: b0c9d704a12fa667f1824ffff20688f191945989
@@ -324,6 +328,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   YandexMobileMetrica: 85ba4c1a6839985d58bf45ec7f915e433525b094
 
-PODFILE CHECKSUM: 3ba077937450996e594175853c1205638f900943
+PODFILE CHECKSUM: 0783208ef91560a4964f8221351970d9df143ca2
 
 COCOAPODS: 1.11.2

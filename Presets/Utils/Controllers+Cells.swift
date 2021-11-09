@@ -59,10 +59,11 @@ extension Screen {
 }
 
 public enum Cell: String {
-    case preset         = "PresetTableViewCell"
-    case presetImage    = "PresetImageCollectionViewCell"
-    case category       = "CategoryCollectionViewCell"
-    case presetCategory = "PresetCategoryCollectionViewCell"
+    case preset                 = "PresetTableViewCell"
+    case presetImage            = "PresetImageCollectionViewCell"
+    case category               = "CategoryCollectionViewCell"
+    case presetCategory         = "PresetCategoryCollectionViewCell"
+    case presetsCollectionCell  = "PresetsCollectionViewCell"
 }
 
 extension Cell {

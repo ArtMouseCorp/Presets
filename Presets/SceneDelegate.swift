@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if State.isFirstLaunch() {
             window.rootViewController = OnboardingViewController.load(from: .onboarding)
             Amplitude.instance().logEvent(AmplitudeEvents.firstTimeLaunch)
+            ProdinfireManager.sharedInstance.sendInstallEvent()
         } else {
             window.rootViewController = UINavigationController.load(from: .mainNav)
             Amplitude.instance().logEvent(AmplitudeEvents.appLaunch)

@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Presets/Pods-Presets-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Amplitude/Amplitude.framework
 ${BUILT_PRODUCTS_DIR}/CGRPCZlib/CGRPCZlib.framework
 ${BUILT_PRODUCTS_DIR}/CNIOAtomics/CNIOAtomics.framework

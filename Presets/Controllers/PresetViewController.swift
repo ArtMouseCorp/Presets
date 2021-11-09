@@ -30,6 +30,8 @@ class PresetViewController: BaseViewController {
     var presetId = 0
     var isTapped = false
     
+    var imagesURLs: [URL] = []
+    
     // MARK: - Constants
     
     let cellWidth = UIScreen.main.bounds.width - 60
@@ -41,9 +43,12 @@ class PresetViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchImages()
+        
         localize()
         
         inMyPresets = State.favouritePresets.contains(presetId)
+        
         
         howToUseButton.layer.cornerRadius = 8
         howToUseButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
@@ -67,17 +72,6 @@ class PresetViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.titleLabel.text = State.selectedPreset.name
-        
-        
-        let presetsCount = State.selectedPreset.getImages().count
-        let presetNoun = getNoun(
-            number: presetsCount,
-            one: L10n.Preset.Count.one,
-            two: L10n.Preset.Count.two,
-            five: L10n.Preset.Count.five
-        )
-        
-        self.presetsCountLabel.text = "\(presetsCount) \(presetNoun)"
     }
     
     // MARK: - Custom functions
@@ -103,6 +97,23 @@ class PresetViewController: BaseViewController {
         layout.velocityThresholdPerPage = 5
         collectionView.decelerationRate = .fast
         collectionView.collectionViewLayout = layout
+    }
+    
+    private func fetchImages() {
+        State.selectedPreset.loadPresetImages() {
+            self.imagesURLs = State.selectedPreset.imagesURLs
+            self.collectionView.reloadData()
+            
+            let presetsCount = self.imagesURLs.count
+            let presetNoun = getNoun(
+                number: presetsCount,
+                one: L10n.Preset.Count.one,
+                two: L10n.Preset.Count.two,
+                five: L10n.Preset.Count.five
+            )
+            
+            self.presetsCountLabel.text = "\(presetsCount) \(presetNoun)"
+        }
     }
     
     func updateUI() {
@@ -187,23 +198,15 @@ class PresetViewController: BaseViewController {
 extension PresetViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dots.numberOfPages = State.selectedPreset.images.count
-        return State.selectedPreset.getImages().count
+        dots.numberOfPages = imagesURLs.count
+        return imagesURLs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.presetImage.rawValue, for: indexPath) as! PresetImageCollectionViewCell
         
-        cell.imageView.image = State.selectedPreset.getImages()[indexPath.row]
+        cell.configure(with: imagesURLs[indexPath.row], isFirst: indexPath.row == 0)
         
-        if indexPath.row != 0 {
-            if cell.openPresetView != nil {
-                cell.openPresetView.isHidden = true
-            }
-        }
-        
-        cell.layer.cornerRadius = 10
-        cell.clipsToBounds = true
         return cell
     }
     
@@ -212,15 +215,7 @@ extension PresetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
         
-        guard let firstCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? PresetImageCollectionViewCell else {
-            let popup = DefaultPopupViewController.load(from: .defaultPopup)
-            popup.initialize(as: .openPresetPopup)
-            popup.indexOfImagePreset = indexPath.row
-            popup.completion = { }
-            self.showPopup(popup)
-            return
-        }
-        if firstCell.openPresetView != nil {
+        if let firstCell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? PresetImageCollectionViewCell, firstCell.openPresetView != nil {
             firstCell.openPresetView.removeFromSuperview()
         }
         
@@ -231,14 +226,19 @@ extension PresetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         self.showPopup(popup)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        let pageIndex = (scrollView.contentOffset.x / collectionView.frame.width).rounded(.up)
-        dots.currentPage = Int(pageIndex)
+        guard let collectionView = scrollView as? UICollectionView else { return }
+        guard collectionView == self.collectionView else { return }
+
+        let xPoint = scrollView.contentOffset.x + scrollView.frame.width / 2
+        let yPoint = scrollView.frame.height / 2
+        let center = CGPoint(x: xPoint, y: yPoint)
+
+        guard let indexPath = self.collectionView.indexPathForItem(at: center) else { return }
         
-        print(scrollView.contentOffset)
+        dots.currentPage = indexPath.row
         
-        
-//        dots.currentPage = Int(((collectionView.contentOffset.x + 150) / collectionView.frame.width).rounded(.toNearestOrAwayFromZero))
     }
+
 }

@@ -24,11 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         connectGoogleMobileAds()
         connectProdinfire()
         connectAppMetrika()
-        
-        fetchData()
-        
+                
         _ = RCValues.sharedInstance
         _ = StorageManager.sharedInstance
+        
+        fetchData()
         
         return true
     }
@@ -66,6 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func fetchData() {
         Preset.get()
         Preset.getFavorites()
+        
+        State.subscriptionConfig = RCValues.sharedInstance.organicSubscriptionPage()
+        State.subscriptionPlansConfig = RCValues.sharedInstance.subscriptionPlansPage()
     }
     
     private func connectRevenueCat() {
@@ -144,6 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: AppsFlyerLibDelegate {
     
     func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
+        ProdinfireManager.sharedInstance.setAppsFlyerConversation(to: conversionInfo)
         return
     }
     

@@ -30,12 +30,14 @@ class SubscriptionViewController: BaseViewController {
     // ImageViews
     @IBOutlet weak var mainImageView: UIImageView!
     
+    // Activity Indicators
+    @IBOutlet weak var secondActivityIndicator: UIActivityIndicatorView!
     // MARK: - Variables
     
     var didLayoutCalled = true
     
     var interstitial: GADInterstitialAd?
-    var pageConfig: OrganicSubscriptionPage = .default
+    var pageConfig: OrganicSubscriptionPage = State.subscriptionConfig
     
     var closeTimer: Timer = Timer()
     
@@ -50,8 +52,6 @@ class SubscriptionViewController: BaseViewController {
         createAndLoadInterstitialAd()
         configureGestures()
         firstOfferView.isHidden = true
-        
-        self.pageConfig = RCValues.sharedInstance.organicSubscriptionPage()
         
         getProduct()
         
@@ -83,6 +83,7 @@ class SubscriptionViewController: BaseViewController {
         titleLabel.text = pageConfig.titleLabel
         subtitleLabel.text = pageConfig.subtitleLabel
         closeButton.isHidden = true
+        closeButton.tintColor = .black//UIColor(red: 8/255, green: 12/255, blue: 34/255, alpha: 1)
         
         nextButton.setTitle(pageConfig.buttonLabel, for: .normal)
         nextButton.titleLabel?.font = UIFont(name: "EuclidCircularA-SemiBold", size: pageConfig.buttonFontSize)
@@ -94,12 +95,23 @@ class SubscriptionViewController: BaseViewController {
             dotView.isHidden = !pageConfig.showTerms
         }
         
+        animateBackgound()
     }
     
     private func localize() {
         self.restoreButton.localize(with: L10n.Subscription.Button.restore)
         self.privacyButton.localize(with: L10n.Subscription.Button.privacy)
         self.termsButton.localize(with: L10n.Subscription.Button.terms)
+    }
+    
+    private func animateBackgound() {
+        let pulseAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.contentsScale))
+        pulseAnimation.duration = 0.8
+        pulseAnimation.toValue = 3.2
+        pulseAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        pulseAnimation.autoreverses = true
+        pulseAnimation.repeatCount = .greatestFiniteMagnitude
+        mainImageView.layer.add(pulseAnimation, forKey: "animateOpacity")
     }
     
     func configureGestures() {
@@ -211,24 +223,37 @@ class SubscriptionViewController: BaseViewController {
     private func getProduct() {
         
         guard isConnectedToNetwork() else {
-            showNetworkConnectionAlert() {
-                
-            }
+            showNetworkConnectionAlert()
             return
         }
         
-        let productId = DEBUG ? "com.temporary.week" : pageConfig.subscriptionId
+        nextButton.isEnabled = false
+        restoreButton.isEnabled = false
+        self.subscriptionLabel.isHidden = true
+        
+//        let productId = "com.temporary.week" // DEBUG
+        let productId = pageConfig.subscriptionId // RELEASE
         
         StoreManager.getProducts(for: [productId]) { products in
             
+            guard let product = products.first else {
+                self.view.removeFromSuperview()
+                return
+            }
+            
+            self.nextButton.isEnabled = true
+            self.restoreButton.isEnabled = true
+            
             let finalString = self.pageConfig.priceLabel
-                .replacingOccurrences(of: "%trial_period%", with: products[0].trialPeriod ?? "")
-                .replacingOccurrences(of: "%subscription_price%", with: products[0].price)
-                .replacingOccurrences(of: "%subscription_period%", with: products[0].subscriptionPeriod)
+                .replacingOccurrences(of: "%trial_period%", with: product.trialPeriod ?? "")
+                .replacingOccurrences(of: "%subscription_price%", with: product.price)
+                .replacingOccurrences(of: "%subscription_period%", with: product.subscriptionPeriod)
             
             self.subscriptionLabel.text = finalString
+            self.subscriptionLabel.isHidden = false
+            self.secondActivityIndicator.stopAnimating()
             
-            self.package = products[0].purchasesPackage
+            self.package = product.purchasesPackage
             
         }
         

@@ -12,7 +12,10 @@ struct State {
     public static var language: Language = .en
     public static var favouritePresets: [Int] = []
     
-    static var selectedPreset: Preset = .defaultPreset
+    public static var selectedPreset: Preset = .defaultPreset
+    
+    public static var subscriptionConfig: OrganicSubscriptionPage = .default
+    public static var subscriptionPlansConfig: SubscriptionPlansPage = .default
     
     // MARK: - Functions
     

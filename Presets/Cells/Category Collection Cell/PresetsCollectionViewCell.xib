@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PresetsCollectionViewCell" id="gTV-IL-0wX" customClass="PresetsCollectionViewCell" customModule="Presets" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="290" height="378"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="290" height="378"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZf-1f-Q9A">
+                        <rect key="frame" x="0.0" y="0.0" width="290" height="378"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WVD-wC-vRK">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="378"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WVD-wC-vRK" firstAttribute="top" secondItem="IZf-1f-Q9A" secondAttribute="top" id="3E5-a4-0vP"/>
+                            <constraint firstAttribute="trailing" secondItem="WVD-wC-vRK" secondAttribute="trailing" id="B3X-af-cZ5"/>
+                            <constraint firstAttribute="bottom" secondItem="WVD-wC-vRK" secondAttribute="bottom" id="j5V-Lx-1Rs"/>
+                            <constraint firstItem="WVD-wC-vRK" firstAttribute="leading" secondItem="IZf-1f-Q9A" secondAttribute="leading" id="zHm-F1-N0c"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="IZf-1f-Q9A" secondAttribute="bottom" id="Ilr-m9-NAK"/>
+                <constraint firstItem="IZf-1f-Q9A" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="r8p-Yc-1yx"/>
+                <constraint firstAttribute="trailing" secondItem="IZf-1f-Q9A" secondAttribute="trailing" id="t3F-v0-MVZ"/>
+                <constraint firstItem="IZf-1f-Q9A" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="xRA-oI-DdA"/>
+            </constraints>
+            <size key="customSize" width="290" height="378"/>
+            <connections>
+                <outlet property="tableView" destination="WVD-wC-vRK" id="ZtB-it-kfE"/>
+            </connections>
+            <point key="canvasLocation" x="152" y="170"/>
+        </collectionViewCell>
+    </objects>
+</document>

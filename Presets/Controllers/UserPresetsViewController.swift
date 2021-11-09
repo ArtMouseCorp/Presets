@@ -71,7 +71,13 @@ extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Cell.preset.rawValue, for: indexPath) as! PresetTableViewCell
-        cell.completion = {
+        
+        let presetId = State.favouritePresets[indexPath.row]
+        guard let preset = Preset.all.first(where: { $0.id == presetId }) else { return cell }
+        
+        cell.configure(with: preset, button: .delete)
+        
+        cell.onButtonPress = {
             let popup = DefaultPopupViewController.load(from: .defaultPopup)
             popup.initialize(as: .deletePresetPopup)
             popup.deleteIndex = indexPath.row
@@ -83,18 +89,6 @@ extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource 
             self.showPopup(popup)
         }
         
-        let presetId = State.favouritePresets[indexPath.row]
-        
-        guard let indexOfPreset = Preset.all.firstIndex(where: { $0.id == presetId }) else { return cell }
-        
-        cell.presetImage.load(from: Preset.all[indexOfPreset].titleImageURL) {
-            cell.activityIndicator.stopAnimating()
-        }
-        
-        cell.presetButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        cell.presetButton.setImage(Images.Icons.trash, for: .normal)
-        cell.presetButton.backgroundColor = UIColor(red: 249/255, green: 48/255, blue: 48/255, alpha: 1)
-        cell.presetButton.layer.cornerRadius = 22
         return cell
     }
     

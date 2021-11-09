@@ -25,17 +25,17 @@
 		"titleImage": "grid-blvck.jpeg",
 		"isFree": true,
 		"images": [
-			"image-blvck-1.jpeg.dng",
-			"image-blvck-2.jpeg.dng",
-			"image-blvck-3.jpeg.dng",
-			"image-blvck-4.jpeg.dng",
-			"image-blvck-5.jpeg.dng",
-			"image-blvck-6.jpeg.dng",
-			"image-blvck-7.jpeg.dng",
-			"image-blvck-8.jpeg.dng",
-			"image-blvck-9.jpeg.dng",
-			"image-blvck-10.jpeg.dng",
-			"image-blvck-11.jpeg.dng"
+			"image-blvck-1.jpeg",
+			"image-blvck-2.jpeg",
+			"image-blvck-3.jpeg",
+			"image-blvck-4.jpeg",
+			"image-blvck-5.jpeg",
+			"image-blvck-6.jpeg",
+			"image-blvck-7.jpeg",
+			"image-blvck-8.jpeg",
+			"image-blvck-9.jpeg",
+			"image-blvck-10.jpeg",
+			"image-blvck-11.jpeg"
 		],
 		"presets": [
 			"preset-blvck-1.dng",

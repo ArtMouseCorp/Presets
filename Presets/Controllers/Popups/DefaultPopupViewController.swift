@@ -43,7 +43,7 @@ class DefaultPopupViewController: PopupViewController {
         switch mode {
         case .deletePresetPopup:
             confirmButton.initialize(as: .redGradientButton)
-
+            
             titleLabel.localize(with: L10n.Delete.title)
             confirmButton.localize(with: L10n.Delete.Button.confirm)
             cancelButton.localize(with: L10n.Delete.Button.cancel)
@@ -51,7 +51,7 @@ class DefaultPopupViewController: PopupViewController {
             
         case .openPresetPopup:
             confirmButton.initialize(as: .blueGradientButton)
-
+            
             titleLabel.localize(with: L10n.OpenPreset.title)
             confirmButton.localize(with: L10n.OpenPreset.Button.open)
             cancelButton.localize(with: L10n.OpenPreset.Button.openManual)
@@ -83,7 +83,7 @@ class DefaultPopupViewController: PopupViewController {
     override func backgroundTapped() {
         animateOut()
     }
-
+    
     // MARK: - @IBActions
     
     @IBAction func cancelButtonPressed() {
@@ -114,14 +114,16 @@ class DefaultPopupViewController: PopupViewController {
                 return
             }
             
-            guard let fileURL = Bundle.main.url(forResource: State.selectedPreset.presets[indexOfImagePreset] , withExtension: "dng") else {
-                animateOut()
-                return
+            State.selectedPreset.getDNGData(for: indexOfImagePreset) { data in
+                
+                let activityController = UIActivityViewController(activityItems: [data] as [Any], applicationActivities: nil)
+                
+                self.hideLoader() {
+                    self.present(activityController, animated: true)
+                }
+                
             }
-            var items: [Any] = []
-            items.append(fileURL)
-            let activityController = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
-            present(activityController, animated: true)
+            
         }
     }
     

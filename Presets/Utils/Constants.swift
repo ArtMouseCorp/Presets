@@ -2,8 +2,6 @@ import UIKit
 
 let userDefaults = UserDefaults.standard
 
-let DEBUG: Bool = false
-
 enum UDKeys {
     static let appLaunchCount: String           = "appLaunchCount"
     static let favouritePresets: String         = "favouritePresets"
@@ -30,9 +28,8 @@ enum Keys {
     internal enum RevenueCat {
         
 //        static let apiKey: String               = "DETukuMSYjcwKcUwHHXpJnDvLlQHzKgV" // DEBUG
-//        static let apiKey: String               = "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX" // RELEASE
+        static let apiKey: String               = "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX" // RELEASE
         
-        static let apiKey: String               = DEBUG ? "DETukuMSYjcwKcUwHHXpJnDvLlQHzKgV" : "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX"
         static let entitlementId: String        = "premium"
     }
     
@@ -50,20 +47,18 @@ enum Keys {
     internal enum AdmMod {
         static let appId: String                = "ca-app-pub-9686541093041732~7231766062"
         
-        static let unitId: String               = DEBUG ? "ca-app-pub-3940256099942544/4411468910" : "ca-app-pub-9686541093041732/2300386476"
-        
 //        static let unitId: String               = "ca-app-pub-3940256099942544/4411468910" // DEBUG
-//        static let unitId: String               = "ca-app-pub-9686541093041732/2300386476" // RELEASE
+        static let unitId: String               = "ca-app-pub-9686541093041732/2300386476" // RELEASE
     }
     
     // AppsFlyer
     internal enum AppsFlyer {
-//        static let devKey: String               = "HC375dSqjhViQMeSB8miEN" // DEBUG
-        static let devKey: String               = "5VCYcU4KGxS56mN9DjpnoN" // RELEASE
+        static let devKey: String               = "5VCYcU4KGxS56mN9DjpnoN"
     }
     
     internal enum Prodinfire {
-        static let apiKey: String               = "!G245JF7fh9s4tnFSwd83rJDKn"
+        static let apiKey: String               = "!!G245JF7fh9s4tnFSwd83rJDKn"
+        static let url: String                  = "https://artpoldev.com/api/presets/send.php"
     }
     
     internal enum AppMetrika {

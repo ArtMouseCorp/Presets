@@ -38,22 +38,26 @@ struct StoreManager {
             
             if let packages = offerings?.current?.availablePackages {
                 
-                for package in packages {
+                for productId in productIds {
                     
-                    // Get a reference to a product
-                    let product = package.product
+                    for package in packages {
+                        
+                        // Get a reference to a product
+                        let product = package.product
+                        
+                        guard productId == product.productIdentifier else { continue }
+                        
+                        // Product price
+                        let price = product.localizedPrice ?? product.price.stringValue
+                        
+                        let subscriptionPeriod = product.getSubscriptionPeriod()
+                        let trialPeriod = product.getTrialPeriod()
+                        
+                        let customProduct = Product(id: product.productIdentifier, price: price, subscriptionPeriod: subscriptionPeriod, trialPeriod: trialPeriod, purchasesPackage: package, skProduct: product)
+                        
+                        foundProducts.append(customProduct)
+                    }
                     
-                    guard productIds.contains(product.productIdentifier) else { continue }
-                    
-                    // Product price
-                    let price = product.localizedPrice ?? product.price.stringValue
-                    
-                    let subscriptionPeriod = product.getSubscriptionPeriod()
-                    let trialPeriod = product.getTrialPeriod()
-                    
-                    let customProduct = Product(id: product.productIdentifier, price: price, subscriptionPeriod: subscriptionPeriod, trialPeriod: trialPeriod, purchasesPackage: package, skProduct: product)
-                    
-                    foundProducts.append(customProduct)
                 }
                 
                 completion(foundProducts)
@@ -75,6 +79,7 @@ struct StoreManager {
             if purchaserInfo?.entitlements[self.entitlementId]?.isActive == true {
                 
                 print("Purchase Success: \(package.product.productIdentifier)")
+                ProdinfireManager.sharedInstance.sendSubscribtionEvent(subscibedTo: package.product.productIdentifier)
                 
                 Amplitude.instance().logEvent("Subscription purchased",
                                               withEventProperties: [
