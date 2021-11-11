@@ -5,12 +5,22 @@ class ProdinfireManager {
     
     public static let sharedInstance: ProdinfireManager = ProdinfireManager()
     
-    private var appsFlyerConversations: [String: String]? = nil
+    private var appsFlyerConversationData: [String: Any] = [:]
+    
+    public func isInstallEventSent() -> Bool {
+        return userDefaults.bool(forKey: UDKeys.isInstallEventSent)
+    }
+    
+    public func setInstallEventSent(to isSent: Bool) {
+        userDefaults.set(isSent, forKey: UDKeys.isInstallEventSent)
+    }
     
     public func setAppsFlyerConversation(to conversationInfo: [AnyHashable: Any]) -> Void {
-        appsFlyerConversations?.removeAll()
+        appsFlyerConversationData.removeAll()
         conversationInfo.forEach { element in
-            appsFlyerConversations?[element.key as! String] = (element.value as! String)
+            if let key = element.key as? String {
+                appsFlyerConversationData[key] = element.value
+            }
         }
     }
     
@@ -19,10 +29,14 @@ class ProdinfireManager {
         let parameters: [String: Any] = [
             "api_key": Keys.Prodinfire.apiKey,
             "event": "install",
-            "af_data": appsFlyerConversations as Any
+            "af_data": appsFlyerConversationData
         ]
         
-        postRequest(params: parameters)
+        
+        print("Install event params: ", parameters)
+        
+        self.setInstallEventSent(to: true)
+        postRequest(parameters: parameters)
         
     }
     
@@ -32,49 +46,21 @@ class ProdinfireManager {
             "api_key": Keys.Prodinfire.apiKey,
             "event": "subscribe",
             "product": productId,
-            "af_data": appsFlyerConversations as Any
+            "af_data": appsFlyerConversationData
         ]
         
-        postRequest(params: parameters)
+        print("Subscription event params: ", parameters)
+        
+        postRequest(parameters: parameters)
         
     }
     
-    private func postRequest(params: [String: Any]) {
+    private func postRequest(parameters: [String: Any]) {
         
-        
-        var jsonData:Data?
-        do {
-            jsonData = try JSONSerialization.data(
-                withJSONObject: params,
-                options: .prettyPrinted
-            )
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        // create post request
-        let url = NSURL(string: Keys.Prodinfire.url)!
-        let request = NSMutableURLRequest(url: url as URL)
-        request.httpMethod = "POST"
-        
-        // insert json data to the request
-        request.httpBody = jsonData! as Data
-        
-        let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
-            if error != nil {
-                return
+        AF.request(Keys.Prodinfire.url, method:.post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON { (response) in
+                print("Prodinfire event response: ", response)
             }
-            do {
-                let result = try JSONSerialization.jsonObject(with: data!, options: []) as? [String:AnyObject]
-                
-                print("Prodinfire Event Result", result!)
-                
-            } catch {
-                print("Prodinfire Event Error -> \(error)")
-            }
-        }
-        
-        task.resume()
         
     }
     

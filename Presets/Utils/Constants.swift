@@ -4,6 +4,7 @@ let userDefaults = UserDefaults.standard
 
 enum UDKeys {
     static let appLaunchCount: String           = "appLaunchCount"
+    static let isInstallEventSent: String       = "isInstallEventSent"
     static let favouritePresets: String         = "favouritePresets"
 }
 

@@ -14,6 +14,7 @@
 		2823316F26C6C4F0002EB4C2 /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823316E26C6C4F0002EB4C2 /* PresetViewController.swift */; };
 		2823317326C6DAE0002EB4C2 /* PresetImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823317126C6DAE0002EB4C2 /* PresetImageCollectionViewCell.swift */; };
 		2823317426C6DAE0002EB4C2 /* PresetImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2823317226C6DAE0002EB4C2 /* PresetImageCollectionViewCell.xib */; };
+		2847BA6E273D7D1600866B6C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2847BA6D273D7D1600866B6C /* Notification.swift */; };
 		285452EB26C562AE0097B9B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452EA26C562AE0097B9B2 /* Constants.swift */; };
 		285452F026C5643B0097B9B2 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452EF26C5643B0097B9B2 /* GradientButton.swift */; };
 		285452F326C5722B0097B9B2 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F226C5722B0097B9B2 /* PopupViewController.swift */; };
@@ -135,6 +136,7 @@
 		2823316E26C6C4F0002EB4C2 /* PresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
 		2823317126C6DAE0002EB4C2 /* PresetImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		2823317226C6DAE0002EB4C2 /* PresetImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		2847BA6D273D7D1600866B6C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		285452EA26C562AE0097B9B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		285452EF26C5643B0097B9B2 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		285452F226C5722B0097B9B2 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
@@ -542,6 +544,7 @@
 				4AF7612E26DD11D30060D705 /* UINavigationController.swift */,
 				281FEB3126F395D900F115DE /* SKProduct.swift */,
 				28DEEB432736F05200006A75 /* UIImageView.swift */,
+				2847BA6D273D7D1600866B6C /* Notification.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1032,6 +1035,7 @@
 				28F1331826CA7F9900DB7142 /* UITableView.swift in Sources */,
 				285452F326C5722B0097B9B2 /* PopupViewController.swift in Sources */,
 				28D84514273988E1006C0F17 /* ProdinfireManager.swift in Sources */,
+				2847BA6E273D7D1600866B6C /* Notification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

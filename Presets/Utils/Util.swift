@@ -39,12 +39,6 @@ public func getLocalImage(forName name: String, ofType type: String) -> UIImage?
     return nil
 }
 
-public func print(_ toPring: Any) {
-    
-    print("\n\n\n", toPring, "\n\n\n")
-    
-}
-
 func getNoun(number: Int, one: String, two: String, five: String) -> String {
     var n = abs(number)
     n %= 100

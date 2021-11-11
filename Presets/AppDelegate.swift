@@ -30,11 +30,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         fetchData()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(onAppsFlyerConversionDataSuccess(_:)), name: .onAppsFlyerConversionDataSuccess, object: nil)
+        
         return true
     }
     
+    @objc private func onAppsFlyerConversionDataSuccess(_ notification: Notification) {
+        guard State.isFirstLaunch() && !ProdinfireManager.sharedInstance.isInstallEventSent() else { return }
+        ProdinfireManager.sharedInstance.sendInstallEvent()
+    }
+    
     // SceneDelegate support - start AppsFlyer SDK
-    @objc func sendLaunch() {
+    @objc private func sendLaunch() {
         AppsFlyerLib.shared().start()
         
         if #available(iOS 14, *) {
@@ -148,6 +155,7 @@ extension AppDelegate: AppsFlyerLibDelegate {
     
     func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
         ProdinfireManager.sharedInstance.setAppsFlyerConversation(to: conversionInfo)
+        NotificationCenter.default.post(name: .onAppsFlyerConversionDataSuccess, object: nil, userInfo: conversionInfo)
         return
     }
     
