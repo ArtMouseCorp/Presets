@@ -132,10 +132,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func connectProdinfire() {
         SkarbSDK.initialize(clientId: Keys.Prodinfire.apiKey, isObservable: true)
-        
-        func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
-            SkarbSDK.sendSource(broker: .appsflyer, features: conversionInfo)
-        }
     }
     
     private func connectAppMetrika() {
@@ -154,6 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: AppsFlyerLibDelegate {
     
     func onConversionDataSuccess(_ conversionInfo: [AnyHashable : Any]) {
+        SkarbSDK.sendSource(broker: .appsflyer, features: conversionInfo)
         ProdinfireManager.sharedInstance.setAppsFlyerConversation(to: conversionInfo)
         NotificationCenter.default.post(name: .onAppsFlyerConversionDataSuccess, object: nil, userInfo: conversionInfo)
         return
