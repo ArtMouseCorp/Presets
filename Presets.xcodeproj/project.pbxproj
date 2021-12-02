@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,12 +14,15 @@
 		2823316F26C6C4F0002EB4C2 /* PresetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823316E26C6C4F0002EB4C2 /* PresetViewController.swift */; };
 		2823317326C6DAE0002EB4C2 /* PresetImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2823317126C6DAE0002EB4C2 /* PresetImageCollectionViewCell.swift */; };
 		2823317426C6DAE0002EB4C2 /* PresetImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2823317226C6DAE0002EB4C2 /* PresetImageCollectionViewCell.xib */; };
-		2847BA6E273D7D1600866B6C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2847BA6D273D7D1600866B6C /* Notification.swift */; };
+		2847BA6C273D6C8C00866B6C /* UINotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2847BA6B273D6C8C00866B6C /* UINotification.swift */; };
 		285452EB26C562AE0097B9B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452EA26C562AE0097B9B2 /* Constants.swift */; };
 		285452F026C5643B0097B9B2 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452EF26C5643B0097B9B2 /* GradientButton.swift */; };
 		285452F326C5722B0097B9B2 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F226C5722B0097B9B2 /* PopupViewController.swift */; };
 		285452F526C572440097B9B2 /* DefaultPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F426C572440097B9B2 /* DefaultPopupViewController.swift */; };
 		285452F726C577B00097B9B2 /* PopupBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F626C577B00097B9B2 /* PopupBackgroundView.swift */; };
+		285E988C2758DC96000ED9D1 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 285E988B2758DC96000ED9D1 /* FacebookAEM */; };
+		285E988E2758DC96000ED9D1 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 285E988D2758DC96000ED9D1 /* FacebookBasics */; };
+		285E98902758DC96000ED9D1 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 285E988F2758DC96000ED9D1 /* FacebookCore */; };
 		2868AF1D26CFD068007FA1A5 /* presets.json in Resources */ = {isa = PBXBuildFile; fileRef = 2868AF1C26CFD068007FA1A5 /* presets.json */; };
 		2868AF2026CFD456007FA1A5 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2868AF1F26CFD456007FA1A5 /* Preset.swift */; };
 		2868AF2426CFE6C3007FA1A5 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2868AF2326CFE6C3007FA1A5 /* State.swift */; };
@@ -136,7 +139,7 @@
 		2823316E26C6C4F0002EB4C2 /* PresetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetViewController.swift; sourceTree = "<group>"; };
 		2823317126C6DAE0002EB4C2 /* PresetImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		2823317226C6DAE0002EB4C2 /* PresetImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetImageCollectionViewCell.xib; sourceTree = "<group>"; };
-		2847BA6D273D7D1600866B6C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		2847BA6B273D6C8C00866B6C /* UINotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINotification.swift; sourceTree = "<group>"; };
 		285452EA26C562AE0097B9B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		285452EF26C5643B0097B9B2 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		285452F226C5722B0097B9B2 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +275,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				285E988C2758DC96000ED9D1 /* FacebookAEM in Frameworks */,
+				285E98902758DC96000ED9D1 /* FacebookCore in Frameworks */,
+				285E988E2758DC96000ED9D1 /* FacebookBasics in Frameworks */,
 				2805FD9526F4BC820055BD6C /* StoreKit.framework in Frameworks */,
 				5A32A7601FA57682FB7F2F9C /* Pods_Presets.framework in Frameworks */,
 			);
@@ -544,7 +550,7 @@
 				4AF7612E26DD11D30060D705 /* UINavigationController.swift */,
 				281FEB3126F395D900F115DE /* SKProduct.swift */,
 				28DEEB432736F05200006A75 /* UIImageView.swift */,
-				2847BA6D273D7D1600866B6C /* Notification.swift */,
+				2847BA6B273D6C8C00866B6C /* UINotification.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -797,6 +803,9 @@
 			);
 			name = Presets;
 			packageProductDependencies = (
+				285E988B2758DC96000ED9D1 /* FacebookAEM */,
+				285E988D2758DC96000ED9D1 /* FacebookBasics */,
+				285E988F2758DC96000ED9D1 /* FacebookCore */,
 			);
 			productName = Presets;
 			productReference = 4A553F4726C41F97001150D2 /* Presets.app */;
@@ -841,6 +850,7 @@
 			);
 			mainGroup = 4A553F3E26C41F96001150D2;
 			packageReferences = (
+				285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 4A553F4826C41F97001150D2 /* Products */;
 			projectDirPath = "";
@@ -1014,6 +1024,7 @@
 				4A5AE4DA26C811EA009DC242 /* PagingCollectionViewLayout.swift in Sources */,
 				28AB3A9D26C5594900201D37 /* Util.swift in Sources */,
 				287D9A1926FB73E2009CC19F /* StoreManager.swift in Sources */,
+				2847BA6C273D6C8C00866B6C /* UINotification.swift in Sources */,
 				285452F726C577B00097B9B2 /* PopupBackgroundView.swift in Sources */,
 				4A553F4B26C41F97001150D2 /* AppDelegate.swift in Sources */,
 				281FEB3426F454B800F115DE /* SubscriptionPlansPage.swift in Sources */,
@@ -1035,7 +1046,6 @@
 				28F1331826CA7F9900DB7142 /* UITableView.swift in Sources */,
 				285452F326C5722B0097B9B2 /* PopupViewController.swift in Sources */,
 				28D84514273988E1006C0F17 /* ProdinfireManager.swift in Sources */,
-				2847BA6E273D7D1600866B6C /* Notification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1368,6 +1378,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		285E988B2758DC96000ED9D1 /* FacebookAEM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookAEM;
+		};
+		285E988D2758DC96000ED9D1 /* FacebookBasics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookBasics;
+		};
+		285E988F2758DC96000ED9D1 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4A553F3F26C41F96001150D2 /* Project object */;
 }

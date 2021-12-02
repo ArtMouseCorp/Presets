@@ -8,6 +8,8 @@ import Purchases
 import AppTrackingTransparency
 import SkarbSDK
 import YandexMobileMetrica
+import FacebookCore
+import FacebookAEM
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,12 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         connectAmplitude()
         connectRevenueCat()
         connectOneSignal(with: launchOptions)
+        connectSkarbSDK()
         connectAppsFlyer()
         connectFirebase()
         connectGoogleMobileAds()
-        connectProdinfire()
         connectAppMetrika()
-                
+        connectFacebook(for: application, with: launchOptions)
+        
         _ = RCValues.sharedInstance
         _ = StorageManager.sharedInstance
         
@@ -33,6 +36,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(onAppsFlyerConversionDataSuccess(_:)), name: .onAppsFlyerConversionDataSuccess, object: nil)
         
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        AEMReporter.configure(withNetworker: nil, appID: Keys.Facebook.appId)
+        AEMReporter.enable()
+        AEMReporter.handle(url)
+        
+        return ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
     }
     
     @objc private func onAppsFlyerConversionDataSuccess(_ notification: Notification) {
@@ -44,14 +61,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc private func sendLaunch() {
         AppsFlyerLib.shared().start()
         
+        AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: 60)
+        
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization() { status in }
         }
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        
         AppsFlyerLib.shared().start()
+        AppEvents.shared.activateApp()
     }
     
     // MARK: UISceneSession Lifecycle
@@ -114,8 +133,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Must be called AFTER setting appsFlyerDevKey and appleAppID
         AppsFlyerLib.shared().delegate = self
         
-        AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: 60)
-        
         // SceneDelegate support
         NotificationCenter.default.addObserver(self, selector: NSSelectorFromString("sendLaunch"), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
@@ -130,8 +147,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["1440558f13893d763cad8b1259572f8b"]
     }
     
-    private func connectProdinfire() {
-        SkarbSDK.initialize(clientId: Keys.Prodinfire.apiKey, isObservable: true)
+    private func connectSkarbSDK() {
+        SkarbSDK.initialize(clientId: Keys.SkarbSDK.clientId, isObservable: true)
     }
     
     private func connectAppMetrika() {
@@ -140,6 +157,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configuration?.logs = true
         configuration?.revenueAutoTrackingEnabled = true
         YMMYandexMetrica.activate(with: configuration!)
+    }
+    
+    private func connectFacebook(for application: UIApplication, with launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        
+        Settings.shared.isAdvertiserTrackingEnabled = true
+        Settings.shared.isAutoLogAppEventsEnabled = true
+        Settings.shared.isAdvertiserIDCollectionEnabled = true
+        
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
     }
     
     

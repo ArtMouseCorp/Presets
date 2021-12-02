@@ -1,5 +1,7 @@
 import UIKit
 import Amplitude
+import FacebookAEM
+import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -26,6 +28,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         
         window.overrideUserInterfaceStyle = .dark
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {
+            return
+        }
+        
+        AEMReporter.configure(withNetworker: nil, appID: Keys.Facebook.appId)
+        AEMReporter.enable()
+        AEMReporter.handle(url)
+        
+        ApplicationDelegate.shared.application(
+            UIApplication.shared,
+            open: url,
+            sourceApplication: nil,
+            annotation: [UIApplication.OpenURLOptionsKey.annotation]
+        )
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

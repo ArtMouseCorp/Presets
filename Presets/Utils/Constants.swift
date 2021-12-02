@@ -58,12 +58,20 @@ enum Keys {
     }
     
     internal enum Prodinfire {
-        static let apiKey: String               = "!G245JF7fh9s4tnFSwd83rJDK"
+        static let apiKey: String               = "!G245JF7fh9s4tnFSwd83rJDKn"
         static let url: String                  = "https://artpoldev.com/api/presets/send.php"
     }
     
     internal enum AppMetrika {
         static let apiKey: String               = "44ff71f5-2dc7-4854-b0ce-a28d53d6331a"
+    }
+    
+    internal enum SkarbSDK {
+        static let clientId: String             = "danila"
+    }
+    
+    internal enum Facebook {
+        static let appId: String                = "281912480039810"
     }
 }
 
