@@ -8,8 +8,8 @@ import Purchases
 import AppTrackingTransparency
 import SkarbSDK
 import YandexMobileMetrica
-import FacebookCore
-import FacebookAEM
+import FBSDKCoreKit
+import FBAEMKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

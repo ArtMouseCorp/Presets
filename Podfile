@@ -28,4 +28,7 @@ pod 'SkarbSDK'
 pod 'YandexMobileMetrica/Dynamic'
 pod 'Alamofire'
 
+pod 'FBSDKCoreKit'
+pod 'FBAEMKit'
+
 end

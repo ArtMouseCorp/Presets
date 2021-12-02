@@ -1,7 +1,7 @@
 import UIKit
 import Amplitude
-import FacebookAEM
-import FacebookCore
+import FBSDKCoreKit
+import FBAEMKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

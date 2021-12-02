@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,9 +20,6 @@
 		285452F326C5722B0097B9B2 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F226C5722B0097B9B2 /* PopupViewController.swift */; };
 		285452F526C572440097B9B2 /* DefaultPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F426C572440097B9B2 /* DefaultPopupViewController.swift */; };
 		285452F726C577B00097B9B2 /* PopupBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F626C577B00097B9B2 /* PopupBackgroundView.swift */; };
-		285E988C2758DC96000ED9D1 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = 285E988B2758DC96000ED9D1 /* FacebookAEM */; };
-		285E988E2758DC96000ED9D1 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = 285E988D2758DC96000ED9D1 /* FacebookBasics */; };
-		285E98902758DC96000ED9D1 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 285E988F2758DC96000ED9D1 /* FacebookCore */; };
 		2868AF1D26CFD068007FA1A5 /* presets.json in Resources */ = {isa = PBXBuildFile; fileRef = 2868AF1C26CFD068007FA1A5 /* presets.json */; };
 		2868AF2026CFD456007FA1A5 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2868AF1F26CFD456007FA1A5 /* Preset.swift */; };
 		2868AF2426CFE6C3007FA1A5 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2868AF2326CFE6C3007FA1A5 /* State.swift */; };
@@ -275,9 +272,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				285E988C2758DC96000ED9D1 /* FacebookAEM in Frameworks */,
-				285E98902758DC96000ED9D1 /* FacebookCore in Frameworks */,
-				285E988E2758DC96000ED9D1 /* FacebookBasics in Frameworks */,
 				2805FD9526F4BC820055BD6C /* StoreKit.framework in Frameworks */,
 				5A32A7601FA57682FB7F2F9C /* Pods_Presets.framework in Frameworks */,
 			);
@@ -803,9 +797,6 @@
 			);
 			name = Presets;
 			packageProductDependencies = (
-				285E988B2758DC96000ED9D1 /* FacebookAEM */,
-				285E988D2758DC96000ED9D1 /* FacebookBasics */,
-				285E988F2758DC96000ED9D1 /* FacebookCore */,
 			);
 			productName = Presets;
 			productReference = 4A553F4726C41F97001150D2 /* Presets.app */;
@@ -850,7 +841,6 @@
 			);
 			mainGroup = 4A553F3E26C41F96001150D2;
 			packageReferences = (
-				285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 4A553F4826C41F97001150D2 /* Products */;
 			projectDirPath = "";
@@ -1378,35 +1368,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		285E988B2758DC96000ED9D1 /* FacebookAEM */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookAEM;
-		};
-		285E988D2758DC96000ED9D1 /* FacebookBasics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookBasics;
-		};
-		285E988F2758DC96000ED9D1 /* FacebookCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 285E988A2758DC95000ED9D1 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookCore;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4A553F3F26C41F96001150D2 /* Project object */;
 }
