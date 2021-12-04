@@ -231,8 +231,8 @@ class SubscriptionViewController: BaseViewController {
         restoreButton.isEnabled = false
         self.subscriptionLabel.isHidden = true
         
-//        let productId = "com.temporary.week" // DEBUG
-        let productId = pageConfig.subscriptionId // RELEASE
+        let productId = "com.temporary.week" // DEBUG
+//        let productId = pageConfig.subscriptionId // RELEASE
         
         StoreManager.getProducts(for: [productId]) { products in
             
