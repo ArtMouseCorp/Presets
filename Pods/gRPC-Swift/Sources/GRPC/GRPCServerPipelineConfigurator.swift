@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
+import NIOHPACK
 import NIOHTTP1
 import NIOHTTP2
 import NIOTLS
@@ -58,7 +59,7 @@ final class GRPCServerPipelineConfigurator: ChannelInboundHandler, RemovableChan
   }
 
   init(configuration: Server.Configuration) {
-    if let tls = configuration.tls {
+    if let tls = configuration.tlsConfiguration {
       self.state = .notConfigured(alpn: .expected(required: tls.requireALPN))
     } else {
       self.state = .notConfigured(alpn: .notExpected)
@@ -78,7 +79,27 @@ final class GRPCServerPipelineConfigurator: ChannelInboundHandler, RemovableChan
 
   /// Makes an HTTP/2 handler.
   private func makeHTTP2Handler() -> NIOHTTP2Handler {
-    return .init(mode: .server)
+    return .init(
+      mode: .server,
+      initialSettings: [
+        HTTP2Setting(
+          parameter: .maxConcurrentStreams,
+          value: self.configuration.httpMaxConcurrentStreams
+        ),
+        HTTP2Setting(
+          parameter: .maxHeaderListSize,
+          value: HPACKDecoder.defaultMaxHeaderListSize
+        ),
+        HTTP2Setting(
+          parameter: .maxFrameSize,
+          value: self.configuration.httpMaxFrameSize
+        ),
+        HTTP2Setting(
+          parameter: .initialWindowSize,
+          value: self.configuration.httpTargetWindowSize
+        ),
+      ]
+    )
   }
 
   /// Makes an HTTP/2 multiplexer suitable handling gRPC requests.
@@ -90,16 +111,22 @@ final class GRPCServerPipelineConfigurator: ChannelInboundHandler, RemovableChan
       channel: channel,
       targetWindowSize: self.configuration.httpTargetWindowSize
     ) { stream in
-      stream.getOption(HTTP2StreamChannelOptions.streamID).map { streamID -> Logger in
-        logger[metadataKey: MetadataKey.h2StreamID] = "\(streamID)"
-        return logger
-      }.recover { _ in
-        logger[metadataKey: MetadataKey.h2StreamID] = "<unknown>"
-        return logger
-      }.flatMap { logger in
+      // Sync options were added to the HTTP/2 stream channel in 1.17.0 (we require at least this)
+      // so this shouldn't be `nil`, but it's not a problem if it is.
+      let http2StreamID = try? stream.syncOptions?.getOption(HTTP2StreamChannelOptions.streamID)
+      let streamID = http2StreamID.map { streamID in
+        return String(Int(streamID))
+      } ?? "<unknown>"
+
+      logger[metadataKey: MetadataKey.h2StreamID] = "\(streamID)"
+
+      do {
         // TODO: provide user configuration for header normalization.
         let handler = self.makeHTTP2ToRawGRPCHandler(normalizeHeaders: true, logger: logger)
-        return stream.pipeline.addHandler(handler)
+        try stream.pipeline.syncOperations.addHandler(handler)
+        return stream.eventLoop.makeSucceededVoidFuture()
+      } catch {
+        return stream.eventLoop.makeFailedFuture(error)
       }
     }
   }
@@ -114,6 +141,7 @@ final class GRPCServerPipelineConfigurator: ChannelInboundHandler, RemovableChan
       encoding: self.configuration.messageEncoding,
       errorDelegate: self.configuration.errorDelegate,
       normalizeHeaders: normalizeHeaders,
+      maximumReceiveMessageLength: self.configuration.maximumReceiveMessageLength,
       logger: logger
     )
   }
@@ -135,16 +163,21 @@ final class GRPCServerPipelineConfigurator: ChannelInboundHandler, RemovableChan
 
     // We could use 'Channel.configureHTTP2Pipeline', but then we'd have to find the right handlers
     // to then insert our keepalive and idle handlers between. We can just add everything together.
-    var handlers: [ChannelHandler] = []
-    handlers.reserveCapacity(3)
-    handlers.append(self.makeHTTP2Handler())
-    handlers.append(self.makeIdleHandler())
-    handlers.append(self.makeHTTP2Multiplexer(for: context.channel))
+    let result: Result<Void, Error>
 
-    // Now configure the pipeline with the handlers.
-    context.channel.pipeline.addHandlers(handlers).whenComplete { result in
-      self.configurationCompleted(result: result, context: context)
+    do {
+      // This is only ever called as a result of reading a user inbound event or reading inbound so
+      // we'll be on the right event loop and sync operations are fine.
+      let sync = context.pipeline.syncOperations
+      try sync.addHandler(self.makeHTTP2Handler())
+      try sync.addHandler(self.makeIdleHandler())
+      try sync.addHandler(self.makeHTTP2Multiplexer(for: context.channel))
+      result = .success(())
+    } catch {
+      result = .failure(error)
     }
+
+    self.configurationCompleted(result: result, context: context)
   }
 
   /// Configures the pipeline to handle gRPC-Web requests on an HTTP/1 connection.
@@ -152,16 +185,25 @@ final class GRPCServerPipelineConfigurator: ChannelInboundHandler, RemovableChan
     // We're now configuring the pipeline.
     self.state = .configuring
 
-    context.pipeline.configureHTTPServerPipeline(withErrorHandling: true).flatMap {
-      context.pipeline.addHandlers([
-        WebCORSHandler(),
-        GRPCWebToHTTP2ServerCodec(scheme: self.configuration.tls == nil ? "http" : "https"),
-        // There's no need to normalize headers for HTTP/1.
-        self.makeHTTP2ToRawGRPCHandler(normalizeHeaders: false, logger: self.configuration.logger),
-      ])
-    }.whenComplete { result in
-      self.configurationCompleted(result: result, context: context)
+    let result: Result<Void, Error>
+    do {
+      // This is only ever called as a result of reading a user inbound event or reading inbound so
+      // we'll be on the right event loop and sync operations are fine.
+      let sync = context.pipeline.syncOperations
+      try sync.configureHTTPServerPipeline(withErrorHandling: true)
+      try sync.addHandler(WebCORSHandler())
+      let scheme = self.configuration.tlsConfiguration == nil ? "http" : "https"
+      try sync.addHandler(GRPCWebToHTTP2ServerCodec(scheme: scheme))
+      // There's no need to normalize headers for HTTP/1.
+      try sync.addHandler(
+        self.makeHTTP2ToRawGRPCHandler(normalizeHeaders: false, logger: self.configuration.logger)
+      )
+      result = .success(())
+    } catch {
+      result = .failure(error)
     }
+
+    self.configurationCompleted(result: result, context: context)
   }
 
   /// Attempts to determine the HTTP version from the buffer and then configure the pipeline

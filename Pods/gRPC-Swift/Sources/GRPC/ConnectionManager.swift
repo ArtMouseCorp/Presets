@@ -15,11 +15,12 @@
  */
 import Foundation
 import Logging
-import NIO
 import NIOConcurrencyHelpers
+import NIOCore
 import NIOHTTP2
 
-internal class ConnectionManager {
+@usableFromInline
+internal final class ConnectionManager {
   internal enum Reconnect {
     case none
     case after(TimeInterval)
@@ -66,7 +67,7 @@ internal class ConnectionManager {
     var backoffIterator: ConnectionBackoffIterator?
     var readyChannelMuxPromise: EventLoopPromise<HTTP2StreamMultiplexer>
     var scheduled: Scheduled<Void>
-    var reason: Error?
+    var reason: Error
 
     init(from state: ConnectingState, scheduled: Scheduled<Void>, reason: Error) {
       self.backoffIterator = state.backoffIterator
@@ -79,7 +80,10 @@ internal class ConnectionManager {
       self.backoffIterator = state.backoffIterator
       self.readyChannelMuxPromise = state.readyChannelMuxPromise
       self.scheduled = scheduled
-      self.reason = state.error
+      self.reason = state.error ?? GRPCStatus(
+        code: .unavailable,
+        message: "Unexpected connection drop"
+      )
     }
 
     init(
@@ -90,7 +94,10 @@ internal class ConnectionManager {
       self.backoffIterator = backoffIterator
       self.readyChannelMuxPromise = state.channel.eventLoop.makePromise()
       self.scheduled = scheduled
-      self.reason = state.error
+      self.reason = state.error ?? GRPCStatus(
+        code: .unavailable,
+        message: "Unexpected connection drop"
+      )
     }
   }
 
@@ -119,7 +126,7 @@ internal class ConnectionManager {
     /// Valid next states:
     /// - `connecting`
     /// - `shutdown`
-    case idle
+    case idle(lastError: Error?)
 
     /// We're actively trying to establish a connection.
     ///
@@ -176,37 +183,91 @@ internal class ConnectionManager {
     }
   }
 
+  /// The last 'external' state we are in, a subset of the internal state.
+  private var externalState: _ConnectivityState = .idle(nil)
+
+  /// Update the external state, potentially notifying a delegate about the change.
+  private func updateExternalState(to nextState: _ConnectivityState) {
+    if !self.externalState.isSameState(as: nextState) {
+      let oldState = self.externalState
+      self.externalState = nextState
+      self.connectivityDelegate?.connectionStateDidChange(self, from: oldState, to: nextState)
+    }
+  }
+
+  /// Our current state.
   private var state: State {
     didSet {
       switch self.state {
-      case .idle:
-        self.monitor.updateState(to: .idle, logger: self.logger)
+      case let .idle(error):
+        self.updateExternalState(to: .idle(error))
         self.updateConnectionID()
 
       case .connecting:
-        self.monitor.updateState(to: .connecting, logger: self.logger)
+        self.updateExternalState(to: .connecting)
 
       // This is an internal state.
       case .active:
         ()
 
       case .ready:
-        self.monitor.updateState(to: .ready, logger: self.logger)
+        self.updateExternalState(to: .ready)
 
-      case .transientFailure:
-        self.monitor.updateState(to: .transientFailure, logger: self.logger)
+      case let .transientFailure(state):
+        self.updateExternalState(to: .transientFailure(state.reason))
         self.updateConnectionID()
 
       case .shutdown:
-        self.monitor.updateState(to: .shutdown, logger: self.logger)
+        self.updateExternalState(to: .shutdown)
       }
     }
   }
 
+  /// Returns whether the state is 'idle'.
+  private var isIdle: Bool {
+    self.eventLoop.assertInEventLoop()
+    switch self.state {
+    case .idle:
+      return true
+    case .connecting, .transientFailure, .active, .ready, .shutdown:
+      return false
+    }
+  }
+
+  /// Returns the `HTTP2StreamMultiplexer` from the 'ready' state or `nil` if it is not available.
+  private var multiplexer: HTTP2StreamMultiplexer? {
+    self.eventLoop.assertInEventLoop()
+    switch self.state {
+    case let .ready(state):
+      return state.multiplexer
+
+    case .idle, .connecting, .transientFailure, .active, .shutdown:
+      return nil
+    }
+  }
+
+  /// The `EventLoop` that the managed connection will run on.
   internal let eventLoop: EventLoop
-  internal let monitor: ConnectivityStateMonitor
+
+  /// A delegate for connectivity changes. Executed on the `EventLoop`.
+  private var connectivityDelegate: ConnectionManagerConnectivityDelegate?
+
+  /// A delegate for HTTP/2 connection changes. Executed on the `EventLoop`.
+  private var http2Delegate: ConnectionManagerHTTP2Delegate?
+
+  /// An `EventLoopFuture<Channel>` provider.
+  private let channelProvider: ConnectionManagerChannelProvider
+
+  /// The behavior for starting a call, i.e. how patient is the caller when asking for a
+  /// multiplexer.
+  private let callStartBehavior: CallStartBehavior.Behavior
+
+  /// The configuration to use when backing off between connection attempts, if reconnection
+  /// attempts should be made at all.
+  private let connectionBackoff: ConnectionBackoff?
+
+  /// A logger.
   internal var logger: Logger
-  private let configuration: ClientConnection.Configuration
 
   private let connectionID: String
   private var channelNumber: UInt64
@@ -233,30 +294,31 @@ internal class ConnectionManager {
     logger[metadataKey: MetadataKey.connectionID] = "\(self.connectionIDAndNumber)"
   }
 
-  // Only used for testing.
-  private var channelProvider: (() -> EventLoopFuture<Channel>)?
-
-  internal convenience init(configuration: ClientConnection.Configuration, logger: Logger) {
-    self.init(configuration: configuration, logger: logger, channelProvider: nil)
-  }
-
-  /// Create a `ConnectionManager` for testing: uses the given `channelProvider` to create channels.
-  internal static func testingOnly(
+  internal convenience init(
     configuration: ClientConnection.Configuration,
-    logger: Logger,
-    channelProvider: @escaping () -> EventLoopFuture<Channel>
-  ) -> ConnectionManager {
-    return ConnectionManager(
-      configuration: configuration,
-      logger: logger,
-      channelProvider: channelProvider
+    channelProvider: ConnectionManagerChannelProvider? = nil,
+    connectivityDelegate: ConnectionManagerConnectivityDelegate?,
+    logger: Logger
+  ) {
+    self.init(
+      eventLoop: configuration.eventLoopGroup.next(),
+      channelProvider: channelProvider ?? DefaultChannelProvider(configuration: configuration),
+      callStartBehavior: configuration.callStartBehavior.wrapped,
+      connectionBackoff: configuration.connectionBackoff,
+      connectivityDelegate: connectivityDelegate,
+      http2Delegate: nil,
+      logger: logger
     )
   }
 
-  private init(
-    configuration: ClientConnection.Configuration,
-    logger: Logger,
-    channelProvider: (() -> EventLoopFuture<Channel>)?
+  internal init(
+    eventLoop: EventLoop,
+    channelProvider: ConnectionManagerChannelProvider,
+    callStartBehavior: CallStartBehavior.Behavior,
+    connectionBackoff: ConnectionBackoff?,
+    connectivityDelegate: ConnectionManagerConnectivityDelegate?,
+    http2Delegate: ConnectionManagerHTTP2Delegate?,
+    logger: Logger
   ) {
     // Setup the logger.
     var logger = logger
@@ -264,16 +326,14 @@ internal class ConnectionManager {
     let channelNumber: UInt64 = 0
     logger[metadataKey: MetadataKey.connectionID] = "\(connectionID)/\(channelNumber)"
 
-    let eventLoop = configuration.eventLoopGroup.next()
     self.eventLoop = eventLoop
-    self.state = .idle
-    self.monitor = ConnectivityStateMonitor(
-      delegate: configuration.connectivityStateDelegate,
-      queue: configuration.connectivityStateDelegateQueue
-    )
-    self.configuration = configuration
+    self.state = .idle(lastError: nil)
 
     self.channelProvider = channelProvider
+    self.callStartBehavior = callStartBehavior
+    self.connectionBackoff = connectionBackoff
+    self.connectivityDelegate = connectivityDelegate
+    self.http2Delegate = http2Delegate
 
     self.connectionID = connectionID
     self.channelNumber = channelNumber
@@ -285,7 +345,7 @@ internal class ConnectionManager {
   /// one chance to connect - if not reconnections are managed here.
   internal func getHTTP2Multiplexer() -> EventLoopFuture<HTTP2StreamMultiplexer> {
     func getHTTP2Multiplexer0() -> EventLoopFuture<HTTP2StreamMultiplexer> {
-      switch self.configuration.callStartBehavior.wrapped {
+      switch self.callStartBehavior {
       case .waitsForConnectivity:
         return self.getHTTP2MultiplexerPatient()
       case .fastFailure:
@@ -363,12 +423,7 @@ internal class ConnectionManager {
       case let .ready(ready):
         return self.eventLoop.makeSucceededFuture(ready.multiplexer)
       case let .transientFailure(state):
-        // Provide the reason we failed transiently, if we can.
-        let error = state.reason ?? GRPCStatus(
-          code: .unavailable,
-          message: "Connection multiplexer requested while backing off"
-        )
-        return self.eventLoop.makeFailedFuture(error)
+        return self.eventLoop.makeFailedFuture(state.reason)
       case let .shutdown(state):
         return self.eventLoop.makeFailedFuture(state.reason)
       }
@@ -382,77 +437,85 @@ internal class ConnectionManager {
 
   /// Shutdown any connection which exists. This is a request from the application.
   internal func shutdown() -> EventLoopFuture<Void> {
-    return self.eventLoop.flatSubmit {
-      self.logger.debug("shutting down connection", metadata: [
-        "connectivity_state": "\(self.state.label)",
-      ])
-      let shutdown: ShutdownState
+    if self.eventLoop.inEventLoop {
+      return self._shutdown()
+    } else {
+      return self.eventLoop.flatSubmit {
+        return self._shutdown()
+      }
+    }
+  }
 
-      switch self.state {
-      // We don't have a channel and we don't want one, easy!
-      case .idle:
-        shutdown = .shutdownByUser(closeFuture: self.eventLoop.makeSucceededFuture(()))
-        self.state = .shutdown(shutdown)
+  private func _shutdown() -> EventLoopFuture<Void> {
+    self.logger.debug("shutting down connection", metadata: [
+      "connectivity_state": "\(self.state.label)",
+    ])
+    let shutdown: ShutdownState
 
-      // We're mid-connection: the application doesn't have any 'ready' channels so we'll succeed
-      // the shutdown future and deal with any fallout from the connecting channel without the
-      // application knowing.
-      case let .connecting(state):
-        shutdown = .shutdownByUser(closeFuture: self.eventLoop.makeSucceededFuture(()))
-        self.state = .shutdown(shutdown)
+    switch self.state {
+    // We don't have a channel and we don't want one, easy!
+    case .idle:
+      shutdown = .shutdownByUser(closeFuture: self.eventLoop.makeSucceededFuture(()))
+      self.state = .shutdown(shutdown)
 
-        // Fail the ready channel mux promise: we're shutting down so even if we manage to successfully
-        // connect the application shouldn't have access to the channel or multiplexer.
-        state.readyChannelMuxPromise.fail(GRPCStatus(code: .unavailable, message: nil))
-        state.candidateMuxPromise.fail(GRPCStatus(code: .unavailable, message: nil))
-        // In case we do successfully connect, close immediately.
-        state.candidate.whenSuccess {
-          $0.close(mode: .all, promise: nil)
-        }
+    // We're mid-connection: the application doesn't have any 'ready' channels so we'll succeed
+    // the shutdown future and deal with any fallout from the connecting channel without the
+    // application knowing.
+    case let .connecting(state):
+      shutdown = .shutdownByUser(closeFuture: self.eventLoop.makeSucceededFuture(()))
+      self.state = .shutdown(shutdown)
 
-      // We have an active channel but the application doesn't know about it yet. We'll do the same
-      // as for `.connecting`.
-      case let .active(state):
-        shutdown = .shutdownByUser(closeFuture: self.eventLoop.makeSucceededFuture(()))
-        self.state = .shutdown(shutdown)
-
-        // Fail the ready channel mux promise: we're shutting down so even if we manage to successfully
-        // connect the application shouldn't have access to the channel or multiplexer.
-        state.readyChannelMuxPromise.fail(GRPCStatus(code: .unavailable, message: nil))
-        // We have a channel, close it.
-        state.candidate.close(mode: .all, promise: nil)
-
-      // The channel is up and running: the application could be using it. We can close it and
-      // return the `closeFuture`.
-      case let .ready(state):
-        shutdown = .shutdownByUser(closeFuture: state.channel.closeFuture)
-        self.state = .shutdown(shutdown)
-
-        // We have a channel, close it.
-        state.channel.close(mode: .all, promise: nil)
-
-      // Like `.connecting` and `.active` the application does not have a `.ready` channel. We'll
-      // do the same but also cancel any scheduled connection attempts and deal with any fallout
-      // if we cancelled too late.
-      case let .transientFailure(state):
-        shutdown = .shutdownByUser(closeFuture: self.eventLoop.makeSucceededFuture(()))
-        self.state = .shutdown(shutdown)
-
-        // Stop the creation of a new channel, if we can. If we can't then the task to
-        // `startConnecting()` will see our new `shutdown` state and ignore the request to connect.
-        state.scheduled.cancel()
-
-        // Fail the ready channel mux promise: we're shutting down so even if we manage to successfully
-        // connect the application shouldn't should have access to the channel.
-        state.readyChannelMuxPromise.fail(shutdown.reason)
-
-      // We're already shutdown; nothing to do.
-      case let .shutdown(state):
-        shutdown = state
+      // Fail the ready channel mux promise: we're shutting down so even if we manage to successfully
+      // connect the application shouldn't have access to the channel or multiplexer.
+      state.readyChannelMuxPromise.fail(GRPCStatus(code: .unavailable, message: nil))
+      state.candidateMuxPromise.fail(GRPCStatus(code: .unavailable, message: nil))
+      // In case we do successfully connect, close immediately.
+      state.candidate.whenSuccess {
+        $0.close(mode: .all, promise: nil)
       }
 
-      return shutdown.closeFuture
+    // We have an active channel but the application doesn't know about it yet. We'll do the same
+    // as for `.connecting`.
+    case let .active(state):
+      shutdown = .shutdownByUser(closeFuture: self.eventLoop.makeSucceededFuture(()))
+      self.state = .shutdown(shutdown)
+
+      // Fail the ready channel mux promise: we're shutting down so even if we manage to successfully
+      // connect the application shouldn't have access to the channel or multiplexer.
+      state.readyChannelMuxPromise.fail(GRPCStatus(code: .unavailable, message: nil))
+      // We have a channel, close it.
+      state.candidate.close(mode: .all, promise: nil)
+
+    // The channel is up and running: the application could be using it. We can close it and
+    // return the `closeFuture`.
+    case let .ready(state):
+      shutdown = .shutdownByUser(closeFuture: state.channel.closeFuture)
+      self.state = .shutdown(shutdown)
+
+      // We have a channel, close it.
+      state.channel.close(mode: .all, promise: nil)
+
+    // Like `.connecting` and `.active` the application does not have a `.ready` channel. We'll
+    // do the same but also cancel any scheduled connection attempts and deal with any fallout
+    // if we cancelled too late.
+    case let .transientFailure(state):
+      shutdown = .shutdownByUser(closeFuture: self.eventLoop.makeSucceededFuture(()))
+      self.state = .shutdown(shutdown)
+
+      // Stop the creation of a new channel, if we can. If we can't then the task to
+      // `startConnecting()` will see our new `shutdown` state and ignore the request to connect.
+      state.scheduled.cancel()
+
+      // Fail the ready channel mux promise: we're shutting down so even if we manage to successfully
+      // connect the application shouldn't should have access to the channel.
+      state.readyChannelMuxPromise.fail(shutdown.reason)
+
+    // We're already shutdown; nothing to do.
+    case let .shutdown(state):
+      shutdown = state
     }
+
+    return shutdown.closeFuture
   }
 
   // MARK: - State changes from the channel handler.
@@ -463,11 +526,13 @@ internal class ConnectionManager {
     self.eventLoop.preconditionInEventLoop()
 
     switch self.state {
-    // These cases are purposefully separated: some crash reporting services provide stack traces
-    // which don't include the precondition failure message (which contain the invalid state we were
-    // in). Keeping the cases separate allows us work out the state from the line number.
+    // Hitting an error in idle is a surprise, but not really something we do anything about. Either the
+    // error is channel fatal, in which case we'll see channelInactive soon (acceptable), or it's not,
+    // and future I/O will either fail fast or work. In either case, all we do is log this and move on.
     case .idle:
-      self.invalidState()
+      self.logger.warning("ignoring unexpected error in idle", metadata: [
+        MetadataKey.error: "\(error)",
+      ])
 
     case .connecting:
       self.invalidState()
@@ -532,14 +597,15 @@ internal class ConnectionManager {
     switch self.state {
     // The channel is `active` but not `ready`. Should we try again?
     case let .active(active):
-      let error = GRPCStatus(
-        code: .unavailable,
-        message: "The connection was dropped and connection re-establishment is disabled"
-      )
       switch active.reconnect {
       // No, shutdown instead.
       case .none:
         self.logger.debug("shutting down connection")
+
+        let error = GRPCStatus(
+          code: .unavailable,
+          message: "The connection was dropped and connection re-establishment is disabled"
+        )
 
         let shutdownState = ShutdownState(
           closeFuture: self.eventLoop.makeSucceededFuture(()),
@@ -562,7 +628,7 @@ internal class ConnectionManager {
     // the channel?
     case let .ready(ready):
       // No, no backoff is configured.
-      if self.configuration.connectionBackoff == nil {
+      if self.connectionBackoff == nil {
         self.logger.debug("shutting down connection, no reconnect configured/remaining")
         self.state = .shutdown(
           ShutdownState(
@@ -579,7 +645,7 @@ internal class ConnectionManager {
           self.startConnecting()
         }
         self.logger.debug("scheduling connection attempt", metadata: ["delay": "0"])
-        let backoffIterator = self.configuration.connectionBackoff?.makeIterator()
+        let backoffIterator = self.connectionBackoff?.makeIterator()
         self.state = .transientFailure(TransientFailureState(
           from: ready,
           scheduled: scheduled,
@@ -650,12 +716,12 @@ internal class ConnectionManager {
     switch self.state {
     case let .active(state):
       // This state is reachable if the keepalive timer fires before we reach the ready state.
-      self.state = .idle
+      self.state = .idle(lastError: state.error)
       state.readyChannelMuxPromise
         .fail(GRPCStatus(code: .unavailable, message: "Idled before reaching ready state"))
 
-    case .ready:
-      self.state = .idle
+    case let .ready(state):
+      self.state = .idle(lastError: state.error)
 
     case .shutdown:
       // This is expected when the connection is closed by the user: when the channel becomes
@@ -677,9 +743,22 @@ internal class ConnectionManager {
     }
   }
 
+  internal func streamClosed() {
+    self.eventLoop.assertInEventLoop()
+    self.http2Delegate?.streamClosed(self)
+  }
+
+  internal func maxConcurrentStreamsChanged(_ maxConcurrentStreams: Int) {
+    self.eventLoop.assertInEventLoop()
+    self.http2Delegate?.receivedSettingsMaxConcurrentStreams(
+      self, maxConcurrentStreams: maxConcurrentStreams
+    )
+  }
+
   /// The connection has started quiescing: notify the connectivity monitor of this.
   internal func beginQuiescing() {
-    self.monitor.beginQuiescing()
+    self.eventLoop.assertInEventLoop()
+    self.connectivityDelegate?.connectionIsQuiescing(self)
   }
 }
 
@@ -743,9 +822,10 @@ extension ConnectionManager {
   // Start establishing a connection: we can only do this from the `idle` and `transientFailure`
   // states. Must be called on the `EventLoop`.
   private func startConnecting() {
+    self.eventLoop.assertInEventLoop()
     switch self.state {
     case .idle:
-      let iterator = self.configuration.connectionBackoff?.makeIterator()
+      let iterator = self.connectionBackoff?.makeIterator()
       self.startConnecting(
         backoffIterator: iterator,
         muxPromise: self.eventLoop.makePromise()
@@ -786,12 +866,17 @@ extension ConnectionManager {
     self.eventLoop.assertInEventLoop()
 
     let candidate: EventLoopFuture<Channel> = self.eventLoop.flatSubmit {
-      let channel = self.makeChannel(
-        connectTimeout: timeoutAndBackoff?.timeout
+      let channel: EventLoopFuture<Channel> = self.channelProvider.makeChannel(
+        managedBy: self,
+        onEventLoop: self.eventLoop,
+        connectTimeout: timeoutAndBackoff.map { .seconds(timeInterval: $0.timeout) },
+        logger: self.logger
       )
+
       channel.whenFailure { error in
         self.connectionFailed(withError: error)
       }
+
       return channel
     }
 
@@ -810,80 +895,67 @@ extension ConnectionManager {
 }
 
 extension ConnectionManager {
+  /// Returns a synchronous view of the connection manager; each operation requires the caller to be
+  /// executing on the same `EventLoop` as the connection manager.
+  internal var sync: Sync {
+    return Sync(self)
+  }
+
+  internal struct Sync {
+    private let manager: ConnectionManager
+
+    fileprivate init(_ manager: ConnectionManager) {
+      self.manager = manager
+    }
+
+    /// A delegate for connectivity changes.
+    internal var connectivityDelegate: ConnectionManagerConnectivityDelegate? {
+      get {
+        self.manager.eventLoop.assertInEventLoop()
+        return self.manager.connectivityDelegate
+      }
+      nonmutating set {
+        self.manager.eventLoop.assertInEventLoop()
+        self.manager.connectivityDelegate = newValue
+      }
+    }
+
+    /// A delegate for HTTP/2 connection changes.
+    internal var http2Delegate: ConnectionManagerHTTP2Delegate? {
+      get {
+        self.manager.eventLoop.assertInEventLoop()
+        return self.manager.http2Delegate
+      }
+      nonmutating set {
+        self.manager.eventLoop.assertInEventLoop()
+        self.manager.http2Delegate = newValue
+      }
+    }
+
+    /// Returns `true` if the connection is in the idle state.
+    internal var isIdle: Bool {
+      return self.manager.isIdle
+    }
+
+    /// Returns the `multiplexer` from a connection in the `ready` state or `nil` if it is any
+    /// other state.
+    internal var multiplexer: HTTP2StreamMultiplexer? {
+      return self.manager.multiplexer
+    }
+
+    // Start establishing a connection. Must only be called when `isIdle` is `true`.
+    internal func startConnecting() {
+      self.manager.startConnecting()
+    }
+  }
+}
+
+extension ConnectionManager {
   private func invalidState(
     function: StaticString = #function,
     file: StaticString = #file,
     line: UInt = #line
   ) -> Never {
     preconditionFailure("Invalid state \(self.state) for \(function)", file: file, line: line)
-  }
-}
-
-extension ConnectionManager {
-  private func makeBootstrap(
-    connectTimeout: TimeInterval?
-  ) -> ClientBootstrapProtocol {
-    let serverHostname: String? = self.configuration.tls.flatMap { tls -> String? in
-      if let hostnameOverride = tls.hostnameOverride {
-        return hostnameOverride
-      } else {
-        return configuration.target.host
-      }
-    }.flatMap { hostname in
-      if hostname.isIPAddress {
-        return nil
-      } else {
-        return hostname
-      }
-    }
-
-    let bootstrap = PlatformSupport.makeClientBootstrap(group: self.eventLoop, logger: self.logger)
-      .channelOption(ChannelOptions.socket(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR), value: 1)
-      .channelOption(ChannelOptions.socket(IPPROTO_TCP, TCP_NODELAY), value: 1)
-      .channelInitializer { channel in
-        let initialized = channel.configureGRPCClient(
-          httpTargetWindowSize: self.configuration.httpTargetWindowSize,
-          tlsConfiguration: self.configuration.tls?.configuration,
-          tlsServerHostname: serverHostname,
-          connectionManager: self,
-          connectionKeepalive: self.configuration.connectionKeepalive,
-          connectionIdleTimeout: self.configuration.connectionIdleTimeout,
-          errorDelegate: self.configuration.errorDelegate,
-          requiresZeroLengthWriteWorkaround: PlatformSupport.requiresZeroLengthWriteWorkaround(
-            group: self.eventLoop,
-            hasTLS: self.configuration.tls != nil
-          ),
-          logger: self.logger,
-          customVerificationCallback: self.configuration.tls?.customVerificationCallback
-        )
-
-        // Run the debug initializer, if there is one.
-        if let debugInitializer = self.configuration.debugChannelInitializer {
-          return initialized.flatMap {
-            debugInitializer(channel)
-          }
-        } else {
-          return initialized
-        }
-      }
-
-    if let connectTimeout = connectTimeout {
-      return bootstrap.connectTimeout(.seconds(timeInterval: connectTimeout))
-    } else {
-      return bootstrap
-    }
-  }
-
-  private func makeChannel(
-    connectTimeout: TimeInterval?
-  ) -> EventLoopFuture<Channel> {
-    if let provider = self.channelProvider {
-      return provider()
-    } else {
-      let bootstrap = self.makeBootstrap(
-        connectTimeout: connectTimeout
-      )
-      return bootstrap.connect(to: self.configuration.target)
-    }
   }
 }

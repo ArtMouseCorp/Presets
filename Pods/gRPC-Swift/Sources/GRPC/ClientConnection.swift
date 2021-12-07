@@ -15,7 +15,8 @@
  */
 import Foundation
 import Logging
-import NIO
+import NIOCore
+import NIOHPACK
 import NIOHTTP2
 import NIOSSL
 import NIOTLS
@@ -93,9 +94,7 @@ public class ClientConnection {
   internal let authority: String
 
   /// A monitor for the connectivity state.
-  public var connectivity: ConnectivityStateMonitor {
-    return self.connectionManager.monitor
-  }
+  public let connectivity: ConnectivityStateMonitor
 
   /// The `EventLoop` this connection is using.
   public var eventLoop: EventLoop {
@@ -110,10 +109,18 @@ public class ClientConnection {
   ///   with TLS, or `ClientConnection.insecure(group:)` to build a connection without TLS.
   public init(configuration: Configuration) {
     self.configuration = configuration
-    self.scheme = configuration.tls == nil ? "http" : "https"
-    self.authority = configuration.tls?.hostnameOverride ?? configuration.target.host
+    self.scheme = configuration.tlsConfiguration == nil ? "http" : "https"
+    self.authority = configuration.tlsConfiguration?.hostnameOverride ?? configuration.target.host
+
+    let monitor = ConnectivityStateMonitor(
+      delegate: configuration.connectivityStateDelegate,
+      queue: configuration.connectivityStateDelegateQueue
+    )
+
+    self.connectivity = monitor
     self.connectionManager = ConnectionManager(
       configuration: configuration,
+      connectivityDelegate: monitor,
       logger: configuration.backgroundActivityLogger
     )
   }
@@ -152,17 +159,26 @@ extension ClientConnection: GRPCChannel {
     var options = callOptions
     self.populateLogger(in: &options)
     let multiplexer = self.getMultiplexer()
+    let eventLoop = callOptions.eventLoopPreference.exact ?? multiplexer.eventLoop
+
+    // This should be on the same event loop as the multiplexer (i.e. the event loop of the
+    // underlying `Channel`.
+    let channel = multiplexer.eventLoop.makePromise(of: Channel.self)
+    multiplexer.whenComplete {
+      ClientConnection.makeStreamChannel(using: $0, promise: channel)
+    }
 
     return Call(
       path: path,
       type: type,
-      eventLoop: multiplexer.eventLoop,
+      eventLoop: eventLoop,
       options: options,
       interceptors: interceptors,
       transportFactory: .http2(
-        multiplexer: multiplexer,
+        channel: channel.futureResult,
         authority: self.authority,
         scheme: self.scheme,
+        maximumReceiveMessageLength: self.configuration.maximumReceiveMessageLength,
         errorDelegate: self.configuration.errorDelegate
       )
     )
@@ -177,20 +193,43 @@ extension ClientConnection: GRPCChannel {
     var options = callOptions
     self.populateLogger(in: &options)
     let multiplexer = self.getMultiplexer()
+    let eventLoop = callOptions.eventLoopPreference.exact ?? multiplexer.eventLoop
+
+    // This should be on the same event loop as the multiplexer (i.e. the event loop of the
+    // underlying `Channel`.
+    let channel = multiplexer.eventLoop.makePromise(of: Channel.self)
+    multiplexer.whenComplete {
+      ClientConnection.makeStreamChannel(using: $0, promise: channel)
+    }
 
     return Call(
       path: path,
       type: type,
-      eventLoop: multiplexer.eventLoop,
+      eventLoop: eventLoop,
       options: options,
       interceptors: interceptors,
       transportFactory: .http2(
-        multiplexer: multiplexer,
+        channel: channel.futureResult,
         authority: self.authority,
         scheme: self.scheme,
+        maximumReceiveMessageLength: self.configuration.maximumReceiveMessageLength,
         errorDelegate: self.configuration.errorDelegate
       )
     )
+  }
+
+  private static func makeStreamChannel(
+    using result: Result<HTTP2StreamMultiplexer, Error>,
+    promise: EventLoopPromise<Channel>
+  ) {
+    switch result {
+    case let .success(multiplexer):
+      multiplexer.createStreamChannel(promise: promise) {
+        $0.eventLoop.makeSucceededVoidFuture()
+      }
+    case let .failure(error):
+      promise.fail(error)
+    }
   }
 }
 
@@ -209,6 +248,11 @@ public struct ConnectionTarget {
     self.wrapped = wrapped
   }
 
+  /// The host and port. The port is 443 by default.
+  public static func host(_ host: String, port: Int = 443) -> ConnectionTarget {
+    return ConnectionTarget(.hostAndPort(host, port))
+  }
+
   /// The host and port.
   public static func hostAndPort(_ host: String, _ port: Int) -> ConnectionTarget {
     return ConnectionTarget(.hostAndPort(host, port))
@@ -224,6 +268,7 @@ public struct ConnectionTarget {
     return ConnectionTarget(.socketAddress(address))
   }
 
+  @usableFromInline
   var host: String {
     switch self.wrapped {
     case let .hostAndPort(host, _):
@@ -282,49 +327,90 @@ extension ClientConnection {
 
     /// An error delegate which is called when errors are caught. Provided delegates **must not
     /// maintain a strong reference to this `ClientConnection`**. Doing so will cause a retain
-    /// cycle.
-    public var errorDelegate: ClientErrorDelegate?
+    /// cycle. Defaults to `LoggingClientErrorDelegate`.
+    public var errorDelegate: ClientErrorDelegate? = LoggingClientErrorDelegate.shared
 
-    /// A delegate which is called when the connectivity state is changed.
+    /// A delegate which is called when the connectivity state is changed. Defaults to `nil`.
     public var connectivityStateDelegate: ConnectivityStateDelegate?
 
     /// The `DispatchQueue` on which to call the connectivity state delegate. If a delegate is
-    /// provided but the queue is `nil` then one will be created by gRPC.
+    /// provided but the queue is `nil` then one will be created by gRPC. Defaults to `nil`.
     public var connectivityStateDelegateQueue: DispatchQueue?
 
     /// TLS configuration for this connection. `nil` if TLS is not desired.
-    public var tls: TLS?
+    ///
+    /// - Important: `tls` is deprecated; use `tlsConfiguration` or one of
+    ///   the `ClientConnection.withTLS` builder functions.
+    @available(*, deprecated, renamed: "tlsConfiguration")
+    public var tls: TLS? {
+      get {
+        return self.tlsConfiguration?.asDeprecatedClientConfiguration
+      }
+      set {
+        self.tlsConfiguration = newValue.map { .init(transforming: $0) }
+      }
+    }
+
+    /// TLS configuration for this connection. `nil` if TLS is not desired.
+    public var tlsConfiguration: GRPCTLSConfiguration?
 
     /// The connection backoff configuration. If no connection retrying is required then this should
     /// be `nil`.
-    public var connectionBackoff: ConnectionBackoff?
+    public var connectionBackoff: ConnectionBackoff? = ConnectionBackoff()
 
     /// The connection keepalive configuration.
-    public var connectionKeepalive: ClientConnectionKeepalive
+    public var connectionKeepalive = ClientConnectionKeepalive()
 
     /// The amount of time to wait before closing the connection. The idle timeout will start only
     /// if there are no RPCs in progress and will be cancelled as soon as any RPCs start.
     ///
     /// If a connection becomes idle, starting a new RPC will automatically create a new connection.
-    public var connectionIdleTimeout: TimeAmount
+    ///
+    /// Defaults to 30 minutes.
+    public var connectionIdleTimeout: TimeAmount = .minutes(30)
 
     /// The behavior used to determine when an RPC should start. That is, whether it should wait for
     /// an active connection or fail quickly if no connection is currently available.
-    public var callStartBehavior: CallStartBehavior
+    ///
+    /// Defaults to `waitsForConnectivity`.
+    public var callStartBehavior: CallStartBehavior = .waitsForConnectivity
 
-    /// The HTTP/2 flow control target window size.
-    public var httpTargetWindowSize: Int
+    /// The HTTP/2 flow control target window size. Defaults to 8MB. Values are clamped between
+    /// 1 and 2^31-1 inclusive.
+    public var httpTargetWindowSize = 8 * 1024 * 1024 {
+      didSet {
+        self.httpTargetWindowSize = self.httpTargetWindowSize.clamped(to: 1 ... Int(Int32.max))
+      }
+    }
+
+    /// The HTTP/2 max frame size. Defaults to 16384. Value is clamped between 2^14 and 2^24-1
+    /// octets inclusive (the minimum and maximum allowable values - HTTP/2 RFC 7540 4.2).
+    public var httpMaxFrameSize: Int = 16384 {
+      didSet {
+        self.httpMaxFrameSize = self.httpMaxFrameSize.clamped(to: 16384 ... 16_777_215)
+      }
+    }
 
     /// The HTTP protocol used for this connection.
     public var httpProtocol: HTTP2FramePayloadToHTTP1ClientCodec.HTTPProtocol {
-      return self.tls == nil ? .http : .https
+      return self.tlsConfiguration == nil ? .http : .https
+    }
+
+    /// The maximum size in bytes of a message which may be received from a server. Defaults to 4MB.
+    public var maximumReceiveMessageLength: Int = 4 * 1024 * 1024 {
+      willSet {
+        precondition(newValue >= 0, "maximumReceiveMessageLength must be positive")
+      }
     }
 
     /// A logger for background information (such as connectivity state). A separate logger for
     /// requests may be provided in the `CallOptions`.
     ///
     /// Defaults to a no-op logger.
-    public var backgroundActivityLogger: Logger
+    public var backgroundActivityLogger = Logger(
+      label: "io.grpc",
+      factory: { _ in SwiftLogNoOpLogHandler() }
+    )
 
     /// A channel initializer which will be run after gRPC has initialized each channel. This may be
     /// used to add additional handlers to the pipeline and is intended for debugging.
@@ -354,6 +440,7 @@ extension ClientConnection {
     ///     connectivity state). Defaults to a no-op logger.
     /// - Parameter debugChannelInitializer: A channel initializer will be called after gRPC has
     ///     initialized the channel. Defaults to `nil`.
+    @available(*, deprecated, renamed: "default(target:eventLoopGroup:)")
     public init(
       target: ConnectionTarget,
       eventLoopGroup: EventLoopGroup,
@@ -365,7 +452,7 @@ extension ClientConnection {
       connectionKeepalive: ClientConnectionKeepalive = ClientConnectionKeepalive(),
       connectionIdleTimeout: TimeAmount = .minutes(30),
       callStartBehavior: CallStartBehavior = .waitsForConnectivity,
-      httpTargetWindowSize: Int = 65535,
+      httpTargetWindowSize: Int = 8 * 1024 * 1024,
       backgroundActivityLogger: Logger = Logger(
         label: "io.grpc",
         factory: { _ in SwiftLogNoOpLogHandler() }
@@ -377,7 +464,7 @@ extension ClientConnection {
       self.errorDelegate = errorDelegate
       self.connectivityStateDelegate = connectivityStateDelegate
       self.connectivityStateDelegateQueue = connectivityStateDelegateQueue
-      self.tls = tls
+      self.tlsConfiguration = tls.map { GRPCTLSConfiguration(transforming: $0) }
       self.connectionBackoff = connectionBackoff
       self.connectionKeepalive = connectionKeepalive
       self.connectionIdleTimeout = connectionIdleTimeout
@@ -385,6 +472,25 @@ extension ClientConnection {
       self.httpTargetWindowSize = httpTargetWindowSize
       self.backgroundActivityLogger = backgroundActivityLogger
       self.debugChannelInitializer = debugChannelInitializer
+    }
+
+    private init(eventLoopGroup: EventLoopGroup, target: ConnectionTarget) {
+      self.eventLoopGroup = eventLoopGroup
+      self.target = target
+    }
+
+    /// Make a new configuration using default values.
+    ///
+    /// - Parameters:
+    ///   - target: The target to connect to.
+    ///   - eventLoopGroup: The `EventLoopGroup` providing an `EventLoop` for the connection to
+    ///       run on.
+    /// - Returns: A configuration with default values set.
+    public static func `default`(
+      target: ConnectionTarget,
+      eventLoopGroup: EventLoopGroup
+    ) -> Configuration {
+      return .init(eventLoopGroup: eventLoopGroup, target: target)
     }
   }
 }
@@ -409,82 +515,81 @@ extension ClientBootstrapProtocol {
   }
 }
 
-extension Channel {
-  func configureGRPCClient(
-    httpTargetWindowSize: Int,
-    tlsConfiguration: TLSConfiguration?,
-    tlsServerHostname: String?,
+extension ChannelPipeline.SynchronousOperations {
+  internal func configureNIOSSLForGRPCClient(
+    sslContext: Result<NIOSSLContext, Error>,
+    serverHostname: String?,
+    customVerificationCallback: NIOSSLCustomVerificationCallback?,
+    logger: Logger
+  ) throws {
+    let sslContext = try sslContext.get()
+    let sslClientHandler: NIOSSLClientHandler
+
+    if let customVerificationCallback = customVerificationCallback {
+      sslClientHandler = try NIOSSLClientHandler(
+        context: sslContext,
+        serverHostname: serverHostname,
+        customVerificationCallback: customVerificationCallback
+      )
+    } else {
+      sslClientHandler = try NIOSSLClientHandler(
+        context: sslContext,
+        serverHostname: serverHostname
+      )
+    }
+
+    try self.addHandler(sslClientHandler)
+    try self.addHandler(TLSVerificationHandler(logger: logger))
+  }
+
+  internal func configureHTTP2AndGRPCHandlersForGRPCClient(
+    channel: Channel,
     connectionManager: ConnectionManager,
     connectionKeepalive: ClientConnectionKeepalive,
     connectionIdleTimeout: TimeAmount,
+    httpTargetWindowSize: Int,
+    httpMaxFrameSize: Int,
     errorDelegate: ClientErrorDelegate?,
-    requiresZeroLengthWriteWorkaround: Bool,
-    logger: Logger,
-    customVerificationCallback: NIOSSLCustomVerificationCallback?
-  ) -> EventLoopFuture<Void> {
-    // We add at most 8 handlers to the pipeline.
-    var handlers: [ChannelHandler] = []
-    handlers.reserveCapacity(7)
-
-    #if canImport(Network)
-    // This availability guard is arguably unnecessary, but we add it anyway.
-    if requiresZeroLengthWriteWorkaround,
-      #available(OSX 10.14, iOS 12.0, tvOS 12.0, watchOS 6.0, *) {
-      handlers.append(NIOFilterEmptyWritesHandler())
-    }
-    #endif
-
-    if let tlsConfiguration = tlsConfiguration {
-      do {
-        if let customVerificationCallback = customVerificationCallback {
-          let sslClientHandler = try NIOSSLClientHandler(
-            context: try NIOSSLContext(configuration: tlsConfiguration),
-            serverHostname: tlsServerHostname,
-            customVerificationCallback: customVerificationCallback
-          )
-          handlers.append(sslClientHandler)
-        } else {
-          let sslClientHandler = try NIOSSLClientHandler(
-            context: try NIOSSLContext(configuration: tlsConfiguration),
-            serverHostname: tlsServerHostname
-          )
-          handlers.append(sslClientHandler)
-        }
-        handlers.append(TLSVerificationHandler(logger: logger))
-      } catch {
-        return self.eventLoop.makeFailedFuture(error)
-      }
-    }
+    logger: Logger
+  ) throws {
+    let initialSettings = [
+      // As per the default settings for swift-nio-http2:
+      HTTP2Setting(parameter: .maxHeaderListSize, value: HPACKDecoder.defaultMaxHeaderListSize),
+      // We never expect (or allow) server initiated streams.
+      HTTP2Setting(parameter: .maxConcurrentStreams, value: 0),
+      // As configured by the user.
+      HTTP2Setting(parameter: .maxFrameSize, value: httpMaxFrameSize),
+      HTTP2Setting(parameter: .initialWindowSize, value: httpTargetWindowSize),
+    ]
 
     // We could use 'configureHTTP2Pipeline' here, but we need to add a few handlers between the
     // two HTTP/2 handlers so we'll do it manually instead.
+    try self.addHandler(NIOHTTP2Handler(mode: .client, initialSettings: initialSettings))
 
     let h2Multiplexer = HTTP2StreamMultiplexer(
       mode: .client,
-      channel: self,
+      channel: channel,
       targetWindowSize: httpTargetWindowSize,
       inboundStreamInitializer: nil
     )
 
-    handlers.append(NIOHTTP2Handler(mode: .client))
     // The multiplexer is passed through the idle handler so it is only reported on
     // successful channel activation - with happy eyeballs multiple pipelines can
     // be constructed so it's not safe to report just yet.
-    handlers.append(
-      GRPCIdleHandler(
-        connectionManager: connectionManager,
-        multiplexer: h2Multiplexer,
-        idleTimeout: connectionIdleTimeout,
-        keepalive: connectionKeepalive,
-        logger: logger
-      )
-    )
-    handlers.append(h2Multiplexer)
-    handlers.append(DelegatingErrorHandler(logger: logger, delegate: errorDelegate))
+    try self.addHandler(GRPCIdleHandler(
+      connectionManager: connectionManager,
+      multiplexer: h2Multiplexer,
+      idleTimeout: connectionIdleTimeout,
+      keepalive: connectionKeepalive,
+      logger: logger
+    ))
 
-    return self.pipeline.addHandlers(handlers)
+    try self.addHandler(h2Multiplexer)
+    try self.addHandler(DelegatingErrorHandler(logger: logger, delegate: errorDelegate))
   }
+}
 
+extension Channel {
   func configureGRPCClient(
     errorDelegate: ClientErrorDelegate?,
     logger: Logger

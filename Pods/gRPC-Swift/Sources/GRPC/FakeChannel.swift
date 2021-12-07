@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
+import NIOEmbedded
 import SwiftProtobuf
 
 /// A fake channel for use with generated test clients.
@@ -113,7 +114,7 @@ public class FakeChannel: GRPCChannel {
       eventLoop: eventLoop,
       options: callOptions,
       interceptors: interceptors,
-      transportFactory: .fake(stream, on: eventLoop)
+      transportFactory: .fake(stream)
     )
   }
 
@@ -131,7 +132,7 @@ public class FakeChannel: GRPCChannel {
       eventLoop: eventLoop,
       options: callOptions,
       interceptors: interceptors,
-      transportFactory: .fake(stream, on: eventLoop)
+      transportFactory: .fake(stream)
     )
   }
 

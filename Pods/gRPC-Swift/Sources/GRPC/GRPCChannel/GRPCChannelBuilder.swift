@@ -15,8 +15,12 @@
  */
 import Dispatch
 import Logging
-import NIO
+import NIOCore
 import NIOSSL
+
+#if canImport(Security)
+import Security
+#endif
 
 extension ClientConnection {
   /// Returns an insecure `ClientConnection` builder which is *not configured with TLS*.
@@ -25,15 +29,94 @@ extension ClientConnection {
   }
 
   /// Returns a `ClientConnection` builder configured with TLS.
+  @available(
+    *, deprecated,
+    message: "Use one of 'usingPlatformAppropriateTLS(for:)', 'usingTLSBackedByNIOSSL(on:)' or 'usingTLSBackedByNetworkFramework(on:)' or 'usingTLS(on:with:)'"
+  )
   public static func secure(group: EventLoopGroup) -> ClientConnection.Builder.Secure {
-    return Builder.Secure(group: group)
+    return ClientConnection.usingTLSBackedByNIOSSL(on: group)
+  }
+
+  /// Returns a `ClientConnection` builder configured with a TLS backend appropriate for the
+  /// given `EventLoopGroup`.
+  ///
+  /// gRPC Swift offers two TLS 'backends'. The 'NIOSSL' backend is available on Darwin and Linux
+  /// platforms and delegates to SwiftNIO SSL. On recent Darwin platforms (macOS 10.14+, iOS 12+,
+  /// tvOS 12+, and watchOS 6+) the 'Network.framework' backend is available. The two backends have
+  /// a number of incompatible configuration options and users are responsible for selecting the
+  /// appropriate APIs. The TLS configuration options on the builder document which backends they
+  /// support.
+  ///
+  /// TLS backends must also be used with an appropriate `EventLoopGroup` implementation. The
+  /// 'NIOSSL' backend may be used either a `MultiThreadedEventLoopGroup` or a
+  /// `NIOTSEventLoopGroup`. The 'Network.framework' backend may only be used with a
+  /// `NIOTSEventLoopGroup`.
+  ///
+  /// This function returns a builder using the `NIOSSL` backend if a `MultiThreadedEventLoopGroup`
+  /// is supplied and a 'Network.framework' backend if a `NIOTSEventLoopGroup` is used.
+  public static func usingPlatformAppropriateTLS(
+    for group: EventLoopGroup
+  ) -> ClientConnection.Builder.Secure {
+    let networkPreference = NetworkPreference.userDefined(.matchingEventLoopGroup(group))
+    return Builder.Secure(
+      group: group,
+      tlsConfiguration: .makeClientDefault(for: networkPreference)
+    )
+  }
+
+  /// Returns a `ClientConnection` builder configured with the 'NIOSSL' TLS backend.
+  ///
+  /// This builder may use either a `MultiThreadedEventLoopGroup` or a `NIOTSEventLoopGroup` (or an
+  /// `EventLoop` from either group).
+  ///
+  /// - Parameter group: The `EventLoopGroup` use for the connection.
+  /// - Returns: A builder for a connection using the NIOSSL TLS backend.
+  public static func usingTLSBackedByNIOSSL(
+    on group: EventLoopGroup
+  ) -> ClientConnection.Builder.Secure {
+    return Builder.Secure(group: group, tlsConfiguration: .makeClientConfigurationBackedByNIOSSL())
+  }
+
+  #if canImport(Network)
+  /// Returns a `ClientConnection` builder configured with the Network.framework TLS backend.
+  ///
+  /// This builder must use a `NIOTSEventLoopGroup` (or an `EventLoop` from a
+  /// `NIOTSEventLoopGroup`).
+  ///
+  /// - Parameter group: The `EventLoopGroup` use for the connection.
+  /// - Returns: A builder for a connection using the Network.framework TLS backend.
+  @available(macOS 10.14, iOS 12.0, watchOS 6.0, tvOS 12.0, *)
+  public static func usingTLSBackedByNetworkFramework(
+    on group: EventLoopGroup
+  ) -> ClientConnection.Builder.Secure {
+    precondition(
+      PlatformSupport.isTransportServicesEventLoopGroup(group),
+      "'\(#function)' requires 'group' to be a 'NIOTransportServices.NIOTSEventLoopGroup' or 'NIOTransportServices.QoSEventLoop' (but was '\(type(of: group))'"
+    )
+    return Builder.Secure(
+      group: group,
+      tlsConfiguration: .makeClientConfigurationBackedByNetworkFramework()
+    )
+  }
+  #endif
+
+  /// Returns a `ClientConnection` builder configured with the TLS backend appropriate for the
+  /// provided configuration and `EventLoopGroup`.
+  ///
+  /// - Important: The caller is responsible for ensuring the provided `configuration` may be used
+  ///   the the `group`.
+  public static func usingTLS(
+    with configuration: GRPCTLSConfiguration,
+    on group: EventLoopGroup
+  ) -> ClientConnection.Builder.Secure {
+    return Builder.Secure(group: group, tlsConfiguration: configuration)
   }
 }
 
 extension ClientConnection {
   public class Builder {
     private var configuration: ClientConnection.Configuration
-    private var maybeTLS: ClientConnection.Configuration.TLS? { return nil }
+    private var maybeTLS: GRPCTLSConfiguration? { return nil }
 
     private var connectionBackoff = ConnectionBackoff()
     private var connectionBackoffIsEnabled = true
@@ -41,15 +124,15 @@ extension ClientConnection {
     fileprivate init(group: EventLoopGroup) {
       // This is okay: the configuration is only consumed on a call to `connect` which sets the host
       // and port.
-      self.configuration = Configuration(target: .hostAndPort("", .max), eventLoopGroup: group)
+      self.configuration = .default(target: .hostAndPort("", .max), eventLoopGroup: group)
     }
 
     public func connect(host: String, port: Int) -> ClientConnection {
       // Finish setting up the configuration.
       self.configuration.target = .hostAndPort(host, port)
-      self.configuration.connectionBackoff = self.connectionBackoffIsEnabled ? self
-        .connectionBackoff : nil
-      self.configuration.tls = self.maybeTLS
+      self.configuration.connectionBackoff =
+        self.connectionBackoffIsEnabled ? self.connectionBackoff : nil
+      self.configuration.tlsConfiguration = self.maybeTLS
       return ClientConnection(configuration: self.configuration)
     }
   }
@@ -57,9 +140,20 @@ extension ClientConnection {
 
 extension ClientConnection.Builder {
   public class Secure: ClientConnection.Builder {
-    internal var tls = ClientConnection.Configuration.TLS()
-    override internal var maybeTLS: ClientConnection.Configuration.TLS? {
+    internal var tls: GRPCTLSConfiguration
+    override internal var maybeTLS: GRPCTLSConfiguration? {
       return self.tls
+    }
+
+    internal init(group: EventLoopGroup, tlsConfiguration: GRPCTLSConfiguration) {
+      group.preconditionCompatible(with: tlsConfiguration)
+      self.tls = tlsConfiguration
+      super.init(group: group)
+    }
+
+    /// Connect to `host` on port 443.
+    public func connect(host: String) -> ClientConnection {
+      return self.connect(host: host, port: 443)
     }
   }
 }
@@ -192,65 +286,135 @@ extension ClientConnection.Builder {
   }
 }
 
+// MARK: - Common TLS options
+
 extension ClientConnection.Builder.Secure {
   /// Sets a server hostname override to be used for the TLS Server Name Indication (SNI) extension.
   /// The hostname from `connect(host:port)` is for TLS SNI if this value is not set and hostname
   /// verification is enabled.
+  ///
+  /// - Note: May be used with the 'NIOSSL' and 'Network.framework' TLS backend.
+  /// - Note: `serverHostnameOverride` may not be `nil` when using the 'Network.framework' backend.
   @discardableResult
   public func withTLS(serverHostnameOverride: String?) -> Self {
     self.tls.hostnameOverride = serverHostnameOverride
     return self
   }
+}
 
+// MARK: - NIOSSL TLS backend options
+
+extension ClientConnection.Builder.Secure {
   /// Sets the sources of certificates to offer during negotiation. No certificates are offered
   /// during negotiation by default.
+  ///
+  /// - Note: May only be used with the 'NIOSSL' TLS backend.
   @discardableResult
   public func withTLS(certificateChain: [NIOSSLCertificate]) -> Self {
-    // `.certificate` is the only non-deprecated case in `NIOSSLCertificateSource`
-    self.tls.certificateChain = certificateChain.map { .certificate($0) }
+    self.tls.updateNIOCertificateChain(to: certificateChain)
     return self
   }
 
   /// Sets the private key associated with the leaf certificate.
+  ///
+  /// - Note: May only be used with the 'NIOSSL' TLS backend.
   @discardableResult
   public func withTLS(privateKey: NIOSSLPrivateKey) -> Self {
-    // `.privateKey` is the only non-deprecated case in `NIOSSLPrivateKeySource`
-    self.tls.privateKey = .privateKey(privateKey)
+    self.tls.updateNIOPrivateKey(to: privateKey)
     return self
   }
 
   /// Sets the trust roots to use to validate certificates. This only needs to be provided if you
   /// intend to validate certificates. Defaults to the system provided trust store (`.default`) if
   /// not set.
+  ///
+  /// - Note: May only be used with the 'NIOSSL' TLS backend.
   @discardableResult
   public func withTLS(trustRoots: NIOSSLTrustRoots) -> Self {
-    self.tls.trustRoots = trustRoots
+    self.tls.updateNIOTrustRoots(to: trustRoots)
     return self
   }
 
   /// Whether to verify remote certificates. Defaults to `.fullVerification` if not otherwise
   /// configured.
+  ///
+  /// - Note: May only be used with the 'NIOSSL' TLS backend.
   @discardableResult
   public func withTLS(certificateVerification: CertificateVerification) -> Self {
-    self.tls.certificateVerification = certificateVerification
+    self.tls.updateNIOCertificateVerification(to: certificateVerification)
     return self
   }
 
   /// A custom verification callback that allows completely overriding the certificate verification logic.
+  ///
+  /// - Note: May only be used with the 'NIOSSL' TLS backend.
   @discardableResult
   public func withTLSCustomVerificationCallback(
     _ callback: @escaping NIOSSLCustomVerificationCallback
   ) -> Self {
-    self.tls.customVerificationCallback = callback
+    self.tls.updateNIOCustomVerificationCallback(to: callback)
+    return self
+  }
+}
+
+// MARK: - Network.framework TLS backend options
+
+#if canImport(Network)
+extension ClientConnection.Builder.Secure {
+  /// Update the local identity.
+  ///
+  /// - Note: May only be used with the 'Network.framework' TLS backend.
+  @discardableResult
+  @available(macOS 10.14, iOS 12.0, watchOS 6.0, tvOS 12.0, *)
+  public func withTLS(localIdentity: SecIdentity) -> Self {
+    self.tls.updateNetworkLocalIdentity(to: localIdentity)
+    return self
+  }
+
+  /// Update the callback used to verify a trust object during a TLS handshake.
+  ///
+  /// - Note: May only be used with the 'Network.framework' TLS backend.
+  @discardableResult
+  @available(macOS 10.14, iOS 12.0, watchOS 6.0, tvOS 12.0, *)
+  public func withTLSHandshakeVerificationCallback(
+    on queue: DispatchQueue,
+    verificationCallback callback: @escaping sec_protocol_verify_t
+  ) -> Self {
+    self.tls.updateNetworkVerifyCallbackWithQueue(callback: callback, queue: queue)
+    return self
+  }
+}
+#endif
+
+extension ClientConnection.Builder {
+  /// Sets the HTTP/2 flow control target window size. Defaults to 8MB if not explicitly set.
+  /// Values are clamped between 1 and 2^31-1 inclusive.
+  @discardableResult
+  public func withHTTPTargetWindowSize(_ httpTargetWindowSize: Int) -> Self {
+    self.configuration.httpTargetWindowSize = httpTargetWindowSize
+    return self
+  }
+
+  /// Sets the maximum size of an HTTP/2 frame in bytes which the client is willing to receive from
+  /// the server. Defaults to 16384. Value are clamped between 2^14 and 2^24-1 octets inclusive
+  /// (the minimum and maximum permitted values per RFC 7540 § 4.2).
+  ///
+  /// Raising this value may lower CPU usage for large message at the cost of increasing head of
+  /// line blocking for small messages.
+  @discardableResult
+  public func withHTTPMaxFrameSize(_ httpMaxFrameSize: Int) -> Self {
+    self.configuration.httpMaxFrameSize = httpMaxFrameSize
     return self
   }
 }
 
 extension ClientConnection.Builder {
-  /// Sets the HTTP/2 flow control target window size. Defaults to 65,535 if not explicitly set.
+  /// Sets the maximum message size the client is permitted to receive in bytes.
+  ///
+  /// - Precondition: `limit` must not be negative.
   @discardableResult
-  public func withHTTPTargetWindowSize(_ httpTargetWindowSize: Int) -> Self {
-    self.configuration.httpTargetWindowSize = httpTargetWindowSize
+  public func withMaximumReceiveMessageLength(_ limit: Int) -> Self {
+    self.configuration.maximumReceiveMessageLength = limit
     return self
   }
 }

@@ -14,16 +14,20 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
 import NIOSSL
+
+#if canImport(Network)
+import Security
+#endif
 
 extension Server {
   public class Builder {
     private var configuration: Server.Configuration
-    private var maybeTLS: Server.Configuration.TLS? { return nil }
+    private var maybeTLS: GRPCTLSConfiguration? { return nil }
 
     fileprivate init(group: EventLoopGroup) {
-      self.configuration = Configuration(
+      self.configuration = .default(
         // This is okay: the configuration is only consumed on a call to `bind` which sets the host
         // and port.
         target: .hostAndPort("", .max),
@@ -33,20 +37,14 @@ extension Server {
     }
 
     public class Secure: Builder {
-      private var tls: Server.Configuration.TLS
-      override var maybeTLS: Server.Configuration.TLS? {
+      private var tls: GRPCTLSConfiguration
+      override var maybeTLS: GRPCTLSConfiguration? {
         return self.tls
       }
 
-      fileprivate init(
-        group: EventLoopGroup,
-        certificateChain: [NIOSSLCertificate],
-        privateKey: NIOSSLPrivateKey
-      ) {
-        self.tls = .init(
-          certificateChain: certificateChain.map { .certificate($0) },
-          privateKey: .privateKey(privateKey)
-        )
+      fileprivate init(group: EventLoopGroup, tlsConfiguration: GRPCTLSConfiguration) {
+        group.preconditionCompatible(with: tlsConfiguration)
+        self.tls = tlsConfiguration
         super.init(group: group)
       }
     }
@@ -54,7 +52,7 @@ extension Server {
     public func bind(host: String, port: Int) -> EventLoopFuture<Server> {
       // Finish setting up the configuration.
       self.configuration.target = .hostAndPort(host, port)
-      self.configuration.tls = self.maybeTLS
+      self.configuration.tlsConfiguration = self.maybeTLS
       return Server.start(configuration: self.configuration)
     }
   }
@@ -106,22 +104,35 @@ extension Server.Builder {
     self.configuration.messageEncoding = encoding
     return self
   }
+
+  /// Sets the maximum message size in bytes the server may receive.
+  ///
+  /// - Precondition: `limit` must not be negative.
+  @discardableResult
+  public func withMaximumReceiveMessageLength(_ limit: Int) -> Self {
+    self.configuration.maximumReceiveMessageLength = limit
+    return self
+  }
 }
 
 extension Server.Builder.Secure {
   /// Sets the trust roots to use to validate certificates. This only needs to be provided if you
   /// intend to validate certificates. Defaults to the system provided trust store (`.default`) if
   /// not set.
+  ///
+  /// - Note: May only be used with the 'NIOSSL' TLS backend.
   @discardableResult
   public func withTLS(trustRoots: NIOSSLTrustRoots) -> Self {
-    self.tls.trustRoots = trustRoots
+    self.tls.updateNIOTrustRoots(to: trustRoots)
     return self
   }
 
   /// Sets whether certificates should be verified. Defaults to `.none` if not set.
+  ///
+  /// - Note: May only be used with the 'NIOSSL' TLS backend.
   @discardableResult
   public func withTLS(certificateVerification: CertificateVerification) -> Self {
-    self.tls.certificateVerification = certificateVerification
+    self.tls.updateNIOCertificateVerification(to: certificateVerification)
     return self
   }
 
@@ -131,6 +142,8 @@ extension Server.Builder.Secure {
   /// If this option is set to `false` and no protocol is negotiated via ALPN then the server will
   /// parse the initial bytes on the connection to determine whether HTTP/2 or HTTP/1.1 (gRPC-Web)
   /// is being used and configure the connection appropriately.
+  ///
+  /// - Note: May only be used with the 'NIOSSL' TLS backend.
   @discardableResult
   public func withTLS(requiringALPN: Bool) -> Self {
     self.tls.requireALPN = requiringALPN
@@ -139,10 +152,30 @@ extension Server.Builder.Secure {
 }
 
 extension Server.Builder {
-  /// Sets the HTTP/2 flow control target window size. Defaults to 65,535 if not explicitly set.
+  /// Sets the HTTP/2 flow control target window size. Defaults to 8MB if not explicitly set.
+  /// Values are clamped between 1 and 2^31-1 inclusive.
   @discardableResult
   public func withHTTPTargetWindowSize(_ httpTargetWindowSize: Int) -> Self {
     self.configuration.httpTargetWindowSize = httpTargetWindowSize
+    return self
+  }
+
+  /// Sets the maximum allowed number of concurrent HTTP/2 streams a client may open for a given
+  /// connection. Defaults to 100.
+  @discardableResult
+  public func withHTTPMaxConcurrentStreams(_ httpMaxConcurrentStreams: Int) -> Self {
+    self.configuration.httpMaxConcurrentStreams = httpMaxConcurrentStreams
+    return self
+  }
+
+  /// Sets the HTTP/2 max frame size. Defaults to 16384. Value are clamped between 2^14 and 2^24-1
+  /// octets inclusive (the minimum and maximum permitted values per RFC 7540 § 4.2).
+  ///
+  /// Raising this value may lower CPU usage for large message at the cost of increasing head of
+  /// line blocking for small messages.
+  @discardableResult
+  public func withHTTPMaxFrameSize(_ httpMaxFrameSize: Int) -> Self {
+    self.configuration.httpMaxFrameSize = httpMaxFrameSize
     return self
   }
 }
@@ -181,15 +214,69 @@ extension Server {
   }
 
   /// Returns a `Server` builder configured with TLS.
+  @available(
+    *, deprecated,
+    message: "Use one of 'usingTLSBackedByNIOSSL(on:certificateChain:privateKey:)', 'usingTLSBackedByNetworkFramework(on:with:)' or 'usingTLS(with:on:)'"
+  )
   public static func secure(
     group: EventLoopGroup,
     certificateChain: [NIOSSLCertificate],
     privateKey: NIOSSLPrivateKey
   ) -> Builder.Secure {
-    return Builder.Secure(
-      group: group,
+    return Server.usingTLSBackedByNIOSSL(
+      on: group,
       certificateChain: certificateChain,
       privateKey: privateKey
     )
+  }
+
+  /// Returns a `Server` builder configured with the 'NIOSSL' TLS backend.
+  ///
+  /// This builder may use either a `MultiThreadedEventLoopGroup` or a `NIOTSEventLoopGroup` (or an
+  /// `EventLoop` from either group).
+  public static func usingTLSBackedByNIOSSL(
+    on group: EventLoopGroup,
+    certificateChain: [NIOSSLCertificate],
+    privateKey: NIOSSLPrivateKey
+  ) -> Builder.Secure {
+    return Builder.Secure(
+      group: group,
+      tlsConfiguration: .makeServerConfigurationBackedByNIOSSL(
+        certificateChain: certificateChain.map { .certificate($0) },
+        privateKey: .privateKey(privateKey)
+      )
+    )
+  }
+
+  #if canImport(Network)
+  /// Returns a `Server` builder configured with the 'Network.framework' TLS backend.
+  ///
+  /// This builder must use a `NIOTSEventLoopGroup`.
+  @available(macOS 10.14, iOS 12.0, watchOS 6.0, tvOS 12.0, *)
+  public static func usingTLSBackedByNetworkFramework(
+    on group: EventLoopGroup,
+    with identity: SecIdentity
+  ) -> Builder.Secure {
+    precondition(
+      PlatformSupport.isTransportServicesEventLoopGroup(group),
+      "'usingTLSBackedByNetworkFramework(on:with:)' requires 'eventLoopGroup' to be a 'NIOTransportServices.NIOTSEventLoopGroup' or 'NIOTransportServices.QoSEventLoop' (but was '\(type(of: group))'"
+    )
+    return Builder.Secure(
+      group: group,
+      tlsConfiguration: .makeServerConfigurationBackedByNetworkFramework(identity: identity)
+    )
+  }
+  #endif
+
+  /// Returns a `Server` builder configured with the TLS backend appropriate for the
+  /// provided `configuration` and `EventLoopGroup`.
+  ///
+  /// - Important: The caller is responsible for ensuring the provided `configuration` may be used
+  ///   the the `group`.
+  public static func usingTLS(
+    with configuration: GRPCTLSConfiguration,
+    on group: EventLoopGroup
+  ) -> Builder.Secure {
+    return Builder.Secure(group: group, tlsConfiguration: configuration)
   }
 }

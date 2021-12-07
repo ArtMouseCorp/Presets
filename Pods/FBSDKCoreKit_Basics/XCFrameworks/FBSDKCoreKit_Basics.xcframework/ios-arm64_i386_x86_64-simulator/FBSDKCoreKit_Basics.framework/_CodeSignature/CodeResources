@@ -14,15 +14,11 @@
 		</data>
 		<key>Headers/FBSDKCoreKit_Basics.h</key>
 		<data>
-		j43ojSPtvEcWeoR90pkdT/TDUkM=
-		</data>
-		<key>Headers/FBSDKCrashHandler+CrashHandlerProtocol.h</key>
-		<data>
-		443ah+xVnt8kxPzEr1grcX9ZHcA=
+		yCOj2PF5gFLCsFZYokrHaF+kb6E=
 		</data>
 		<key>Headers/FBSDKCrashHandler.h</key>
 		<data>
-		Y/DhrdyYQKDVy1UVd00afADoSBg=
+		XFjx0woFw9B8j8LqVNsXXvwVJoI=
 		</data>
 		<key>Headers/FBSDKCrashHandlerProtocol.h</key>
 		<data>
@@ -62,23 +58,23 @@
 		</data>
 		<key>Headers/FBSDKTypeUtility.h</key>
 		<data>
-		MBar0KXjUidS94Ou9maYFlVhQLA=
+		f4LB/u7GXJwPD3xDZuv2sHs5T+s=
 		</data>
 		<key>Headers/FBSDKURLSession.h</key>
 		<data>
-		VdiEE+JO0c1s0wV2TmNbIL1uzUY=
+		wZwJ/rWdyoVFW6OM4trMyykUuUQ=
 		</data>
 		<key>Headers/FBSDKURLSessionTask.h</key>
 		<data>
-		fwK2wYQF102PqSs2fq7BOHxsK+Y=
+		rDIhK3CRTMaZLaphUxAzW1FYcr4=
 		</data>
 		<key>Headers/NSBundle+InfoDictionaryProviding.h</key>
 		<data>
-		fJDluAO8Yzj3s/MMC8RjWl2o3ic=
+		oGjglpf8ghGdp8PMxegBaTY1vlI=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		xWiUDb8OrNHBKHOnItaIyCLI4hY=
+		D002OQjbij5eVuAZ7JKhXtMgypk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -113,33 +109,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			j43ojSPtvEcWeoR90pkdT/TDUkM=
+			yCOj2PF5gFLCsFZYokrHaF+kb6E=
 			</data>
 			<key>hash2</key>
 			<data>
-			56WiZo0joED9GqwGPFRnCcGIzng3J98VQJ+0rJWnHZw=
-			</data>
-		</dict>
-		<key>Headers/FBSDKCrashHandler+CrashHandlerProtocol.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			443ah+xVnt8kxPzEr1grcX9ZHcA=
-			</data>
-			<key>hash2</key>
-			<data>
-			OZoJfxuPIoNGSEafNnSWmIlXb3kuwK8zn2w4jb3Vu5E=
+			G5ab8/5ENi2AjEoBdg/CAweyQddr5PBWBSgNxsvQAhw=
 			</data>
 		</dict>
 		<key>Headers/FBSDKCrashHandler.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Y/DhrdyYQKDVy1UVd00afADoSBg=
+			XFjx0woFw9B8j8LqVNsXXvwVJoI=
 			</data>
 			<key>hash2</key>
 			<data>
-			6FzP9JcLV617CE35OPiBNQ60IYpKFwStXlfKQk3cmso=
+			l1k6wiyMcXb0XB2qDeKvkfeL0NlWcMizCphQj9PEES0=
 			</data>
 		</dict>
 		<key>Headers/FBSDKCrashHandlerProtocol.h</key>
@@ -245,44 +230,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MBar0KXjUidS94Ou9maYFlVhQLA=
+			f4LB/u7GXJwPD3xDZuv2sHs5T+s=
 			</data>
 			<key>hash2</key>
 			<data>
-			3+yw7144/V9Njv9C33BZ3rj9oTBw3C36CD/3hahBAiw=
+			hZlmjZf9v1xCK0UvAcKoBxE9FO0N4hcVwc3MHNknwe8=
 			</data>
 		</dict>
 		<key>Headers/FBSDKURLSession.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VdiEE+JO0c1s0wV2TmNbIL1uzUY=
+			wZwJ/rWdyoVFW6OM4trMyykUuUQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Gw/jWZ/4X/cu2MBWyS0qhqtAlbVsCI1i3iV4dd7kItA=
+			zO6qPAvIrwsteHjOUUIyijqJmz2ogCryuCUl/SpPn00=
 			</data>
 		</dict>
 		<key>Headers/FBSDKURLSessionTask.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fwK2wYQF102PqSs2fq7BOHxsK+Y=
+			rDIhK3CRTMaZLaphUxAzW1FYcr4=
 			</data>
 			<key>hash2</key>
 			<data>
-			lC+DnnD3oH8xbIaJ4egRSGDzt+zodt3ei3tTpdME/Og=
+			QdNBq/LdvsMSh6DqAzaKOw7M3V6jpSg3T4PDa/iIKNM=
 			</data>
 		</dict>
 		<key>Headers/NSBundle+InfoDictionaryProviding.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fJDluAO8Yzj3s/MMC8RjWl2o3ic=
+			oGjglpf8ghGdp8PMxegBaTY1vlI=
 			</data>
 			<key>hash2</key>
 			<data>
-			4dqItTs8CZWl54OvuxEC2e7m61lUO0s9XpJKSl6ybLg=
+			wfxymxezLI1GCqYsLn1biGERK1/zX8QxIXkoIZu+RP0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

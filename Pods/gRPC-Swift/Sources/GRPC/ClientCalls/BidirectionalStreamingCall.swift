@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
 import NIOHPACK
 import NIOHTTP2
 
@@ -35,6 +35,11 @@ public struct BidirectionalStreamingCall<
   /// The options used to make the RPC.
   public var options: CallOptions {
     return self.call.options
+  }
+
+  /// The path used to make the RPC.
+  public var path: String {
+    return self.call.path
   }
 
   /// The `Channel` used to transport messages for this RPC.
