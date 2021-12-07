@@ -15,7 +15,7 @@
  */
 import Foundation
 import Logging
-import NIO
+import NIOCore
 import NIOHPACK
 import NIOHTTP1
 import NIOHTTP2
@@ -32,6 +32,11 @@ public struct UnaryCall<RequestPayload, ResponsePayload>: UnaryResponseClientCal
   /// The options used to make the RPC.
   public var options: CallOptions {
     return self.call.options
+  }
+
+  /// The path used to make the RPC.
+  public var path: String {
+    return self.call.path
   }
 
   /// The `Channel` used to transport messages for this RPC.

@@ -12,7 +12,7 @@ import UIKit
 public class SkarbSDK {
   
   static let agentName: String = "SkarbSDK-iOS"
-  static let version: String = "0.5.1"
+  static let version: String = "0.5.2"
   
   static var clientId: String = ""
   public static var isLoggingEnabled: Bool = false
@@ -128,6 +128,6 @@ public class SkarbSDK {
   }
   
   private static func generateDeviceId() -> String {
-    return UIDevice.current.identifierForVendor?.uuidString ?? "gen-" + UUID().uuidString
+    return UUID().uuidString
   }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
 import NIOHTTP2
 
 internal final class GRPCIdleHandler: ChannelInboundHandler {
@@ -35,9 +35,6 @@ internal final class GRPCIdleHandler: ChannelInboundHandler {
 
   /// The mode we're operating in.
   private let mode: Mode
-
-  /// A logger.
-  private let logger: Logger
 
   private var context: ChannelHandlerContext?
 
@@ -78,7 +75,6 @@ internal final class GRPCIdleHandler: ChannelInboundHandler {
       maximumPingsWithoutData: configuration.maximumPingsWithoutData,
       minimumSentPingIntervalWithoutData: configuration.minimumSentPingIntervalWithoutData
     )
-    self.logger = logger
   }
 
   init(
@@ -99,7 +95,6 @@ internal final class GRPCIdleHandler: ChannelInboundHandler {
       minimumReceivedPingIntervalWithoutData: configuration.minimumReceivedPingIntervalWithoutData,
       maximumPingStrikes: configuration.maximumPingStrikes
     )
-    self.logger = logger
   }
 
   private func sendGoAway(lastStreamID streamID: HTTP2StreamID) {
@@ -128,6 +123,12 @@ internal final class GRPCIdleHandler: ChannelInboundHandler {
       case .quiescing:
         manager.beginQuiescing()
       }
+    }
+
+    // Max concurrent streams changed.
+    if let manager = self.mode.connectionManager,
+      let maxConcurrentStreams = operations.maxConcurrentStreamsChange {
+      manager.maxConcurrentStreamsChanged(maxConcurrentStreams)
     }
 
     // Handle idle timeout creation/cancellation.
@@ -222,6 +223,7 @@ internal final class GRPCIdleHandler: ChannelInboundHandler {
     } else if let closed = event as? StreamClosedEvent {
       self.perform(operations: self.stateMachine.streamClosed(withID: closed.streamID))
       self.handlePingAction(self.pingHandler.streamClosed())
+      self.mode.connectionManager?.streamClosed()
       context.fireUserInboundEventTriggered(event)
     } else if event is ChannelShouldQuiesceEvent {
       self.perform(operations: self.stateMachine.initiateGracefulShutdown())
@@ -238,6 +240,11 @@ internal final class GRPCIdleHandler: ChannelInboundHandler {
   }
 
   func channelActive(context: ChannelHandlerContext) {
+    self.stateMachine.logger.addIPAddressMetadata(
+      local: context.localAddress,
+      remote: context.remoteAddress
+    )
+
     // No state machine action here.
     switch self.mode {
     case let .client(connectionManager, multiplexer):

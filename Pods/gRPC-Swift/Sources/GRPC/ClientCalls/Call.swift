@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
 import NIOHPACK
 import NIOHTTP2
 import protocol SwiftProtobuf.Message
@@ -53,7 +53,8 @@ public class Call<Request, Response> {
   internal var _state: State
 
   /// User provided interceptors for the call.
-  private let interceptors: [ClientInterceptor<Request, Response>]
+  @usableFromInline
+  internal let _interceptors: [ClientInterceptor<Request, Response>]
 
   /// Whether compression is enabled on the call.
   private var isCompressionEnabled: Bool {
@@ -88,6 +89,7 @@ public class Call<Request, Response> {
   }
 
   // Calls can't be constructed directly: users must make them using a `GRPCChannel`.
+  @inlinable
   internal init(
     path: String,
     type: GRPCCallType,
@@ -101,7 +103,7 @@ public class Call<Request, Response> {
     self.options = options
     self._state = .idle(transportFactory)
     self.eventLoop = eventLoop
-    self.interceptors = interceptors
+    self._interceptors = interceptors
   }
 
   /// Starts the call and provides a callback which is invoked on every response part received from
@@ -271,7 +273,8 @@ extension Call {
         to: self.path,
         for: self.type,
         withOptions: self.options,
-        interceptedBy: self.interceptors,
+        onEventLoop: self.eventLoop,
+        interceptedBy: self._interceptors,
         onError: onError,
         onResponsePart: onResponsePart
       )
@@ -334,7 +337,7 @@ extension Call {
 
     case let (.none, .invoked(transport)):
       // Just ask the transport.
-      return transport.channel()
+      return transport.getChannel()
     }
   }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
 
 public struct ClientInterceptorContext<Request, Response> {
   /// The interceptor this context is for.
@@ -36,7 +36,7 @@ public struct ClientInterceptorContext<Request, Response> {
 
   /// A logger.
   public var logger: Logger {
-    return self._pipeline.logger
+    return self._pipeline.logger.unwrapped
   }
 
   /// The type of the RPC, e.g. "unary".

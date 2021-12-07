@@ -15,12 +15,16 @@
  */
 import Foundation
 import Logging
-import NIO
+import NIOCore
 import NIOExtras
 import NIOHTTP1
 import NIOHTTP2
+import NIOPosix
 import NIOSSL
 import NIOTransportServices
+#if canImport(Network)
+import Network
+#endif
 
 /// Wrapper object to manage the lifecycle of a gRPC server.
 ///
@@ -88,6 +92,40 @@ public final class Server {
       _ = bootstrap.serverChannelOption(ChannelOptions.backlog, value: 256)
     }
 
+    // Making a `NIOSSLContext` is expensive, we should only do it once per TLS configuration so
+    // we'll do it now, before accepting connections. Unfortunately our API isn't throwing so we'll
+    // only surface any error when initializing a child channel.
+    //
+    // 'nil' means we're not using TLS, or we're using the Network.framework TLS backend. If we're
+    // using the Network.framework TLS backend we'll apply the settings just below.
+    let sslContext: Result<NIOSSLContext, Error>?
+
+    if let tlsConfiguration = configuration.tlsConfiguration {
+      do {
+        sslContext = try configuration.tlsConfiguration?.makeNIOSSLContext().map { .success($0) }
+      } catch {
+        sslContext = .failure(error)
+      }
+
+      // No SSL context means we must be using the Network.framework TLS stack (as
+      // `tlsConfiguration` was not `nil`).
+      if sslContext == nil {
+        #if canImport(Network)
+        if #available(OSX 10.14, iOS 12.0, tvOS 12.0, watchOS 6.0, *),
+          let transportServicesBootstrap = bootstrap as? NIOTSListenerBootstrap {
+          _ = transportServicesBootstrap.tlsOptions(from: tlsConfiguration)
+        }
+        #else
+        // We must be using Network.framework (because we aren't using NIOSSL) but we don't have
+        // an a NIOTSListenerBootstrap available, something is very wrong.
+        preconditionFailure()
+        #endif
+      }
+    } else {
+      // No TLS configuration, no SSL context.
+      sslContext = nil
+    }
+
     return bootstrap
       // Enable `SO_REUSEADDR` to avoid "address already in use" error.
       .serverChannelOption(
@@ -98,39 +136,38 @@ public final class Server {
       .childChannelInitializer { channel in
         var configuration = configuration
         configuration.logger[metadataKey: MetadataKey.connectionID] = "\(UUID().uuidString)"
-        configuration.logger[metadataKey: MetadataKey.remoteAddress] = channel.remoteAddress
-          .map { "\($0)" } ?? "n/a"
-
-        var configured: EventLoopFuture<Void>
-        let configurator = GRPCServerPipelineConfigurator(configuration: configuration)
-
-        if let tls = configuration.tls {
-          configured = channel.configureTLS(configuration: tls).flatMap {
-            channel.pipeline.addHandler(configurator)
-          }
-        } else {
-          configured = channel.pipeline.addHandler(configurator)
-        }
-
-        // Work around the zero length write issue, if needed.
-        let requiresZeroLengthWorkaround = PlatformSupport.requiresZeroLengthWriteWorkaround(
-          group: configuration.eventLoopGroup,
-          hasTLS: configuration.tls != nil
+        configuration.logger.addIPAddressMetadata(
+          local: channel.localAddress,
+          remote: channel.remoteAddress
         )
-        if requiresZeroLengthWorkaround,
-          #available(OSX 10.14, iOS 12.0, tvOS 12.0, watchOS 6.0, *) {
-          configured = configured.flatMap {
-            channel.pipeline.addHandler(NIOFilterEmptyWritesHandler())
+
+        do {
+          let sync = channel.pipeline.syncOperations
+          if let sslContext = try sslContext?.get() {
+            try sync.addHandler(NIOSSLServerHandler(context: sslContext))
           }
+
+          // Configures the pipeline based on whether the connection uses TLS or not.
+          try sync.addHandler(GRPCServerPipelineConfigurator(configuration: configuration))
+
+          // Work around the zero length write issue, if needed.
+          let requiresZeroLengthWorkaround = PlatformSupport.requiresZeroLengthWriteWorkaround(
+            group: configuration.eventLoopGroup,
+            hasTLS: configuration.tlsConfiguration != nil
+          )
+          if requiresZeroLengthWorkaround,
+            #available(OSX 10.14, iOS 12.0, tvOS 12.0, watchOS 6.0, *) {
+            try sync.addHandler(NIOFilterEmptyWritesHandler())
+          }
+        } catch {
+          return channel.eventLoop.makeFailedFuture(error)
         }
 
-        // Add the debug initializer, if there is one.
+        // Run the debug initializer, if there is one.
         if let debugAcceptedChannelInitializer = configuration.debugChannelInitializer {
-          return configured.flatMap {
-            debugAcceptedChannelInitializer(channel)
-          }
+          return debugAcceptedChannelInitializer(channel)
         } else {
-          return configured
+          return channel.eventLoop.makeSucceededVoidFuture()
         }
       }
 
@@ -247,14 +284,24 @@ extension Server {
     public var errorDelegate: ServerErrorDelegate?
 
     /// TLS configuration for this connection. `nil` if TLS is not desired.
-    public var tls: TLS?
+    @available(*, deprecated, renamed: "tlsConfiguration")
+    public var tls: TLS? {
+      get {
+        return self.tlsConfiguration?.asDeprecatedServerConfiguration
+      }
+      set {
+        self.tlsConfiguration = newValue.map { GRPCTLSConfiguration(transforming: $0) }
+      }
+    }
+
+    public var tlsConfiguration: GRPCTLSConfiguration?
 
     /// The connection keepalive configuration.
-    public var connectionKeepalive: ServerConnectionKeepalive
+    public var connectionKeepalive = ServerConnectionKeepalive()
 
     /// The amount of time to wait before closing connections. The idle timeout will start only
     /// if there are no RPCs in progress and will be cancelled as soon as any RPCs start.
-    public var connectionIdleTimeout: TimeAmount
+    public var connectionIdleTimeout: TimeAmount = .nanoseconds(.max)
 
     /// The compression configuration for requests and responses.
     ///
@@ -264,15 +311,44 @@ extension Server {
     /// Compression may also be disabled at the message-level for streaming responses (i.e. server
     /// streaming and bidirectional streaming RPCs) by passing setting `compression` to `.disabled`
     /// in `sendResponse(_:compression)`.
-    public var messageEncoding: ServerMessageEncoding
+    ///
+    /// Defaults to `.disabled`.
+    public var messageEncoding: ServerMessageEncoding = .disabled
 
-    /// The HTTP/2 flow control target window size.
-    public var httpTargetWindowSize: Int
+    /// The maximum size in bytes of a message which may be received from a client. Defaults to 4MB.
+    public var maximumReceiveMessageLength: Int = 4 * 1024 * 1024 {
+      willSet {
+        precondition(newValue >= 0, "maximumReceiveMessageLength must be positive")
+      }
+    }
+
+    /// The HTTP/2 flow control target window size. Defaults to 8MB. Values are clamped between
+    /// 1 and 2^31-1 inclusive.
+    public var httpTargetWindowSize = 8 * 1024 * 1024 {
+      didSet {
+        self.httpTargetWindowSize = self.httpTargetWindowSize.clamped(to: 1 ... Int(Int32.max))
+      }
+    }
+
+    /// The HTTP/2 max number of concurrent streams. Defaults to 100. Must be non-negative.
+    public var httpMaxConcurrentStreams: Int = 100 {
+      willSet {
+        precondition(newValue >= 0, "httpMaxConcurrentStreams must be non-negative")
+      }
+    }
+
+    /// The HTTP/2 max frame size. Defaults to 16384. Value is clamped between 2^14 and 2^24-1
+    /// octets inclusive (the minimum and maximum allowable values - HTTP/2 RFC 7540 4.2).
+    public var httpMaxFrameSize: Int = 16384 {
+      didSet {
+        self.httpMaxFrameSize = self.httpMaxFrameSize.clamped(to: 16384 ... 16_777_215)
+      }
+    }
 
     /// The root server logger. Accepted connections will branch from this logger and RPCs on
     /// each connection will use a logger branched from the connections logger. This logger is made
     /// available to service providers via `context`. Defaults to a no-op logger.
-    public var logger: Logger
+    public var logger = Logger(label: "io.grpc", factory: { _ in SwiftLogNoOpLogHandler() })
 
     /// A channel initializer which will be run after gRPC has initialized each accepted channel.
     /// This may be used to add additional handlers to the pipeline and is intended for debugging.
@@ -305,6 +381,7 @@ extension Server {
     ///   - logger: A logger. Defaults to a no-op logger.
     ///   - debugChannelInitializer: A channel initializer which will be called for each connection
     ///     the server accepts after gRPC has initialized the channel. Defaults to `nil`.
+    @available(*, deprecated, renamed: "default(target:eventLoopGroup:serviceProviders:)")
     public init(
       target: BindTarget,
       eventLoopGroup: EventLoopGroup,
@@ -314,7 +391,7 @@ extension Server {
       connectionKeepalive: ServerConnectionKeepalive = ServerConnectionKeepalive(),
       connectionIdleTimeout: TimeAmount = .nanoseconds(.max),
       messageEncoding: ServerMessageEncoding = .disabled,
-      httpTargetWindowSize: Int = 65535,
+      httpTargetWindowSize: Int = 8 * 1024 * 1024,
       logger: Logger = Logger(label: "io.grpc", factory: { _ in SwiftLogNoOpLogHandler() }),
       debugChannelInitializer: ((Channel) -> EventLoopFuture<Void>)? = nil
     ) {
@@ -326,7 +403,7 @@ extension Server {
             .map { ($0.serviceName, $0) }
         )
       self.errorDelegate = errorDelegate
-      self.tls = tls
+      self.tlsConfiguration = tls.map { GRPCTLSConfiguration(transforming: $0) }
       self.connectionKeepalive = connectionKeepalive
       self.connectionIdleTimeout = connectionIdleTimeout
       self.messageEncoding = messageEncoding
@@ -334,21 +411,37 @@ extension Server {
       self.logger = logger
       self.debugChannelInitializer = debugChannelInitializer
     }
-  }
-}
 
-private extension Channel {
-  /// Configure an SSL handler on the channel.
-  ///
-  /// - Parameters:
-  ///   - configuration: The configuration to use when creating the handler.
-  /// - Returns: A future which will be succeeded when the pipeline has been configured.
-  func configureTLS(configuration: Server.Configuration.TLS) -> EventLoopFuture<Void> {
-    do {
-      let context = try NIOSSLContext(configuration: configuration.configuration)
-      return self.pipeline.addHandler(NIOSSLServerHandler(context: context))
-    } catch {
-      return self.pipeline.eventLoop.makeFailedFuture(error)
+    private init(
+      eventLoopGroup: EventLoopGroup,
+      target: BindTarget,
+      serviceProviders: [CallHandlerProvider]
+    ) {
+      self.eventLoopGroup = eventLoopGroup
+      self.target = target
+      self.serviceProvidersByName = Dictionary(uniqueKeysWithValues: serviceProviders.map {
+        ($0.serviceName, $0)
+      })
+    }
+
+    /// Make a new configuration using default values.
+    ///
+    /// - Parameters:
+    ///   - target: The target to bind to.
+    ///   - eventLoopGroup: The `EventLoopGroup` the server should run on.
+    ///   - serviceProviders: An array of `CallHandlerProvider`s which the server should use
+    ///       to handle requests.
+    /// - Returns: A configuration with default values set.
+    public static func `default`(
+      target: BindTarget,
+      eventLoopGroup: EventLoopGroup,
+      serviceProviders: [CallHandlerProvider]
+    ) -> Configuration {
+      return .init(
+        eventLoopGroup: eventLoopGroup,
+        target: target,
+        serviceProviders: serviceProviders
+      )
     }
   }
 }
@@ -365,5 +458,11 @@ private extension ServerBootstrapProtocol {
     case let .socketAddress(address):
       return self.bind(to: address)
     }
+  }
+}
+
+extension Comparable {
+  internal func clamped(to range: ClosedRange<Self>) -> Self {
+    return min(max(self, range.lowerBound), range.upperBound)
   }
 }

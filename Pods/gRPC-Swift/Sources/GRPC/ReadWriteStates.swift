@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import NIO
+import NIOCore
 import SwiftProtobuf
 
 /// Number of messages expected on a stream.
@@ -140,7 +140,10 @@ enum ReadState {
   /// a message has been produced then subsequent calls will result in an error.
   ///
   /// - Parameter buffer: The buffer to read from.
-  mutating func readMessages(_ buffer: inout ByteBuffer) -> Result<[ByteBuffer], MessageReadError> {
+  mutating func readMessages(
+    _ buffer: inout ByteBuffer,
+    maxLength: Int
+  ) -> Result<[ByteBuffer], MessageReadError> {
     switch self {
     case .notReading:
       return .failure(.cardinalityViolation)
@@ -150,17 +153,20 @@ enum ReadState {
       var messages: [ByteBuffer] = []
 
       do {
-        while let serializedBytes = try reader.nextMessage() {
+        while let serializedBytes = try reader.nextMessage(maxLength: maxLength) {
           messages.append(serializedBytes)
         }
       } catch {
         self = .notReading
-        if let grpcError = error as? GRPCError.WithContext,
-          let limitExceeded = grpcError.error as? GRPCError.DecompressionLimitExceeded {
-          return .failure(.decompressionLimitExceeded(limitExceeded.compressedSize))
-        } else {
-          return .failure(.deserializationFailed)
+        if let grpcError = error as? GRPCError.WithContext {
+          if let compressionLimit = grpcError.error as? GRPCError.DecompressionLimitExceeded {
+            return .failure(.decompressionLimitExceeded(compressionLimit.compressedSize))
+          } else if let lengthLimit = grpcError.error as? GRPCError.PayloadLengthLimitExceeded {
+            return .failure(.lengthExceedsLimit(lengthLimit))
+          }
         }
+
+        return .failure(.deserializationFailed)
       }
 
       // We need to validate the number of messages we decoded. Zero is fine because the payload may
@@ -205,6 +211,9 @@ enum MessageReadError: Error, Equatable {
 
   /// The limit for decompression was exceeded.
   case decompressionLimitExceeded(Int)
+
+  /// The length of the message exceeded the permitted maximum length.
+  case lengthExceedsLimit(GRPCError.PayloadLengthLimitExceeded)
 
   /// An invalid state was encountered. This is a serious implementation error.
   case invalidState

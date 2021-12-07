@@ -15,8 +15,8 @@
  */
 import Foundation
 import Logging
-import NIO
 import NIOConcurrencyHelpers
+import NIOCore
 
 /// The connectivity state of a client connection. Note that this is heavily lifted from the gRPC
 /// documentation: https://github.com/grpc/grpc/blob/master/doc/connectivity-semantics-and-api.md.
@@ -82,7 +82,7 @@ public class ConnectivityStateMonitor {
   /// - Parameter queue: The `DispatchQueue` on which the delegate will be called.
   init(delegate: ConnectivityStateDelegate?, queue: DispatchQueue?) {
     self._delegate = delegate
-    self.delegateCallbackQueue = queue ?? DispatchQueue(label: "io.grpc.connectivity")
+    self.delegateCallbackQueue = DispatchQueue(label: "io.grpc.connectivity", target: queue)
   }
 
   /// The current state of connectivity.
@@ -119,7 +119,7 @@ public class ConnectivityStateMonitor {
     }
 
     if let (oldState, newState) = change {
-      logger.info("connectivity state change", metadata: [
+      logger.debug("connectivity state change", metadata: [
         "old_state": "\(oldState)",
         "new_state": "\(newState)",
       ])
@@ -138,5 +138,19 @@ public class ConnectivityStateMonitor {
         delegate.connectionStartedQuiescing()
       }
     }
+  }
+}
+
+extension ConnectivityStateMonitor: ConnectionManagerConnectivityDelegate {
+  internal func connectionStateDidChange(
+    _ connectionManager: ConnectionManager,
+    from oldState: _ConnectivityState,
+    to newState: _ConnectivityState
+  ) {
+    self.updateState(to: ConnectivityState(newState), logger: connectionManager.logger)
+  }
+
+  internal func connectionIsQuiescing(_ connectionManager: ConnectionManager) {
+    self.beginQuiescing()
   }
 }

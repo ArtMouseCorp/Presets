@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
 import NIOHTTP2
 
 /// Holds state for the 'GRPCIdleHandler', this isn't really just the idleness of the connection,
@@ -177,6 +177,9 @@ struct GRPCIdleHandlerStateMachine {
     /// An event to notify the connection manager about.
     private(set) var connectionManagerEvent: ConnectionManagerEvent?
 
+    /// The value of HTTP/2 SETTINGS_MAX_CONCURRENT_STREAMS changed.
+    private(set) var maxConcurrentStreamsChange: Int?
+
     /// An idle task, either scheduling or cancelling an idle timeout.
     private(set) var idleTask: IdleTask?
 
@@ -208,6 +211,10 @@ struct GRPCIdleHandlerStateMachine {
       self.connectionManagerEvent = event
     }
 
+    fileprivate mutating func maxConcurrentStreamsChanged(_ newValue: Int) {
+      self.maxConcurrentStreamsChange = newValue
+    }
+
     private init() {
       self.connectionManagerEvent = nil
       self.idleTask = nil
@@ -233,7 +240,7 @@ struct GRPCIdleHandlerStateMachine {
   private var state: State
 
   /// A logger.
-  private let logger: Logger
+  internal var logger: Logger
 
   /// Create a new state machine.
   init(role: Role, logger: Logger) {
@@ -488,9 +495,11 @@ struct GRPCIdleHandlerStateMachine {
 
     switch self.state {
     case var .operating(state):
+      let hasSeenSettingsPreviously = state.hasSeenSettings
+
       // If we hadn't previously seen settings then we need to notify the client connection manager
       // that we're now ready.
-      if !state.hasSeenSettings {
+      if !hasSeenSettingsPreviously {
         operations.notifyConnectionManager(about: .ready)
         state.hasSeenSettings = true
 
@@ -502,13 +511,21 @@ struct GRPCIdleHandlerStateMachine {
 
       // Update max concurrent streams.
       if let maxStreams = settings.last(where: { $0.parameter == .maxConcurrentStreams })?.value {
+        operations.maxConcurrentStreamsChanged(maxStreams)
         state.maxConcurrentStreams = maxStreams
+      } else if !hasSeenSettingsPreviously {
+        // We hadn't seen settings before now and max concurrent streams wasn't set we should assume
+        // the default and emit an update.
+        operations.maxConcurrentStreamsChanged(100)
+        state.maxConcurrentStreams = 100
       }
+
       self.state = .operating(state)
 
     case var .waitingToIdle(state):
       // Update max concurrent streams.
       if let maxStreams = settings.last(where: { $0.parameter == .maxConcurrentStreams })?.value {
+        operations.maxConcurrentStreamsChanged(maxStreams)
         state.maxConcurrentStreams = maxStreams
       }
       self.state = .waitingToIdle(state)
