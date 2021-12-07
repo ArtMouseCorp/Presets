@@ -15,7 +15,7 @@
  */
 import Foundation
 import Logging
-import NIO
+import NIOCore
 import NIOHPACK
 import NIOHTTP1
 import SwiftProtobuf
@@ -314,10 +314,11 @@ struct GRPCClientStateMachine {
   ///
   /// - Parameter buffer: A buffer of bytes received from the server.
   mutating func receiveResponseBuffer(
-    _ buffer: inout ByteBuffer
+    _ buffer: inout ByteBuffer,
+    maxMessageLength: Int
   ) -> Result<[ByteBuffer], MessageReadError> {
     return self.withStateAvoidingCoWs { state in
-      state.receiveResponseBuffer(&buffer)
+      state.receiveResponseBuffer(&buffer, maxMessageLength: maxMessageLength)
     }
   }
 
@@ -343,6 +344,21 @@ struct GRPCClientStateMachine {
   ) -> Result<GRPCStatus, ReceiveEndOfResponseStreamError> {
     return self.withStateAvoidingCoWs { state in
       state.receiveEndOfResponseStream(trailers)
+    }
+  }
+
+  /// Receive a DATA frame with the end stream flag set. Determines whether it is safe for the
+  /// caller to ignore the end stream flag or whether a synthesised status should be forwarded.
+  ///
+  /// Receiving a DATA frame with the end stream flag set is unexpected: the specification dictates
+  /// that an RPC should be ended by the server sending the client a HEADERS frame with end stream
+  /// set. However, we will tolerate end stream on a DATA frame if we believe the RPC has already
+  /// completed (i.e. we are in the 'clientClosedServerClosed' state). In cases where we don't
+  /// expect end of stream on a DATA frame we will emit a status with a message explaining
+  /// the protocol violation.
+  mutating func receiveEndOfResponseStream() -> GRPCStatus? {
+    return self.withStateAvoidingCoWs { state in
+      state.receiveEndOfResponseStream()
     }
   }
 
@@ -499,17 +515,18 @@ extension GRPCClientStateMachine.State {
 
   /// See `GRPCClientStateMachine.receiveResponseBuffer(_:)`.
   mutating func receiveResponseBuffer(
-    _ buffer: inout ByteBuffer
+    _ buffer: inout ByteBuffer,
+    maxMessageLength: Int
   ) -> Result<[ByteBuffer], MessageReadError> {
     let result: Result<[ByteBuffer], MessageReadError>
 
     switch self {
     case var .clientClosedServerActive(readState):
-      result = readState.readMessages(&buffer)
+      result = readState.readMessages(&buffer, maxLength: maxMessageLength)
       self = .clientClosedServerActive(readState: readState)
 
     case .clientActiveServerActive(let writeState, var readState):
-      result = readState.readMessages(&buffer)
+      result = readState.readMessages(&buffer, maxLength: maxMessageLength)
       self = .clientActiveServerActive(writeState: writeState, readState: readState)
 
     case .clientIdleServerIdle,
@@ -553,6 +570,36 @@ extension GRPCClientStateMachine.State {
     }
 
     return result
+  }
+
+  /// See `GRPCClientStateMachine.receiveEndOfResponseStream()`.
+  mutating func receiveEndOfResponseStream() -> GRPCStatus? {
+    let status: GRPCStatus?
+
+    switch self {
+    case .clientIdleServerIdle:
+      // Can't see end stream before writing on it.
+      preconditionFailure()
+
+    case .clientActiveServerIdle,
+         .clientActiveServerActive,
+         .clientClosedServerIdle,
+         .clientClosedServerActive:
+      self = .clientClosedServerClosed
+      status = .init(
+        code: .internalError,
+        message: "Protocol violation: received DATA frame with end stream set"
+      )
+
+    case .clientClosedServerClosed:
+      // We've already closed. Ignore this.
+      status = nil
+
+    case .modifying:
+      preconditionFailure("State left as 'modifying'")
+    }
+
+    return status
   }
 
   /// Makes the request headers (`Request-Headers` in the specification) used to initiate an RPC

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import NIO
+import NIOCore
 import NIOHPACK
 
 public final class UnaryServerHandler<
@@ -160,7 +160,8 @@ public final class UnaryServerHandler<
         eventLoop: self.context.eventLoop,
         headers: headers,
         logger: self.context.logger,
-        userInfoRef: self.userInfoRef
+        userInfoRef: self.userInfoRef,
+        closeFuture: self.context.closeFuture
       )
 
       // Move to the next state.

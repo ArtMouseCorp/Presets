@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
+import NIOEmbedded
 import SwiftProtobuf
 
 extension EmbeddedChannel {
@@ -28,7 +29,11 @@ extension EmbeddedChannel {
     responseType: Response.Type = Response.self
   ) -> EventLoopFuture<Void> {
     return self.pipeline.addHandlers([
-      GRPCClientChannelHandler(callType: callType, logger: logger),
+      GRPCClientChannelHandler(
+        callType: callType,
+        maximumReceiveMessageLength: .max,
+        logger: GRPCLogger(wrapping: logger)
+      ),
       GRPCClientCodecHandler(
         serializer: ProtobufSerializer<Request>(),
         deserializer: ProtobufDeserializer<Response>()
@@ -47,8 +52,15 @@ extension EmbeddedChannel {
       encoding: encoding,
       errorDelegate: nil,
       normalizeHeaders: normalizeHeaders,
+      maximumReceiveMessageLength: .max,
       logger: logger
     )
     return self.pipeline.addHandler(codec)
+  }
+
+  public func _configureForServerFuzzing(configuration: Server.Configuration) throws {
+    let configurator = GRPCServerPipelineConfigurator(configuration: configuration)
+    // We're always on an `EmbeddedEventLoop`, this is fine.
+    try self.pipeline.syncOperations.addHandler(configurator)
   }
 }

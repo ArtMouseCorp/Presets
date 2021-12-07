@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import NIO
+import NIOCore
 import NIOHPACK
 
 public final class BidirectionalStreamingServerHandler<
@@ -167,6 +167,7 @@ public final class BidirectionalStreamingServerHandler<
         logger: self.context.logger,
         userInfoRef: self.userInfoRef,
         compressionIsEnabled: self.context.encoding.isEnabled,
+        closeFuture: self.context.closeFuture,
         sendResponse: self.interceptResponse(_:metadata:promise:)
       )
 

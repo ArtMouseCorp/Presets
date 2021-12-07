@@ -4,25 +4,21 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/FBSDKAccessToken+TokenStringProviding.h</key>
-		<data>
-		wDdnRpmE902HK2VBv8c2uNKgEY4=
-		</data>
 		<key>Headers/FBSDKAccessToken.h</key>
 		<data>
-		Ki7SEZmthzTLnE69WOUXX8eFrDU=
+		puqA36r83nD6sgzm8h/e705Ughw=
 		</data>
 		<key>Headers/FBSDKAccessTokenProtocols.h</key>
 		<data>
-		Qlmqr7WNzj2AftbJGykIBdSkV28=
+		LaKK65Q0+4bqGSEKLlRM1kNo5ns=
 		</data>
 		<key>Headers/FBSDKAdvertisingTrackingStatus.h</key>
 		<data>
-		1vvHMq7ce5sEn80PNzUpW6Y3e1o=
+		Xbbo1GtLfsfH5CsWJJSBjpCk9HQ=
 		</data>
 		<key>Headers/FBSDKAppAvailabilityChecker.h</key>
 		<data>
-		Gg5XvGl1xQM7G6bWsc2yVYo0reg=
+		EDqBmY6PtGhcdtBENjW0xI4T9YM=
 		</data>
 		<key>Headers/FBSDKAppEventName.h</key>
 		<data>
@@ -46,11 +42,15 @@
 		</data>
 		<key>Headers/FBSDKAppEvents.h</key>
 		<data>
-		gO3N8dalj0oKZLbsaBXaKxcO1xM=
+		+SD64HTQCVtSTejtDLvxnyg/hRA=
 		</data>
 		<key>Headers/FBSDKAppEventsFlushBehavior.h</key>
 		<data>
 		2ZO7t4DDJBK9SoO4q4wNxjd/zMA=
+		</data>
+		<key>Headers/FBSDKAppEventsNotificationName.h</key>
+		<data>
+		vqXYarjdbXvH4MOvo6dZOOkKtis=
 		</data>
 		<key>Headers/FBSDKAppLink.h</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Headers/FBSDKAppLinkResolverRequestBuilder.h</key>
 		<data>
-		/87l+qe3h/J5+KAv9KCFmjFzehc=
+		ksGWRUkAIIZNBysqbbXm3Tg8RxM=
 		</data>
 		<key>Headers/FBSDKAppLinkResolving.h</key>
 		<data>
@@ -86,23 +86,19 @@
 		</data>
 		<key>Headers/FBSDKAppURLSchemeProviding.h</key>
 		<data>
-		aJXF8Unf3hJkTm1JYSEPJOyiSl0=
+		IL0FGxznQO54XzmgfTVXni5qsSo=
 		</data>
 		<key>Headers/FBSDKApplicationDelegate.h</key>
 		<data>
-		xSLCRSZ8k1wSL0URtsptX2zpEX8=
+		CFGjC5dfo0sxwrqaUUpPDNvY8VQ=
 		</data>
 		<key>Headers/FBSDKApplicationObserving.h</key>
 		<data>
 		9pUFxMWB5pKn3oOAKKGJEsLWdok=
 		</data>
-		<key>Headers/FBSDKAuthenticationToken+AuthenticationTokenProtocols.h</key>
-		<data>
-		iBNimb2EgLbKXGlo2ykbrZEI/bE=
-		</data>
 		<key>Headers/FBSDKAuthenticationToken.h</key>
 		<data>
-		uEqfHdlslB4csPOk9y2ajvg6UzQ=
+		QLvjS2JydqkX6s3O33scJzaql+g=
 		</data>
 		<key>Headers/FBSDKAuthenticationTokenClaims.h</key>
 		<data>
@@ -110,51 +106,47 @@
 		</data>
 		<key>Headers/FBSDKAuthenticationTokenProtocols.h</key>
 		<data>
-		MwjeYeIxqkOP1icuU9OXRl7YPp4=
-		</data>
-		<key>Headers/FBSDKBridgeAPI+URLOpener.h</key>
-		<data>
-		qJvX23ORoF75py5mlaZI0AWWd/M=
+		Yj3fNBPian/pSoXEcMd0swDxSq4=
 		</data>
 		<key>Headers/FBSDKBridgeAPI.h</key>
 		<data>
-		d/bksxCsJhcOYtFaKBQm7Cqn2D8=
+		kkE06GBjYvFR050IcEHgxIWq6Qw=
 		</data>
 		<key>Headers/FBSDKBridgeAPIProtocol.h</key>
 		<data>
-		lDwbgtpfgKiZT3ey9o/vwvUqspA=
+		Eg/c2B44xbp9aeW5ijH07NdLhxU=
 		</data>
 		<key>Headers/FBSDKBridgeAPIProtocolType.h</key>
 		<data>
-		kVI7dn3Pu2H+7uOM5owMRTwUPeI=
+		d8o5vM32U93+JcAHG8Syd2IGIG4=
 		</data>
 		<key>Headers/FBSDKBridgeAPIRequest.h</key>
 		<data>
-		Tkqx/RPFl01kEI/4nvnfoHjbanA=
+		ltffTPH9zSqekQsLyYLkG/6rDtc=
 		</data>
 		<key>Headers/FBSDKBridgeAPIRequestCreating.h</key>
 		<data>
-		Q50f81yon4zIyseOlcfgyK1hZlE=
+		e7eRb4AWFdEhkGIWOlpCfkQtSik=
 		</data>
 		<key>Headers/FBSDKBridgeAPIRequestOpening.h</key>
 		<data>
-		F8kyXqqM31Yfnue1LsIAfBHpHa0=
+		gq/Y4WK7ZFKEQyzmYnO5J0fLyB0=
 		</data>
 		<key>Headers/FBSDKBridgeAPIRequestProtocol.h</key>
 		<data>
-		v6hQUio96LUxddwVyzomK/9JEdU=
+		P78TKNiwjeoWvU5qtMaH5r2r5tg=
 		</data>
 		<key>Headers/FBSDKBridgeAPIResponse.h</key>
 		<data>
-		cLVsfhZX5PejC7x3hCzKV5TJ2a4=
+		Na6n8NnuhW/jtE+dBr0HUqCk3o0=
 		</data>
 		<key>Headers/FBSDKButton.h</key>
 		<data>
-		3Ci89mdn9G0ffo3alyM3RsqfJOk=
+		ydGFsGSN3mUgKapOAanxBuHksag=
 		</data>
-		<key>Headers/FBSDKButtonImpressionTracking.h</key>
+		<key>Headers/FBSDKButtonImpressionLogging.h</key>
 		<data>
-		ejytrpzOYwYoSdQkKUrhERf9Ibg=
+		9yAEnFMowi+pDwBEqnCn+mAZ0cg=
 		</data>
 		<key>Headers/FBSDKConstants.h</key>
 		<data>
@@ -166,11 +158,11 @@
 		</data>
 		<key>Headers/FBSDKCoreKit.h</key>
 		<data>
-		3phhek3vKiQrWqvNk/HdmJVLxkk=
+		AlrSR8VQDBzxHEHDNyQe8kMPQuA=
 		</data>
 		<key>Headers/FBSDKCoreKitVersions.h</key>
 		<data>
-		Bf+WJhmZ0vuirFX0iy+Cw5iRP/c=
+		jSP+5Aa95889iFbTHACJEiUvgX4=
 		</data>
 		<key>Headers/FBSDKDeviceButton.h</key>
 		<data>
@@ -178,7 +170,7 @@
 		</data>
 		<key>Headers/FBSDKDeviceDialogView.h</key>
 		<data>
-		TiqLsBDtCbdpa5U81FmXqzhvji4=
+		PtZ4Luln/klPOTMcO1338bptSwQ=
 		</data>
 		<key>Headers/FBSDKDeviceViewControllerBase.h</key>
 		<data>
@@ -186,7 +178,7 @@
 		</data>
 		<key>Headers/FBSDKDynamicFrameworkLoaderProxy.h</key>
 		<data>
-		B95l05PRPv4UHjXSaTO4QH/0nhA=
+		nSY+nCEtusBjiRGM6I4y/aJTbzQ=
 		</data>
 		<key>Headers/FBSDKDynamicSocialFrameworkLoader.h</key>
 		<data>
@@ -198,39 +190,35 @@
 		</data>
 		<key>Headers/FBSDKErrorRecoveryAttempting.h</key>
 		<data>
-		MVflNoQejqYnz1RuPvhT/RNwDRw=
+		YVFzIsGCKGh6gqmY/EtLk0kNEdA=
 		</data>
 		<key>Headers/FBSDKFeature.h</key>
 		<data>
-		OH+/C16w19SvkjdtnHFdYpiI0Wk=
+		PR5YEJsJCaDQw8O6AAmG6WSCEb8=
 		</data>
 		<key>Headers/FBSDKFeatureChecking.h</key>
 		<data>
-		rRDsE/AJJX6IU0sC9v7oQujBFTQ=
+		3IIJmof1z5A6KMWAQsvxwlF+99o=
 		</data>
 		<key>Headers/FBSDKGraphErrorRecoveryProcessor.h</key>
 		<data>
-		mWIerbWX8uhdHhUeTj+kcas4l38=
+		G4fc3hdE/zQWzXSOVPV5ddeRtnU=
 		</data>
 		<key>Headers/FBSDKGraphRequest.h</key>
 		<data>
-		efKXIgT7RYpbn6i2rWAivJJtuxU=
+		082NW1tilcmHtRvXXUic27ls56s=
 		</data>
 		<key>Headers/FBSDKGraphRequestConnecting.h</key>
 		<data>
 		8neGTwEmQCPdMQXRPdopnK5vdCI=
 		</data>
-		<key>Headers/FBSDKGraphRequestConnection+GraphRequestConnecting.h</key>
-		<data>
-		6f1WrqW8yZu4XCRCwUsj+2NY7bs=
-		</data>
 		<key>Headers/FBSDKGraphRequestConnection.h</key>
 		<data>
-		v2RQxF/hspVJPbRinqOBtD6S5ZA=
+		8PNcxo5scQIGrbIamHMaw3QwXiA=
 		</data>
 		<key>Headers/FBSDKGraphRequestConnectionDelegate.h</key>
 		<data>
-		G2WABgIrZfBIvDAuQnh6ugb+Qbg=
+		ne+IL3UAcginJ/0tZkdrBFYa44w=
 		</data>
 		<key>Headers/FBSDKGraphRequestConnectionFactory.h</key>
 		<data>
@@ -266,31 +254,19 @@
 		</data>
 		<key>Headers/FBSDKIcon.h</key>
 		<data>
-		Q9fpRCHKnRGbfIWRplZjo4jObPg=
+		EYvQfeo33/pfLGSiEAXoZQwREgA=
 		</data>
-		<key>Headers/FBSDKImpressionTrackingButton.h</key>
+		<key>Headers/FBSDKImpressionLoggingButton.h</key>
 		<data>
-		aHEX2LVk1UJIcnHKejwpZWj9kjo=
-		</data>
-		<key>Headers/FBSDKInternalUtility+AppAvailabilityChecker.h</key>
-		<data>
-		08/m0Q3OiKaz5zOgYE6+DNVKWjs=
-		</data>
-		<key>Headers/FBSDKInternalUtility+AppURLSchemeProviding.h</key>
-		<data>
-		2sRsZswQShtHaTTrlsl4o0kRqsU=
-		</data>
-		<key>Headers/FBSDKInternalUtility+URLHosting.h</key>
-		<data>
-		eknSuGWmZEFbMXKZvlC8076ggQ4=
+		2regX89zRP2iCaA+xrRtDfR5688=
 		</data>
 		<key>Headers/FBSDKInternalUtility.h</key>
 		<data>
-		gbHUIV2smpZkql5x2vcfcsDfKtE=
+		4qSic4scPg8YJAr4zF+ho+qsaWw=
 		</data>
 		<key>Headers/FBSDKInternalUtilityProtocol.h</key>
 		<data>
-		tNY9kexqbcDo7nXn+M7KNkcd4j4=
+		HXoA7PnW+j1n3L+nKmpVp6Z/5ZA=
 		</data>
 		<key>Headers/FBSDKKeychainStore.h</key>
 		<data>
@@ -314,7 +290,7 @@
 		</data>
 		<key>Headers/FBSDKLogger.h</key>
 		<data>
-		L1JGcDt6/eYoNxoZ76TofCopiu8=
+		NOvhvx7yXK1SEN94XdmwdN9siYs=
 		</data>
 		<key>Headers/FBSDKLogging.h</key>
 		<data>
@@ -326,11 +302,11 @@
 		</data>
 		<key>Headers/FBSDKLoginTooltip.h</key>
 		<data>
-		TDcF7Nok6ou5c5Wi6E30IZErZs4=
+		Oc+AcTLyDDS0l1P7WsbaEsHn14g=
 		</data>
 		<key>Headers/FBSDKMeasurementEvent.h</key>
 		<data>
-		7COeEh930WVfJMVYMyaaJ1atqAU=
+		Kjkcik6CK2K6PHhLeZIab+R1OkU=
 		</data>
 		<key>Headers/FBSDKMutableCopying.h</key>
 		<data>
@@ -343,10 +319,6 @@
 		<key>Headers/FBSDKProductCondition.h</key>
 		<data>
 		M6ECFTBRd2dfyOyndVDGEZ5RBhY=
-		</data>
-		<key>Headers/FBSDKProfile+ProfileProtocols.h</key>
-		<data>
-		2FjTQ7K7uRaHf1qIgR7zYyST1S8=
 		</data>
 		<key>Headers/FBSDKProfile.h</key>
 		<data>
@@ -366,11 +338,11 @@
 		</data>
 		<key>Headers/FBSDKServerConfigurationProvider.h</key>
 		<data>
-		efkOQAoEeOeUzMGTDHRtqOJ0Mu8=
+		kZ/Z+98dFoqYWbXSr6MEjzi7tOs=
 		</data>
 		<key>Headers/FBSDKSettings.h</key>
 		<data>
-		K9FHRcSUzToxAn9rDFzvrZ0hKpI=
+		C5Jf0O97fgLi6Ep3YsfwE5t6D3o=
 		</data>
 		<key>Headers/FBSDKSettingsLogging.h</key>
 		<data>
@@ -386,15 +358,15 @@
 		</data>
 		<key>Headers/FBSDKTokenCaching.h</key>
 		<data>
-		4WxhDk43oBklWDLRrVBPNp4B+98=
+		0FwY9FO3y3ot6PcmOKk6c6iCf60=
 		</data>
 		<key>Headers/FBSDKTokenStringProviding.h</key>
 		<data>
-		aaENUnRujC7mHaZVfV+N4AzreH0=
+		4qL2Rq85nvL66btFccVPJDrou6Y=
 		</data>
 		<key>Headers/FBSDKTransformer.h</key>
 		<data>
-		KuvWC7aNSbImZA6ZaMH9A59p63c=
+		sReV6E/tDHWh7gYOQLC9WNobxhg=
 		</data>
 		<key>Headers/FBSDKURL.h</key>
 		<data>
@@ -402,19 +374,19 @@
 		</data>
 		<key>Headers/FBSDKURLHosting.h</key>
 		<data>
-		1F/f8LHOPKsBI6NsFGkfHXt2HVY=
+		8AofZOZqbAXRz290ZN938Q+vrdc=
 		</data>
 		<key>Headers/FBSDKURLOpener.h</key>
 		<data>
-		AkOTrvVJLSQCJ6f1qbq1uyPq1yg=
+		yRq4MXDD00M01RePggfC3nn3wqw=
 		</data>
 		<key>Headers/FBSDKURLOpening.h</key>
 		<data>
-		0FLbiKiGccYXTVLBqNWNMTTihUA=
+		zAfSHyGOLxv0yl7jNUM9P8IEgmk=
 		</data>
 		<key>Headers/FBSDKURLScheme.h</key>
 		<data>
-		xsna7jBoMUjjBof8lg09OJUGUxM=
+		3liO1ko62oLhfjQcWW3yK8xXGyY=
 		</data>
 		<key>Headers/FBSDKUserAgeRange.h</key>
 		<data>
@@ -422,11 +394,15 @@
 		</data>
 		<key>Headers/FBSDKUtility.h</key>
 		<data>
-		WIyqKZbmxDk/3MLdV4IQAoRQ/Os=
+		7MGDcCkw50VOQwPPfNyk/QS8zvo=
 		</data>
 		<key>Headers/FBSDKWebDialog.h</key>
 		<data>
-		BLFoFKpcp+Oedl9DlOxSmwyZKHA=
+		SRBvfaTJGEXkfewuSzZH4i0Sams=
+		</data>
+		<key>Headers/FBSDKWebDialogDelegate.h</key>
+		<data>
+		xDYCqLGr6Zr0Se2omfyzEQ8qqSA=
 		</data>
 		<key>Headers/FBSDKWebDialogView.h</key>
 		<data>
@@ -438,11 +414,15 @@
 		</data>
 		<key>Headers/FBSDKWindowFinding.h</key>
 		<data>
-		I0XV5pMs0kKWAVl+G/hedgr1yBs=
+		+kXqAR5++fev/D2BP1l0JcDa8y4=
+		</data>
+		<key>Headers/__FBSDKLoggerCreating.h</key>
+		<data>
+		C9F4Xp0BxiMrKc/kVzWB3B4iexw=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		mVfOPm9nsyp0yAWQISUddhgEcYY=
+		+FnOhmu8OJYRSyy8Fou4Y2UvSe8=
 		</data>
 		<key>Modules/FBSDKCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -523,59 +503,48 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/FBSDKAccessToken+TokenStringProviding.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			wDdnRpmE902HK2VBv8c2uNKgEY4=
-			</data>
-			<key>hash2</key>
-			<data>
-			N8YE1ddYGckzIyASOs0wKiyz5UrbYPEMpJez7DXqo9Y=
-			</data>
-		</dict>
 		<key>Headers/FBSDKAccessToken.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Ki7SEZmthzTLnE69WOUXX8eFrDU=
+			puqA36r83nD6sgzm8h/e705Ughw=
 			</data>
 			<key>hash2</key>
 			<data>
-			DH7R4FEnHyUtPEiew7JBqrhXsjiEhM4swQkpJJaVPA4=
+			Vl9CpFVATzkubiY7aN8A/tw/YQM8thMuaXVXlqbpgZ0=
 			</data>
 		</dict>
 		<key>Headers/FBSDKAccessTokenProtocols.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Qlmqr7WNzj2AftbJGykIBdSkV28=
+			LaKK65Q0+4bqGSEKLlRM1kNo5ns=
 			</data>
 			<key>hash2</key>
 			<data>
-			aAvN6O1dPEsahI80umzHAb53gYm/KHmMkOGBn0FriAE=
+			czJ6rCicrQroaPXBQeC3HxOtGzoY5j1oOB907zVYFYE=
 			</data>
 		</dict>
 		<key>Headers/FBSDKAdvertisingTrackingStatus.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1vvHMq7ce5sEn80PNzUpW6Y3e1o=
+			Xbbo1GtLfsfH5CsWJJSBjpCk9HQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			JzinRfQtfZVKV4Gd4Qn1hRqGN5fJZBNDaJpfnDsXLcA=
+			kNWILqiFKs3RDg7uO4a7gYGHLl18Iu4MxbITFuYgGvk=
 			</data>
 		</dict>
 		<key>Headers/FBSDKAppAvailabilityChecker.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Gg5XvGl1xQM7G6bWsc2yVYo0reg=
+			EDqBmY6PtGhcdtBENjW0xI4T9YM=
 			</data>
 			<key>hash2</key>
 			<data>
-			hf3CQ9KPJuvHH9HDPX4MSZcjEmqRzQo9glQE1V2jUBQ=
+			RW4YQF6xRHAL2XzoCxuf03gjAAHowoHjrhcROKME7V4=
 			</data>
 		</dict>
 		<key>Headers/FBSDKAppEventName.h</key>
@@ -637,11 +606,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gO3N8dalj0oKZLbsaBXaKxcO1xM=
+			+SD64HTQCVtSTejtDLvxnyg/hRA=
 			</data>
 			<key>hash2</key>
 			<data>
-			jOKtJRXbxMKNr2O0xPGuPElDbiH7eapiMxJoTSsM+tA=
+			wvfXrp7bWti1ZGcSCgZ3slfCbFpbCkHBCn3ldx07V9w=
 			</data>
 		</dict>
 		<key>Headers/FBSDKAppEventsFlushBehavior.h</key>
@@ -653,6 +622,17 @@
 			<key>hash2</key>
 			<data>
 			jk4rg/gYOHGvntutgEvZ+91grWRpRTY/6iEXsrlSHBk=
+			</data>
+		</dict>
+		<key>Headers/FBSDKAppEventsNotificationName.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			vqXYarjdbXvH4MOvo6dZOOkKtis=
+			</data>
+			<key>hash2</key>
+			<data>
+			xmEPxAVL7PkmvNFooJTSheTRd/LiSGyaxO2/9pfuKFw=
 			</data>
 		</dict>
 		<key>Headers/FBSDKAppLink.h</key>
@@ -692,11 +672,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/87l+qe3h/J5+KAv9KCFmjFzehc=
+			ksGWRUkAIIZNBysqbbXm3Tg8RxM=
 			</data>
 			<key>hash2</key>
 			<data>
-			byBJncRGn8U2O2A0RQSsQCMt3q5Ckjw2tCU5wumggiE=
+			NaYUZMnU9XijY+GaKoB7FqiRU/PZbYp0V7sT2Jwadas=
 			</data>
 		</dict>
 		<key>Headers/FBSDKAppLinkResolving.h</key>
@@ -747,22 +727,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aJXF8Unf3hJkTm1JYSEPJOyiSl0=
+			IL0FGxznQO54XzmgfTVXni5qsSo=
 			</data>
 			<key>hash2</key>
 			<data>
-			+Me0xggOhDUpvdp1Fmd0PvcmohqAiuLqCpaIFYv0vwE=
+			2WC0gXoPyHiXbPCYiwMMpfiafbasPKYZpvUDbVKI/qA=
 			</data>
 		</dict>
 		<key>Headers/FBSDKApplicationDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xSLCRSZ8k1wSL0URtsptX2zpEX8=
+			CFGjC5dfo0sxwrqaUUpPDNvY8VQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			j/AWqvCZlpZMiLgF551lKRaZBfF5WtVnWqMMLqhD/Es=
+			V+BdH6IFGPKczDF4sKv9wvawQ984oARksNBG6pDCQZk=
 			</data>
 		</dict>
 		<key>Headers/FBSDKApplicationObserving.h</key>
@@ -776,26 +756,15 @@
 			oUYbOJ0lPpb1CmcDH6TyjYSoGC2bVID/VRi2O61zDmg=
 			</data>
 		</dict>
-		<key>Headers/FBSDKAuthenticationToken+AuthenticationTokenProtocols.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			iBNimb2EgLbKXGlo2ykbrZEI/bE=
-			</data>
-			<key>hash2</key>
-			<data>
-			Fl4yCvpw+uZ5o2mqwwCdJVRdmVa9bGkUB5WHokHJ18Q=
-			</data>
-		</dict>
 		<key>Headers/FBSDKAuthenticationToken.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uEqfHdlslB4csPOk9y2ajvg6UzQ=
+			QLvjS2JydqkX6s3O33scJzaql+g=
 			</data>
 			<key>hash2</key>
 			<data>
-			v8G22ECNKp2qCd2yM/Ik1bnw/DjL8Z7YZG19cMVjRNc=
+			1Lcoq10tRRUvPwqePnAeSEktlhK/pprU6Zc3wsztch0=
 			</data>
 		</dict>
 		<key>Headers/FBSDKAuthenticationTokenClaims.h</key>
@@ -813,132 +782,121 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MwjeYeIxqkOP1icuU9OXRl7YPp4=
+			Yj3fNBPian/pSoXEcMd0swDxSq4=
 			</data>
 			<key>hash2</key>
 			<data>
-			fCuo5F2ZUqQpR/UovTG3wiKWZH5Vcq7lG57NBxFYEPk=
-			</data>
-		</dict>
-		<key>Headers/FBSDKBridgeAPI+URLOpener.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			qJvX23ORoF75py5mlaZI0AWWd/M=
-			</data>
-			<key>hash2</key>
-			<data>
-			ZWu+siYlfN5FDk0FKG5/zLs7ZtMDkwh+GKBa7Q5sR/w=
+			a1kJ3ACsxtCA1Bi/x78jVJH/pfShKOM6212tYZ2rfZQ=
 			</data>
 		</dict>
 		<key>Headers/FBSDKBridgeAPI.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			d/bksxCsJhcOYtFaKBQm7Cqn2D8=
+			kkE06GBjYvFR050IcEHgxIWq6Qw=
 			</data>
 			<key>hash2</key>
 			<data>
-			mt4tRa0akn55jquIC5wTnTUd3hMseBw59Bxp5Ey2Atw=
+			LcQIZWNsukuLNK9eLcYi2VDp3mMspr3ftrxqNZ+BtGo=
 			</data>
 		</dict>
 		<key>Headers/FBSDKBridgeAPIProtocol.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lDwbgtpfgKiZT3ey9o/vwvUqspA=
+			Eg/c2B44xbp9aeW5ijH07NdLhxU=
 			</data>
 			<key>hash2</key>
 			<data>
-			s9VD63lPWCqTWKMOiIWm5ZpJ1CECGiJHmrVdnKdsdiw=
+			E01RHGNaNPhUtd9h7SganB/UY55J24YgGGHe6eIhRZU=
 			</data>
 		</dict>
 		<key>Headers/FBSDKBridgeAPIProtocolType.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			kVI7dn3Pu2H+7uOM5owMRTwUPeI=
+			d8o5vM32U93+JcAHG8Syd2IGIG4=
 			</data>
 			<key>hash2</key>
 			<data>
-			olbFOPEPQr04S2cM/alOR2qI3HSgCNp/369lzwNjPIw=
+			n1WeY1C5kOTfStN7IVIl0PUWy81F9puerFxUYYIYrFA=
 			</data>
 		</dict>
 		<key>Headers/FBSDKBridgeAPIRequest.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Tkqx/RPFl01kEI/4nvnfoHjbanA=
+			ltffTPH9zSqekQsLyYLkG/6rDtc=
 			</data>
 			<key>hash2</key>
 			<data>
-			vqDAkrLZbAnt793CRtffitAiSgWLvtDnkidA4QejU/o=
+			WR3xE+NDYoDKqH0VcGsnzmXSME9XbJJUJKlKl4bNyF4=
 			</data>
 		</dict>
 		<key>Headers/FBSDKBridgeAPIRequestCreating.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Q50f81yon4zIyseOlcfgyK1hZlE=
+			e7eRb4AWFdEhkGIWOlpCfkQtSik=
 			</data>
 			<key>hash2</key>
 			<data>
-			NflnPwUtZHpSpdKlRkgX5MErn7Sh7kDHuGj2tyRfvU4=
+			o+V4+oYzL3MkdW//zKDHQ6HBu2cFN372l0NquuZZsAg=
 			</data>
 		</dict>
 		<key>Headers/FBSDKBridgeAPIRequestOpening.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			F8kyXqqM31Yfnue1LsIAfBHpHa0=
+			gq/Y4WK7ZFKEQyzmYnO5J0fLyB0=
 			</data>
 			<key>hash2</key>
 			<data>
-			0W/eX4nbbROc2fhCTsH8q8po/nDWrXDSx8MvZ5ZpHEY=
+			XeMA+VviWQrf+PZ7juCzTwwl3vVc5Xuac9Cc7DMa96o=
 			</data>
 		</dict>
 		<key>Headers/FBSDKBridgeAPIRequestProtocol.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			v6hQUio96LUxddwVyzomK/9JEdU=
+			P78TKNiwjeoWvU5qtMaH5r2r5tg=
 			</data>
 			<key>hash2</key>
 			<data>
-			XgNdRnM5FhfTRQesJLv4zkxp87hMekuWdMjMUWBuIGE=
+			t0XwPGN4RRIQMsRhcXfTimZY0e7gA1wDlqMfu7l+DCQ=
 			</data>
 		</dict>
 		<key>Headers/FBSDKBridgeAPIResponse.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cLVsfhZX5PejC7x3hCzKV5TJ2a4=
+			Na6n8NnuhW/jtE+dBr0HUqCk3o0=
 			</data>
 			<key>hash2</key>
 			<data>
-			y/iMHKyCOFBOFLUSVYFhQ+hgAjmumQuRZs6QCcQfQnA=
+			2RoifW5o6910DoFsBbD2DejyDJUri0PIn0RsHB1dMv4=
 			</data>
 		</dict>
 		<key>Headers/FBSDKButton.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3Ci89mdn9G0ffo3alyM3RsqfJOk=
+			ydGFsGSN3mUgKapOAanxBuHksag=
 			</data>
 			<key>hash2</key>
 			<data>
-			jNVzcf1sP0gR8oxiSprlml5XDhW1bTekx5x1gZaI0NA=
+			jtiPwaqq/Rc3bnRL5VE+OdgjdL97WVmdQvyc6gs0tfQ=
 			</data>
 		</dict>
-		<key>Headers/FBSDKButtonImpressionTracking.h</key>
+		<key>Headers/FBSDKButtonImpressionLogging.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ejytrpzOYwYoSdQkKUrhERf9Ibg=
+			9yAEnFMowi+pDwBEqnCn+mAZ0cg=
 			</data>
 			<key>hash2</key>
 			<data>
-			Odp9J5XJIaOjwYdP2hpiUtZd8dctNqaaaU7JPy1FXqw=
+			k02ke3FCah5TMWZycKniI1uyNOyjDnc5bj7X0AdvZcU=
 			</data>
 		</dict>
 		<key>Headers/FBSDKConstants.h</key>
@@ -967,22 +925,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3phhek3vKiQrWqvNk/HdmJVLxkk=
+			AlrSR8VQDBzxHEHDNyQe8kMPQuA=
 			</data>
 			<key>hash2</key>
 			<data>
-			X5xsOr/pT8mf8Yamooxil0sP4OSFKwrYupDK99Tzp1g=
+			CNTZrFV+jRhtuDlZvQKnTcJYNPviXuF/vE00XnxA4Vg=
 			</data>
 		</dict>
 		<key>Headers/FBSDKCoreKitVersions.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Bf+WJhmZ0vuirFX0iy+Cw5iRP/c=
+			jSP+5Aa95889iFbTHACJEiUvgX4=
 			</data>
 			<key>hash2</key>
 			<data>
-			yvlzsAkE8Su0VTx8nnvBiXAwy62K1xJHLGD+tZ7GsrY=
+			YaCGVxKI53fdD2HU/FMhyVvD7m1z0o8gs0pFNWQz9V4=
 			</data>
 		</dict>
 		<key>Headers/FBSDKDeviceButton.h</key>
@@ -1000,11 +958,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TiqLsBDtCbdpa5U81FmXqzhvji4=
+			PtZ4Luln/klPOTMcO1338bptSwQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			1A5zMFSFiBJ/VfEG9wGV33VFIhRMald8UqDenEnTxWY=
+			BCLoN9RN9jf4Xf61mQGop45FpLQ3Tp/nEGjL/lYZ6Ns=
 			</data>
 		</dict>
 		<key>Headers/FBSDKDeviceViewControllerBase.h</key>
@@ -1022,11 +980,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			B95l05PRPv4UHjXSaTO4QH/0nhA=
+			nSY+nCEtusBjiRGM6I4y/aJTbzQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			uPE+I4gZU9CJUILn8r9sc0sE0DiCOrAbl2Ed/+DGrSE=
+			ff89x0aMBwYaedr9IiWDdj4UttqGp2IDOzJLwShzSBo=
 			</data>
 		</dict>
 		<key>Headers/FBSDKDynamicSocialFrameworkLoader.h</key>
@@ -1055,55 +1013,55 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MVflNoQejqYnz1RuPvhT/RNwDRw=
+			YVFzIsGCKGh6gqmY/EtLk0kNEdA=
 			</data>
 			<key>hash2</key>
 			<data>
-			sLAAX7vvrxTVZOL64QIGLvs5KWTUlXDIYOyuFKqzj88=
+			ASgL+3JacSriP1fB2jSUu77lzSxL2d9BiU8+XWxU6k4=
 			</data>
 		</dict>
 		<key>Headers/FBSDKFeature.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OH+/C16w19SvkjdtnHFdYpiI0Wk=
+			PR5YEJsJCaDQw8O6AAmG6WSCEb8=
 			</data>
 			<key>hash2</key>
 			<data>
-			TIE/n3wbLr7y4EFRJzDpsSzhJVsduUPwDzQ9sjhiSPk=
+			1JgRASjBfzxhQMu6MJSWwnrRFid4ZpjBnLD4tpwO24I=
 			</data>
 		</dict>
 		<key>Headers/FBSDKFeatureChecking.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rRDsE/AJJX6IU0sC9v7oQujBFTQ=
+			3IIJmof1z5A6KMWAQsvxwlF+99o=
 			</data>
 			<key>hash2</key>
 			<data>
-			/Ab3Rs+GHe+FeCx6amNHp31slhhdAe5MQxU6Cqwz45c=
+			j5ha7Z/mID1txNq963cF0cPqfHOmotl/TJIkIzcWQcA=
 			</data>
 		</dict>
 		<key>Headers/FBSDKGraphErrorRecoveryProcessor.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mWIerbWX8uhdHhUeTj+kcas4l38=
+			G4fc3hdE/zQWzXSOVPV5ddeRtnU=
 			</data>
 			<key>hash2</key>
 			<data>
-			p6i++a2dLokw0a9lNQ8Qp06j2UXlzB5wRH6PEuRZRJU=
+			QstFcpvzxLBZO3UmlGd5wVRvnRseLQVfIUJrgqmlZio=
 			</data>
 		</dict>
 		<key>Headers/FBSDKGraphRequest.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			efKXIgT7RYpbn6i2rWAivJJtuxU=
+			082NW1tilcmHtRvXXUic27ls56s=
 			</data>
 			<key>hash2</key>
 			<data>
-			zF9ZhT/hw3v33SPl6xnE1Z7P5Q0/Pq5AuYQkJV0DiXU=
+			OPWmo8BG94E6ziHfyDjcURkuGI+3r5QsvMAeqIhGkiU=
 			</data>
 		</dict>
 		<key>Headers/FBSDKGraphRequestConnecting.h</key>
@@ -1117,37 +1075,26 @@
 			q6jlfASYW4tWT4J1YZjGr+s4pJbnbVtYpSUxTwBJxcI=
 			</data>
 		</dict>
-		<key>Headers/FBSDKGraphRequestConnection+GraphRequestConnecting.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			6f1WrqW8yZu4XCRCwUsj+2NY7bs=
-			</data>
-			<key>hash2</key>
-			<data>
-			8MWp1WDI6bplMsOC7U1EFcqjRlFOt+df6FD2QtDB+cw=
-			</data>
-		</dict>
 		<key>Headers/FBSDKGraphRequestConnection.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			v2RQxF/hspVJPbRinqOBtD6S5ZA=
+			8PNcxo5scQIGrbIamHMaw3QwXiA=
 			</data>
 			<key>hash2</key>
 			<data>
-			hsDvlU6C95/RiGuJKll4wJXgHRvsUnNQLH/R4nFTT5w=
+			3RvoZYe8+abN+O5f/XiNy9NwbvNlJJhm6bp88Wh1CMo=
 			</data>
 		</dict>
 		<key>Headers/FBSDKGraphRequestConnectionDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			G2WABgIrZfBIvDAuQnh6ugb+Qbg=
+			ne+IL3UAcginJ/0tZkdrBFYa44w=
 			</data>
 			<key>hash2</key>
 			<data>
-			XaHPbi8EeuwX7IlZHTaJ2hjw58fzIenXKxqsktW9NeA=
+			Yz0oHyKHcLbrLa/nc7AInRHCj/fNmAM8gNnQNj6vyl0=
 			</data>
 		</dict>
 		<key>Headers/FBSDKGraphRequestConnectionFactory.h</key>
@@ -1242,77 +1189,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Q9fpRCHKnRGbfIWRplZjo4jObPg=
+			EYvQfeo33/pfLGSiEAXoZQwREgA=
 			</data>
 			<key>hash2</key>
 			<data>
-			HLqfPbeLZTAOGC+gIR8+OMkUvxKpUHXSoy4he3a3okw=
+			DSkBbmlBWCICsAIwvuAJ37p/P4sAtJGQjziFquM+WT0=
 			</data>
 		</dict>
-		<key>Headers/FBSDKImpressionTrackingButton.h</key>
+		<key>Headers/FBSDKImpressionLoggingButton.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aHEX2LVk1UJIcnHKejwpZWj9kjo=
+			2regX89zRP2iCaA+xrRtDfR5688=
 			</data>
 			<key>hash2</key>
 			<data>
-			FEonFVoo3svn/uJ9MXEbiW9xKxrBLTTOyHWhwRpqbf8=
-			</data>
-		</dict>
-		<key>Headers/FBSDKInternalUtility+AppAvailabilityChecker.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			08/m0Q3OiKaz5zOgYE6+DNVKWjs=
-			</data>
-			<key>hash2</key>
-			<data>
-			EjliivD40ebgjdrr6aEfSSnd7YhXDCjwYOBGDRN9YX8=
-			</data>
-		</dict>
-		<key>Headers/FBSDKInternalUtility+AppURLSchemeProviding.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			2sRsZswQShtHaTTrlsl4o0kRqsU=
-			</data>
-			<key>hash2</key>
-			<data>
-			9FHZ45SoUEAzaj3wS9YzqKVZLspXOyMLb2NinOxGzKs=
-			</data>
-		</dict>
-		<key>Headers/FBSDKInternalUtility+URLHosting.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			eknSuGWmZEFbMXKZvlC8076ggQ4=
-			</data>
-			<key>hash2</key>
-			<data>
-			8dd+NFSOYg54G5wI6Wz2aM6Z0FhVtFy4AH5h08VF9tc=
+			J9n2RFCMg/frHwUpjwyoqTIv5l2ZyJZExNwHmAurhN0=
 			</data>
 		</dict>
 		<key>Headers/FBSDKInternalUtility.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gbHUIV2smpZkql5x2vcfcsDfKtE=
+			4qSic4scPg8YJAr4zF+ho+qsaWw=
 			</data>
 			<key>hash2</key>
 			<data>
-			9DM89IHcEfmg8uBO+n+YogLtsJnfkEVOSRbQCLokowM=
+			PIQhLckJKO2H+GaAAZygUwBTO97kntsquGyZlDtbVQQ=
 			</data>
 		</dict>
 		<key>Headers/FBSDKInternalUtilityProtocol.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tNY9kexqbcDo7nXn+M7KNkcd4j4=
+			HXoA7PnW+j1n3L+nKmpVp6Z/5ZA=
 			</data>
 			<key>hash2</key>
 			<data>
-			1wCWajoJdhwm6CeROk6Y831NvGanOC2SABYfP/XDx14=
+			f6cPBu/TYxb3K/ATzcWhaonOtcveeHeTDCPuIRIb81Y=
 			</data>
 		</dict>
 		<key>Headers/FBSDKKeychainStore.h</key>
@@ -1374,11 +1288,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			L1JGcDt6/eYoNxoZ76TofCopiu8=
+			NOvhvx7yXK1SEN94XdmwdN9siYs=
 			</data>
 			<key>hash2</key>
 			<data>
-			uHs022a59fJj7V4oTCEbuRapM94rtK+9xjpgI6lMygA=
+			a8T3PyQH9714agrgC4Ht8GIVhoeAgSVaPwoe0prHpHY=
 			</data>
 		</dict>
 		<key>Headers/FBSDKLogging.h</key>
@@ -1407,22 +1321,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TDcF7Nok6ou5c5Wi6E30IZErZs4=
+			Oc+AcTLyDDS0l1P7WsbaEsHn14g=
 			</data>
 			<key>hash2</key>
 			<data>
-			PtnqSYdMZOeBl4IWmGHSAb9quwGB+HE5tE+9R4rHNMI=
+			W6guBwEyzjYJtRhMv77mztKRZkMAjXQkeQoF/Dg7i0g=
 			</data>
 		</dict>
 		<key>Headers/FBSDKMeasurementEvent.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			7COeEh930WVfJMVYMyaaJ1atqAU=
+			Kjkcik6CK2K6PHhLeZIab+R1OkU=
 			</data>
 			<key>hash2</key>
 			<data>
-			lHevx8U42CyG5zZDoaInRXLlHfJ74Tm2i5mtMmu1Obw=
+			kZRsL9M7jM0g4fdPOId9w0CY/9Q9SMloFEDly6uTKBk=
 			</data>
 		</dict>
 		<key>Headers/FBSDKMutableCopying.h</key>
@@ -1456,17 +1370,6 @@
 			<key>hash2</key>
 			<data>
 			FBy0Ddnly3dANenxcHb2DratGAm5QRZ2ntP3XYOnpqU=
-			</data>
-		</dict>
-		<key>Headers/FBSDKProfile+ProfileProtocols.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			2FjTQ7K7uRaHf1qIgR7zYyST1S8=
-			</data>
-			<key>hash2</key>
-			<data>
-			LxPSsyRt/27vUVLFBJTaQHiPhHtDLAuEl1uVh7ILe80=
 			</data>
 		</dict>
 		<key>Headers/FBSDKProfile.h</key>
@@ -1517,22 +1420,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			efkOQAoEeOeUzMGTDHRtqOJ0Mu8=
+			kZ/Z+98dFoqYWbXSr6MEjzi7tOs=
 			</data>
 			<key>hash2</key>
 			<data>
-			8CM0i69/IwXqcJoowv4eM8315r+cPcNZ1RW919jKARc=
+			eCP0AQBIeRySqpKqdtd5zP2XNGpyqa9l+BXUMo3wZSg=
 			</data>
 		</dict>
 		<key>Headers/FBSDKSettings.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			K9FHRcSUzToxAn9rDFzvrZ0hKpI=
+			C5Jf0O97fgLi6Ep3YsfwE5t6D3o=
 			</data>
 			<key>hash2</key>
 			<data>
-			mwvFJrEDMRhcdYcvgpCJmBmHxKoSvlcfClCjm3KgGoA=
+			T8hXsIDxoMKBOKSAxigyUlBb4+jbAXt3d5s4Ry/Natg=
 			</data>
 		</dict>
 		<key>Headers/FBSDKSettingsLogging.h</key>
@@ -1572,33 +1475,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4WxhDk43oBklWDLRrVBPNp4B+98=
+			0FwY9FO3y3ot6PcmOKk6c6iCf60=
 			</data>
 			<key>hash2</key>
 			<data>
-			hUWEt25PeaWzYr0ySTgbSxK2mIOoMEq7UxwdB2iQsAg=
+			MFr1OVrB7nJSRbp7OJNvWbVqLQm97GgrYvxqw8/CFzA=
 			</data>
 		</dict>
 		<key>Headers/FBSDKTokenStringProviding.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aaENUnRujC7mHaZVfV+N4AzreH0=
+			4qL2Rq85nvL66btFccVPJDrou6Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			PReEBfGbLa2c9mwMMxXK9Mrp2Jadhf0BiJ3eH6+jByc=
+			sFk4Yoramf4bN2JMCVpL5Ams2DDV61SdL6Wol9PQnAU=
 			</data>
 		</dict>
 		<key>Headers/FBSDKTransformer.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KuvWC7aNSbImZA6ZaMH9A59p63c=
+			sReV6E/tDHWh7gYOQLC9WNobxhg=
 			</data>
 			<key>hash2</key>
 			<data>
-			WpulFpqQ7AToJqG1Fk6VQPsJaNP++5B4M/JCwvgAGGY=
+			Em2RuyF/LRan754tN45IXz7Wr8ciCpaTNTc1S63FpDA=
 			</data>
 		</dict>
 		<key>Headers/FBSDKURL.h</key>
@@ -1616,44 +1519,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1F/f8LHOPKsBI6NsFGkfHXt2HVY=
+			8AofZOZqbAXRz290ZN938Q+vrdc=
 			</data>
 			<key>hash2</key>
 			<data>
-			GVPu5V0os9u3uXBamOQJccL+dIqxYFiEDivpo1BhF7k=
+			LUIwxewkTezgdIxc4xC4EHMEtqjwtnPxoyREA6RMW4c=
 			</data>
 		</dict>
 		<key>Headers/FBSDKURLOpener.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			AkOTrvVJLSQCJ6f1qbq1uyPq1yg=
+			yRq4MXDD00M01RePggfC3nn3wqw=
 			</data>
 			<key>hash2</key>
 			<data>
-			HrcvpHWeXOE2D0/Il1mOOgI3PfYRAOtbr0+fiwOTrd8=
+			mVEZf9hf+9t/IVesEiswGCzVYIIfs/sNJuwa5h+TBP0=
 			</data>
 		</dict>
 		<key>Headers/FBSDKURLOpening.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0FLbiKiGccYXTVLBqNWNMTTihUA=
+			zAfSHyGOLxv0yl7jNUM9P8IEgmk=
 			</data>
 			<key>hash2</key>
 			<data>
-			VbJQEWzVPPlYF+nueaqErFB7CrU2BrKDKDjlbkmJFb0=
+			AefCkkFvitqibjpGWVXrnr+OruShTTi5hiMCFB65bYY=
 			</data>
 		</dict>
 		<key>Headers/FBSDKURLScheme.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xsna7jBoMUjjBof8lg09OJUGUxM=
+			3liO1ko62oLhfjQcWW3yK8xXGyY=
 			</data>
 			<key>hash2</key>
 			<data>
-			2Ohpa+KpAo/mXWc6SJBkvZTAj3H5v95F+QcatNAxLq4=
+			trs/jOcgQ0gZXjVM0xkbnij0KyWMH9AkfhLLIBUnv5w=
 			</data>
 		</dict>
 		<key>Headers/FBSDKUserAgeRange.h</key>
@@ -1671,22 +1574,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WIyqKZbmxDk/3MLdV4IQAoRQ/Os=
+			7MGDcCkw50VOQwPPfNyk/QS8zvo=
 			</data>
 			<key>hash2</key>
 			<data>
-			160JG2u8qkmWJwnv1FrRDLp0rKv+UUgkgmpr2mMl+BI=
+			FGe4QzcW2wbKSI5ou0NUT6nP5BzK0xnwOb3ajxFemUI=
 			</data>
 		</dict>
 		<key>Headers/FBSDKWebDialog.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			BLFoFKpcp+Oedl9DlOxSmwyZKHA=
+			SRBvfaTJGEXkfewuSzZH4i0Sams=
 			</data>
 			<key>hash2</key>
 			<data>
-			442vdHOu8AXSYwX2YTG4XKfPbizD3GQdL9fjXYc+jJw=
+			SXpDAEsruAc15Vcu9dG6JBvOqhhIkKnXxGFSK1E/q48=
+			</data>
+		</dict>
+		<key>Headers/FBSDKWebDialogDelegate.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xDYCqLGr6Zr0Se2omfyzEQ8qqSA=
+			</data>
+			<key>hash2</key>
+			<data>
+			7HKp6lSSU/nUflNJpVavb6xCEJY533rlHusO/TBZM3A=
 			</data>
 		</dict>
 		<key>Headers/FBSDKWebDialogView.h</key>
@@ -1715,11 +1629,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			I0XV5pMs0kKWAVl+G/hedgr1yBs=
+			+kXqAR5++fev/D2BP1l0JcDa8y4=
 			</data>
 			<key>hash2</key>
 			<data>
-			46kxdaeYQRBEiK5/1TuMaifF7dtpddn3ljdnRs0/khU=
+			Y+9Hzvc2kybK3ujEJ2g95fqgHLHcQdQqYWxogeKN6Yo=
+			</data>
+		</dict>
+		<key>Headers/__FBSDKLoggerCreating.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			C9F4Xp0BxiMrKc/kVzWB3B4iexw=
+			</data>
+			<key>hash2</key>
+			<data>
+			9srPO8Orr34IN0Zmk9iakbMOd6EulKe/Gmj3Xzubwrw=
 			</data>
 		</dict>
 		<key>Modules/FBSDKCoreKit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>

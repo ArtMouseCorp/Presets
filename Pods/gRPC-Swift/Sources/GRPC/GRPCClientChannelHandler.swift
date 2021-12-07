@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import Logging
-import NIO
+import NIOCore
 import NIOHPACK
 import NIOHTTP1
 import NIOHTTP2
@@ -284,16 +284,23 @@ public enum GRPCCallType {
 /// }
 /// ```
 internal final class GRPCClientChannelHandler {
-  private let logger: Logger
+  private let logger: GRPCLogger
   private var stateMachine: GRPCClientStateMachine
+  private let maximumReceiveMessageLength: Int
 
   /// Creates a new gRPC channel handler for clients to translate HTTP/2 frames to gRPC messages.
   ///
   /// - Parameters:
   ///   - callType: Type of RPC call being made.
+  ///   - maximumReceiveMessageLength: Maximum allowed length in bytes of a received message.
   ///   - logger: Logger.
-  internal init(callType: GRPCCallType, logger: Logger) {
+  internal init(
+    callType: GRPCCallType,
+    maximumReceiveMessageLength: Int,
+    logger: GRPCLogger
+  ) {
     self.logger = logger
+    self.maximumReceiveMessageLength = maximumReceiveMessageLength
     switch callType {
     case .unary:
       self.stateMachine = .init(requestArity: .one, responseArity: .one)
@@ -425,6 +432,16 @@ extension GRPCClientChannelHandler: ChannelInboundHandler {
       MetadataKey.h2EndStream: "\(content.endStream)",
     ])
 
+    self.consumeBytes(from: &buffer, context: context)
+
+    // End stream is set; we don't usually expect this but can handle it in some situations.
+    if content.endStream, let status = self.stateMachine.receiveEndOfResponseStream() {
+      self.logger.warning("Unexpected end stream set on DATA frame")
+      context.fireChannelRead(self.wrapInboundOut(.status(status)))
+    }
+  }
+
+  private func consumeBytes(from buffer: inout ByteBuffer, context: ChannelHandlerContext) {
     // Do we have bytes to read? If there are no bytes to read then we can't do anything. This may
     // happen if the end-of-stream flag is not set on the trailing headers frame (i.e. the one
     // containing the gRPC status code) and an additional empty data frame is sent with the
@@ -434,20 +451,24 @@ extension GRPCClientChannelHandler: ChannelInboundHandler {
     }
 
     // Feed the buffer into the state machine.
-    let result = self.stateMachine.receiveResponseBuffer(&buffer)
-      .mapError { error -> GRPCError.WithContext in
-        switch error {
-        case .cardinalityViolation:
-          return GRPCError.StreamCardinalityViolation.response.captureContext()
-        case .deserializationFailed, .leftOverBytes:
-          return GRPCError.DeserializationFailure().captureContext()
-        case let .decompressionLimitExceeded(compressedSize):
-          return GRPCError.DecompressionLimitExceeded(compressedSize: compressedSize)
-            .captureContext()
-        case .invalidState:
-          return GRPCError.InvalidState("parsing data as a response message").captureContext()
-        }
+    let result = self.stateMachine.receiveResponseBuffer(
+      &buffer,
+      maxMessageLength: self.maximumReceiveMessageLength
+    ).mapError { error -> GRPCError.WithContext in
+      switch error {
+      case .cardinalityViolation:
+        return GRPCError.StreamCardinalityViolation.response.captureContext()
+      case .deserializationFailed, .leftOverBytes:
+        return GRPCError.DeserializationFailure().captureContext()
+      case let .decompressionLimitExceeded(compressedSize):
+        return GRPCError.DecompressionLimitExceeded(compressedSize: compressedSize)
+          .captureContext()
+      case let .lengthExceedsLimit(underlyingError):
+        return underlyingError.captureContext()
+      case .invalidState:
+        return GRPCError.InvalidState("parsing data as a response message").captureContext()
       }
+    }
 
     // Did we get any messages?
     switch result {

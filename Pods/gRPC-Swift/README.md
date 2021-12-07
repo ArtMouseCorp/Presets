@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/grpc/grpc-swift.svg?branch=main)](https://travis-ci.org/grpc/grpc-swift)
-[![sswg:sandbox|94x20](https://img.shields.io/badge/sswg-sandbox-lightgrey.svg)](https://github.com/swift-server/sswg/blob/master/process/incubation.md#sandbox-level)
+[![CI](https://img.shields.io/github/workflow/status/grpc/grpc-swift/CI?event=push)](https://github.com/grpc/grpc-swift/actions/workflows/ci.yaml)
 [![Latest Version](https://img.shields.io/github/v/release/grpc/grpc-swift?include_prereleases&sort=semver)](https://img.shields.io/github/v/release/grpc/grpc-swift?include_prereleases&sort=semver)
+[![sswg:graduated|104x20](https://img.shields.io/badge/sswg-graduated-green.svg)](https://github.com/swift-server/sswg/blob/main/process/incubation.md#graduated-level)
 
 # gRPC Swift
 
@@ -29,6 +29,24 @@ Version | Implementation | Branch                 | `protoc` Plugin         | Co
 
 The remainder of this README refers to the 1.x version of gRPC Swift.
 
+## Experimental `async`/`await` Support
+
+Swift 5.5 introduces new language features for concurrency. One such feature is
+[`async`/`await`][SE-0296].
+
+gRPC Swift includes **experimental** support for async/await. While support is
+**experimental**, async/await releases of gRPC Swift *do not guarantees a stable
+API*. Features and APIs may change between async/await releases.
+
+To ensure the 1.x release series does maintain a stable API, async/await releases
+will be branched from stable releases and tagged in the following format:
+`X.Y.Z-async-await.N`. Where `X.Y.Z` indicates the tag of the stable release
+from which the branch was created and `N` indicates a release number on that
+branch.
+
+The `protoc-gen-grpc-swift` options for generating async/await style clients and
+servers are described in [`docs/plugin.md`][docs-plugin].
+
 ## Supported Platforms
 
 gRPC Swift's platform support is identical to the [platform support of Swift
@@ -49,7 +67,7 @@ package dependency to your `Package.swift`:
 
 ```swift
 dependencies: [
-  .package(url: "https://github.com/grpc/grpc-swift.git", from: "1.0.0-alpha.23")
+  .package(url: "https://github.com/grpc/grpc-swift.git", from: "1.0.0")
 ]
 ```
 
@@ -82,7 +100,7 @@ gRPC Swift is currently available [from CocoaPods][pod-new]. To integrate, add
 the following line to your `Podfile`:
 
 ```ruby
-    pod 'gRPC-Swift', '~> 1.0.0-alpha.23'
+    pod 'gRPC-Swift', '~> 1.0.0'
 ```
 
 Then, run `pod install` from command line and use your project's generated
@@ -146,6 +164,10 @@ The `docs` directory contains documentation, including:
 - Support for Apple Platforms and NIO Transport Services in
   [`docs/apple-platforms.md`][docs-apple]
 
+## Security
+
+Please see [SECURITY.md](SECURITY.md).
+
 ## License
 
 gRPC Swift is released under the same license as [gRPC][grpc], repeated in
@@ -176,3 +198,4 @@ Please get involved! See our [guidelines for contributing](CONTRIBUTING.md).
 [branch-old]: https://github.com/grpc/grpc-swift/tree/cgrpc
 [examples-out-of-source]: https://github.com/grpc/grpc-swift/tree/main/Examples
 [examples-in-source]: https://github.com/grpc/grpc-swift/tree/main/Sources/Examples
+[SE-0296]: https://github.com/apple/swift-evolution/blob/main/proposals/0296-async-await.md
