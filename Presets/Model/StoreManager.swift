@@ -2,6 +2,7 @@ import UIKit
 import Purchases
 import Amplitude
 import StoreKit
+import AppsFlyerLib
 
 struct StoreManager {
     
@@ -87,6 +88,13 @@ struct StoreManager {
                                                 "Transaction date": transaction?.transactionDate ?? Date(),
                                                 "Transaction product identifier": transaction?.payment.productIdentifier ?? ""
                                               ])
+                
+                AppsFlyerLib.shared().logEvent("Subscription purchased",
+                                               withValues: [
+                                                "Transaction identifier": transaction?.transactionIdentifier ?? "",
+                                                "Transaction date": transaction?.transactionDate ?? Date(),
+                                                "Transaction product identifier": transaction?.payment.productIdentifier ?? ""
+                                               ])
                 
                 State.isSubscribed = true
                 completion?() ?? ()
