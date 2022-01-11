@@ -231,8 +231,8 @@ class SubscriptionViewController: BaseViewController {
         restoreButton.isEnabled = false
         self.subscriptionLabel.isHidden = true
         
-//        let productId = "com.temporary.week" // DEBUG
-        let productId = pageConfig.subscriptionId // RELEASE
+        let productId = "com.temporary.week" // DEBUG
+//        let productId = pageConfig.subscriptionId // RELEASE
         
         StoreManager.getProducts(for: [productId]) { products in
             
@@ -277,7 +277,12 @@ class SubscriptionViewController: BaseViewController {
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
         Amplitude.instance().logEvent(AmplitudeEvents.paywallClose)
-        showInterstitialAd()
+        if State.isSubscribed {
+            self.view.removeFromSuperview()
+        } else {
+            showInterstitialAd()
+        }
+        
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {

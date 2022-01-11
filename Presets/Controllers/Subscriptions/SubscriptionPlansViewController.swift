@@ -231,8 +231,8 @@ class SubscriptionPlansViewController: BaseViewController {
             
         }
         
-//        let ids = ["com.temporary.month", "com.temporary.week", "com.temporary.year"] // DEBUG
-        let ids = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId] // RELEASE
+        let ids = ["com.temporary.month", "com.temporary.week", "com.temporary.year"] // DEBUG
+//        let ids = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId] // RELEASE
         
         StoreManager.getProducts(for: ids) { products in
             guard !products.isEmpty else {
@@ -331,7 +331,12 @@ class SubscriptionPlansViewController: BaseViewController {
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
         Amplitude.instance().logEvent(AmplitudeEvents.paywallClose)
-        showInterstitialAd()
+        
+        if State.isSubscribed {
+            self.dismiss(animated: true)
+        } else {
+            showInterstitialAd()            
+        }
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
