@@ -231,8 +231,8 @@ class SubscriptionPlansViewController: BaseViewController {
             
         }
         
-        let ids = ["com.temporary.month", "com.temporary.week", "com.temporary.year"] // DEBUG
-//        let ids = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId] // RELEASE
+//        let ids = ["com.temporary.month", "com.temporary.week", "com.temporary.year"] // DEBUG
+        let ids = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId] // RELEASE
         
         StoreManager.getProducts(for: ids) { products in
             guard !products.isEmpty else {
