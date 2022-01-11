@@ -277,7 +277,12 @@ class SubscriptionViewController: BaseViewController {
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
         Amplitude.instance().logEvent(AmplitudeEvents.paywallClose)
-        showInterstitialAd()
+        if State.isSubscribed {
+            self.view.removeFromSuperview()
+        } else {
+            showInterstitialAd()
+        }
+        
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
