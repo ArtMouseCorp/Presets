@@ -89,7 +89,6 @@ struct StoreManager {
                                                 "Transaction product identifier": transaction?.payment.productIdentifier ?? ""
                                               ])
                 
-                
                 AppsFlyerLib.shared().logEvent("Subscription purchased",
                                                withValues: [
                                                 "Transaction identifier": transaction?.transactionIdentifier ?? "",

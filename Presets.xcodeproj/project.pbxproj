@@ -29,7 +29,15 @@
 		28940B0C26EC704F0025944D /* OrganicSubscriptionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28940B0B26EC704F0025944D /* OrganicSubscriptionPage.swift */; };
 		28AB3A9926C4EC2800201D37 /* RedGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB3A9826C4EC2800201D37 /* RedGradientButton.swift */; };
 		28AB3A9D26C5594900201D37 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB3A9C26C5594900201D37 /* Util.swift */; };
-		28B72A8826F5D9A3002E2A22 /* GoogleService-Info (DEBUG).plist in Resources */ = {isa = PBXBuildFile; fileRef = 28B72A8726F5D9A2002E2A22 /* GoogleService-Info (DEBUG).plist */; };
+		28B13DFB278D517700C84BBC /* grid-nude.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DEC278D517700C84BBC /* grid-nude.jpg */; };
+		28B13DFC278D517700C84BBC /* grid-cappuccino.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DEE278D517700C84BBC /* grid-cappuccino.jpg */; };
+		28B13DFD278D517700C84BBC /* grid-chocolate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF0278D517700C84BBC /* grid-chocolate.jpg */; };
+		28B13DFE278D517700C84BBC /* grid-color-autumn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF2278D517700C84BBC /* grid-color-autumn.jpg */; };
+		28B13DFF278D517700C84BBC /* grid-muted.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF4278D517700C84BBC /* grid-muted.jpg */; };
+		28B13E00278D517700C84BBC /* grid-male.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF6278D517700C84BBC /* grid-male.jpg */; };
+		28B13E01278D517700C84BBC /* grid-blue-dusk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF8278D517700C84BBC /* grid-blue-dusk.jpg */; };
+		28B13E02278D517700C84BBC /* grid-christmas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DFA278D517700C84BBC /* grid-christmas.jpg */; };
+		28B72A8826F5D9A3002E2A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28B72A8726F5D9A2002E2A22 /* GoogleService-Info.plist */; };
 		28C3E62F26EB3725001C2985 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C3E62E26EB3725001C2985 /* NotificationService.swift */; };
 		28C3E63326EB3725001C2985 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 28C3E62C26EB3725001C2985 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		28D84514273988E1006C0F17 /* ProdinfireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D84513273988E1006C0F17 /* ProdinfireManager.swift */; };
@@ -55,7 +63,7 @@
 		28DEEB402736635600006A75 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 28DEEB3F2736635600006A75 /* StoreKitTestCertificate.cer */; };
 		28DEEB422736652A00006A75 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DEEB412736652A00006A75 /* StorageManager.swift */; };
 		28DEEB442736F05200006A75 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DEEB432736F05200006A75 /* UIImageView.swift */; };
-		28DEEB462737055100006A75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28DEEB452737055100006A75 /* GoogleService-Info.plist */; };
+		28DEEB462737055100006A75 /* GoogleService-Info (RELEASE).plist in Resources */ = {isa = PBXBuildFile; fileRef = 28DEEB452737055100006A75 /* GoogleService-Info (RELEASE).plist */; };
 		28DEEB4927372F9700006A75 /* PresetsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DEEB4727372F9700006A75 /* PresetsCollectionViewCell.swift */; };
 		28DEEB4A27372F9700006A75 /* PresetsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DEEB4827372F9700006A75 /* PresetsCollectionViewCell.xib */; };
 		28F1330A26CA74FB00DB7142 /* Controllers+Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F1330926CA74FB00DB7142 /* Controllers+Cells.swift */; };
@@ -152,7 +160,15 @@
 		28940B0B26EC704F0025944D /* OrganicSubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganicSubscriptionPage.swift; sourceTree = "<group>"; };
 		28AB3A9826C4EC2800201D37 /* RedGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedGradientButton.swift; sourceTree = "<group>"; };
 		28AB3A9C26C5594900201D37 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		28B72A8726F5D9A2002E2A22 /* GoogleService-Info (DEBUG).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (DEBUG).plist"; sourceTree = "<group>"; };
+		28B13DEC278D517700C84BBC /* grid-nude.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-nude.jpg"; sourceTree = "<group>"; };
+		28B13DEE278D517700C84BBC /* grid-cappuccino.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-cappuccino.jpg"; sourceTree = "<group>"; };
+		28B13DF0278D517700C84BBC /* grid-chocolate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-chocolate.jpg"; sourceTree = "<group>"; };
+		28B13DF2278D517700C84BBC /* grid-color-autumn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-color-autumn.jpg"; sourceTree = "<group>"; };
+		28B13DF4278D517700C84BBC /* grid-muted.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-muted.jpg"; sourceTree = "<group>"; };
+		28B13DF6278D517700C84BBC /* grid-male.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-male.jpg"; sourceTree = "<group>"; };
+		28B13DF8278D517700C84BBC /* grid-blue-dusk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-blue-dusk.jpg"; sourceTree = "<group>"; };
+		28B13DFA278D517700C84BBC /* grid-christmas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-christmas.jpg"; sourceTree = "<group>"; };
+		28B72A8726F5D9A2002E2A22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28C3E62C26EB3725001C2985 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C3E62E26EB3725001C2985 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		28C3E63026EB3725001C2985 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,7 +196,7 @@
 		28DEEB3F2736635600006A75 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		28DEEB412736652A00006A75 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		28DEEB432736F05200006A75 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
-		28DEEB452737055100006A75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		28DEEB452737055100006A75 /* GoogleService-Info (RELEASE).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (RELEASE).plist"; sourceTree = "<group>"; };
 		28DEEB4727372F9700006A75 /* PresetsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsCollectionViewCell.swift; sourceTree = "<group>"; };
 		28DEEB4827372F9700006A75 /* PresetsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetsCollectionViewCell.xib; sourceTree = "<group>"; };
 		28F1330926CA74FB00DB7142 /* Controllers+Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Controllers+Cells.swift"; sourceTree = "<group>"; };
@@ -344,6 +360,70 @@
 			path = "Remote Config";
 			sourceTree = "<group>";
 		};
+		28B13DEB278D517700C84BBC /* Nude */ = {
+			isa = PBXGroup;
+			children = (
+				28B13DEC278D517700C84BBC /* grid-nude.jpg */,
+			);
+			path = Nude;
+			sourceTree = "<group>";
+		};
+		28B13DED278D517700C84BBC /* Сappuccino */ = {
+			isa = PBXGroup;
+			children = (
+				28B13DEE278D517700C84BBC /* grid-cappuccino.jpg */,
+			);
+			path = "Сappuccino";
+			sourceTree = "<group>";
+		};
+		28B13DEF278D517700C84BBC /* Chocolate */ = {
+			isa = PBXGroup;
+			children = (
+				28B13DF0278D517700C84BBC /* grid-chocolate.jpg */,
+			);
+			path = Chocolate;
+			sourceTree = "<group>";
+		};
+		28B13DF1278D517700C84BBC /* Color Autumn */ = {
+			isa = PBXGroup;
+			children = (
+				28B13DF2278D517700C84BBC /* grid-color-autumn.jpg */,
+			);
+			path = "Color Autumn";
+			sourceTree = "<group>";
+		};
+		28B13DF3278D517700C84BBC /* Muted */ = {
+			isa = PBXGroup;
+			children = (
+				28B13DF4278D517700C84BBC /* grid-muted.jpg */,
+			);
+			path = Muted;
+			sourceTree = "<group>";
+		};
+		28B13DF5278D517700C84BBC /* Male */ = {
+			isa = PBXGroup;
+			children = (
+				28B13DF6278D517700C84BBC /* grid-male.jpg */,
+			);
+			path = Male;
+			sourceTree = "<group>";
+		};
+		28B13DF7278D517700C84BBC /* Blue Dusk */ = {
+			isa = PBXGroup;
+			children = (
+				28B13DF8278D517700C84BBC /* grid-blue-dusk.jpg */,
+			);
+			path = "Blue Dusk";
+			sourceTree = "<group>";
+		};
+		28B13DF9278D517700C84BBC /* Christmas */ = {
+			isa = PBXGroup;
+			children = (
+				28B13DFA278D517700C84BBC /* grid-christmas.jpg */,
+			);
+			path = Christmas;
+			sourceTree = "<group>";
+		};
 		28C3E62D26EB3725001C2985 /* OneSignalNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +436,14 @@
 		28D84515273A8237006C0F17 /* Presets */ = {
 			isa = PBXGroup;
 			children = (
+				28B13DF7278D517700C84BBC /* Blue Dusk */,
+				28B13DEF278D517700C84BBC /* Chocolate */,
+				28B13DF9278D517700C84BBC /* Christmas */,
+				28B13DF1278D517700C84BBC /* Color Autumn */,
+				28B13DF5278D517700C84BBC /* Male */,
+				28B13DF3278D517700C84BBC /* Muted */,
+				28B13DEB278D517700C84BBC /* Nude */,
+				28B13DED278D517700C84BBC /* Сappuccino */,
 				28D84516273A8237006C0F17 /* Nordic */,
 				28D84518273A8237006C0F17 /* BLVCK */,
 				28D8451A273A8237006C0F17 /* Night Bar */,
@@ -655,8 +743,8 @@
 			children = (
 				4A553F4A26C41F97001150D2 /* AppDelegate.swift */,
 				4A553F4C26C41F97001150D2 /* SceneDelegate.swift */,
-				28B72A8726F5D9A2002E2A22 /* GoogleService-Info (DEBUG).plist */,
-				28DEEB452737055100006A75 /* GoogleService-Info.plist */,
+				28B72A8726F5D9A2002E2A22 /* GoogleService-Info.plist */,
+				28DEEB452737055100006A75 /* GoogleService-Info (RELEASE).plist */,
 				4A553F5826C41F98001150D2 /* Info.plist */,
 			);
 			name = Application;
@@ -864,18 +952,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B13E01278D517700C84BBC /* grid-blue-dusk.jpg in Resources */,
+				28B13E00278D517700C84BBC /* grid-male.jpg in Resources */,
 				28D84541273A8237006C0F17 /* grid-earthy-tones.jpeg in Resources */,
 				28D8454E273A8237006C0F17 /* grid-moody-blue.jpeg in Resources */,
 				2868AF1D26CFD068007FA1A5 /* presets.json in Resources */,
 				28D8454D273A8237006C0F17 /* grid-cream-white.jpeg in Resources */,
-				28B72A8826F5D9A3002E2A22 /* GoogleService-Info (DEBUG).plist in Resources */,
+				28B72A8826F5D9A3002E2A22 /* GoogleService-Info.plist in Resources */,
 				28D8453C273A8237006C0F17 /* grid-nordic.jpeg in Resources */,
+				28B13DFD278D517700C84BBC /* grid-chocolate.jpg in Resources */,
 				28D84544273A8237006C0F17 /* grid-dark-moody.jpg in Resources */,
 				4A5A2C7026C47C1D00F78C2F /* EuclidCircularA-Medium.ttf in Resources */,
 				28D84540273A8237006C0F17 /* grid-rich-black.jpeg in Resources */,
 				28D84545273A8237006C0F17 /* grid-dark-orange.jpeg in Resources */,
+				28B13DFC278D517700C84BBC /* grid-cappuccino.jpg in Resources */,
 				28DEEB402736635600006A75 /* StoreKitTestCertificate.cer in Resources */,
 				4A5A2C6E26C47BF900F78C2F /* EuclidCircularA-Bold.ttf in Resources */,
+				28B13DFE278D517700C84BBC /* grid-color-autumn.jpg in Resources */,
 				4A553F5726C41F98001150D2 /* LaunchScreen.storyboard in Resources */,
 				28F1337126CA9F7E00DB7142 /* swiftgen.yml in Resources */,
 				28D8453F273A8237006C0F17 /* grid-paradise.jpeg in Resources */,
@@ -893,14 +986,17 @@
 				28D84549273A8237006C0F17 /* grid-coffee.jpeg in Resources */,
 				4A5A2C6C26C479AA00F78C2F /* Rubik-Medium.ttf in Resources */,
 				2823317426C6DAE0002EB4C2 /* PresetImageCollectionViewCell.xib in Resources */,
-				28DEEB462737055100006A75 /* GoogleService-Info.plist in Resources */,
+				28B13E02278D517700C84BBC /* grid-christmas.jpg in Resources */,
+				28DEEB462737055100006A75 /* GoogleService-Info (RELEASE).plist in Resources */,
 				28D8453E273A8237006C0F17 /* grid-night-bar.jpeg in Resources */,
 				4A27D3A126C69CCC00A4D069 /* PresetTableViewCell.xib in Resources */,
 				4A5A2C7426C47C4A00F78C2F /* EuclidCircularA-SemiBold.ttf in Resources */,
 				28D84548273A8237006C0F17 /* grid-boho-wedding.jpeg in Resources */,
 				4A5A2C6A26C4799E00F78C2F /* Rubik-Regular.ttf in Resources */,
+				28B13DFB278D517700C84BBC /* grid-nude.jpg in Resources */,
 				28D8454B273A8237006C0F17 /* grid-vintage-film.jpeg in Resources */,
 				4A553F5226C41F97001150D2 /* Main.storyboard in Resources */,
+				28B13DFF278D517700C84BBC /* grid-muted.jpg in Resources */,
 				28D8454A273A8237006C0F17 /* grid-minimal-style.jpeg in Resources */,
 				4A46A57226C5DEFE005EBD85 /* CategoryCollectionViewCell.xib in Resources */,
 				4A5A2C7226C47C3000F78C2F /* EuclidCircularA-Regular.ttf in Resources */,
@@ -1117,10 +1213,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 95G2CDLKC7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "One Signal Notification Service Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1129,7 +1225,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.artpol.presets.OneSignalNotificationServiceExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.artmouse.presets.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1146,10 +1242,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 95G2CDLKC7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "One Signal Notification Service Extension";
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1158,7 +1254,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.artpol.presets.OneSignalNotificationServiceExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.artmouse.presets.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1296,14 +1392,14 @@
 				CODE_SIGN_ENTITLEMENTS = Presets/Presets.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 95G2CDLKC7;
 				INFOPLIST_FILE = Presets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.artpol.presets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.artmouse.presets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1322,14 +1418,14 @@
 				CODE_SIGN_ENTITLEMENTS = Presets/Presets.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 95G2CDLKC7;
 				INFOPLIST_FILE = Presets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.artpol.presets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.artmouse.presets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
