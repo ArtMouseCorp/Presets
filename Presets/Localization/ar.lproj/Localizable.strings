@@ -51,6 +51,18 @@
 "main.allPresets"                   = "الكل";
 "main.freePresets"                  = "مجانًا";
 "main.premiumPresets"               = "ممتاز";
+"main.offer.title"                  = "%%بيع: -50";
+"main.offer.description"            = "كل الإعدادات المسبقة والإبرازات والتأثيرات";
+"main.offer.button"                 = "احصل على";
+
+ // MARK: - Sale Offer
+
+"offer.title"                       = "احصل على 1125 \n إعدادات Lightroom المسبقة";
+"offer.sale.percent"                = "%%بيع 50";
+"offer.warning.limit"               = "عرض محدود";
+"offer.price"                       = "احصل على جميع الإعدادات المسبقة لـ {oldPrice} مقابل {newPrice} فقط في السنة";
+"offer.button"                      = "متابعة";
+"offer.time.left"                   = "حتى نهاية العرض المتبقي🔥";
 
 // MARK: - My Presets
 

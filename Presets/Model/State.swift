@@ -11,11 +11,13 @@ struct State {
     
     public static var language: Language = .en
     public static var favouritePresets: [Int] = []
+    public static var secondsTillTheEndOfOffer = 10800
     
     public static var selectedPreset: Preset = .defaultPreset
     
     public static var subscriptionConfig: OrganicSubscriptionPage = .default
     public static var subscriptionPlansConfig: SubscriptionPlansPage = .default
+    public static var saleSubscriptionPage: SaleSubscriptionPage = .default
     
     // MARK: - Functions
     
@@ -31,6 +33,21 @@ struct State {
     
     public static func isFirstLaunch() -> Bool {
         return self.appLaunch == 1
+    }
+    
+    // MARK: - Sale Offer
+    
+    public static func startSaleOffer() {
+        if userDefaults.bool(forKey: UDKeys.isStartSaleOfferDateSet) {
+            return
+        }
+        
+        userDefaults.set(Date(), forKey: UDKeys.saleOfferStartDate)
+        userDefaults.set(true, forKey: UDKeys.isStartSaleOfferDateSet)
+    }
+    
+    public static func getStartSaleOfferDate() -> Date {
+        return userDefaults.object(forKey: UDKeys.saleOfferStartDate) as! Date
     }
     
 }

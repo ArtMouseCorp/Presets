@@ -5,6 +5,7 @@ import SwiftyJSON
 enum RCValueKey: String {
     case organicSubscriptionPage = "org_sub_page"
     case subscriptionPlansPage = "sub_plans_page"
+    case saleSubscriptionsPage = "sale_sub_page"
     
     internal enum OrganicSubscriptionPage: String {
         case titleLabel
@@ -33,6 +34,24 @@ enum RCValueKey: String {
         case secondSubscriptionId
         case thirdSubscriptionId
     }
+    
+    internal enum SaleSubscriptionPage: String {
+        case smallSaleOfferView
+        case titleLabel
+        case saleLabel
+        case limitedWarningLabel
+        case priceLabel
+        case subscriptionButtonLabel
+        case timeLeftLabel
+        case saleDurationSeconds
+        case subscriptionId
+        
+        internal enum SmallSaleOfferView: String {
+            case titleLabel
+            case descriptionLabel
+            case buttonLabel
+        }
+    }
 }
 
 class RCValues {
@@ -47,7 +66,8 @@ class RCValues {
     func loadDefaultValues() {
         let appDefaults: [String: Any?] = [
             RCValueKey.organicSubscriptionPage.rawValue: OrganicSubscriptionPage.default,
-            RCValueKey.subscriptionPlansPage.rawValue: SubscriptionPlansPage.default
+            RCValueKey.subscriptionPlansPage.rawValue: SubscriptionPlansPage.default,
+            RCValueKey.saleSubscriptionsPage.rawValue: SaleSubscriptionPage.default
         ]
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
     }
@@ -169,6 +189,59 @@ class RCValues {
         )
         
         return subPlansPage
+        
+    }
+    
+    func saleSubscriptionPage() -> SaleSubscriptionPage {
+        
+        guard let lang = Bundle.main.preferredLocalizations.first else {
+            return SaleSubscriptionPage.default
+        }
+        
+        print("Language: \(lang)")
+        
+        let key = RCValueKey.saleSubscriptionsPage.rawValue
+        
+        let jsonValue = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
+        
+        guard let value = jsonValue else {
+            return SaleSubscriptionPage.default
+        }
+        
+        let json = JSON(value)
+        
+        let smallSafeOfferViewJsonObject = json[RCValueKey.SaleSubscriptionPage.smallSaleOfferView.rawValue].object
+        
+        let smallSafeOfferViewJson = JSON(smallSafeOfferViewJsonObject)
+        
+        let smallSafeOfferView = SaleSubscriptionPage.SmallSaleOfferView(
+            titleLabel: smallSafeOfferViewJson[RCValueKey.SaleSubscriptionPage.SmallSaleOfferView.titleLabel.rawValue].stringValue,
+            descriptionLabel: smallSafeOfferViewJson[RCValueKey.SaleSubscriptionPage.SmallSaleOfferView.descriptionLabel.rawValue].stringValue,
+            buttonLabel: smallSafeOfferViewJson[RCValueKey.SaleSubscriptionPage.SmallSaleOfferView.buttonLabel.rawValue].stringValue
+        )
+        
+        let titleLabel: String              = json[RCValueKey.SaleSubscriptionPage.titleLabel.rawValue].stringValue
+        let saleLabel: String               = json[RCValueKey.SaleSubscriptionPage.saleLabel.rawValue].stringValue
+        let limitedWarningLabel: String     = json[RCValueKey.SaleSubscriptionPage.limitedWarningLabel.rawValue].stringValue
+        let priceLabel: String              = json[RCValueKey.SaleSubscriptionPage.priceLabel.rawValue].stringValue
+        let subscriptionButtonLabel: String = json[RCValueKey.SaleSubscriptionPage.subscriptionButtonLabel.rawValue].stringValue
+        let timeLeftLabel: String           = json[RCValueKey.SaleSubscriptionPage.timeLeftLabel.rawValue].stringValue
+        let saleDurationSeconds: Int        = json[RCValueKey.SaleSubscriptionPage.saleDurationSeconds.rawValue].intValue
+        let subscriptionId: String          = json[RCValueKey.SaleSubscriptionPage.subscriptionId.rawValue].stringValue
+        
+        let saleSubPage = SaleSubscriptionPage(
+            smallSaleOfferView: smallSafeOfferView,
+            titleLabel: titleLabel,
+            saleLabel: saleLabel,
+            limitedWarningLabel: limitedWarningLabel,
+            priceLabel: priceLabel,
+            subscriptionButtonLabel: subscriptionButtonLabel,
+            timeLeftLabel: timeLeftLabel,
+            saleDurationSeconds: saleDurationSeconds,
+            subscriptionId: subscriptionId
+        )
+        
+        return saleSubPage
         
     }
     

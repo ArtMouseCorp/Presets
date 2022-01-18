@@ -51,6 +51,18 @@
 "main.allPresets"                   = "全て";
 "main.freePresets"                  = "無料";
 "main.premiumPresets"               = "プレミアム";
+"main.offer.title"                  = "セール：-50%%";
+"main.offer.description"            = "すべてのプリセット、ハイライト、エフェクト";
+"main.offer.button"                 = "得る";
+
+// MARK: - Sale Offer
+
+"offer.title"                       = "1125のLightroom\nプリセットを入手";
+"offer.sale.percent"                = "セール50%%";
+"offer.warning.limit"               = "限定キャンペーン";
+"offer.price"                       = "すべてのプリセットを {oldPrice} のみ {newPrice} 年間r";
+"offer.button"                      = "継続";
+"offer.time.left"                   = "🔥 残りキャンペーン終了まで";
 
 //マーク：-マイプリセット
 

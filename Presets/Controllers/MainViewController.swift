@@ -4,21 +4,40 @@ class MainViewController: BaseViewController {
     
     // MARK: - @IBOutlets
     
+    // Views
+    @IBOutlet weak var saleOfferView: UIView!
+    
     // Collection Views
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var presetsCollectionView: UICollectionView!
     
     // Labels
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var offerTitleLabel: UILabel!
+    @IBOutlet weak var offerDescriptionLabel: UILabel!
+    @IBOutlet weak var offerTimeLeftLabel: UILabel!
     
     // Buttons
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var userPresetsButton: UIButton!
+    @IBOutlet weak var getOfferButton: UIButton!
+    
+    // Constraints
+    @IBOutlet weak var offerLabelHeightConstraint: NSLayoutConstraint!
     
     // MARK: - Variables
     
     var categories: [String] = []
     var selectedCategoryIndex: Int = 0
+    var timer = Timer()
+    
+    let SALE_DURATION: Int = State.saleSubscriptionPage.saleDurationSeconds
+    
+    var saleOfferStartDate: Date = Date()
+    var saleOfferEndDate: Date = Date()
+    var saleOfferSecondsLeft: Int = 0
+    
+    var offerTimeLeftLabelText: String = "0:00:00"
     
     var isViewDidLayoutSubviews: Bool = false
     
@@ -30,11 +49,13 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         StoreManager.updateStatus()
         localize()
         configureCategories()
         callPaywall()
+        State.startSaleOffer()
+        calculateSaleOfferEndDate()
     }
     
     override func viewDidLayoutSubviews() {
@@ -48,13 +69,37 @@ class MainViewController: BaseViewController {
         configureUI()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
+    }
+    
     // MARK: - Custom functions
     
     private func localize() {
         self.titleLabel.localize(with: L10n.Main.title)
+        
+        self.offerTitleLabel.localize(with: State.saleSubscriptionPage.smallSaleOfferView.titleLabel)
+        self.offerDescriptionLabel.localize(with: State.saleSubscriptionPage.smallSaleOfferView.descriptionLabel)
+        self.getOfferButton.localize(with: State.saleSubscriptionPage.smallSaleOfferView.buttonLabel)
+        
+//        self.offerTitleLabel.localize(with: L10n.Main.Offer.title)
+//        self.offerDescriptionLabel.localize(with: L10n.Main.Offer.description)
+//        self.getOfferButton.localize(with: L10n.Main.Offer.button)
     }
     
     private func configureUI() {
+        offerDescriptionLabel.setLineHeight(lineHeight: 3)
+        offerDescriptionLabel.sizeToFit()
+        offerLabelHeightConstraint.constant = offerDescriptionLabel.frame.height
+        
+        saleOfferView.isHidden = false
+        getOfferButton.layer.cornerRadius = 8
+        saleOfferView.layer.cornerRadius = 8
+        saleOfferView.clipsToBounds = true
+        saleOfferView.applyGradient(colors: [
+            CGColor(red: 68/255, green: 143/255, blue: 1, alpha: 1),
+            CGColor(red: 22/255, green: 36/255, blue: 114/255, alpha: 1)
+        ], startPoint: CGPoint(x: 0.3, y: -0.5), endPoint: CGPoint(x: 1, y: 0.15), bounds: saleOfferView.bounds.insetBy(dx: 0, dy: -1 * saleOfferView.bounds.size.height))
     }
     
     private func configurePresetsCollectionView() {
@@ -102,12 +147,61 @@ class MainViewController: BaseViewController {
         self.categories.append(contentsOf: Preset.all.map {return $0.name} )
     }
     
+    private func calculateSaleOfferEndDate() {
+        saleOfferStartDate = State.getStartSaleOfferDate()
+        saleOfferEndDate = saleOfferStartDate.addingTimeInterval(TimeInterval(SALE_DURATION))
+        saleOfferSecondsLeft = Int(saleOfferEndDate.timeIntervalSince(Date()))
+        
+        if saleOfferSecondsLeft <= 0 {
+            saleOfferView.isHidden = true
+            return
+        }
+        
+        timerStart()
+    }
+    
     private func callPaywall() {
         guard !State.isSubscribed else { return }
         self.showPaywall()
     }
     
+    private func timerStart() {
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.setLabelText), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func setLabelText() {
+        DispatchQueue.main.async {
+
+            self.saleOfferSecondsLeft = Int(self.saleOfferEndDate.timeIntervalSince(Date()))
+
+            guard self.saleOfferSecondsLeft > 0 else {
+                self.timer.invalidate()
+                self.saleOfferView.isHidden = true
+                return
+            }
+
+            let hours = Int(self.saleOfferSecondsLeft / 3600)
+            let minutes = Int((self.saleOfferSecondsLeft - hours * 3600) / 60)
+            let seconds = Int((self.saleOfferSecondsLeft - hours * 3600) % 60)
+
+            self.offerTimeLeftLabelText = "\(hours):\(minutes < 10 ? "0" : "")\(minutes):\(seconds < 10 ? "0" : "")\(seconds)"
+            self.offerTimeLeftLabel.text = "🔥\(self.offerTimeLeftLabelText)"
+        }
+    }
+    
     // MARK: - @IBActions
+    
+    @IBAction func getSaleOfferButtonPressed(_ sender: Any) {
+        let offerVC = SaleOfferViewController.load(from: .saleOffer)
+        offerVC.modalPresentationStyle = .fullScreen
+        offerVC.timeLabelText = self.offerTimeLeftLabelText
+        
+        offerVC.onClose = { timeText in
+            self.offerTimeLeftLabel.text = "🔥\(timeText)"
+        }
+        
+        self.present(offerVC, animated: true, completion: nil)
+    }
     
     @IBAction func settingsButtonPressed(_ sender: Any) {
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
@@ -186,25 +280,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        self.presetsCollectionView.reloadItems(at: [indexPath])
+        //        self.presetsCollectionView.reloadItems(at: [indexPath])
     }
-
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-
+        
         guard let collectionView = scrollView as? UICollectionView else { return }
         guard collectionView == presetsCollectionView else { return }
-
+        
         let xPoint = scrollView.contentOffset.x + scrollView.frame.width / 2
         let yPoint = scrollView.frame.height / 2
         let center = CGPoint(x: xPoint, y: yPoint)
-
+        
         guard let indexPath = presetsCollectionView.indexPathForItem(at: center) else { return }
-
+        
         self.selectedCategoryIndex = indexPath.row
         self.categoriesCollectionView.reloadData()
         self.categoriesCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-//        self.presetsCollectionView.reloadItems(at: [indexPath])
-
+        //        self.presetsCollectionView.reloadItems(at: [indexPath])
+        
     }
     
 }

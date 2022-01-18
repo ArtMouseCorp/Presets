@@ -51,6 +51,18 @@
 "main.allPresets"                   = "Tutto";
 "main.freePresets"                  = "Gratuito";
 "main.premiumPresets"               = "PREMIUM";
+"main.offer.title"                  = "Saldi: -50%%";
+"main.offer.description"            = "Tutti i preset, luci ed effetti";
+"main.offer.button"                 = "OTTENERE";
+
+// MARK: - Sale Offer
+
+"offer.title"                       = "Ottieni 1125\nLightroom Presets";
+"offer.sale.percent"                = "VENDITA 50%%";
+"offer.warning.limit"               = "Offerta limitata";
+"offer.price"                       = "Ottieni tutti i preset per {oldPrice} a solo {newPrice} all'anno";
+"offer.button"                      = "Continua";
+"offer.time.left"                   = "🔥 Fino alla fine dell'offerta rimasta";
 
 // MARK: - I miei preset
 
