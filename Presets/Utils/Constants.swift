@@ -6,6 +6,8 @@ enum UDKeys {
     static let appLaunchCount: String           = "appLaunchCount"
     static let isInstallEventSent: String       = "isInstallEventSent"
     static let favouritePresets: String         = "favouritePresets"
+    static let saleOfferStartDate: String       = "saleOfferStartDate"
+    static let isStartSaleOfferDateSet: String  = "isStartSaleOfferDateSet"
 }
 
 enum AmplitudeEvents {

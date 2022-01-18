@@ -18,6 +18,7 @@ public enum Screen {
     case settingsPopup
     case mainNav
     case settingsNav
+    case saleOffer
 }
 
 extension Screen {
@@ -50,6 +51,8 @@ extension Screen {
             return ("MainNavigationController", .Main)
         case .settingsNav:
             return ("SettingsNavigationController", .Main)
+        case .saleOffer:
+                     return ("SaleOfferViewController", .Main)
         }
     }
     

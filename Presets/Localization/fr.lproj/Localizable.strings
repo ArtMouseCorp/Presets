@@ -51,6 +51,18 @@
 "main.allPresets"                   = "Tous";
 "main.freePresets"                  = "Gratuits";
 "main.premiumPresets"               = "PREMIUM";
+"main.offer.title"                  = "Vente : -50%%";
+"main.offer.description"            = "Tous les préréglages, les mises en évidence et les effets";
+"main.offer.button"                 = "OBTENIR";
+
+// MARK: - Offre de vente
+
+"offer.title"                       = "Obtenez 1125\nPresets Lightroom";
+"offer.sale.percent"                = "SALE 50%%";
+"offer.warning.limit"               = "Offre limitée";
+"offer.price"                       = "Obtenez tous les presets de {oldPrice} pour seulement {newPrice} par an";
+"offer.button"                      = "Continuer";
+"offer.time.left"                   = "🔥 Jusqu'à la fin de l'offre restante";
 
 // MARK: - My Presets
 

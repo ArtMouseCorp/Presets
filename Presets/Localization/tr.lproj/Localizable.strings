@@ -51,6 +51,18 @@
 "main.allPresets"                   = "Tümü";
 "main.freePresets"                  = "Ücretsiz";
 "main.premiumPresets"               = "PREMIUM";
+"main.offer.title"                  = "Satış: -50%%";
+"main.offer.description"            = "Tüm ön ayarlar, vurgular ve efektler";
+"main.offer.button"                 = "ALMAK";
+
+// MARK: - Sale Offer
+
+"offer.title"                       = "1125 Lightroom\nÖn Ayarlarını Alın";
+"offer.sale.percent"                = "İNDİRİM 50%%";
+"offer.warning.limit"               = "Sınırlı teklif";
+"offer.price"                       = "{oldPrice} için tüm ön ayarları yılda yalnızca {newPrice} karşılığında alın";
+"offer.button"                      = "Devam et";
+"offer.time.left"                   = "🔥 Teklifin sonuna kadar kaldı";
 
 // MARK: - Ön Ayarlarım
 
