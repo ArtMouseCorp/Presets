@@ -66,6 +66,14 @@ internal enum L10n {
     internal static let premiumPresets = L10n.tr("Localizable", "main.premiumPresets")
     /// Lightroom presets
     internal static let title = L10n.tr("Localizable", "main.title")
+    internal enum Offer {
+      /// GET
+      internal static let button = L10n.tr("Localizable", "main.offer.button")
+      /// All presets, highlights and effects
+      internal static let description = L10n.tr("Localizable", "main.offer.description")
+      /// Sale: -50%%
+      internal static let title = L10n.tr("Localizable", "main.offer.title")
+    }
   }
 
   internal enum Manual {
@@ -107,6 +115,28 @@ internal enum L10n {
     internal enum Button {
       /// Select a preset
       internal static let select = L10n.tr("Localizable", "myPresets.button.select")
+    }
+  }
+
+  internal enum Offer {
+    /// Continue
+    internal static let button = L10n.tr("Localizable", "offer.button")
+    /// Get all presets for {oldPrice} for only {newPrice} per year
+    internal static let price = L10n.tr("Localizable", "offer.price")
+    /// Get 1125
+    /// Lightroom Presets
+    internal static let title = L10n.tr("Localizable", "offer.title")
+    internal enum Sale {
+      /// SALE 50%%
+      internal static let percent = L10n.tr("Localizable", "offer.sale.percent")
+    }
+    internal enum Time {
+      /// 🔥 Until the end of the offer left
+      internal static let `left` = L10n.tr("Localizable", "offer.time.left")
+    }
+    internal enum Warning {
+      /// Limited offer
+      internal static let limit = L10n.tr("Localizable", "offer.warning.limit")
     }
   }
 

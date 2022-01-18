@@ -51,6 +51,18 @@
 "main.allPresets"                   = "Tất cả";
 "main.freePresets"                  = "Miễn phí";
 "main.premiumPresets"               = "CAO CẤP";
+"main.offer.title"                  = "Giảm giá: -50%%";
+"main.offer.description"            = "Tất cả các cài đặt trước, điểm nổi bật và hiệu ứng";
+"main.offer.button"                 = "ĐẾN";
+
+// MARK: - Sale Offer
+
+"offer.title"                       = "Nhận 1125\ncài đặt trước của Lightroom";
+"offer.sale.percent"                = "GIẢM GIÁ 50%%";
+"offer.warning.limit"               = "Ưu đãi có hạn";
+"offer.price"                       = "Nhận tất cả các giá trị đặt trước cho {oldPrice} chỉ với {newPrice} mỗi năm";
+"offer.button"                      = "Tiếp tục";
+"offer.time.left"                   = "🔥 Cho đến khi hết ưu đãi còn lại";
 
 // ĐÁNH DẤU: - Cài đặt sẵn của tôi
 

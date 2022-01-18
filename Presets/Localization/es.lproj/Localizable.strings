@@ -30,27 +30,39 @@
 "subscription.failed.button.trial" = "Prueba 3 días de acceso";
 "subscription.failed.cancelInfo" = "Cancela o pausa en cualquier momento";
 
-"subscription.interval.day.one" = "día"; // 1 día - 1 día
-"subscription.interval.day.two" = "días"; // 2 días - 2 дня
-"subscription.interval.day.five" = "días"; // 5 días - 5 дней
-"subscription.interval.week.one" = "semana"; // 1 semana - 1 неделя
-"subscription.interval.week.two" = "semanas"; // 2 semanas - 2 недели
-"subscription.interval.week.five" = "semanas"; // 5 semanas - 5 недель
-"subscription.interval.month.one" = "mes"; // 1 mes - 1 mes
-"subscription.interval.month.two" = "meses"; // 2 meses - 2 meses
-"subscription.interval.month.five" = "meses"; // 5 meses - 5 месяцев
-"subscription.interval.year.one" = "año"; // 1 año - 1 год
-"subscription.interval.year.two" = "años"; // 2 años - 2 года
-"subscription.interval.year.five" = "años"; // 3 años - 5 лет
+"subscription.interval.day.one"     = "día"; // 1 día - 1 día
+"subscription.interval.day.two"     = "días"; // 2 días - 2 дня
+"subscription.interval.day.five"    = "días"; // 5 días - 5 дней
+"subscription.interval.week.one"    = "semana"; // 1 semana - 1 неделя
+"subscription.interval.week.two"    = "semanas"; // 2 semanas - 2 недели
+"subscription.interval.week.five"   = "semanas"; // 5 semanas - 5 недель
+"subscription.interval.month.one"   = "mes"; // 1 mes - 1 mes
+"subscription.interval.month.two"   = "meses"; // 2 meses - 2 meses
+"subscription.interval.month.five"  = "meses"; // 5 meses - 5 месяцев
+"subscription.interval.year.one"    = "año"; // 1 año - 1 год
+"subscription.interval.year.two"    = "años"; // 2 años - 2 года
+"subscription.interval.year.five"   = "años"; // 3 años - 5 лет
 
 "subscription.total"                = "Total";
 
 // MARCA: - Pantalla principal
 
-"main.title" = "Ajustes preestablecidos de Lightroom";
-"main.allPresets" = "Todos";
-"main.freePresets" = "Gratis";
-"main.premiumPresets" = "PREMIUM";
+"main.title"                        = "Ajustes preestablecidos de Lightroom";
+"main.allPresets"                   = "Todos";
+"main.freePresets"                  = "Gratis";
+"main.premiumPresets"               = "PREMIUM";
+"main.offer.title"                  = "Venta: -50%%";
+"main.offer.description"            = "Todos los preajustes, luces y efectos";
+"main.offer.button"                 = "IR A";
+
+// MARK: - Sale Offer
+
+"offer.title"                       = "Obter 1125 \n Predefinições da sala de luz";
+"offer.sale.percent"                = "VENDA 50%%";
+"offer.warning.limit"               = "Oferta limitada";
+"offer.price"                       = "Obtenha todas as predefinições para {oldPrice} por apenas {newPrice} por ano";
+"offer.button"                      = "Continuar";
+"offer.time.left"                   = "🔥 Até ao fim da oferta restante";
 
 // MARCA: - Mis preajustes
 

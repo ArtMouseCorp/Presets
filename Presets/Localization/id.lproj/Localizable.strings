@@ -57,6 +57,18 @@
 "myPresets.title"                   = "Preset Saya";
 "myPresets.placeholder"             = "Ini akan menjadi preset yang disimpan";
 "myPresets.button.select"           = "Pilih preset";
+"main.offer.title"                  = "Penjualan: -50%%";
+"main.offer.description"            = "Semua preset, sorotan, dan efek";
+"main.offer.button"                 = "DAPATKAN";
+
+// MARK: - Sale Offer
+
+"offer.title"                       = "Dapatkan 1125\nPreset Lightroom";
+"offer.sale.percent"                = "DIJUAL 50%%";
+"offer.warning.limit"               = "Penawaran terbatas";
+"offer.price"                       = "Dapatkan semua prasetel untuk {oldPrice} hanya dengan {newPrice} per tahun";
+"offer.button"                      = "Lanjutkan";
+"offer.time.left"                   = "🔥 Hingga akhir penawaran tersisa";
 
 // MARK: - Hapus Popup Preset
 
