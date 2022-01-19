@@ -96,6 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         State.subscriptionConfig = RCValues.sharedInstance.organicSubscriptionPage()
         State.subscriptionPlansConfig = RCValues.sharedInstance.subscriptionPlansPage()
         State.saleSubscriptionPage = RCValues.sharedInstance.saleSubscriptionPage()
+        State.currentPaywall = RCValues.sharedInstance.currentPaywall()
     }
     
     private func connectRevenueCat() {

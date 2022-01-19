@@ -162,6 +162,8 @@
 		2868AF2326CFE6C3007FA1A5 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		2868AF2526CFE6CF007FA1A5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		287D9A1826FB73E2009CC19F /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		28815D6B2798A21600483CC8 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		28815D6C2798A21600483CC8 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		28837EDB27968FB5009D144B /* SaleOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleOfferViewController.swift; sourceTree = "<group>"; };
 		28837EDD2796AADD009D144B /* SaleSubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleSubscriptionPage.swift; sourceTree = "<group>"; };
 		28837EDF2796BF47009D144B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 				tr,
 				vi,
 				pt,
+				zh,
 			);
 			mainGroup = 4A553F3E26C41F96001150D2;
 			packageReferences = (
@@ -1186,6 +1189,7 @@
 				28F1334726CA8FB600DB7142 /* tr */,
 				28F1334826CA8FB700DB7142 /* vi */,
 				28837EE22796CDA2009D144B /* pt */,
+				28815D6C2798A21600483CC8 /* zh */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1206,6 +1210,7 @@
 				28F1336526CA90B300DB7142 /* tr */,
 				28F1336626CA90B400DB7142 /* vi */,
 				28837EE12796CDA2009D144B /* pt */,
+				28815D6B2798A21600483CC8 /* zh */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

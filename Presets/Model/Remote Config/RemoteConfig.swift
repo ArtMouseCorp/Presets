@@ -6,6 +6,7 @@ enum RCValueKey: String {
     case organicSubscriptionPage = "org_sub_page"
     case subscriptionPlansPage = "sub_plans_page"
     case saleSubscriptionsPage = "sale_sub_page"
+    case currentPaywall
     
     internal enum OrganicSubscriptionPage: String {
         case titleLabel
@@ -67,7 +68,9 @@ class RCValues {
         let appDefaults: [String: Any?] = [
             RCValueKey.organicSubscriptionPage.rawValue: OrganicSubscriptionPage.default,
             RCValueKey.subscriptionPlansPage.rawValue: SubscriptionPlansPage.default,
-            RCValueKey.saleSubscriptionsPage.rawValue: SaleSubscriptionPage.default
+            RCValueKey.saleSubscriptionsPage.rawValue: SaleSubscriptionPage.default,
+            RCValueKey.currentPaywall.rawValue: 1
+            
         ]
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
     }
@@ -242,6 +245,22 @@ class RCValues {
         )
         
         return saleSubPage
+        
+    }
+    
+    func currentPaywall() -> BaseViewController {
+        
+        let key = RCValueKey.currentPaywall.rawValue
+        let currentPaywallNumber = RemoteConfig.remoteConfig()[key].numberValue.intValue
+        
+        switch currentPaywallNumber {
+        
+        case 1: return .load(from: .subscriptionFirst)
+        case 2: return .load(from: .subscriptionSecond)
+        case 3: return .load(from: .subscriptionThird)
+        default: return .load(from: .subscriptionFirst)
+            
+        }
         
     }
     

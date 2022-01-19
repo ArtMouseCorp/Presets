@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z0J-VF-33r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z0J-VF-33r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1556,7 +1556,7 @@ $29.99</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8Y-Hm-ggO">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub3image1" translatesAutoresizingMaskIntoConstraints="NO" id="t6i-Zj-V2O">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub3image1" translatesAutoresizingMaskIntoConstraints="NO" id="t6i-Zj-V2O">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nn-pm-OZa">
@@ -1586,7 +1586,7 @@ $29.99</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MZj-iD-Dv9">
                                                         <rect key="frame" x="0.0" y="404" width="374" height="374"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub3image2" translatesAutoresizingMaskIntoConstraints="NO" id="n7p-hS-HOX">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub3image2" translatesAutoresizingMaskIntoConstraints="NO" id="n7p-hS-HOX">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGE-C8-Lyo">
@@ -1616,7 +1616,7 @@ advertising</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6I-vl-dyP">
                                                         <rect key="frame" x="0.0" y="808" width="374" height="374"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub3image3" translatesAutoresizingMaskIntoConstraints="NO" id="xwK-lR-QbM">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub3image3" translatesAutoresizingMaskIntoConstraints="NO" id="xwK-lR-QbM">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrd-zS-ebk">
@@ -1695,10 +1695,7 @@ every month</string>
                                 <rect key="frame" x="0.0" y="1820" width="414" height="180"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50N-pf-USd" customClass="BlueGradientButton" customModule="Presets" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="-10" width="374" height="58"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="58" id="CGk-fg-DYS"/>
-                                        </constraints>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="48"/>
                                         <state key="normal" title="Start and Subscribe"/>
                                         <connections>
                                             <action selector="nextButtonPressed:" destination="1Nf-vd-XX0" eventType="touchUpInside" id="Dez-uU-dlY"/>
@@ -1762,6 +1759,7 @@ every month</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottomMargin" secondItem="Pjn-x6-6gG" secondAttribute="bottom" constant="16" id="1Re-Ce-kRf"/>
+                                    <constraint firstItem="50N-pf-USd" firstAttribute="top" secondItem="kC6-sW-Pjn" secondAttribute="top" id="8b5-hQ-22Q"/>
                                     <constraint firstItem="Pjn-x6-6gG" firstAttribute="centerX" secondItem="kC6-sW-Pjn" secondAttribute="centerX" id="QJC-LP-Nuv"/>
                                     <constraint firstItem="Pjn-x6-6gG" firstAttribute="top" secondItem="50N-pf-USd" secondAttribute="bottom" constant="44" id="aLf-H7-z12"/>
                                     <constraint firstItem="50N-pf-USd" firstAttribute="leading" secondItem="kC6-sW-Pjn" secondAttribute="leading" constant="20" id="cdf-p1-fz4"/>
@@ -3047,7 +3045,7 @@ will be forfeited when the user purchases a subscription to that publication</st
                                 </connections>
                             </button>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="S7s-H1-AQ2">
-                                <rect key="frame" x="146.5" y="809" width="121.5" height="27.5"/>
+                                <rect key="frame" x="149.5" y="809" width="115.5" height="27.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27.5" id="w3P-5n-xXc"/>
                                 </constraints>
@@ -3150,7 +3148,7 @@ will be forfeited when the user purchases a subscription to that publication</st
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmas-offer" width="539" height="557"/>
         <namedColor name="Background">
-            <color red="0.031372549019607843" green="0.047058823529411764" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.030999999493360519" green="0.046999998390674591" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Popup Background">
             <color red="0.019607843137254902" green="0.035294117647058823" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

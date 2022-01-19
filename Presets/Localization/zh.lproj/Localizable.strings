@@ -1,0 +1,145 @@
+
+// English Localization
+
+// MARK: - Onboarding
+
+"onboarding.title.first"            = "在几分钟内拍出令人惊叹的照片";
+"onboarding.subtitle.first"         = "将预设值导入Lightroom";
+
+"onboarding.title.second"           = "选择一种风格并应用它";
+"onboarding.subtitle.second"        = "为你的作品设计风格";
+
+"onboarding.title.third"            = "享受100多种Lightroom预设";
+"onboarding.subtitle.third"         = "对初学者友好";
+
+// MARK: - Subscriptions
+
+"subscription.title"                = "成为专家!";
+"subscription.subtitle"             = "超过100种优质预设";
+
+"subscription.button.next"          = "下一步";
+"subscription.button.restore"       = "恢复";
+"subscription.button.privacy"       = "隐私保护";
+"subscription.button.terms"         = "条款";
+
+"subscription.failed.title"         = "哎呀!";
+"subscription.failed.subtitle"      = "购买失败 :(";
+"subscription.failed.title2"        = "查看广告以";
+"subscription.failed.limitedVersion"= "购买运行有限的版本";
+"subscription.failed.trial.title"   = "...或通过3天的免费试用来尝试完全访问";
+"subscription.failed.button.trial"  = "尝试3天的访问";
+"subscription.failed.cancelInfo"    = "在任何时候取消或暂停";
+
+"subscription.interval.day.one"     = "天"; // Один день
+"subscription.interval.day.two"     = "天"; // Два дня
+"subscription.interval.day.five"    = "天"; // Два дней
+"subscription.interval.week.one"    = "周"; // Одна неделя
+"subscription.interval.week.two"    = "周"; // Две 2 недели
+"subscription.interval.week.five"   = "周"; // Пять недель
+"subscription.interval.month.one"   = "月"; // Один месяц
+"subscription.interval.month.two"   = "月"; // Два месяца
+"subscription.interval.month.five"  = "月"; // Пять месяцев
+"subscription.interval.year.one"    = "年"; // Один год
+"subscription.interval.year.two"    = "年"; // Два года
+"subscription.interval.year.five"   = "岁"; // Пять лет
+
+"subscription.total"                = "总数";
+
+// MARK: - Main Screen
+
+"main.title"                        = "光驱预设";
+"main.allPresets"                   = "全部";
+"main.freePresets"                  = "免费的";
+"main.premiumPresets"               = "高级版";
+"main.offer.title"                  = "销售。-50%%";
+"main.offer.description"            = "所有预设、亮点和效果";
+"main.offer.button"                 = "获取";
+
+ // MARK: - Sale Offer
+
+"offer.title"                       = "获取1125/nLightroom预设";
+"offer.sale.percent"                = "销售50%％的";
+"offer.warning.limit"               = "限量优惠";
+"offer.price"                       = "每年只需{新价格}就能获得所有{旧价格}的预设。";
+"offer.button"                      = "继续";
+"offer.time.left"                   = "🔥 直到优惠结束离开";
+
+// MARK: - My Presets
+
+"myPresets.title"                   = "我的预设";
+"myPresets.placeholder"             = "这里将是已保存的预设";
+"myPresets.button.select"           = "选择一个预设";
+
+// MARK: - Delete Preset Popup
+
+"delete.title"                      = "删除预设？";
+"delete.button.confirm"             = "是的，删除";
+"delete.button.cancel"              = "不，取消";
+
+// MARK: - Preset Screen
+
+"preset.count.one"                  = "preset"; // Один пресет
+"preset.count.two"                  = "预设"; // Два пресета
+"preset.count.five"                 = "预设"; // Два пресетов
+
+"preset.tapHint"                    = "点击打开预设";
+"preset.button.addToMyPresets"      = "添加到我的预设中";
+"preset.addedPreset"                = "添加!";
+"preset.button.subscription"        = "获得100多个预设的权限";
+"preset.button.manual"              = "如何使用？";
+
+// MARK: - Open Preset Popup
+
+"openPreset.title"                  = "你知道如何使用预设吗？";
+"openPreset.button.open"            = "是的，打开一个预设";
+"openPreset.button.openManual"      = "不，打开手册";
+
+// MARK: - Settings
+
+"settings.title"                    = "设置";
+"settings.button.manual"            = "如何使用？";
+"settings.button.serviceTerms"      = "服务条款";
+"settings.button.policy"            = "隐私政策";
+"settings.button.contact"           = "联系我们";
+"settings.button.subscriptionPlans" = "订阅计划";
+"settings.button.restorePurchase"   = "恢复您的购买行为";
+
+// MARK: - Terms of Service
+
+"serviceTerms.title"                = "服务条款";
+
+// MARK: - Privacy Policy
+
+"privacy.title"                     = "隐私政策";
+
+// MARK: - How To Use
+
+"manual.title"                      = "如何使用？";
+"manual.button.videoTutorial"       = "观看视频教程";
+"manual.step.first"                 = "1. 从App Store安装Adobe Lightroom";
+"manual.button.lightroom"           = "安装Adobe Lightroom";
+"manual.step.second"                = "2. 选择一个预设并点击 \"复制到Lightroom\"。";
+"manual.step.third"                 = "3. 预设将在Lightroom中打开，点击更多按钮并选择 \"复制设置\"。";
+"manual.step.fourth"                = "4. 按 \"Back\"按钮返回到前一个屏幕，然后按 \"Import\"按钮，选择一个照片。to from your library";
+"manual.step.fifth"                 = "5. 当照片被添加后，点击 \"More\"按钮，选择 \"Insert settings\"。";
+"manual.step.sixth"                 = "6. 很好！现在你可以保存照片或分享。现在你可以保存照片或与用户分享它。";
+"manual.hint.first"                 = "*预设是以DNG标记显示的";
+"manual.hint.second"                = "**随意尝试不同的预设和改变设置，使你的照片更完美";
+
+// MARK: - Alerts
+
+"alert.action.ok"                   = "好的";
+
+"alert.connection.title"            = "没有互联网连接";
+"alert.connection.message"          = "没有互联网连接。请连接到网络并再次尝试。";
+
+"alert.subscribed.title"            = "已订阅";
+"alert.subscribed.message"          = "你已经订阅了。您可以使用所有的功能。";
+
+"alert.restored.title"              = "已恢复";
+"alert.restored.message"            = "您已经成功恢复了您的订阅。您现在可以使用所有的功能。";
+
+"alert.notSubscriber.title"         = "不能恢复";
+"alert.notSubscriber.message"       = "对不起，你不能恢复你的购买，因为你没有一个有效的订阅。";
+
+"alert.loading.message"             = "请等待...";
