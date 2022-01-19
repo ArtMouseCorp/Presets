@@ -38,7 +38,7 @@ import Amplitude
      var timeLabelText: String = ""
      
      var product: StoreManager.Product?
-     
+
      var onClose: ((String) -> ())? = nil
 
      // MARK: - Awake functions

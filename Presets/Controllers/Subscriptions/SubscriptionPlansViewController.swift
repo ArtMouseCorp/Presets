@@ -139,6 +139,7 @@ class SubscriptionPlansViewController: BaseViewController {
         ], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 0, y: 1))
         
         // MARK: - Gradient for subscription border
+        
         firstOfferView.layer.cornerRadius = 11
         secondOfferView.layer.cornerRadius = 11
         thirdOfferView.layer.cornerRadius = 11
