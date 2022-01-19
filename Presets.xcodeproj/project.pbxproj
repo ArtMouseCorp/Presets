@@ -109,6 +109,9 @@
 		4A800E782732DD5E004C1DB9 /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A800E772732DD5E004C1DB9 /* SettingsNavigationController.swift */; };
 		4A93F3AB26C6847A0075D01D /* UserPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A93F3AA26C6847A0075D01D /* UserPresetsViewController.swift */; };
 		4AC3A86226C6E86200B1340A /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC3A86126C6E86200B1340A /* ManualViewController.swift */; };
+		4AE7C3C927986A7E00E0B5DE /* SubscriptionFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE7C3C827986A7E00E0B5DE /* SubscriptionFirstViewController.swift */; };
+		4AE7C3CB279870A200E0B5DE /* SubscriptionSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE7C3CA279870A200E0B5DE /* SubscriptionSecondViewController.swift */; };
+		4AE7C3CD2798851800E0B5DE /* SubscriptionThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE7C3CC2798851800E0B5DE /* SubscriptionThirdViewController.swift */; };
 		4AF7612F26DD11D30060D705 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF7612E26DD11D30060D705 /* UINavigationController.swift */; };
 		4AF7613126DD58CD0060D705 /* tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 4AF7613026DD58CD0060D705 /* tutorial.mov */; };
 		5A32A7601FA57682FB7F2F9C /* Pods_Presets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47D460AA706E2E6FE11C8DF /* Pods_Presets.framework */; };
@@ -159,6 +162,8 @@
 		2868AF2326CFE6C3007FA1A5 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		2868AF2526CFE6CF007FA1A5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		287D9A1826FB73E2009CC19F /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		28815D6B2798A21600483CC8 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		28815D6C2798A21600483CC8 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
 		28837EDB27968FB5009D144B /* SaleOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleOfferViewController.swift; sourceTree = "<group>"; };
 		28837EDD2796AADD009D144B /* SaleSubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleSubscriptionPage.swift; sourceTree = "<group>"; };
 		28837EDF2796BF47009D144B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -272,6 +277,9 @@
 		4A800E772732DD5E004C1DB9 /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
 		4A93F3AA26C6847A0075D01D /* UserPresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresetsViewController.swift; sourceTree = "<group>"; };
 		4AC3A86126C6E86200B1340A /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
+		4AE7C3C827986A7E00E0B5DE /* SubscriptionFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionFirstViewController.swift; sourceTree = "<group>"; };
+		4AE7C3CA279870A200E0B5DE /* SubscriptionSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSecondViewController.swift; sourceTree = "<group>"; };
+		4AE7C3CC2798851800E0B5DE /* SubscriptionThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionThirdViewController.swift; sourceTree = "<group>"; };
 		4AF7612E26DD11D30060D705 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		4AF7613026DD58CD0060D705 /* tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = tutorial.mov; sourceTree = "<group>"; };
 		AD399EBA781F3BEB6ED23199 /* Pods-Presets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Presets.release.xcconfig"; path = "Target Support Files/Pods-Presets/Pods-Presets.release.xcconfig"; sourceTree = "<group>"; };
@@ -683,6 +691,9 @@
 				28837EDB27968FB5009D144B /* SaleOfferViewController.swift */,
 				4A02E90726C542FA00E3FCF0 /* SubscriptionViewController.swift */,
 				4A46A56826C5A9AD005EBD85 /* SubscriptionPlansViewController.swift */,
+				4AE7C3C827986A7E00E0B5DE /* SubscriptionFirstViewController.swift */,
+				4AE7C3CA279870A200E0B5DE /* SubscriptionSecondViewController.swift */,
+				4AE7C3CC2798851800E0B5DE /* SubscriptionThirdViewController.swift */,
 			);
 			path = Subscriptions;
 			sourceTree = "<group>";
@@ -935,6 +946,7 @@
 				tr,
 				vi,
 				pt,
+				zh,
 			);
 			mainGroup = 4A553F3E26C41F96001150D2;
 			packageReferences = (
@@ -1107,6 +1119,7 @@
 				4A02E90826C542FA00E3FCF0 /* SubscriptionViewController.swift in Sources */,
 				2868AF2026CFD456007FA1A5 /* Preset.swift in Sources */,
 				28837EE02796BF47009D144B /* String.swift in Sources */,
+				4AE7C3CB279870A200E0B5DE /* SubscriptionSecondViewController.swift in Sources */,
 				28DEEB422736652A00006A75 /* StorageManager.swift in Sources */,
 				4AC3A86226C6E86200B1340A /* ManualViewController.swift in Sources */,
 				28AB3A9926C4EC2800201D37 /* RedGradientButton.swift in Sources */,
@@ -1135,8 +1148,10 @@
 				4A46A57126C5DEFE005EBD85 /* CategoryCollectionViewCell.swift in Sources */,
 				28DEEB4927372F9700006A75 /* PresetsCollectionViewCell.swift in Sources */,
 				2823316F26C6C4F0002EB4C2 /* PresetViewController.swift in Sources */,
+				4AE7C3CD2798851800E0B5DE /* SubscriptionThirdViewController.swift in Sources */,
 				28F1331126CA7BE000DB7142 /* UIViewController.swift in Sources */,
 				4A46A57926C6757D005EBD85 /* PresetTableViewCell.swift in Sources */,
+				4AE7C3C927986A7E00E0B5DE /* SubscriptionFirstViewController.swift in Sources */,
 				2868AF2426CFE6C3007FA1A5 /* State.swift in Sources */,
 				4A800E782732DD5E004C1DB9 /* SettingsNavigationController.swift in Sources */,
 				4A553F4D26C41F97001150D2 /* SceneDelegate.swift in Sources */,
@@ -1174,6 +1189,7 @@
 				28F1334726CA8FB600DB7142 /* tr */,
 				28F1334826CA8FB700DB7142 /* vi */,
 				28837EE22796CDA2009D144B /* pt */,
+				28815D6C2798A21600483CC8 /* zh */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1194,6 +1210,7 @@
 				28F1336526CA90B300DB7142 /* tr */,
 				28F1336626CA90B400DB7142 /* vi */,
 				28837EE12796CDA2009D144B /* pt */,
+				28815D6B2798A21600483CC8 /* zh */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

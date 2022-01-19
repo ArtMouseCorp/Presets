@@ -81,10 +81,6 @@ class MainViewController: BaseViewController {
         self.offerTitleLabel.localize(with: State.saleSubscriptionPage.smallSaleOfferView.titleLabel)
         self.offerDescriptionLabel.localize(with: State.saleSubscriptionPage.smallSaleOfferView.descriptionLabel)
         self.getOfferButton.localize(with: State.saleSubscriptionPage.smallSaleOfferView.buttonLabel)
-        
-//        self.offerTitleLabel.localize(with: L10n.Main.Offer.title)
-//        self.offerDescriptionLabel.localize(with: L10n.Main.Offer.description)
-//        self.getOfferButton.localize(with: L10n.Main.Offer.button)
     }
     
     private func configureUI() {

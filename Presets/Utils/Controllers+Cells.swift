@@ -19,6 +19,9 @@ public enum Screen {
     case mainNav
     case settingsNav
     case saleOffer
+    case subscriptionFirst
+    case subscriptionSecond
+    case subscriptionThird
 }
 
 extension Screen {
@@ -52,7 +55,13 @@ extension Screen {
         case .settingsNav:
             return ("SettingsNavigationController", .Main)
         case .saleOffer:
-                     return ("SaleOfferViewController", .Main)
+            return ("SaleOfferViewController", .Main)
+        case .subscriptionFirst:
+            return ("SubscriptionFirstViewController", .Main)
+        case .subscriptionSecond:
+            return ("SubscriptionSecondViewController", .Main)
+        case .subscriptionThird:
+            return ("SubscriptionThirdViewController", .Main)
         }
     }
     
