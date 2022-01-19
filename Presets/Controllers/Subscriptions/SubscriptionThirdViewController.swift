@@ -54,7 +54,7 @@ class SubscriptionThirdViewController: BaseViewController {
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         // Close
-        
+        self.view.removeFromSuperview()
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
