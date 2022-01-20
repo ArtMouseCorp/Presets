@@ -1166,7 +1166,7 @@
                                     <action selector="nextButtonPressed:" destination="IVg-zn-fbR" eventType="touchUpInside" id="yea-0c-DZx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-renew at 7,99$ weekly" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XV6-hF-vMg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto-renew at 7,99$ weekly" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XV6-hF-vMg">
                                 <rect key="frame" x="16" y="676" width="382" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="kcH-xR-BFj"/>
@@ -1176,24 +1176,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="tJZ-MB-bj0">
-                                <rect key="frame" x="110.5" y="632.5" width="193" height="24.5"/>
+                                <rect key="frame" x="112.5" y="626" width="189.5" height="31"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3gE-V4-vFg">
-                                        <rect key="frame" x="0.0" y="0.0" width="51" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="trialSwitchValueChanged:" destination="IVg-zn-fbR" eventType="valueChanged" id="Qpe-DS-Xo2"/>
+                                        </connections>
                                     </switch>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3-Day Trial Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3V-B9-9S9">
-                                        <rect key="frame" x="61" y="0.0" width="132" height="24.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3-Day Trial On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="q3V-B9-9S9">
+                                        <rect key="frame" x="61" y="0.0" width="128.5" height="31"/>
                                         <fontDescription key="fontDescription" name="EuclidCircularA-SemiBold" family="Euclid Circular A" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24.5" id="w7o-wR-hjW"/>
+                                    <constraint firstAttribute="height" constant="31" id="irR-nm-ulg"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNLIMITED ACCESS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="WHA-8L-h3o">
-                                <rect key="frame" x="16" y="578.5" width="382" height="37"/>
+                                <rect key="frame" x="16" y="572" width="382" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="19h-5v-CR5"/>
                                 </constraints>
@@ -1202,7 +1205,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="subscription-offer-1" translatesAutoresizingMaskIntoConstraints="NO" id="LKS-sm-AnA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="556.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hou-Wu-CKT">
                                 <rect key="frame" x="366" y="44" width="32" height="32"/>
@@ -1217,6 +1220,9 @@
                                     <action selector="closeButtonPressed:" destination="IVg-zn-fbR" eventType="touchUpInside" id="GaC-kx-WCU"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="P4R-2J-UoT">
+                                <rect key="frame" x="197" y="651" width="20" height="21"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GvC-WG-3X9"/>
                         <color key="backgroundColor" name="Background"/>
@@ -1224,6 +1230,7 @@
                             <constraint firstItem="LKS-sm-AnA" firstAttribute="trailing" secondItem="GvC-WG-3X9" secondAttribute="trailing" id="1Mc-vH-lcY"/>
                             <constraint firstItem="LKS-sm-AnA" firstAttribute="top" secondItem="oWs-hM-uPr" secondAttribute="top" id="30f-x8-RvM"/>
                             <constraint firstItem="WHA-8L-h3o" firstAttribute="leading" secondItem="GvC-WG-3X9" secondAttribute="leading" constant="16" id="6wj-rj-jsK"/>
+                            <constraint firstItem="GvC-WG-3X9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tJZ-MB-bj0" secondAttribute="trailing" constant="16" id="7Ol-g7-gk0"/>
                             <constraint firstItem="hU9-Yq-Aa0" firstAttribute="centerX" secondItem="oWs-hM-uPr" secondAttribute="centerX" id="8DT-Wu-Icf"/>
                             <constraint firstItem="LKS-sm-AnA" firstAttribute="leading" secondItem="GvC-WG-3X9" secondAttribute="leading" id="EBC-vN-u0g"/>
                             <constraint firstItem="hou-Wu-CKT" firstAttribute="top" secondItem="GvC-WG-3X9" secondAttribute="top" id="Egh-IR-AgI"/>
@@ -1236,14 +1243,22 @@
                             <constraint firstItem="GvC-WG-3X9" firstAttribute="bottom" secondItem="hU9-Yq-Aa0" secondAttribute="bottom" constant="16" id="cWN-IJ-ju8"/>
                             <constraint firstItem="GvC-WG-3X9" firstAttribute="trailing" secondItem="XV6-hF-vMg" secondAttribute="trailing" constant="16" id="hsr-p5-wzc"/>
                             <constraint firstItem="tJZ-MB-bj0" firstAttribute="centerX" secondItem="oWs-hM-uPr" secondAttribute="centerX" id="isp-xt-5Fv"/>
+                            <constraint firstItem="tJZ-MB-bj0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GvC-WG-3X9" secondAttribute="leading" constant="16" id="jLA-IU-6Pv"/>
                             <constraint firstItem="GvC-WG-3X9" firstAttribute="trailing" secondItem="hCZ-hV-w1b" secondAttribute="trailing" constant="16" id="jZw-OE-LeJ"/>
+                            <constraint firstItem="tJZ-MB-bj0" firstAttribute="centerX" secondItem="oWs-hM-uPr" secondAttribute="centerX" id="jpf-3W-7Kf"/>
+                            <constraint firstItem="hCZ-hV-w1b" firstAttribute="top" secondItem="P4R-2J-UoT" secondAttribute="bottom" constant="42" id="k9m-gK-xUx"/>
+                            <constraint firstItem="P4R-2J-UoT" firstAttribute="top" secondItem="WHA-8L-h3o" secondAttribute="bottom" constant="42" id="mbk-9Y-GDj"/>
                             <constraint firstItem="GvC-WG-3X9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WHA-8L-h3o" secondAttribute="trailing" constant="16" id="p1d-So-eAy"/>
                             <constraint firstItem="XV6-hF-vMg" firstAttribute="top" secondItem="tJZ-MB-bj0" secondAttribute="bottom" constant="19" id="w9H-cX-e9a"/>
                             <constraint firstItem="GvC-WG-3X9" firstAttribute="trailing" secondItem="hou-Wu-CKT" secondAttribute="trailing" constant="16" id="wLc-x4-yMW"/>
                             <constraint firstItem="hCZ-hV-w1b" firstAttribute="top" secondItem="XV6-hF-vMg" secondAttribute="bottom" constant="16" id="wbh-Wl-mLK"/>
+                            <constraint firstItem="P4R-2J-UoT" firstAttribute="centerX" secondItem="oWs-hM-uPr" secondAttribute="centerX" id="xVZ-Nx-IO9"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="P4R-2J-UoT" id="GLx-dd-KRF"/>
+                        <outlet property="bottomButtonsStackView" destination="hU9-Yq-Aa0" id="t0Z-QB-5LW"/>
+                        <outlet property="closeButton" destination="hou-Wu-CKT" id="bVQ-Pt-ThI"/>
                         <outlet property="continueButton" destination="hCZ-hV-w1b" id="ksr-FX-RLu"/>
                         <outlet property="isTrialOffSwitch" destination="3gE-V4-vFg" id="yHb-su-fmi"/>
                         <outlet property="priceLabel" destination="XV6-hF-vMg" id="GPG-Qf-Qxw"/>
@@ -1251,7 +1266,7 @@
                         <outlet property="restoreButton" destination="Q8B-7P-9C3" id="0Q2-Jg-04W"/>
                         <outlet property="termsButton" destination="K8a-MY-AVm" id="cP4-zP-F9s"/>
                         <outlet property="titleLabel" destination="WHA-8L-h3o" id="gUr-34-W6t"/>
-                        <outlet property="trialOffLabel" destination="q3V-B9-9S9" id="8jl-RI-Sfm"/>
+                        <outlet property="trialLabel" destination="q3V-B9-9S9" id="8jl-RI-Sfm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2S-BB-cwl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1447,6 +1462,9 @@ $29.99</string>
                                     <action selector="closeButtonPressed:" destination="MUN-oS-rTq" eventType="touchUpInside" id="Nrp-ir-5ly"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="BP1-IO-Kap">
+                                <rect key="frame" x="197" y="558" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wqj-LH-O72"/>
                         <color key="backgroundColor" name="Background"/>
@@ -1463,7 +1481,9 @@ $29.99</string>
                             <constraint firstItem="wqj-LH-O72" firstAttribute="bottom" secondItem="8pK-Wj-IW9" secondAttribute="bottom" constant="16" id="Gof-TW-Cmh"/>
                             <constraint firstItem="aiN-Zm-t8i" firstAttribute="top" secondItem="v5v-VJ-Bw4" secondAttribute="bottom" constant="80" id="JHM-L1-bip"/>
                             <constraint firstItem="28g-ji-dJW" firstAttribute="centerX" secondItem="jji-Dd-sSk" secondAttribute="centerX" id="L5w-LX-FlU"/>
+                            <constraint firstItem="BP1-IO-Kap" firstAttribute="centerY" secondItem="v5v-VJ-Bw4" secondAttribute="centerY" id="M4f-Dx-cUd"/>
                             <constraint firstItem="8pK-Wj-IW9" firstAttribute="centerX" secondItem="jji-Dd-sSk" secondAttribute="centerX" id="MJo-wg-XvP"/>
+                            <constraint firstItem="BP1-IO-Kap" firstAttribute="centerX" secondItem="v5v-VJ-Bw4" secondAttribute="centerX" id="Nj0-r7-6XE"/>
                             <constraint firstItem="yIX-gy-WJd" firstAttribute="trailing" secondItem="wqj-LH-O72" secondAttribute="trailing" id="VnV-pr-zdp"/>
                             <constraint firstItem="v5v-VJ-Bw4" firstAttribute="top" secondItem="28g-ji-dJW" secondAttribute="bottom" constant="45" id="XuT-0Q-GSg"/>
                             <constraint firstItem="wqj-LH-O72" firstAttribute="trailing" secondItem="v5v-VJ-Bw4" secondAttribute="trailing" constant="16" id="c7C-Ot-KBi"/>
@@ -1475,6 +1495,9 @@ $29.99</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="BP1-IO-Kap" id="lHF-Nd-Ghw"/>
+                        <outlet property="bottomButtonsStackView" destination="8pK-Wj-IW9" id="dst-7H-MkO"/>
+                        <outlet property="closeButton" destination="RJv-dA-IBX" id="xP1-W9-D5N"/>
                         <outlet property="continueButton" destination="aiN-Zm-t8i" id="Coj-Qm-Luw"/>
                         <outlet property="firstSubscriptionPriceLabel" destination="nGZ-uQ-Rl1" id="bXb-VY-bVw"/>
                         <outlet property="firstSubscriptionTickImage" destination="lbf-S7-u2c" id="Qds-lO-vY4"/>
@@ -1523,7 +1546,7 @@ $29.99</string>
                                                     <constraint firstAttribute="width" constant="82" id="UrD-l6-yWu"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Access to the application" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDn-b8-Qx0">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Access to the application" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mDn-b8-Qx0">
                                                 <rect key="frame" x="20" y="188" width="374" height="66.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="66.5" id="IqR-4q-24N"/>
@@ -1532,7 +1555,7 @@ $29.99</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join the application to unlock additional features, get access to all" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Zd-ya-JMF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join the application to unlock additional features, get access to all" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Zd-ya-JMF">
                                                 <rect key="frame" x="20" y="262.5" width="374" height="43.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="43.5" id="UXc-ai-qrm"/>
@@ -1541,7 +1564,7 @@ $29.99</string>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 days free, then $2.99/week" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-VN-nvz">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 days free, then $2.99/week" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="V6N-VN-nvz">
                                                 <rect key="frame" x="20" y="354" width="374" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="BPa-LZ-UMN"/>
@@ -1559,7 +1582,7 @@ $29.99</string>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub3image1" translatesAutoresizingMaskIntoConstraints="NO" id="t6i-Zj-V2O">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nn-pm-OZa">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Nn-pm-OZa">
                                                                 <rect key="frame" x="35" y="26" width="168.5" height="59.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="59.5" id="bwD-ib-fgh"/>
@@ -1589,7 +1612,7 @@ $29.99</string>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub3image2" translatesAutoresizingMaskIntoConstraints="NO" id="n7p-hS-HOX">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGE-C8-Lyo">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qGE-C8-Lyo">
                                                                 <rect key="frame" x="35" y="26" width="144.5" height="59.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="59.5" id="JRA-A4-gBA"/>
@@ -1619,7 +1642,7 @@ advertising</string>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sub3image3" translatesAutoresizingMaskIntoConstraints="NO" id="xwK-lR-QbM">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nrd-zS-ebk">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nrd-zS-ebk">
                                                                 <rect key="frame" x="35" y="26" width="157" height="59.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="59.5" id="Mjs-dO-Yg2"/>
@@ -1645,6 +1668,9 @@ every month</string>
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1MC-Wn-8uN">
+                                                <rect key="frame" x="197" y="356" width="20" height="20"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" name="Background"/>
                                         <constraints>
@@ -1656,14 +1682,17 @@ every month</string>
                                             <constraint firstItem="gpg-ZW-0bY" firstAttribute="leading" secondItem="vfs-EN-KzL" secondAttribute="leading" constant="12" id="Iwy-4b-lze"/>
                                             <constraint firstAttribute="trailing" secondItem="hNk-bK-wzL" secondAttribute="trailing" constant="20" id="K8x-Wy-KhA"/>
                                             <constraint firstItem="0Zd-ya-JMF" firstAttribute="leading" secondItem="vfs-EN-KzL" secondAttribute="leading" constant="20" id="LTP-ig-8T3"/>
+                                            <constraint firstItem="1MC-Wn-8uN" firstAttribute="top" secondItem="0Zd-ya-JMF" secondAttribute="bottom" constant="50" id="VA8-D2-FMP"/>
                                             <constraint firstItem="UTI-4x-hJp" firstAttribute="leading" secondItem="vfs-EN-KzL" secondAttribute="leading" id="VMb-Xc-bNc"/>
                                             <constraint firstItem="V6N-VN-nvz" firstAttribute="leading" secondItem="vfs-EN-KzL" secondAttribute="leading" constant="20" id="YTt-DQ-kTa"/>
                                             <constraint firstItem="V6N-VN-nvz" firstAttribute="top" secondItem="0Zd-ya-JMF" secondAttribute="bottom" constant="48" id="Zgv-Gg-Jhb"/>
                                             <constraint firstAttribute="trailing" secondItem="mDn-b8-Qx0" secondAttribute="trailing" constant="20" id="Zu9-gW-gyo"/>
                                             <constraint firstItem="UTI-4x-hJp" firstAttribute="top" secondItem="vfs-EN-KzL" secondAttribute="top" id="aWh-Tp-D3E"/>
                                             <constraint firstItem="hNk-bK-wzL" firstAttribute="leading" secondItem="vfs-EN-KzL" secondAttribute="leading" constant="20" id="eEt-Ul-ido"/>
+                                            <constraint firstItem="hNk-bK-wzL" firstAttribute="top" secondItem="1MC-Wn-8uN" secondAttribute="bottom" constant="82" id="fAx-lW-kSB"/>
                                             <constraint firstAttribute="trailing" secondItem="V6N-VN-nvz" secondAttribute="trailing" constant="20" id="jFk-Gn-KzB"/>
                                             <constraint firstItem="mDn-b8-Qx0" firstAttribute="top" secondItem="gpg-ZW-0bY" secondAttribute="bottom" constant="16" id="mtv-T9-Xou"/>
+                                            <constraint firstItem="1MC-Wn-8uN" firstAttribute="centerX" secondItem="vfs-EN-KzL" secondAttribute="centerX" id="nod-YY-lyT"/>
                                             <constraint firstItem="gpg-ZW-0bY" firstAttribute="top" secondItem="vfs-EN-KzL" secondAttribute="topMargin" constant="38" id="qQW-Nn-KlI"/>
                                             <constraint firstItem="mDn-b8-Qx0" firstAttribute="leading" secondItem="vfs-EN-KzL" secondAttribute="leading" constant="20" id="uxi-AM-Z7Y"/>
                                         </constraints>
@@ -1784,13 +1813,23 @@ every month</string>
                     </view>
                     <size key="freeformSize" width="414" height="2000"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="1MC-Wn-8uN" id="ic5-1c-2zS"/>
+                        <outlet property="bottomButtonsStackView" destination="Pjn-x6-6gG" id="agl-Mf-3mI"/>
                         <outlet property="bottomGradientView" destination="kC6-sW-Pjn" id="Wj5-r8-kVE"/>
+                        <outlet property="closeButton" destination="hhJ-jm-Gaz" id="7aU-rl-bCP"/>
+                        <outlet property="priceLabel" destination="V6N-VN-nvz" id="f3b-Pz-61i"/>
                         <outlet property="privacyButton" destination="z8o-Y7-GFd" id="HcX-SE-xkm"/>
                         <outlet property="restoreButton" destination="3T4-4N-4VJ" id="bxM-Yx-Qq7"/>
+                        <outlet property="subscribeButton" destination="50N-pf-USd" id="q87-vE-Z9a"/>
+                        <outlet property="subtitleLabel" destination="0Zd-ya-JMF" id="RMk-5Q-zue"/>
                         <outlet property="termsButton" destination="ozc-n8-tww" id="7z1-Hh-Rzg"/>
+                        <outlet property="titleLabel" destination="mDn-b8-Qx0" id="cXT-26-nDv"/>
                         <outletCollection property="stackViewViews" destination="q8Y-Hm-ggO" collectionClass="NSMutableArray" id="qse-IQ-xk9"/>
                         <outletCollection property="stackViewViews" destination="MZj-iD-Dv9" collectionClass="NSMutableArray" id="PHj-Au-uP1"/>
                         <outletCollection property="stackViewViews" destination="e6I-vl-dyP" collectionClass="NSMutableArray" id="vZc-Dg-ftW"/>
+                        <outletCollection property="featuresLabels" destination="0Nn-pm-OZa" collectionClass="NSMutableArray" id="hdN-0G-lDf"/>
+                        <outletCollection property="featuresLabels" destination="qGE-C8-Lyo" collectionClass="NSMutableArray" id="aIH-Gk-SLd"/>
+                        <outletCollection property="featuresLabels" destination="nrd-zS-ebk" collectionClass="NSMutableArray" id="NQL-vb-Msx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znj-EU-XPk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

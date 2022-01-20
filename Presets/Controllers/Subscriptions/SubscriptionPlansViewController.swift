@@ -205,7 +205,7 @@ class SubscriptionPlansViewController: BaseViewController {
         
         guard let interstitial = interstitial else {
             print("Ad wasn't ready")
-            self.view.removeFromSuperview()
+            self.dismiss(animated: true)
             return
         }
         
@@ -261,7 +261,7 @@ class SubscriptionPlansViewController: BaseViewController {
             
             activityIndicators[i].stopAnimating()
             durationLabels[i].isHidden = false
-            durationLabels[i].text = products[i].skProduct.getSubscriptionPeriod(showOne: true)
+            durationLabels[i].text = products[i].skProduct.getSubscriptionPeriod(showUnits: true)
             priceLabels[i].isHidden = false
             priceLabels[i].text = "\(products[i].price) \(products[i].subscriptionPeriod)"
             totalPriceLabels[i].isHidden = false
