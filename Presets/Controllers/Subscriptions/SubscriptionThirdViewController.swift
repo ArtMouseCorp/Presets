@@ -133,8 +133,8 @@ class SubscriptionThirdViewController: BaseViewController {
         subscribeButton.isEnabled = false
         restoreButton.isEnabled = false
         
-        let id = "com.temporary.week" // DEBUG
-//        let id = pageConfig.subscriptionId // RELEASE
+//        let id = "com.temporary.week" // DEBUG
+        let id = pageConfig.subscriptionId // RELEASE
         
         StoreManager.getProducts(for: [id]) { products in
             

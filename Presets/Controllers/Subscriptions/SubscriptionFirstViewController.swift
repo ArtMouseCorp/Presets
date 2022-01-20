@@ -118,8 +118,8 @@ class SubscriptionFirstViewController: BaseViewController {
         continueButton.isEnabled = false
         restoreButton.isEnabled = false
         
-        let ids = ["com.temporary.week", "com.temporary.month"] // DEBUG
-//        let ids = [pageConfig.trialSubscriptionId, pageConfig.noTrialSubscriptionId] // RELEASE
+//        let ids = ["com.temporary.week", "com.temporary.month"] // DEBUG
+        let ids = [pageConfig.trialSubscriptionId, pageConfig.noTrialSubscriptionId] // RELEASE
         
         StoreManager.getProducts(for: ids) { products in
             
