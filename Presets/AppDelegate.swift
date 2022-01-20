@@ -96,6 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         State.subscriptionConfig = RCValues.sharedInstance.organicSubscriptionPage()
         State.subscriptionPlansConfig = RCValues.sharedInstance.subscriptionPlansPage()
         State.saleSubscriptionPage = RCValues.sharedInstance.saleSubscriptionPage()
+        
         State.currentPaywall = RCValues.sharedInstance.currentPaywall()
     }
     
@@ -146,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func connectGoogleMobileAds() {
         // Initialize the Google Mobile Ads SDK.
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["1440558f13893d763cad8b1259572f8b"]
+        //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["1440558f13893d763cad8b1259572f8b"]
     }
     
     private func connectSkarbSDK() {

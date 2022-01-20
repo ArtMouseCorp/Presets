@@ -1,59 +1,7 @@
 import Foundation
 import FirebaseRemoteConfig
 import SwiftyJSON
-
-enum RCValueKey: String {
-    case organicSubscriptionPage = "org_sub_page"
-    case subscriptionPlansPage = "sub_plans_page"
-    case saleSubscriptionsPage = "sale_sub_page"
-    case currentPaywall
-    
-    internal enum OrganicSubscriptionPage: String {
-        case titleLabel
-        case subtitleLabel
-        case closeDelay
-        case priceLabel
-        case priceLabelFontSize
-        case priceLabelOpacity
-        case buttonLabel
-        case buttonFontSize
-        case showTerms
-        case subscriptionId
-    }
-    
-    internal enum SubscriptionPlansPage: String {
-        case titleLabel
-        case subtitleLabel
-        case trialPeriodLabel
-        case closeDelay
-        case priceLabelFontSize
-        case priceLabelOpacity
-        case buttonLabel
-        case buttonFontSize
-        case showTerms
-        case firstSubscriptionId
-        case secondSubscriptionId
-        case thirdSubscriptionId
-    }
-    
-    internal enum SaleSubscriptionPage: String {
-        case smallSaleOfferView
-        case titleLabel
-        case saleLabel
-        case limitedWarningLabel
-        case priceLabel
-        case subscriptionButtonLabel
-        case timeLeftLabel
-        case saleDurationSeconds
-        case subscriptionId
-        
-        internal enum SmallSaleOfferView: String {
-            case titleLabel
-            case descriptionLabel
-            case buttonLabel
-        }
-    }
-}
+import SkarbSDK
 
 class RCValues {
     
@@ -68,7 +16,13 @@ class RCValues {
         let appDefaults: [String: Any?] = [
             RCValueKey.organicSubscriptionPage.rawValue: OrganicSubscriptionPage.default,
             RCValueKey.subscriptionPlansPage.rawValue: SubscriptionPlansPage.default,
+            
             RCValueKey.saleSubscriptionsPage.rawValue: SaleSubscriptionPage.default,
+            
+            RCValueKey.firstSubscriptionPage.rawValue: FirstSubscriptionPage.default,
+            RCValueKey.secondSubscriptionPage.rawValue: SecondSubscriptionPage.default,
+            RCValueKey.thirdSubscriptionPage.rawValue: ThirdSubscriptionPage.default,
+            
             RCValueKey.currentPaywall.rawValue: 1
             
         ]
@@ -99,7 +53,7 @@ class RCValues {
             
             // 3
             RemoteConfig.remoteConfig().activate { _, _ in
-                print("Retrieved values from the cloud!")
+                print("REMOTE CONFIG | Retrieved values from the cloud!")
             }
         }
     }
@@ -157,11 +111,15 @@ class RCValues {
         
         let jsonValue = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
         
+        print("JSON Value: ", jsonValue)
+        
         guard let value = jsonValue else {
             return SubscriptionPlansPage.default
         }
         
         let json = JSON(value)
+        
+        print("JSON: ", json)
         
         let titleLabel: String              = json[RCValueKey.SubscriptionPlansPage.titleLabel.rawValue].stringValue
         let subtitleLabel: String           = json[RCValueKey.SubscriptionPlansPage.subtitleLabel.rawValue].stringValue
@@ -200,8 +158,6 @@ class RCValues {
         guard let lang = Bundle.main.preferredLocalizations.first else {
             return SaleSubscriptionPage.default
         }
-        
-        print("Language: \(lang)")
         
         let key = RCValueKey.saleSubscriptionsPage.rawValue
         
@@ -248,19 +204,230 @@ class RCValues {
         
     }
     
+    func firstSubscriptionPage() -> FirstSubscriptionPage {
+        
+        guard let lang = Bundle.main.preferredLocalizations.first else {
+            return FirstSubscriptionPage.default
+        }
+        
+        let key = RCValueKey.firstSubscriptionPage.rawValue
+        
+        let jsonValue = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
+        
+        guard let value = jsonValue else {
+            return FirstSubscriptionPage.default
+        }
+        
+        let json = JSON(value)
+        
+        let titleLabel: String              = json[RCValueKey.FirstSubscriptionPage.titleLabel.rawValue].stringValue
+        let trialOnLabel: String            = json[RCValueKey.FirstSubscriptionPage.trialOnLabel.rawValue].stringValue
+        let trialOffLabel: String           = json[RCValueKey.FirstSubscriptionPage.trialOffLabel.rawValue].stringValue
+        let isTrialOn: Bool                 = json[RCValueKey.FirstSubscriptionPage.isTrialOn.rawValue].boolValue
+        let priceLabel: String              = json[RCValueKey.FirstSubscriptionPage.priceLabel.rawValue].stringValue
+        let subscribeButtonLabel: String    = json[RCValueKey.FirstSubscriptionPage.subscribeButtonLabel.rawValue].stringValue
+        let closeDelay: Int                 = json[RCValueKey.FirstSubscriptionPage.closeDelay.rawValue].intValue
+        let showTerms: Bool                 = json[RCValueKey.FirstSubscriptionPage.showTerms.rawValue].boolValue
+        let trialSubscriptionId: String     = json[RCValueKey.FirstSubscriptionPage.trialSubscriptionId.rawValue].stringValue
+        let noTrialSubscriptionId: String   = json[RCValueKey.FirstSubscriptionPage.noTrialSubscriptionId.rawValue].stringValue
+        
+        let firstSubPage = FirstSubscriptionPage(
+            titleLabel: titleLabel,
+            trialOnLabel: trialOnLabel,
+            trialOffLabel: trialOffLabel,
+            isTrialOn: isTrialOn,
+            priceLabel: priceLabel,
+            subscribeButtonLabel: subscribeButtonLabel,
+            closeDelay: closeDelay,
+            showTerms: showTerms,
+            trialSubscriptionId: trialSubscriptionId,
+            noTrialSubscriptionId: noTrialSubscriptionId
+        )
+        
+        return firstSubPage
+    }
+    
+    func secondSubscriptionPage() -> SecondSubscriptionPage {
+        
+        guard let lang = Bundle.main.preferredLocalizations.first else {
+            return SecondSubscriptionPage.default
+        }
+        
+        let key = RCValueKey.secondSubscriptionPage.rawValue
+        
+        let jsonValue = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
+        
+        guard let value = jsonValue else {
+            return SecondSubscriptionPage.default
+        }
+        
+        let json = JSON(value)
+        
+        let firstProductJson = JSON(json[RCValueKey.SecondSubscriptionPage.firstProduct.rawValue].object)
+        
+        let firstProduct = SecondSubscriptionPage.Product(
+            priceLabel: firstProductJson[RCValueKey.SecondSubscriptionPage.Product.priceLabel.rawValue].stringValue,
+            totalPriceLabel: firstProductJson[RCValueKey.SecondSubscriptionPage.Product.totalPriceLabel.rawValue].string,
+            subscriptionId: firstProductJson[RCValueKey.SecondSubscriptionPage.Product.subscriptionId.rawValue].stringValue
+        )
+        
+        let secondProductJson = JSON(json[RCValueKey.SecondSubscriptionPage.secondProduct.rawValue].object)
+        
+        let secondProduct = SecondSubscriptionPage.Product(
+            priceLabel: secondProductJson[RCValueKey.SecondSubscriptionPage.Product.priceLabel.rawValue].stringValue,
+            totalPriceLabel: secondProductJson[RCValueKey.SecondSubscriptionPage.Product.totalPriceLabel.rawValue].string,
+            subscriptionId: secondProductJson[RCValueKey.SecondSubscriptionPage.Product.subscriptionId.rawValue].stringValue
+        )
+        
+        let titleLabel: String              = json[RCValueKey.SecondSubscriptionPage.titleLabel.rawValue].stringValue
+        let subtitleLabel: String           = json[RCValueKey.SecondSubscriptionPage.subtitleLabel.rawValue].stringValue
+        let subscribeButtonLabel: String    = json[RCValueKey.SecondSubscriptionPage.subscribeButtonLabel.rawValue].stringValue
+        let economyLabel: String            = json[RCValueKey.SecondSubscriptionPage.economyLabel.rawValue].stringValue
+        let closeDelay: Int                 = json[RCValueKey.SecondSubscriptionPage.closeDelay.rawValue].intValue
+        let showTerms: Bool                 = json[RCValueKey.SecondSubscriptionPage.showTerms.rawValue].boolValue
+        
+        let secondSubPage = SecondSubscriptionPage(
+            titleLabel: titleLabel,
+            subtitleLabel: subtitleLabel,
+            subscribeButtonLabel: subscribeButtonLabel,
+            economyLabel: economyLabel,
+            closeDelay: closeDelay,
+            showTerms: showTerms,
+            firstProduct: firstProduct,
+            secondProduct: secondProduct
+        )
+        
+        return secondSubPage
+        
+    }
+    
+    func thirdSubscriptionPage() -> ThirdSubscriptionPage {
+        
+        guard let lang = Bundle.main.preferredLocalizations.first else {
+            return ThirdSubscriptionPage.default
+        }
+        
+        let key = RCValueKey.thirdSubscriptionPage.rawValue
+        
+        let jsonValue = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
+        
+        print("Key \(key)_\(lang)")
+        
+        guard let value = jsonValue else {
+            return ThirdSubscriptionPage.default
+        }
+        
+        let json = JSON(value)
+
+        let titleLabel: String              = json[RCValueKey.ThirdSubscriptionPage.titleLabel.rawValue].stringValue
+        let subtitleLabel: String           = json[RCValueKey.ThirdSubscriptionPage.subtitleLabel.rawValue].stringValue
+        let priceLabel: String              = json[RCValueKey.ThirdSubscriptionPage.priceLabel.rawValue].stringValue
+        let subscribeButtonLabel: String    = json[RCValueKey.ThirdSubscriptionPage.subscribeButtonLabel.rawValue].stringValue
+        let features: [String]              = [
+            json[RCValueKey.ThirdSubscriptionPage.features.rawValue].arrayValue[0].stringValue,
+            json[RCValueKey.ThirdSubscriptionPage.features.rawValue].arrayValue[1].stringValue,
+            json[RCValueKey.ThirdSubscriptionPage.features.rawValue].arrayValue[2].stringValue
+        ]
+        let closeDelay: Int                 = json[RCValueKey.ThirdSubscriptionPage.closeDelay.rawValue].intValue
+        let showTerms: Bool                 = json[RCValueKey.ThirdSubscriptionPage.showTerms.rawValue].boolValue
+        let subscriptionId: String          = json[RCValueKey.ThirdSubscriptionPage.subscriptionId.rawValue].stringValue
+        
+        let thirdSubPage = ThirdSubscriptionPage(
+            titleLabel: titleLabel,
+            subtitleLabel: subtitleLabel,
+            priceLabel: priceLabel,
+            subscribeButtonLabel: subscribeButtonLabel,
+            features: features,
+            closeDelay: closeDelay,
+            showTerms: showTerms,
+            subscriptionId: subscriptionId
+        )
+        
+        return thirdSubPage
+        
+    }
+    
     func currentPaywall() -> BaseViewController {
         
         let key = RCValueKey.currentPaywall.rawValue
         let currentPaywallNumber = RemoteConfig.remoteConfig()[key].numberValue.intValue
         
-        switch currentPaywallNumber {
+        guard State.isFirstLaunch() else {
+            print("PAYWALLS DEBUG | Loaded organic paywall")
+            State.subscriptionConfig = self.organicSubscriptionPage()
+
+            SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
+
+            return .load(from: .subscription)
+        }
         
-        case 1: return .load(from: .subscriptionFirst)
-        case 2: return .load(from: .subscriptionSecond)
-        case 3: return .load(from: .subscriptionThird)
-        default: return .load(from: .subscriptionFirst)
+        let automaticPaywallDistribution = self.automaticPaywallDistribution()
+        
+        guard automaticPaywallDistribution else {
+            
+            print("PAYWALLS DEBUG | Fetched paywall number - \(currentPaywallNumber)")
+            
+            switch currentPaywallNumber {
+    
+            case 0:
+                State.subscriptionConfig = self.organicSubscriptionPage()
+                SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
+                return .load(from: .subscription)
+            case 1:
+                State.firstSubscriptionPage = self.firstSubscriptionPage()
+                SkarbSDK.sendSource(broker: SKBroker.custom("first_paywall"), features: [:])
+                return .load(from: .subscriptionFirst)
+            case 2:
+                State.secondSubscriptionPage = self.secondSubscriptionPage()
+                SkarbSDK.sendSource(broker: SKBroker.custom("second_paywall"), features: [:])
+                return .load(from: .subscriptionSecond)
+            case 3:
+                State.thirdSubscriptionPage = self.thirdSubscriptionPage()
+                SkarbSDK.sendSource(broker: SKBroker.custom("third_paywall"), features: [:])
+                return .load(from: .subscriptionThird)
+            default:
+                State.subscriptionConfig = self.organicSubscriptionPage()
+                SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
+                return .load(from: .subscription)
+    
+            }
             
         }
+        
+        let randomInt = Int.random(in: 1 ... 3)
+        
+        print("PAYWALLS DEBUG | Random paywall number - \(randomInt)")
+        
+        switch randomInt {
+            
+        case 1:
+            State.firstSubscriptionPage = self.firstSubscriptionPage()
+            SkarbSDK.sendSource(broker: SKBroker.custom("first_paywall"), features: [:])
+            return .load(from: .subscriptionFirst)
+        case 2:
+            State.secondSubscriptionPage = self.secondSubscriptionPage()
+            SkarbSDK.sendSource(broker: SKBroker.custom("second_paywall"), features: [:])
+            return .load(from: .subscriptionSecond)
+        case 3:
+            State.thirdSubscriptionPage = self.thirdSubscriptionPage()
+            SkarbSDK.sendSource(broker: SKBroker.custom("third_paywall"), features: [:])
+            return .load(from: .subscriptionThird)
+        default:
+            State.subscriptionConfig = self.organicSubscriptionPage()
+            SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
+            return .load(from: .subscription)
+        }
+        
+    }
+    
+    func automaticPaywallDistribution() -> Bool {
+        
+        let key = RCValueKey.automaticPaywallDistribution.rawValue
+        let automaticPaywallDistribution: Bool = RemoteConfig.remoteConfig()[key].boolValue
+        
+        print("PAYWALLS DEBUG | Automatic Paywall Distribution - \(automaticPaywallDistribution)")
+        
+        return automaticPaywallDistribution
         
     }
     

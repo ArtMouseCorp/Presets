@@ -3,7 +3,7 @@ import StoreKit
 
 extension SKProduct {
     
-    private static let formatter: NumberFormatter = {
+    public static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         return formatter
@@ -24,7 +24,7 @@ extension SKProduct {
         return formatter.string(from: price)
     }
     
-    func getSubscriptionPeriod(showOne: Bool = false) -> String {
+    func getSubscriptionPeriod(showUnits: Bool = false) -> String {
         
         let perdiod = self.subscriptionPeriod
         let numberOfUnits = perdiod?.numberOfUnits ?? 0
@@ -61,7 +61,7 @@ extension SKProduct {
             unit = "N/A"
         }
         
-        if showOne {
+        if showUnits {
             return "\(numberOfUnits) " + unit
         } else {
             return numberOfUnits > 1 ? "\(numberOfUnits) " + unit : unit

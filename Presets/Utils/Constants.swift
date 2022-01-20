@@ -30,8 +30,8 @@ enum Keys {
     // RevenueCat
     internal enum RevenueCat {
         
-//        static let apiKey: String               = "DETukuMSYjcwKcUwHHXpJnDvLlQHzKgV" // DEBUG
-        static let apiKey: String               = "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX" // RELEASE
+        static let apiKey: String               = "DETukuMSYjcwKcUwHHXpJnDvLlQHzKgV" // DEBUG
+//        static let apiKey: String               = "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX" // RELEASE
         
         static let entitlementId: String        = "premium"
     }

@@ -88,7 +88,6 @@ class MainViewController: BaseViewController {
         offerDescriptionLabel.sizeToFit()
         offerLabelHeightConstraint.constant = offerDescriptionLabel.frame.height
         
-        saleOfferView.isHidden = false
         getOfferButton.layer.cornerRadius = 8
         saleOfferView.layer.cornerRadius = 8
         saleOfferView.clipsToBounds = true
@@ -144,15 +143,18 @@ class MainViewController: BaseViewController {
     }
     
     private func calculateSaleOfferEndDate() {
+        
+        saleOfferView.isHidden = true
+        
         saleOfferStartDate = State.getStartSaleOfferDate()
         saleOfferEndDate = saleOfferStartDate.addingTimeInterval(TimeInterval(SALE_DURATION))
         saleOfferSecondsLeft = Int(saleOfferEndDate.timeIntervalSince(Date()))
         
-        if saleOfferSecondsLeft <= 0 {
-            saleOfferView.isHidden = true
+        guard saleOfferSecondsLeft > 0 else {
             return
         }
         
+        saleOfferView.isHidden = false
         timerStart()
     }
     

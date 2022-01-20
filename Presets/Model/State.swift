@@ -17,7 +17,13 @@ struct State {
     
     public static var subscriptionConfig: OrganicSubscriptionPage = .default
     public static var subscriptionPlansConfig: SubscriptionPlansPage = .default
+    
     public static var saleSubscriptionPage: SaleSubscriptionPage = .default
+    
+    public static var firstSubscriptionPage: FirstSubscriptionPage = .default
+    public static var secondSubscriptionPage: SecondSubscriptionPage = .default
+    public static var thirdSubscriptionPage: ThirdSubscriptionPage = .default
+    
     public static var currentPaywall: BaseViewController = .load(from: .subscriptionFirst)
     
     // MARK: - Functions
