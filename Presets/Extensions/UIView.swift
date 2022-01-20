@@ -24,4 +24,12 @@ extension UIView {
         flash.repeatCount = 1
         layer.add(flash, forKey: nil)
     }
+    
+    func hide(_ hide: Bool = true) {
+        self.isHidden = hide
+    }
+    
+    func show() {
+        self.hide(false)
+    }
 }

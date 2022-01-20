@@ -11,19 +11,18 @@ extension UIViewController {
         popup.didMove(toParent: self)
     }
     
-    public func showPaywall(animated: Bool = true, single: Bool = true) {
-        let subscription = SubscriptionViewController.load(from: .subscription)
-        let subPlans = SubscriptionPlansViewController.load(from: .subscriptionPlans)
-        let toShow = single ? subscription : subPlans
+    public func showPaywall(animated: Bool = true) {
         
-        self.addChild(toShow)
-        toShow.view.frame = self.view.frame
-        toShow.view.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
-        self.view.addSubview(toShow.view)
+        let subscriptionView = State.currentPaywall
+        
+        self.addChild(subscriptionView)
+        subscriptionView.view.frame = self.view.frame
+        subscriptionView.view.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+        self.view.addSubview(subscriptionView.view)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn) {
-            toShow.view.transform = .identity
+            subscriptionView.view.transform = .identity
         }
-        toShow.didMove(toParent: self)
+        subscriptionView.didMove(toParent: self)
     }
     
     public func showSettings() {

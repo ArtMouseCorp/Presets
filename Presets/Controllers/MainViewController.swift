@@ -81,10 +81,6 @@ class MainViewController: BaseViewController {
         self.offerTitleLabel.localize(with: State.saleSubscriptionPage.smallSaleOfferView.titleLabel)
         self.offerDescriptionLabel.localize(with: State.saleSubscriptionPage.smallSaleOfferView.descriptionLabel)
         self.getOfferButton.localize(with: State.saleSubscriptionPage.smallSaleOfferView.buttonLabel)
-        
-//        self.offerTitleLabel.localize(with: L10n.Main.Offer.title)
-//        self.offerDescriptionLabel.localize(with: L10n.Main.Offer.description)
-//        self.getOfferButton.localize(with: L10n.Main.Offer.button)
     }
     
     private func configureUI() {
@@ -92,7 +88,6 @@ class MainViewController: BaseViewController {
         offerDescriptionLabel.sizeToFit()
         offerLabelHeightConstraint.constant = offerDescriptionLabel.frame.height
         
-        saleOfferView.isHidden = false
         getOfferButton.layer.cornerRadius = 8
         saleOfferView.layer.cornerRadius = 8
         saleOfferView.clipsToBounds = true
@@ -148,15 +143,18 @@ class MainViewController: BaseViewController {
     }
     
     private func calculateSaleOfferEndDate() {
+        
+        saleOfferView.isHidden = true
+        
         saleOfferStartDate = State.getStartSaleOfferDate()
         saleOfferEndDate = saleOfferStartDate.addingTimeInterval(TimeInterval(SALE_DURATION))
         saleOfferSecondsLeft = Int(saleOfferEndDate.timeIntervalSince(Date()))
         
-        if saleOfferSecondsLeft <= 0 {
-            saleOfferView.isHidden = true
+        guard saleOfferSecondsLeft > 0 else {
             return
         }
         
+        saleOfferView.isHidden = false
         timerStart()
     }
     
