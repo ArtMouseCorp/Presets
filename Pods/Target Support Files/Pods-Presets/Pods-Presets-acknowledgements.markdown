@@ -1764,7 +1764,7 @@ Copyright 2018 AppsFlyer Ltd. All rights reserved.
 
 ## FBAEMKit
 
-Copyright (c) Facebook, Inc. and its affiliates. All rights reserved.
+Copyright (c) Meta Platforms, Inc. and affiliates. All rights reserved.
 
 You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
 copy, modify, and distribute this software in source code or binary form for use
@@ -1785,7 +1785,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## FBSDKCoreKit
 
-Copyright (c) Facebook, Inc. and its affiliates. All rights reserved.
+Copyright (c) Meta Platforms, Inc. and affiliates. All rights reserved.
 
 You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
 copy, modify, and distribute this software in source code or binary form for use
@@ -1806,7 +1806,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## FBSDKCoreKit_Basics
 
-Copyright (c) Facebook, Inc. and its affiliates. All rights reserved.
+Copyright (c) Meta Platforms, Inc. and affiliates. All rights reserved.
 
 You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
 copy, modify, and distribute this software in source code or binary form for use
