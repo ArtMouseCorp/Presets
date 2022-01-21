@@ -268,9 +268,9 @@ class SubscriptionSecondViewController: BaseViewController {
             return
         }
         
-        let product = isFirstSub ? firstProduct : secondProduct
+        let productSubscription = isFirstSub ? firstProduct : secondProduct
         
-        guard let product = product else { return }
+        guard let product = productSubscription else { return }
         
         Amplitude.instance().logEvent(AmplitudeEvents.subscriptionButtonTap)
         
