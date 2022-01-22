@@ -353,12 +353,8 @@ class RCValues {
         let currentPaywallNumber = RemoteConfig.remoteConfig()[key].numberValue.intValue
         
         guard State.isFirstLaunch() else {
-            print("PAYWALLS DEBUG | Loaded organic paywall")
-            State.subscriptionConfig = self.organicSubscriptionPage()
-
-            SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
-
-            return .load(from: .subscription)
+            print("PAYWALLS DEBUG | Loaded from State")
+            return State.currentPaywall
         }
         
         let automaticPaywallDistribution = self.automaticPaywallDistribution()
