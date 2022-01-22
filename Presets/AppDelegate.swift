@@ -90,16 +90,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Custom functions
     
     private func fetchData() {
-        DispatchQueue.main.async {
-            Preset.get()
-            Preset.getFavorites()
-            
-            State.subscriptionConfig = RCValues.sharedInstance.organicSubscriptionPage()
-            State.subscriptionPlansConfig = RCValues.sharedInstance.subscriptionPlansPage()
-            State.saleSubscriptionPage = RCValues.sharedInstance.saleSubscriptionPage()
-            
-            State.currentPaywall = RCValues.sharedInstance.currentPaywall()
-        }
+        Preset.get()
+        Preset.getFavorites()
+        
+        State.subscriptionConfig = RCValues.sharedInstance.organicSubscriptionPage()
+        State.subscriptionPlansConfig = RCValues.sharedInstance.subscriptionPlansPage()
+        State.saleSubscriptionPage = RCValues.sharedInstance.saleSubscriptionPage()
+        
+        State.currentPaywall = RCValues.sharedInstance.currentPaywall()
     }
     
     private func connectRevenueCat() {

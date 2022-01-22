@@ -295,8 +295,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         self.selectedCategoryIndex = indexPath.row
         self.categoriesCollectionView.reloadData()
-        self.categoriesCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-        //        self.presetsCollectionView.reloadItems(at: [indexPath])
+//        self.categoriesCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+//        self.presetsCollectionView.reloadItems(at: [indexPath])
         
     }
     
