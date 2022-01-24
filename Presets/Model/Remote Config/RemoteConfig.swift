@@ -363,6 +363,9 @@ class RCValues {
             
             print("PAYWALLS DEBUG | Fetched paywall number - \(currentPaywallNumber)")
             
+            State.paywallNumber = currentPaywallNumber
+            State.setCurrentPaywall()
+            
             switch currentPaywallNumber {
     
             case 0:

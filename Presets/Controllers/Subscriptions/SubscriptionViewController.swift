@@ -282,7 +282,6 @@ class SubscriptionViewController: BaseViewController {
         } else {
             showInterstitialAd()
         }
-        
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {

@@ -25,6 +25,7 @@ struct State {
     public static var thirdSubscriptionPage: ThirdSubscriptionPage = .default
     
     public static var currentPaywall: BaseViewController = .load(from: .subscriptionFirst)
+    public static var paywallNumber: Int = 1
     
     // MARK: - Functions
     
@@ -36,6 +37,26 @@ struct State {
     public static func getAppLaunchCount() -> Int {
         self.appLaunch = userDefaults.integer(forKey: UDKeys.appLaunchCount)
         return self.appLaunch
+    }
+    
+    public static func setCurrentPaywall() {
+        userDefaults.set(self.paywallNumber, forKey: UDKeys.paywallNumber)
+    }
+    
+    public static func getCurrentPaywall() -> BaseViewController {
+        self.paywallNumber = userDefaults.value(forKey: UDKeys.paywallNumber) as? Int ?? 0
+        switch self.paywallNumber {
+        case 0:
+            return SubscriptionViewController.load(from: .subscription)
+        case 1:
+            return SubscriptionFirstViewController.load(from: .subscriptionFirst)
+        case 2:
+            return SubscriptionSecondViewController.load(from: .subscriptionSecond)
+        case 3:
+            return SubscriptionThirdViewController.load(from: .subscriptionThird)
+        default:
+            return SubscriptionViewController.load(from: .subscription)
+        }
     }
     
     public static func isFirstLaunch() -> Bool {

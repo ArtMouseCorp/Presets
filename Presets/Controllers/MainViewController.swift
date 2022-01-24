@@ -49,13 +49,11 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         StoreManager.updateStatus()
         localize()
         configureCategories()
         callPaywall()
         State.startSaleOffer()
-        calculateSaleOfferEndDate()
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,10 +65,13 @@ class MainViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         configureUI()
+        calculateSaleOfferEndDate()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        timer.invalidate()
+        if timer.isValid {
+            timer.invalidate()
+        }
     }
     
     // MARK: - Custom functions
