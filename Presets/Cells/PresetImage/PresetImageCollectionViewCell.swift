@@ -10,6 +10,7 @@ class PresetImageCollectionViewCell: UICollectionViewCell {
     
     // Labels
     @IBOutlet weak var openPresetLabel: UILabel!
+    @IBOutlet weak var presetNameLabel: UILabel!
     
     // ImageViews
     @IBOutlet weak var imageView: UIImageView!

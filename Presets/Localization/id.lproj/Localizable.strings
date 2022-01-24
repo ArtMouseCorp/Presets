@@ -85,6 +85,7 @@
 "preset.tapHint"                    = "Ketuk untuk membuka preset";
 "preset.button.addToMyPresets"      = "Tambahkan ke preset saya";
 "preset.addedPreset"                = "Ditambahkan!";
+"preset.button.openPreset"          = "Buka praset";
 "preset.button.subscription"        = "Dapatkan akses ke 100+ preset";
 "preset.button.manual"              = "Bagaimana menggunakannya?";
 

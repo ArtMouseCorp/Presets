@@ -85,6 +85,7 @@
 "preset.tapHint"                    = "タップしてプリセットを開く";
 "preset.button.addToMyPresets"      = "プリセットに追加";
 "preset.addedPreset"                = "追加済！";
+"preset.button.openPreset"          = "プリセットを開く";
 "preset.button.subscription"        = "100以上のプリセットにアクセスできます";
 "preset.button.manual"              = "使い方";
 

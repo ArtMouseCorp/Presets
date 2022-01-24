@@ -85,6 +85,7 @@
 "preset.tapHint"                    = "点击打开预设";
 "preset.button.addToMyPresets"      = "添加到我的预设中";
 "preset.addedPreset"                = "添加!";
+"preset.button.openPreset"          = "打开预设";
 "preset.button.subscription"        = "获得100多个预设的权限";
 "preset.button.manual"              = "如何使用？";
 

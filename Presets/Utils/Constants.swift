@@ -8,7 +8,7 @@ enum UDKeys {
     static let favouritePresets: String         = "favouritePresets"
     static let saleOfferStartDate: String       = "saleOfferStartDate"
     static let isStartSaleOfferDateSet: String  = "isStartSaleOfferDateSet"
-    static let paywallNumber : String           = "paywallNumber"
+    static let currentAutoPaywall: String       = "currentAutoPaywall"
 }
 
 enum AmplitudeEvents {

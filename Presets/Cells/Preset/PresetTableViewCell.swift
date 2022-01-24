@@ -59,10 +59,14 @@ class PresetTableViewCell: UITableViewCell {
             
         case .label:
             
-            self.presetButton.setTitle(preset.isFree ? FREE : PREMIUM, for: .normal)
-            self.presetButton.backgroundColor = preset.isFree ? UIColor(red: 1, green: 71/255, blue: 181/255, alpha: 1) : UIColor(red: 1, green: 71/255, blue: 71/255, alpha: 1)
-            
-            self.presetButton.isUserInteractionEnabled = false
+            if State.isSubscribed {
+                self.presetButton.isUserInteractionEnabled = false
+                self.presetButton.isHidden = true
+            } else {
+                self.presetButton.setTitle(preset.isFree ? FREE : PREMIUM, for: .normal)
+                self.presetButton.backgroundColor = preset.isFree ? UIColor(red: 1, green: 71/255, blue: 181/255, alpha: 1) : UIColor(red: 1, green: 71/255, blue: 71/255, alpha: 1)
+                self.presetButton.isUserInteractionEnabled = false
+            }
             
         }
         

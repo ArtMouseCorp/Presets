@@ -86,6 +86,7 @@
 		28F1337126CA9F7E00DB7142 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 28F1337026CA9F7E00DB7142 /* swiftgen.yml */; };
 		28F1337326CAA0D100DB7142 /* GeneratedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F1337226CAA0D100DB7142 /* GeneratedStrings.swift */; };
 		4A02E90826C542FA00E3FCF0 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A02E90726C542FA00E3FCF0 /* SubscriptionViewController.swift */; };
+		4A158CB1279EF3BE007EEF49 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A158CB0279EF3BE007EEF49 /* LoadingViewController.swift */; };
 		4A266A6726C6D5B300318A8D /* SettingsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A266A6626C6D5B300318A8D /* SettingsPopupViewController.swift */; };
 		4A27D3A126C69CCC00A4D069 /* PresetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A27D3A026C69CCC00A4D069 /* PresetTableViewCell.xib */; };
 		4A46A56926C5A9AD005EBD85 /* SubscriptionPlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A46A56826C5A9AD005EBD85 /* SubscriptionPlansViewController.swift */; };
@@ -256,6 +257,7 @@
 		28F1337226CAA0D100DB7142 /* GeneratedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedStrings.swift; sourceTree = "<group>"; };
 		2EE3B9B2BDF87FB0FF81707E /* Pods-Presets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Presets.debug.xcconfig"; path = "Target Support Files/Pods-Presets/Pods-Presets.debug.xcconfig"; sourceTree = "<group>"; };
 		4A02E90726C542FA00E3FCF0 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		4A158CB0279EF3BE007EEF49 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		4A266A6626C6D5B300318A8D /* SettingsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopupViewController.swift; sourceTree = "<group>"; };
 		4A27D3A026C69CCC00A4D069 /* PresetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresetTableViewCell.xib; sourceTree = "<group>"; };
 		4A46A56826C5A9AD005EBD85 /* SubscriptionPlansViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansViewController.swift; sourceTree = "<group>"; };
@@ -806,6 +808,7 @@
 			children = (
 				4A800E762732DD36004C1DB9 /* Settings */,
 				4A5A2C7726C4877B00F78C2F /* BaseViewController.swift */,
+				4A158CB0279EF3BE007EEF49 /* LoadingViewController.swift */,
 				4A46A56D26C5D701005EBD85 /* MainViewController.swift */,
 				4AC3A86126C6E86200B1340A /* ManualViewController.swift */,
 				4A5A2C7526C4858600F78C2F /* OnboardingViewController.swift */,
@@ -1171,6 +1174,7 @@
 				4A46A57126C5DEFE005EBD85 /* CategoryCollectionViewCell.swift in Sources */,
 				28DEEB4927372F9700006A75 /* PresetsCollectionViewCell.swift in Sources */,
 				2823316F26C6C4F0002EB4C2 /* PresetViewController.swift in Sources */,
+				4A158CB1279EF3BE007EEF49 /* LoadingViewController.swift in Sources */,
 				4AE7C3CD2798851800E0B5DE /* SubscriptionThirdViewController.swift in Sources */,
 				28F1331126CA7BE000DB7142 /* UIViewController.swift in Sources */,
 				4A46A57926C6757D005EBD85 /* PresetTableViewCell.swift in Sources */,

@@ -78,7 +78,11 @@ class PresetViewController: BaseViewController {
     
     private func localize() {
         self.howToUseButton.localize(with: L10n.Preset.Button.manual)
-        self.getAccessButton.localize(with: L10n.Preset.Button.subscription)
+        if State.isSubscribed {
+            self.getAccessButton.localize(with: L10n.Preset.Button.openPreset)
+        } else {
+            self.getAccessButton.localize(with: L10n.Preset.Button.subscription)
+        }
     }
     
     func configureCollectionView() {
@@ -145,6 +149,14 @@ class PresetViewController: BaseViewController {
 
     }
     
+    var visibleCurrentCellIndexPath: IndexPath? {
+        for cell in self.collectionView.visibleCells {
+            let indexPath = self.collectionView.indexPath(for: cell)
+            return indexPath
+         }
+         return nil
+    }
+    
     // MARK: - @IBActions
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -175,7 +187,11 @@ class PresetViewController: BaseViewController {
         selectionFeedbackGenerator.selectionChanged()
         
         if State.isSubscribed {
-            self.navigationController?.popViewController(animated: true)
+            let popup = DefaultPopupViewController.load(from: .defaultPopup)
+            popup.initialize(as: .openPresetPopup)
+            popup.indexOfImagePreset = visibleCurrentCellIndexPath?.row ?? 0
+            popup.completion = { }
+            self.showPopup(popup)
         } else {
             self.showPaywall()
         }
@@ -206,6 +222,7 @@ extension PresetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.presetImage.rawValue, for: indexPath) as! PresetImageCollectionViewCell
         
         cell.configure(with: imagesURLs[indexPath.row], isFirst: indexPath.row == 0)
+        cell.presetNameLabel.text = "\(State.selectedPreset.name) \(indexPath.row + 1)"
         
         return cell
     }
