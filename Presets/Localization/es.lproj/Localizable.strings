@@ -85,6 +85,7 @@
 "preset.tapHint" = "Toca para abrir el ajuste preestablecido";
 "preset.button.addToMyPresets" = "Añadir a mis ajustes preestablecidos";
 "preset.addedPreset" = "¡Añadido!";
+"preset.button.openPreset"          = "Abrir preestablecido";
 "preset.button.subscription" = "Accede a más de 100 ajustes preestablecidos";
 "preset.button.manual" = "¿Cómo se usa?";
 

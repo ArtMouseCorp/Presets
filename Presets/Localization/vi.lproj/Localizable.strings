@@ -85,6 +85,7 @@
 "preset.tapHint"                    = "Chạm để mở thiết lập sẵn";
 "preset.button.addToMyPresets"      = "Thêm vào thiết lập sẵn của tôi";
 "preset.addedPreset"                = "Đã thêm!";
+"preset.button.openPreset"          = "Mở cài đặt trước";
 "preset.button.subscription"        = "Truy cập hơn 100 thiết lập sẵn";
 "preset.button.manual"              = "Cách sử dụng?";
 

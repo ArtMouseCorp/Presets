@@ -85,6 +85,7 @@
 "preset.tapHint"                    = "Ön ayarı açmak için dokunun";
 "preset.button.addToMyPresets"      = "Ön ayarlarıma ekle";
 "preset.addedPreset"                = "Eklendi!";
+"preset.button.openPreset"          = "Ön ayarı aç";
 "preset.button.subscription"        = "100'den fazla ön ayara erişin";
 "preset.button.manual"              = "Nasıl kullanılır?";
 

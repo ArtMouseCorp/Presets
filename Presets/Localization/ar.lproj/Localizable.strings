@@ -85,6 +85,7 @@
 "preset.tapHint"                    = "اضغط لفتح الإعداد المسبق";
 "preset.button.addToMyPresets"      = "إضافة إلى إعداداتي المسبقة";
 "preset.addedPreset"                = "تمت الإضافة";
+"preset.button.openPreset"          = "افتح الإعداد المسبق";
 "preset.button.subscription"        = "احصل على إمكانية الوصول إلى أكثر من 100 إعداد مسبق";
 "preset.button.manual"              = "طريقة الاستخدام؟";
 

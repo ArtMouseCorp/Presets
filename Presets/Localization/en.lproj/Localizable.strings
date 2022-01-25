@@ -86,6 +86,7 @@
 "preset.button.addToMyPresets"      = "Add to my presets";
 "preset.addedPreset"                = "Added!";
 "preset.button.subscription"        = "Get access to 100+ presets";
+"preset.button.openPreset"          = "Open preset";
 "preset.button.manual"              = "How to use?";
 
 // MARK: - Open Preset Popup

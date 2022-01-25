@@ -85,6 +85,7 @@
 "preset.tapHint"                    = "Toque para abrir a predefinição";
 "preset.button.addToMyPresets"      = "Adicionar às minhas predefinições";
 "preset.addedPreset"                = "Adicionada!";
+"preset.button.openPreset"          = "Abrir predefinição";
 "preset.button.subscription"        = "Obtenha acesso a mais de 100 predefinições";
 "preset.button.manual"              = "Como utilizar?";
 

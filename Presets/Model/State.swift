@@ -25,6 +25,7 @@ struct State {
     public static var thirdSubscriptionPage: ThirdSubscriptionPage = .default
     
     public static var currentPaywall: BaseViewController = .load(from: .subscriptionFirst)
+    public static var currentAutoPaywallNumber: Int = -1
     
     // MARK: - Functions
     
@@ -36,6 +37,14 @@ struct State {
     public static func getAppLaunchCount() -> Int {
         self.appLaunch = userDefaults.integer(forKey: UDKeys.appLaunchCount)
         return self.appLaunch
+    }
+    
+    public static func setCurrentAutoPaywall(paywallNumber: Int) {
+        userDefaults.set(paywallNumber, forKey: UDKeys.currentAutoPaywall)
+    }
+    
+    public static func getCurrentAutoPaywall() {
+        self.currentAutoPaywallNumber = userDefaults.integer(forKey: UDKeys.currentAutoPaywall)
     }
     
     public static func isFirstLaunch() -> Bool {

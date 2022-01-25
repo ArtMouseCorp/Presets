@@ -5,6 +5,7 @@ public enum Storyboard: String {
 }
 
 public enum Screen {
+    case loading
     case splash
     case onboarding
     case subscription
@@ -28,6 +29,8 @@ extension Screen {
     
     var info: (id: String, storyboard: Storyboard) {
         switch self {
+        case .loading:
+            return ("LoadingViewController", .Main)
         case .splash:
             return ("SplashViewController", .Main)
         case .onboarding:

@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = OnboardingViewController.load(from: .onboarding)
             Amplitude.instance().logEvent(AmplitudeEvents.firstTimeLaunch)
         } else {
-            window.rootViewController = UINavigationController.load(from: .mainNav)
+            window.rootViewController = LoadingViewController.load(from: .loading)
             Amplitude.instance().logEvent(AmplitudeEvents.appLaunch)
         }
 

@@ -49,13 +49,11 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         StoreManager.updateStatus()
         localize()
         configureCategories()
         callPaywall()
         State.startSaleOffer()
-        calculateSaleOfferEndDate()
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,10 +65,13 @@ class MainViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         configureUI()
+        calculateSaleOfferEndDate()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        timer.invalidate()
+        if timer.isValid {
+            timer.invalidate()
+        }
     }
     
     // MARK: - Custom functions
@@ -196,6 +197,7 @@ class MainViewController: BaseViewController {
         
         offerVC.onClose = { timeText in
             self.offerTimeLeftLabel.text = "🔥\(timeText)"
+            self.timerStart()
         }
         
         self.present(offerVC, animated: true, completion: nil)
@@ -294,8 +296,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         self.selectedCategoryIndex = indexPath.row
         self.categoriesCollectionView.reloadData()
-        self.categoriesCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-        //        self.presetsCollectionView.reloadItems(at: [indexPath])
+//        self.categoriesCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+//        self.presetsCollectionView.reloadItems(at: [indexPath])
         
     }
     

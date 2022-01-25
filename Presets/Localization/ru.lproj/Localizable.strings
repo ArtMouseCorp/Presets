@@ -85,6 +85,7 @@
 "preset.tapHint"                    = "Нажмите, чтобы открыть пресет";
 "preset.button.addToMyPresets"      = "Добавить в мои пресеты";
 "preset.addedPreset"                = "Добавлено!";
+"preset.button.openPreset"          = "Открыть пресет";
 "preset.button.subscription"        = "Получить доступ к 100+ пресетам";
 "preset.button.manual"              = "Как пользоваться?";
 

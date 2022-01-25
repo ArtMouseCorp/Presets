@@ -54,7 +54,7 @@ class PresetsCollectionViewCell: UICollectionViewCell {
             self.presets = Preset.premium
         } else if indexPath.row == 2 && !Preset.free.isEmpty {
             self.presets = Preset.premium
-        } else if indexPath.row == 2 && Preset.free.isEmpty {
+        } else if indexPath.row >= 2 && Preset.free.isEmpty {
             self.presets = Preset.all.filter { return $0.id == indexPath.row - 1 }
         } else {
             self.presets = Preset.all.filter { return $0.id == indexPath.row - 2 }

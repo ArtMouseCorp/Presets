@@ -182,6 +182,8 @@ internal enum L10n {
       internal static let manual = L10n.tr("Localizable", "preset.button.manual")
       /// Get access to 100+ presets
       internal static let subscription = L10n.tr("Localizable", "preset.button.subscription")
+      /// Open preset
+      internal static let openPreset = L10n.tr("Localizable", "preset.button.openPreset")
     }
     internal enum Count {
       /// presets

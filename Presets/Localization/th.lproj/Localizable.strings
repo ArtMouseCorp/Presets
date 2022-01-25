@@ -85,6 +85,7 @@
 "preset.tapHint" = "แตะเพื่อเปิดพรีเซ็ต";
 "preset.button.addToMyPresets" = "เพิ่มลงในพรีเซ็ตของฉัน";
 "preset.addedPreset" = "เพิ่มแล้ว!";
+"preset.button.openPreset"          = "เปิดที่ตั้งไว้ล่วงหน้า";
 "preset.button.subscription" = "รับการเข้าถึง 100+ พรีเซ็ต";
 "preset.button.manual" = "จะใช้ได้อย่างไร?";
 

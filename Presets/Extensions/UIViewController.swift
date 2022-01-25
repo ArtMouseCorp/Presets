@@ -13,7 +13,7 @@ extension UIViewController {
     
     public func showPaywall(animated: Bool = true) {
         
-        let subscriptionView = State.currentPaywall
+        let subscriptionView = RCValues.sharedInstance.currentPaywall()
         
         self.addChild(subscriptionView)
         subscriptionView.view.frame = self.view.frame
