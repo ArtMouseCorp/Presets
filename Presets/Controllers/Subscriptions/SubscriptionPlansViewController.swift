@@ -232,10 +232,12 @@ class SubscriptionPlansViewController: BaseViewController {
             
         }
         
-//        let ids = ["com.temporary.month", "com.temporary.week", "com.temporary.year"] // DEBUG
-        let ids = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId] // RELEASE
+        let debugProductIds = ["com.temporary.month", "com.temporary.week", "com.temporary.year"] // DEBUG
+        let releaseProductIds = [pageConfig.firstSubscriptionId, pageConfig.secondSubscriptionId, pageConfig.thirdSubscriptionId] // RELEASE
         
-        StoreManager.getProducts(for: ids) { products in
+        let productIds = DEBUG_MODE ? debugProductIds : releaseProductIds
+        
+        StoreManager.getProducts(for: productIds) { products in
             guard !products.isEmpty else {
                 self.dismiss(animated: true)
                 return

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F71DD9985215E142F625AD23A9121477"
-               BuildableName = "NIOFoundationCompat.framework"
+               BuildableName = "NIOHPACK.framework"
                BlueprintName = "SwiftNIOHPACK"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F71DD9985215E142F625AD23A9121477"
-            BuildableName = "NIOFoundationCompat.framework"
+            BuildableName = "NIOHPACK.framework"
             BlueprintName = "SwiftNIOHPACK"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>

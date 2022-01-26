@@ -118,10 +118,12 @@ class SubscriptionFirstViewController: BaseViewController {
         continueButton.isEnabled = false
         restoreButton.isEnabled = false
         
-//        let ids = ["com.temporary.week", "com.temporary.month"] // DEBUG
-        let ids = [pageConfig.trialSubscriptionId, pageConfig.noTrialSubscriptionId] // RELEASE
+        let debugProductIds = ["com.temporary.week", "com.temporary.month"] // DEBUG
+        let releaseProductIds = [pageConfig.trialSubscriptionId, pageConfig.noTrialSubscriptionId] // RELEASE
         
-        StoreManager.getProducts(for: ids) { products in
+        let productIds = DEBUG_MODE ? debugProductIds : releaseProductIds
+        
+        StoreManager.getProducts(for: productIds) { products in
             
             guard products.count == 2 else {
                 self.view.removeFromSuperview()

@@ -19,6 +19,7 @@
 				6ED2DDE01775534D55F96E6250F6EA1E /* PBXTargetDependency */,
 			);
 			name = Firebase;
+			productName = Firebase;
 		};
 		28907903AF6DD0AD321D92CD660E7E23 /* FBSDKCoreKit */ = {
 			isa = PBXAggregateTarget;
@@ -31,6 +32,7 @@
 				4C637E5B750FEEF630293FE9C0C8FB2F /* PBXTargetDependency */,
 			);
 			name = FBSDKCoreKit;
+			productName = FBSDKCoreKit;
 		};
 		458B188365A307B3C128ABF524D1A3E3 /* GoogleUserMessagingPlatform */ = {
 			isa = PBXAggregateTarget;
@@ -41,6 +43,7 @@
 			dependencies = (
 			);
 			name = GoogleUserMessagingPlatform;
+			productName = GoogleUserMessagingPlatform;
 		};
 		479BDBD165CD08E2159181E58CD2078F /* FBAEMKit */ = {
 			isa = PBXAggregateTarget;
@@ -52,6 +55,7 @@
 				95019870F4B0F6C0719A71527E2E40E4 /* PBXTargetDependency */,
 			);
 			name = FBAEMKit;
+			productName = FBAEMKit;
 		};
 		899318C1CEDE586664EC232A68069570 /* YandexMobileMetrica */ = {
 			isa = PBXAggregateTarget;
@@ -62,6 +66,7 @@
 			dependencies = (
 			);
 			name = YandexMobileMetrica;
+			productName = YandexMobileMetrica;
 		};
 		8EA62FEAB23070050EFD4D4508D659E5 /* FBSDKCoreKit_Basics */ = {
 			isa = PBXAggregateTarget;
@@ -72,6 +77,7 @@
 			dependencies = (
 			);
 			name = FBSDKCoreKit_Basics;
+			productName = FBSDKCoreKit_Basics;
 		};
 		B0B23938B1EBCBAD2419AB6E9D222A0B /* AppsFlyerFramework */ = {
 			isa = PBXAggregateTarget;
@@ -82,6 +88,7 @@
 			dependencies = (
 			);
 			name = AppsFlyerFramework;
+			productName = AppsFlyerFramework;
 		};
 		B53D977A951AFC38B21751B706C1DF83 /* GoogleAppMeasurement */ = {
 			isa = PBXAggregateTarget;
@@ -94,6 +101,7 @@
 				E12A31519F944E7A49F914C5C5570F69 /* PBXTargetDependency */,
 			);
 			name = GoogleAppMeasurement;
+			productName = GoogleAppMeasurement;
 		};
 		C49E7A4D59E5C8BE8DE9FB1EFB150185 /* FirebaseAnalytics */ = {
 			isa = PBXAggregateTarget;
@@ -109,6 +117,7 @@
 				539CDAAD6D6DFA352BE93C6561CD6B6D /* PBXTargetDependency */,
 			);
 			name = FirebaseAnalytics;
+			productName = FirebaseAnalytics;
 		};
 		F783E7E9F8591E6CF73ED67143335F50 /* OneSignalXCFramework */ = {
 			isa = PBXAggregateTarget;
@@ -119,6 +128,7 @@
 			dependencies = (
 			);
 			name = OneSignalXCFramework;
+			productName = OneSignalXCFramework;
 		};
 		FEA3B3A570634836C0457F3D7CEF1699 /* Google-Mobile-Ads-SDK */ = {
 			isa = PBXAggregateTarget;
@@ -131,6 +141,7 @@
 				540FF456B81C45FF2DE4E373983C3401 /* PBXTargetDependency */,
 			);
 			name = "Google-Mobile-Ads-SDK";
+			productName = "Google-Mobile-Ads-SDK";
 		};
 /* End PBXAggregateTarget section */
 
@@ -7481,51 +7492,51 @@
 		9824729D77D392A86CAA7778F311D009 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8436BC15451DA6766C259541522EB812 /* _NIODataStructures */,
-				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */,
-				FB1AEA4C98299C58EBD57977A6BF8D79 /* Amplitude */,
-				67F9B3FA2F42C85B1AEE52AB15566E95 /* CGRPCZlib */,
-				D91FC01385D3680BAE48C7A1E23CB088 /* CNIOAtomics */,
-				BBBC89616D0756CD768F9406643F7DC0 /* CNIOBoringSSL */,
-				D138731AC283B1675098D887342027D8 /* CNIOBoringSSLShims */,
-				4CECE1D3F082EE1C5AF7E5E93BAEDF74 /* CNIODarwin */,
-				E8457AC368411E1953DDF7BE182DA599 /* CNIOHTTPParser */,
-				6F1C5C1A1C8F9473CEF780C63705F78A /* CNIOLinux */,
-				4A1D16EDB0405CEE4C837F184DC39013 /* CNIOWindows */,
-				7C3AE4425E7B08F16F1B4FD32951CA7F /* FirebaseABTesting */,
-				E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore */,
-				8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics */,
-				13C8C8B254851998F9289F71229B28A2 /* FirebaseInstallations */,
-				AD776F1C94991D3E551CEAA515DB110A /* FirebaseRemoteConfig */,
-				9CF8FA5F01F446F01AAC7331075452AD /* FirebaseStorage */,
-				856B5CD56F194FAD26EA91620B66D614 /* GoogleDataTransport */,
-				B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities */,
-				1C28BA3A3A3D7E0630D7850B2EA9BBE2 /* gRPC-Swift */,
-				C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher */,
-				A6513E0A6CB60623515716E73996F0F5 /* Logging */,
-				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb */,
+				8436BC15451DA6766C259541522EB812 /* _NIODataStructures.framework */,
+				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */,
+				FB1AEA4C98299C58EBD57977A6BF8D79 /* Amplitude.framework */,
+				67F9B3FA2F42C85B1AEE52AB15566E95 /* CGRPCZlib.framework */,
+				D91FC01385D3680BAE48C7A1E23CB088 /* CNIOAtomics.framework */,
+				BBBC89616D0756CD768F9406643F7DC0 /* CNIOBoringSSL.framework */,
+				D138731AC283B1675098D887342027D8 /* CNIOBoringSSLShims.framework */,
+				4CECE1D3F082EE1C5AF7E5E93BAEDF74 /* CNIODarwin.framework */,
+				E8457AC368411E1953DDF7BE182DA599 /* CNIOHTTPParser.framework */,
+				6F1C5C1A1C8F9473CEF780C63705F78A /* CNIOLinux.framework */,
+				4A1D16EDB0405CEE4C837F184DC39013 /* CNIOWindows.framework */,
+				7C3AE4425E7B08F16F1B4FD32951CA7F /* FirebaseABTesting.framework */,
+				E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore.framework */,
+				8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics.framework */,
+				13C8C8B254851998F9289F71229B28A2 /* FirebaseInstallations.framework */,
+				AD776F1C94991D3E551CEAA515DB110A /* FirebaseRemoteConfig.framework */,
+				9CF8FA5F01F446F01AAC7331075452AD /* FirebaseStorage.framework */,
+				856B5CD56F194FAD26EA91620B66D614 /* GoogleDataTransport.framework */,
+				B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */,
+				1C28BA3A3A3D7E0630D7850B2EA9BBE2 /* GRPC.framework */,
+				C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */,
+				A6513E0A6CB60623515716E73996F0F5 /* Logging.framework */,
+				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */,
 				4AF3B972C94DFF11700E306F18F01DF3 /* Pods-OneSignalNotificationServiceExtension */,
 				483B7CFDA94301504A7519C679A068F2 /* Pods-Presets */,
-				3347A1AB6546F0A3977529B8F199DC41 /* PromisesObjC */,
-				FBA7F9EF3FAEB0BC7D79BB1AFF265A06 /* Purchases */,
-				A8744BFCBA0EFF3EFCB22EF6E0408B42 /* PurchasesCoreSwift */,
-				21B03CA622E690725A6626C088E1D09F /* ReachabilitySwift */,
-				46BB3BE8F28A9F23F5DA8169B1E49D22 /* SkarbSDK */,
-				5E982D315A4CB75E8F15068B30779C7C /* SwiftNIO */,
-				673CA60B9FF9D56D5AEAFAD4E2D7B368 /* SwiftNIOConcurrencyHelpers */,
-				A00E16AE69A03C3643B9534FCF13263C /* SwiftNIOCore */,
-				E83089C79437628622D534CAA83363B4 /* SwiftNIOEmbedded */,
-				81AC88440747A0FCA422BCA626C9A038 /* SwiftNIOExtras */,
-				6D040D1A67C3DBE3C11EB6FBC61B8141 /* SwiftNIOFoundationCompat */,
-				8A6887895625D9DECAAEBF5A690134F7 /* SwiftNIOHPACK */,
-				134C82C2AF26C1F6D1FA6484A52A0FF4 /* SwiftNIOHTTP1 */,
-				2A4CC298CC8CF90A2A7FAFA7D74BD1CF /* SwiftNIOHTTP2 */,
-				D85994E4069B3EC81A279B775780797A /* SwiftNIOPosix */,
-				73328AB6E67FF4855DF7327B64265B4E /* SwiftNIOSSL */,
-				43BCA78D557ACEB23EEA495EE0402530 /* SwiftNIOTLS */,
-				42E23A3C1C5D8CE37484B124E180BAA0 /* SwiftNIOTransportServices */,
-				943D347E61A2E181A4FA2CA894307B6E /* SwiftProtobuf */,
-				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON */,
+				3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */,
+				FBA7F9EF3FAEB0BC7D79BB1AFF265A06 /* Purchases.framework */,
+				A8744BFCBA0EFF3EFCB22EF6E0408B42 /* PurchasesCoreSwift.framework */,
+				21B03CA622E690725A6626C088E1D09F /* Reachability.framework */,
+				46BB3BE8F28A9F23F5DA8169B1E49D22 /* SkarbSDK.framework */,
+				5E982D315A4CB75E8F15068B30779C7C /* NIO.framework */,
+				673CA60B9FF9D56D5AEAFAD4E2D7B368 /* NIOConcurrencyHelpers.framework */,
+				A00E16AE69A03C3643B9534FCF13263C /* NIOCore.framework */,
+				E83089C79437628622D534CAA83363B4 /* NIOEmbedded.framework */,
+				81AC88440747A0FCA422BCA626C9A038 /* NIOExtras.framework */,
+				6D040D1A67C3DBE3C11EB6FBC61B8141 /* NIOFoundationCompat.framework */,
+				8A6887895625D9DECAAEBF5A690134F7 /* NIOHPACK.framework */,
+				134C82C2AF26C1F6D1FA6484A52A0FF4 /* NIOHTTP1.framework */,
+				2A4CC298CC8CF90A2A7FAFA7D74BD1CF /* NIOHTTP2.framework */,
+				D85994E4069B3EC81A279B775780797A /* NIOPosix.framework */,
+				73328AB6E67FF4855DF7327B64265B4E /* NIOSSL.framework */,
+				43BCA78D557ACEB23EEA495EE0402530 /* NIOTLS.framework */,
+				42E23A3C1C5D8CE37484B124E180BAA0 /* NIOTransportServices.framework */,
+				943D347E61A2E181A4FA2CA894307B6E /* SwiftProtobuf.framework */,
+				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -8532,8 +8543,7 @@
 				E1BF9A8D06C0ADFA0B8FB5BAA630DF6C /* UInt8+Extensions.swift */,
 				EF722A80AE44B7CF106EBC7D851A4046 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/Alamofire";
+			path = PurchasesCoreSwift;
 			sourceTree = "<group>";
 		};
 		D9632C15B131A2503C0AEE3C3693E7D6 /* CNIOBoringSSLShims */ = {
@@ -9814,7 +9824,7 @@
 			);
 			name = ReachabilitySwift;
 			productName = Reachability;
-			productReference = 21B03CA622E690725A6626C088E1D09F /* ReachabilitySwift */;
+			productReference = 21B03CA622E690725A6626C088E1D09F /* Reachability.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		17112F66EE5BDC5584A51CF4FCE7631A /* SwiftNIOHTTP2 */ = {
@@ -9838,7 +9848,7 @@
 			);
 			name = SwiftNIOHTTP2;
 			productName = NIOHTTP2;
-			productReference = 2A4CC298CC8CF90A2A7FAFA7D74BD1CF /* SwiftNIOHTTP2 */;
+			productReference = 2A4CC298CC8CF90A2A7FAFA7D74BD1CF /* NIOHTTP2.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		19EF5509BA60F0CD4916B9F24A2F7886 /* Purchases */ = {
@@ -9857,7 +9867,7 @@
 			);
 			name = Purchases;
 			productName = Purchases;
-			productReference = FBA7F9EF3FAEB0BC7D79BB1AFF265A06 /* Purchases */;
+			productReference = FBA7F9EF3FAEB0BC7D79BB1AFF265A06 /* Purchases.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		23E7C4A52360C026F97E4A96D91B03CE /* FirebaseStorage */ = {
@@ -9877,7 +9887,7 @@
 			);
 			name = FirebaseStorage;
 			productName = FirebaseStorage;
-			productReference = 9CF8FA5F01F446F01AAC7331075452AD /* FirebaseStorage */;
+			productReference = 9CF8FA5F01F446F01AAC7331075452AD /* FirebaseStorage.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		2ABF3F8EC6CE525E1E02C51D72C64E94 /* Logging */ = {
@@ -9895,7 +9905,7 @@
 			);
 			name = Logging;
 			productName = Logging;
-			productReference = A6513E0A6CB60623515716E73996F0F5 /* Logging */;
+			productReference = A6513E0A6CB60623515716E73996F0F5 /* Logging.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		2BBF7206D7FAC92C82A042A99C4A98F8 /* PromisesObjC */ = {
@@ -9916,7 +9926,7 @@
 			);
 			name = PromisesObjC;
 			productName = FBLPromises;
-			productReference = 3347A1AB6546F0A3977529B8F199DC41 /* PromisesObjC */;
+			productReference = 3347A1AB6546F0A3977529B8F199DC41 /* FBLPromises.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		2BC2CC6A5EB8F91429DC14E6BDC342DF /* PurchasesCoreSwift */ = {
@@ -9934,7 +9944,7 @@
 			);
 			name = PurchasesCoreSwift;
 			productName = PurchasesCoreSwift;
-			productReference = A8744BFCBA0EFF3EFCB22EF6E0408B42 /* PurchasesCoreSwift */;
+			productReference = A8744BFCBA0EFF3EFCB22EF6E0408B42 /* PurchasesCoreSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		34E23B39AFBC87A7678CDCA494DE5CDC /* CNIOLinux */ = {
@@ -9952,7 +9962,7 @@
 			);
 			name = CNIOLinux;
 			productName = CNIOLinux;
-			productReference = 6F1C5C1A1C8F9473CEF780C63705F78A /* CNIOLinux */;
+			productReference = 6F1C5C1A1C8F9473CEF780C63705F78A /* CNIOLinux.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4402AFF83DBDC4DD07E198685FDC2DF2 /* FirebaseCore */ = {
@@ -9972,7 +9982,7 @@
 			);
 			name = FirebaseCore;
 			productName = FirebaseCore;
-			productReference = E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore */;
+			productReference = E2B63D462DB7F827C4B11FD51E4F8E2D /* FirebaseCore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4A0A66DC2DC19095E11E5D3A679802D4 /* CNIOWindows */ = {
@@ -9990,7 +10000,7 @@
 			);
 			name = CNIOWindows;
 			productName = CNIOWindows;
-			productReference = 4A1D16EDB0405CEE4C837F184DC39013 /* CNIOWindows */;
+			productReference = 4A1D16EDB0405CEE4C837F184DC39013 /* CNIOWindows.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4F818C63E0C8BC4199AC207AD36B89F0 /* SwiftNIOEmbedded */ = {
@@ -10010,7 +10020,7 @@
 			);
 			name = SwiftNIOEmbedded;
 			productName = NIOEmbedded;
-			productReference = E83089C79437628622D534CAA83363B4 /* SwiftNIOEmbedded */;
+			productReference = E83089C79437628622D534CAA83363B4 /* NIOEmbedded.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		51471EE35F2E9E19E51A74944E5ABB7F /* FirebaseRemoteConfig */ = {
@@ -10032,7 +10042,7 @@
 			);
 			name = FirebaseRemoteConfig;
 			productName = FirebaseRemoteConfig;
-			productReference = AD776F1C94991D3E551CEAA515DB110A /* FirebaseRemoteConfig */;
+			productReference = AD776F1C94991D3E551CEAA515DB110A /* FirebaseRemoteConfig.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		56A44E6B610D174593F40C5AD73224C4 /* CNIODarwin */ = {
@@ -10050,7 +10060,7 @@
 			);
 			name = CNIODarwin;
 			productName = CNIODarwin;
-			productReference = 4CECE1D3F082EE1C5AF7E5E93BAEDF74 /* CNIODarwin */;
+			productReference = 4CECE1D3F082EE1C5AF7E5E93BAEDF74 /* CNIODarwin.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		56C793C77970EA2F3692F44FFEFD9360 /* SwiftNIOHTTP1 */ = {
@@ -10072,7 +10082,7 @@
 			);
 			name = SwiftNIOHTTP1;
 			productName = NIOHTTP1;
-			productReference = 134C82C2AF26C1F6D1FA6484A52A0FF4 /* SwiftNIOHTTP1 */;
+			productReference = 134C82C2AF26C1F6D1FA6484A52A0FF4 /* NIOHTTP1.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		59007493BE8F52FEEC69F0F9330AA6C0 /* CNIOHTTPParser */ = {
@@ -10090,7 +10100,7 @@
 			);
 			name = CNIOHTTPParser;
 			productName = CNIOHTTPParser;
-			productReference = E8457AC368411E1953DDF7BE182DA599 /* CNIOHTTPParser */;
+			productReference = E8457AC368411E1953DDF7BE182DA599 /* CNIOHTTPParser.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		595729A6BA7621B06DBF24D66650D595 /* _NIODataStructures */ = {
@@ -10108,7 +10118,7 @@
 			);
 			name = _NIODataStructures;
 			productName = _NIODataStructures;
-			productReference = 8436BC15451DA6766C259541522EB812 /* _NIODataStructures */;
+			productReference = 8436BC15451DA6766C259541522EB812 /* _NIODataStructures.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5C0371EE948D0357B8EE0E34ABB44BF0 /* GoogleDataTransport */ = {
@@ -10129,7 +10139,7 @@
 			);
 			name = GoogleDataTransport;
 			productName = GoogleDataTransport;
-			productReference = 856B5CD56F194FAD26EA91620B66D614 /* GoogleDataTransport */;
+			productReference = 856B5CD56F194FAD26EA91620B66D614 /* GoogleDataTransport.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5D6DC8585F20CBE789F7D3D4F645980E /* SwiftNIOTransportServices */ = {
@@ -10151,7 +10161,7 @@
 			);
 			name = SwiftNIOTransportServices;
 			productName = NIOTransportServices;
-			productReference = 42E23A3C1C5D8CE37484B124E180BAA0 /* SwiftNIOTransportServices */;
+			productReference = 42E23A3C1C5D8CE37484B124E180BAA0 /* NIOTransportServices.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5E62229F86AA9810C2A7E6CF628B8486 /* SwiftNIO */ = {
@@ -10172,7 +10182,7 @@
 			);
 			name = SwiftNIO;
 			productName = NIO;
-			productReference = 5E982D315A4CB75E8F15068B30779C7C /* SwiftNIO */;
+			productReference = 5E982D315A4CB75E8F15068B30779C7C /* NIO.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		61DB9F97C45B368C17F830199512E361 /* SwiftNIOExtras */ = {
@@ -10191,7 +10201,7 @@
 			);
 			name = SwiftNIOExtras;
 			productName = NIOExtras;
-			productReference = 81AC88440747A0FCA422BCA626C9A038 /* SwiftNIOExtras */;
+			productReference = 81AC88440747A0FCA422BCA626C9A038 /* NIOExtras.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		620E05868772C10B4920DC7E324F2C87 /* FirebaseCoreDiagnostics */ = {
@@ -10212,7 +10222,7 @@
 			);
 			name = FirebaseCoreDiagnostics;
 			productName = FirebaseCoreDiagnostics;
-			productReference = 8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics */;
+			productReference = 8CC9178C366942FD6FF6A115604EAD58 /* FirebaseCoreDiagnostics.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		642945244208FC5F107EE5F43551DCA5 /* CGRPCZlib */ = {
@@ -10230,7 +10240,7 @@
 			);
 			name = CGRPCZlib;
 			productName = CGRPCZlib;
-			productReference = 67F9B3FA2F42C85B1AEE52AB15566E95 /* CGRPCZlib */;
+			productReference = 67F9B3FA2F42C85B1AEE52AB15566E95 /* CGRPCZlib.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		65C8D0D3B04F444B821EB675E4D821DA /* CNIOBoringSSLShims */ = {
@@ -10249,7 +10259,7 @@
 			);
 			name = CNIOBoringSSLShims;
 			productName = CNIOBoringSSLShims;
-			productReference = D138731AC283B1675098D887342027D8 /* CNIOBoringSSLShims */;
+			productReference = D138731AC283B1675098D887342027D8 /* CNIOBoringSSLShims.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		71D94F5C545887C8BC575883E745A3DF /* CNIOBoringSSL */ = {
@@ -10267,7 +10277,7 @@
 			);
 			name = CNIOBoringSSL;
 			productName = CNIOBoringSSL;
-			productReference = BBBC89616D0756CD768F9406643F7DC0 /* CNIOBoringSSL */;
+			productReference = BBBC89616D0756CD768F9406643F7DC0 /* CNIOBoringSSL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		773FB76F4A2F42092713B9025F188877 /* SwiftNIOConcurrencyHelpers */ = {
@@ -10286,7 +10296,7 @@
 			);
 			name = SwiftNIOConcurrencyHelpers;
 			productName = NIOConcurrencyHelpers;
-			productReference = 673CA60B9FF9D56D5AEAFAD4E2D7B368 /* SwiftNIOConcurrencyHelpers */;
+			productReference = 673CA60B9FF9D56D5AEAFAD4E2D7B368 /* NIOConcurrencyHelpers.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		828CE0D82D7CE765F633F19C895E0782 /* Pods-Presets */ = {
@@ -10378,7 +10388,7 @@
 			);
 			name = SwiftNIOFoundationCompat;
 			productName = NIOFoundationCompat;
-			productReference = 6D040D1A67C3DBE3C11EB6FBC61B8141 /* SwiftNIOFoundationCompat */;
+			productReference = 6D040D1A67C3DBE3C11EB6FBC61B8141 /* NIOFoundationCompat.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		87803597EB3F20FC46472B85392EC4FD /* FirebaseInstallations */ = {
@@ -10399,7 +10409,7 @@
 			);
 			name = FirebaseInstallations;
 			productName = FirebaseInstallations;
-			productReference = 13C8C8B254851998F9289F71229B28A2 /* FirebaseInstallations */;
+			productReference = 13C8C8B254851998F9289F71229B28A2 /* FirebaseInstallations.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8D7F5D5DD528D21A72DC87ADA5B12E2D /* GoogleUtilities */ = {
@@ -10418,7 +10428,7 @@
 			);
 			name = GoogleUtilities;
 			productName = GoogleUtilities;
-			productReference = B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities */;
+			productReference = B43874C6CBB50E7134FBEC24BABFE14F /* GoogleUtilities.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8F68D031908A0059566798048C48F776 /* FirebaseABTesting */ = {
@@ -10437,7 +10447,7 @@
 			);
 			name = FirebaseABTesting;
 			productName = FirebaseABTesting;
-			productReference = 7C3AE4425E7B08F16F1B4FD32951CA7F /* FirebaseABTesting */;
+			productReference = 7C3AE4425E7B08F16F1B4FD32951CA7F /* FirebaseABTesting.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A284FBC915D2D556B046FA0A96871C2F /* SwiftNIOCore */ = {
@@ -10457,7 +10467,7 @@
 			);
 			name = SwiftNIOCore;
 			productName = NIOCore;
-			productReference = A00E16AE69A03C3643B9534FCF13263C /* SwiftNIOCore */;
+			productReference = A00E16AE69A03C3643B9534FCF13263C /* NIOCore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A5F702E0DA383BC1479572581615A916 /* SwiftProtobuf */ = {
@@ -10475,7 +10485,7 @@
 			);
 			name = SwiftProtobuf;
 			productName = SwiftProtobuf;
-			productReference = 943D347E61A2E181A4FA2CA894307B6E /* SwiftProtobuf */;
+			productReference = 943D347E61A2E181A4FA2CA894307B6E /* SwiftProtobuf.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BD0F10574EB554D7E668F50D2A5B77DF /* Pods-OneSignalNotificationServiceExtension */ = {
@@ -10518,7 +10528,7 @@
 			);
 			name = SwiftNIOSSL;
 			productName = NIOSSL;
-			productReference = 73328AB6E67FF4855DF7327B64265B4E /* SwiftNIOSSL */;
+			productReference = 73328AB6E67FF4855DF7327B64265B4E /* NIOSSL.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */ = {
@@ -10536,7 +10546,7 @@
 			);
 			name = SwiftyJSON;
 			productName = SwiftyJSON;
-			productReference = E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON */;
+			productReference = E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D2B5E7DCCBBFB32341D857D01211A1A3 /* nanopb */ = {
@@ -10554,7 +10564,7 @@
 			);
 			name = nanopb;
 			productName = nanopb;
-			productReference = 06FC5C9CF96D60C50FCD47D339C91951 /* nanopb */;
+			productReference = 06FC5C9CF96D60C50FCD47D339C91951 /* nanopb.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D3A90B0F4EBD528FD468C3F3BCC31CD7 /* Amplitude */ = {
@@ -10572,7 +10582,7 @@
 			);
 			name = Amplitude;
 			productName = Amplitude;
-			productReference = FB1AEA4C98299C58EBD57977A6BF8D79 /* Amplitude */;
+			productReference = FB1AEA4C98299C58EBD57977A6BF8D79 /* Amplitude.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D676E21115185671D7258A56944ABE98 /* GTMSessionFetcher */ = {
@@ -10590,7 +10600,7 @@
 			);
 			name = GTMSessionFetcher;
 			productName = GTMSessionFetcher;
-			productReference = C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher */;
+			productReference = C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D736A00DEDBE6AC34D5D1D32FD54046C /* SwiftNIOPosix */ = {
@@ -10614,7 +10624,7 @@
 			);
 			name = SwiftNIOPosix;
 			productName = NIOPosix;
-			productReference = D85994E4069B3EC81A279B775780797A /* SwiftNIOPosix */;
+			productReference = D85994E4069B3EC81A279B775780797A /* NIOPosix.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DBB6098E2B03BC9DB53C067142C50CA4 /* gRPC-Swift */ = {
@@ -10640,7 +10650,7 @@
 			);
 			name = "gRPC-Swift";
 			productName = GRPC;
-			productReference = 1C28BA3A3A3D7E0630D7850B2EA9BBE2 /* gRPC-Swift */;
+			productReference = 1C28BA3A3A3D7E0630D7850B2EA9BBE2 /* GRPC.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E0A1D7BDF9C722E6E4B4B1E012D20E51 /* SwiftNIOTLS */ = {
@@ -10660,7 +10670,7 @@
 			);
 			name = SwiftNIOTLS;
 			productName = NIOTLS;
-			productReference = 43BCA78D557ACEB23EEA495EE0402530 /* SwiftNIOTLS */;
+			productReference = 43BCA78D557ACEB23EEA495EE0402530 /* NIOTLS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E31BF93EB20B6245622D5A44E45F9BCA /* CNIOAtomics */ = {
@@ -10678,7 +10688,7 @@
 			);
 			name = CNIOAtomics;
 			productName = CNIOAtomics;
-			productReference = D91FC01385D3680BAE48C7A1E23CB088 /* CNIOAtomics */;
+			productReference = D91FC01385D3680BAE48C7A1E23CB088 /* CNIOAtomics.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */ = {
@@ -10696,7 +10706,7 @@
 			);
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = 5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */;
+			productReference = 5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F47462FF45ED61A5535F8693BFD64875 /* SkarbSDK */ = {
@@ -10716,7 +10726,7 @@
 			);
 			name = SkarbSDK;
 			productName = SkarbSDK;
-			productReference = 46BB3BE8F28A9F23F5DA8169B1E49D22 /* SkarbSDK */;
+			productReference = 46BB3BE8F28A9F23F5DA8169B1E49D22 /* SkarbSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F71DD9985215E142F625AD23A9121477 /* SwiftNIOHPACK */ = {
@@ -10738,7 +10748,7 @@
 			);
 			name = SwiftNIOHPACK;
 			productName = NIOHPACK;
-			productReference = 8A6887895625D9DECAAEBF5A690134F7 /* SwiftNIOHPACK */;
+			productReference = 8A6887895625D9DECAAEBF5A690134F7 /* NIOHPACK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -13877,13 +13887,12 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		05599CBBDE37B78D93DCA03847774EC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -13913,7 +13922,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -14005,7 +14014,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SkarbSDK/SkarbSDK-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SkarbSDK/SkarbSDK-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14076,7 +14085,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOHTTP2/SwiftNIOHTTP2-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOHTTP2/SwiftNIOHTTP2-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14111,7 +14120,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOLinux/CNIOLinux-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOLinux/CNIOLinux-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14147,7 +14156,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOHTTPParser/CNIOHTTPParser-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOHTTPParser/CNIOHTTPParser-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14182,7 +14191,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Amplitude/Amplitude-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Amplitude/Amplitude-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14215,7 +14224,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/PurchasesCoreSwift/PurchasesCoreSwift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/PurchasesCoreSwift/PurchasesCoreSwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14229,10 +14238,11 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		2575EB3C4F514CBB661B5C13C6FE6348 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -14250,7 +14260,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOFoundationCompat/SwiftNIOFoundationCompat-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOFoundationCompat/SwiftNIOFoundationCompat-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14285,7 +14295,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftProtobuf/SwiftProtobuf-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftProtobuf/SwiftProtobuf-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14334,7 +14344,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14396,13 +14406,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOBoringSSLShims/CNIOBoringSSLShims-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOBoringSSLShims/CNIOBoringSSLShims-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14416,11 +14427,10 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		348574AF607D3C232AA54C3011192DD6 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -14438,7 +14448,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOTLS/SwiftNIOTLS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOTLS/SwiftNIOTLS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14474,7 +14484,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOBoringSSLShims/CNIOBoringSSLShims-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOBoringSSLShims/CNIOBoringSSLShims-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14515,6 +14525,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B6E357CDDEE9B63BFE3EBA042BE29A4C /* FirebaseRemoteConfig.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -14525,7 +14536,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/FirebaseRemoteConfig/FirebaseRemoteConfig-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14556,37 +14567,6 @@
 					"@executable_path/Frameworks",
 				);
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		4184BD25E99FB83F7F46035D13D43DB0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BE8E8ABFBB7A91CF870CA6FA2493E85 /* FirebaseInstallations.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/FirebaseInstallations/FirebaseInstallations-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/FirebaseInstallations/FirebaseInstallations.modulemap";
-				PRODUCT_MODULE_NAME = FirebaseInstallations;
-				PRODUCT_NAME = FirebaseInstallations;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -14673,7 +14653,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14708,7 +14688,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOAtomics/CNIOAtomics-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOAtomics/CNIOAtomics-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14778,7 +14758,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOHTTP2/SwiftNIOHTTP2-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOHTTP2/SwiftNIOHTTP2-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14819,6 +14799,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D35835919430969F8596B9044EF6551D /* SwiftNIOEmbedded.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -14830,7 +14811,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOEmbedded/SwiftNIOEmbedded-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOEmbedded/SwiftNIOEmbedded-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14866,7 +14847,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOBoringSSL/CNIOBoringSSL-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOBoringSSL/CNIOBoringSSL-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14900,7 +14881,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Amplitude/Amplitude-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Amplitude/Amplitude-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14936,7 +14917,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOConcurrencyHelpers/SwiftNIOConcurrencyHelpers-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOConcurrencyHelpers/SwiftNIOConcurrencyHelpers-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -14970,7 +14951,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15006,7 +14987,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOSSL/SwiftNIOSSL-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOSSL/SwiftNIOSSL-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15018,12 +14999,13 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		5AB512EFF638E973E0D3E20314AA4A70 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -15058,7 +15040,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOExtras/SwiftNIOExtras-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOExtras/SwiftNIOExtras-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15070,7 +15052,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -15094,7 +15076,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOHTTPParser/CNIOHTTPParser-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOHTTPParser/CNIOHTTPParser-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15127,7 +15109,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/FirebaseCore/FirebaseCore-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15141,11 +15123,10 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		62E1BBC3156E4A9CE453473DF156CD62 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -15163,7 +15144,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOHTTP1/SwiftNIOHTTP1-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOHTTP1/SwiftNIOHTTP1-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15199,7 +15180,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOCore/SwiftNIOCore-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOCore/SwiftNIOCore-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15234,7 +15215,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/GTMSessionFetcher/GTMSessionFetcher-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15286,7 +15267,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/gRPC-Swift/gRPC-Swift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/gRPC-Swift/gRPC-Swift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15300,11 +15281,10 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		74B67C0F28DEFC808E42F86D2F1B9926 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -15322,7 +15302,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOBoringSSL/CNIOBoringSSL-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOBoringSSL/CNIOBoringSSL-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15393,7 +15373,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOTransportServices/SwiftNIOTransportServices-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOTransportServices/SwiftNIOTransportServices-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15405,27 +15385,10 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6545B5147073BA3CAD3EC5BF0D9F32AA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B1B5DD0DEF822AA73142CBE5F3BB1B4 /* FirebaseAnalytics.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -15443,7 +15406,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/PurchasesCoreSwift/PurchasesCoreSwift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/PurchasesCoreSwift/PurchasesCoreSwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15478,7 +15441,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOConcurrencyHelpers/SwiftNIOConcurrencyHelpers-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOConcurrencyHelpers/SwiftNIOConcurrencyHelpers-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15513,7 +15476,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOHPACK/SwiftNIOHPACK-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOHPACK/SwiftNIOHPACK-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15599,7 +15562,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOPosix/SwiftNIOPosix-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOPosix/SwiftNIOPosix-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15650,7 +15613,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOLinux/CNIOLinux-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOLinux/CNIOLinux-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15682,18 +15645,18 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOFoundationCompat/SwiftNIOFoundationCompat-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftNIOFoundationCompat/SwiftNIOFoundationCompat-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOHPACK/SwiftNIOHPACK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftNIOHPACK/SwiftNIOHPACK-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/SwiftNIOFoundationCompat/SwiftNIOFoundationCompat.modulemap";
-				PRODUCT_MODULE_NAME = NIOFoundationCompat;
-				PRODUCT_NAME = NIOFoundationCompat;
+				MODULEMAP_FILE = "Target Support Files/SwiftNIOHPACK/SwiftNIOHPACK.modulemap";
+				PRODUCT_MODULE_NAME = NIOHPACK;
+				PRODUCT_NAME = NIOHPACK;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -15719,7 +15682,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/FirebaseInstallations/FirebaseInstallations-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15838,7 +15801,7 @@
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
-			name = Release;
+			name = Debug;
 		};
 		8E00B8806A05ADA5371BDD7E19D4DA98 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -15855,7 +15818,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/FirebaseStorage/FirebaseStorage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15867,7 +15830,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -15890,7 +15853,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/_NIODataStructures/_NIODataStructures-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/_NIODataStructures/_NIODataStructures-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15926,7 +15889,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Alamofire-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15961,7 +15924,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Logging/Logging-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Logging/Logging-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -15996,7 +15959,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CNIOAtomics/CNIOAtomics-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIOAtomics/CNIOAtomics-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16021,7 +15984,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16196,7 +16159,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/FirebaseABTesting/FirebaseABTesting-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16229,7 +16192,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Purchases/Purchases-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Purchases/Purchases-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16264,7 +16227,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIO/SwiftNIO-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIO/SwiftNIO-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16283,7 +16246,7 @@
 			};
 			name = Debug;
 		};
-		A58B89DFF7E11A0ABDDD46F3EC5020D2 /* Debug */ = {
+		A9EEBF12B0E3733A640B1F7870912751 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A701056331AD40AC468757B443DF0486 /* SwiftyJSON.release.xcconfig */;
 			buildSettings = {
@@ -16295,26 +16258,28 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities.modulemap";
-				PRODUCT_MODULE_NAME = GoogleUtilities;
-				PRODUCT_NAME = GoogleUtilities;
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		ABB2A7DC17E14CF42E896615008CC5E2 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -16331,7 +16296,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftProtobuf/SwiftProtobuf-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftProtobuf/SwiftProtobuf-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16369,8 +16334,9 @@
 		};
 		B00C130C5291F4750E7F1C3F0F3BD707 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93FDD3638AC3C5DECCDF22BBCADC2937 /* SwiftNIOConcurrencyHelpers.debug.xcconfig */;
+			baseConfigurationReference = 55F6324BBC50798F275BEEE626DB70D2 /* Pods-Presets.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -16380,23 +16346,25 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOConcurrencyHelpers/SwiftNIOConcurrencyHelpers-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftNIOConcurrencyHelpers/SwiftNIOConcurrencyHelpers-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Presets/Pods-Presets-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/SwiftNIOConcurrencyHelpers/SwiftNIOConcurrencyHelpers.modulemap";
-				PRODUCT_MODULE_NAME = NIOConcurrencyHelpers;
-				PRODUCT_NAME = NIOConcurrencyHelpers;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Presets/Pods-Presets.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -16408,7 +16376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16432,7 +16400,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GoogleUtilities/GoogleUtilities-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16443,8 +16411,9 @@
 				PRODUCT_NAME = GoogleUtilities;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -16468,10 +16437,11 @@
 			};
 			name = Release;
 		};
-		B2350673F4256BAC4864797BB53D45F7 /* Release */ = {
+		BBC95C5695664E1121572D93CE1E61F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D8D1B8BFF6F89FAB49C9E7A4D8A04630 /* CNIOWindows.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -16480,21 +16450,22 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/CNIOWindows/CNIOWindows-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CNIOWindows/CNIOWindows-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.modulemap";
-				PRODUCT_MODULE_NAME = FirebaseCoreDiagnostics;
-				PRODUCT_NAME = FirebaseCoreDiagnostics;
+				MODULEMAP_FILE = "Target Support Files/CNIOWindows/CNIOWindows.modulemap";
+				PRODUCT_MODULE_NAME = CNIOWindows;
+				PRODUCT_NAME = CNIOWindows;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -16514,17 +16485,18 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/FirebaseCore/FirebaseCore-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/FirebaseCore/FirebaseCore.modulemap";
-				PRODUCT_MODULE_NAME = FirebaseCore;
-				PRODUCT_NAME = FirebaseCore;
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -16549,7 +16521,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/GoogleDataTransport/GoogleDataTransport-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16601,7 +16573,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/PromisesObjC/PromisesObjC-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16636,7 +16608,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOSSL/SwiftNIOSSL-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOSSL/SwiftNIOSSL-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16696,7 +16668,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16723,7 +16695,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIO/SwiftNIO-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIO/SwiftNIO-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16759,7 +16731,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/_NIODataStructures/_NIODataStructures-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/_NIODataStructures/_NIODataStructures-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16872,7 +16844,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16898,7 +16870,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOPosix/SwiftNIOPosix-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOPosix/SwiftNIOPosix-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16934,7 +16906,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOExtras/SwiftNIOExtras-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftNIOExtras/SwiftNIOExtras-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -16968,7 +16940,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Logging/Logging-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Logging/Logging-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -17002,7 +16974,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -17062,17 +17034,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 832651DBDDA05367AD6349FF8F5DED7D /* CNIODarwin.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/CNIODarwin/CNIODarwin-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CNIODarwin/CNIODarwin-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -17198,11 +17172,10 @@
 			};
 			name = Debug;
 		};
-		E92E055B1E9FF3B42F05112958EC4CC6 /* Release */ = {
+		EACDDDC9C0F413718312E0A600371E1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8902D8DE368A864E20EE67FCF5DFB5D9 /* ReachabilitySwift.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -17211,18 +17184,18 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftNIOTransportServices/SwiftNIOTransportServices-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftNIOTransportServices/SwiftNIOTransportServices-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/SwiftNIOTransportServices/SwiftNIOTransportServices.modulemap";
-				PRODUCT_MODULE_NAME = NIOTransportServices;
-				PRODUCT_NAME = NIOTransportServices;
+				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
+				PRODUCT_MODULE_NAME = Reachability;
+				PRODUCT_NAME = Reachability;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -17276,6 +17249,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B96AF3773A9DED23F257ABE364ED9B35 /* FirebaseStorage.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -17286,7 +17260,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/FirebaseStorage/FirebaseStorage-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -17369,10 +17343,11 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		FC454969A8AC627B76269EEAC52E2252 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -17392,11 +17367,10 @@
 			};
 			name = Release;
 		};
-		F1EC8142CE6C300D41833E0EBA266D58 /* Release */ = {
+		FF139D3080F1C0B83D37EF19F97A5FC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C40047DF4F4E845965EB92F559F8A587 /* CGRPCZlib.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -17406,23 +17380,22 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/CGRPCZlib/CGRPCZlib-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CGRPCZlib/CGRPCZlib-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/CGRPCZlib/CGRPCZlib.modulemap";
+				PRODUCT_MODULE_NAME = CGRPCZlib;
+				PRODUCT_NAME = CGRPCZlib;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

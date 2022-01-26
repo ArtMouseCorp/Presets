@@ -133,10 +133,12 @@ class SubscriptionThirdViewController: BaseViewController {
         subscribeButton.isEnabled = false
         restoreButton.isEnabled = false
         
-//        let id = "com.temporary.week" // DEBUG
-        let id = pageConfig.subscriptionId // RELEASE
+        let debugProductId = "com.temporary.week" // DEBUG
+        let releaseProductId = pageConfig.subscriptionId // RELEASE
         
-        StoreManager.getProducts(for: [id]) { products in
+        let productId = DEBUG_MODE ? debugProductId : releaseProductId
+        
+        StoreManager.getProducts(for: [productId]) { products in
             
             guard let product = products.first else {
                 self.view.removeFromSuperview()

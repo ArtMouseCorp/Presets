@@ -132,10 +132,12 @@ import Amplitude
          
          activityIndicator.startAnimating()
 
-//         let id = ["com.temporary.week"] // DEBUG
-         let id = [State.saleSubscriptionPage.subscriptionId] // RELEASE
+         let debugProductId = "com.temporary.week" // DEBUG
+         let releaseProductId = State.saleSubscriptionPage.subscriptionId // RELEASE
          
-         StoreManager.getProducts(for: id) { products in
+         let productId = DEBUG_MODE ? debugProductId : releaseProductId
+         
+         StoreManager.getProducts(for: [productId]) { products in
              
              guard let product = products.first else {
                  self.dismiss(animated: true)

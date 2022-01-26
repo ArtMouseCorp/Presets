@@ -2,6 +2,9 @@ import UIKit
 
 let userDefaults = UserDefaults.standard
 
+/// Declared whether app in the debug mode
+public let DEBUG_MODE: Bool = true
+
 enum UDKeys {
     static let appLaunchCount: String           = "appLaunchCount"
     static let isInstallEventSent: String       = "isInstallEventSent"
@@ -31,8 +34,10 @@ enum Keys {
     // RevenueCat
     internal enum RevenueCat {
         
-//        static let apiKey: String               = "DETukuMSYjcwKcUwHHXpJnDvLlQHzKgV" // DEBUG
-        static let apiKey: String               = "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX" // RELEASE
+        static let debugApiKey: String          = "DETukuMSYjcwKcUwHHXpJnDvLlQHzKgV" // DEBUG
+        static let releaseApiKey: String        = "AOyerJDdXCsOPBzfUledPlrOYXJvkhzX" // RELEASE
+        
+        static let apiKey: String               = DEBUG_MODE ? debugApiKey : releaseApiKey
         
         static let entitlementId: String        = "premium"
     }

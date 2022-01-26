@@ -1,7 +1,7 @@
 PODS:
   - _NIODataStructures (2.32.3)
   - Alamofire (5.5.0)
-  - Amplitude (8.7.1)
+  - Amplitude (8.7.2)
   - AppsFlyerFramework (6.5.1):
     - AppsFlyerFramework/Main (= 6.5.1)
   - AppsFlyerFramework/Main (6.5.1)
@@ -289,7 +289,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   _NIODataStructures: e2077c7dc7c1d6c93e698c85fe04d663a17f53a4
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  Amplitude: 834c7332dfb9640a751e21c13efb22a07c0c12d4
+  Amplitude: f6dab349ef260dcded278bd6e0df2c4b0135ce04
   AppsFlyerFramework: 78311a699dd031f8a74648326ebc704752764694
   CGRPCZlib: db324e4e4e71262d48faceb86b52dd7d4f71ff62
   CNIOAtomics: 4dde57e1838a29a9b23ef91617505f34751cdbe5
