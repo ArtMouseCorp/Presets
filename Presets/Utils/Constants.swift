@@ -12,6 +12,8 @@ enum UDKeys {
     static let saleOfferStartDate: String       = "saleOfferStartDate"
     static let isStartSaleOfferDateSet: String  = "isStartSaleOfferDateSet"
     static let currentAutoPaywall: String       = "currentAutoPaywall"
+    static let appVersionOfLastRun: String      = "appVersionOfLastRun"
+    static let appBuildOfLastRun: String        = "appBuildOfLastRun"
 }
 
 enum AmplitudeEvents {

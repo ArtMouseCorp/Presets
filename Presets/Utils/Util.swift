@@ -98,3 +98,58 @@ public func topController() -> UIViewController {
     }
     return topController!
 }
+
+enum AppVersionState {
+    case installed, updated, same
+}
+
+func getAppVersionState() -> AppVersionState {
+    
+    // LOGIC:
+    
+    // if lastVersion == nil || lastBuild == nil
+    // app was installed for the first time
+    
+    // if currentVersion != lastVersion || currentBuild != lastBuild
+    // app was updated
+    
+    // if currentVersion == lastVersion && currentBuild == lastBuild
+    // nothing changed
+    
+    
+    let versionOfLastRun = State.getAppVersionOfLastRun()
+    let buildOfLastRun = State.getAppBuildOfLastRun()
+    
+    guard
+        let info = Bundle.main.infoDictionary,
+        let currentVersion = info["CFBundleShortVersionString"] as? String,
+        let currentBuild = info["CFBundleVersion"] as? String
+    else {
+        return .same
+    }
+    
+    print("VERSION DEBUG | Current version - \(currentVersion)")
+    print("VERSION DEBUG | Current build - \(currentBuild)")
+    
+    State.setAppVersionOfLastRun(to: currentVersion)
+    State.setAppBuildOfLastRun(to: currentBuild)
+    
+    if versionOfLastRun == nil || buildOfLastRun == nil {
+        
+        // App just installed, no data stored in UserDefaults
+        return .installed
+    }
+    
+    print("VERSION DEBUG | Version of last run - \(versionOfLastRun!)")
+    print("VERSION DEBUG | Build of last run - \(buildOfLastRun!)")
+    
+    if currentVersion != versionOfLastRun! || currentBuild != buildOfLastRun! {
+        
+        // App was updated
+        return .updated
+    }
+    
+    // Nothing has changed
+    return .same
+
+}

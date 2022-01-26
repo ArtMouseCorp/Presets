@@ -2,9 +2,9 @@ PODS:
   - _NIODataStructures (2.32.3)
   - Alamofire (5.5.0)
   - Amplitude (8.7.2)
-  - AppsFlyerFramework (6.5.1):
-    - AppsFlyerFramework/Main (= 6.5.1)
-  - AppsFlyerFramework/Main (6.5.1)
+  - AppsFlyerFramework (6.5.2):
+    - AppsFlyerFramework/Main (= 6.5.2)
+  - AppsFlyerFramework/Main (6.5.2)
   - CGRPCZlib (1.5.0)
   - CNIOAtomics (2.32.3)
   - CNIOBoringSSL (2.15.1)
@@ -300,7 +300,7 @@ SPEC CHECKSUMS:
   _NIODataStructures: e2077c7dc7c1d6c93e698c85fe04d663a17f53a4
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   Amplitude: f6dab349ef260dcded278bd6e0df2c4b0135ce04
-  AppsFlyerFramework: 78311a699dd031f8a74648326ebc704752764694
+  AppsFlyerFramework: 9f304d91cc80b6579b1206a59220383056b58b47
   CGRPCZlib: db324e4e4e71262d48faceb86b52dd7d4f71ff62
   CNIOAtomics: 4dde57e1838a29a9b23ef91617505f34751cdbe5
   CNIOBoringSSL: c99129423da079a9eb74bcfc7cfec41a6775cf94
@@ -354,6 +354,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   YandexMobileMetrica: 85ba4c1a6839985d58bf45ec7f915e433525b094
 
-PODFILE CHECKSUM: 6c6a3479607b6dcd3e064b37966df5823266ba25
+PODFILE CHECKSUM: a323d2ab748c62e5e965b9ef43bbac19a36ec22f
 
 COCOAPODS: 1.11.2

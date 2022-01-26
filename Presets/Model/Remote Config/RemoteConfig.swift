@@ -357,7 +357,7 @@ class RCValues {
         
         // LOGIC:
         
-        // if automaticPaywallDistribution && isFirstLaunch
+        // if automaticPaywallDistribution && (isFirstLaunch || getAppVersionState() == .updated)
         // Automatic distributed paywall
         
         // if automaticPaywallDistribution && !isFirstLaunch
@@ -399,7 +399,7 @@ class RCValues {
             
         }
         
-        guard State.isFirstLaunch() else {
+        guard State.isFirstLaunch() || State.appVersionState == .updated || State.appVersionState == .installed else {
 
             // Show default paywall
 
