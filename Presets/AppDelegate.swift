@@ -98,13 +98,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         State.subscriptionPlansConfig = RCValues.sharedInstance.subscriptionPlansPage()
         State.saleSubscriptionPage = RCValues.sharedInstance.saleSubscriptionPage()
         
+        
+        State.appVersionState = getAppVersionState()
         self.loadGlobalAppInstalls()
 //        State.currentPaywall = RCValues.sharedInstance.currentPaywall()
     }
     
     private func loadGlobalAppInstalls() {
         
-        guard State.isFirstLaunch() else { return }
+        guard State.isFirstLaunch() || State.appVersionState == .installed || State.appVersionState == .updated else { return }
         
         let appInstallsRef = Database.database().reference(withPath: "appInstalls")
         

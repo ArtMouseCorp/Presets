@@ -26,7 +26,12 @@ struct State {
     public static var thirdSubscriptionPage: ThirdSubscriptionPage = .default
     
     public static var currentPaywall: BaseViewController = .load(from: .subscriptionFirst)
-    public static var currentAutoPaywallNumber: Int = -1
+    
+    public static var appVersionState: AppVersionState = .same {
+        didSet {
+            print("VERSION DEBUG | APP VERSION STATE - \(appVersionState)")
+        }
+    }
     
     // MARK: - Functions
     
@@ -40,14 +45,6 @@ struct State {
         return self.appLaunch
     }
     
-    public static func setCurrentAutoPaywall(paywallNumber: Int) {
-        userDefaults.set(paywallNumber, forKey: UDKeys.currentAutoPaywall)
-    }
-    
-    public static func getCurrentAutoPaywall() {
-        self.currentAutoPaywallNumber = userDefaults.integer(forKey: UDKeys.currentAutoPaywall)
-    }
-    
     public static func isFirstLaunch() -> Bool {
         return self.appLaunch == 1
     }
@@ -55,7 +52,7 @@ struct State {
     // MARK: - Sale Offer
     
     public static func startSaleOffer() {
-        if userDefaults.bool(forKey: UDKeys.isStartSaleOfferDateSet) {
+        if userDefaults.bool(forKey: UDKeys.isStartSaleOfferDateSet) && appVersionState == .same {
             return
         }
         
@@ -65,6 +62,24 @@ struct State {
     
     public static func getStartSaleOfferDate() -> Date {
         return userDefaults.object(forKey: UDKeys.saleOfferStartDate) as! Date
+    }
+    
+    // MARK: - App Version & App Build Number
+    
+    public static func setAppVersionOfLastRun(to version: String) {
+        userDefaults.set(version, forKey: UDKeys.appVersionOfLastRun)
+    }
+    
+    public static func getAppVersionOfLastRun() -> String? {
+        return userDefaults.string(forKey: UDKeys.appVersionOfLastRun)
+    }
+    
+    public static func setAppBuildOfLastRun(to build: String) {
+        userDefaults.set(build, forKey: UDKeys.appBuildOfLastRun)
+    }
+    
+    public static func getAppBuildOfLastRun() -> String? {
+        return userDefaults.string(forKey: UDKeys.appBuildOfLastRun)
     }
     
 }

@@ -1,13 +1,5 @@
 platform :ios, '13.0'
 
-target 'OneSignalNotificationServiceExtension' do
-
-  use_frameworks!
-
-  pod 'OneSignalXCFramework'
-
-end
-
 target 'Presets' do
 
   use_frameworks!
