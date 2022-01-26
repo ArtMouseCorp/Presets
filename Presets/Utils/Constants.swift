@@ -3,7 +3,7 @@ import UIKit
 let userDefaults = UserDefaults.standard
 
 /// Declared whether app in the debug mode
-public let DEBUG_MODE: Bool = true
+public let DEBUG_MODE: Bool = false
 
 enum UDKeys {
     static let appLaunchCount: String           = "appLaunchCount"

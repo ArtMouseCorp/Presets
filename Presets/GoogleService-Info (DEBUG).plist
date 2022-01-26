@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>975186518830-g8lg1hea1p2676pb34k37uat8o93u3o3.apps.googleusercontent.com</string>
+	<string>975186518830-d28m44m9o5nfg1gaiaumbljg71eaif2v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.975186518830-g8lg1hea1p2676pb34k37uat8o93u3o3</string>
+	<string>com.googleusercontent.apps.975186518830-d28m44m9o5nfg1gaiaumbljg71eaif2v</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDZbsWIKvge8360pNyZlxz2D8ZYvYStAWI</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.artpol.presets</string>
+	<string>com.artmouse.presets</string>
 	<key>PROJECT_ID</key>
 	<string>presets-8b85c</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:975186518830:ios:ae6415760be362edcfd0bf</string>
+	<string>1:975186518830:ios:c2a7a7ad76fa6949cfd0bf</string>
 	<key>DATABASE_URL</key>
 	<string>https://presets-8b85c-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
