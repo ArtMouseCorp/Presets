@@ -5,6 +5,7 @@ struct State {
     // MARK: - Variables
     
     private static var appLaunch: Int = 0
+    public static var globalAppInstalls: Int = 0
     
     public static var isSubscribed: Bool = false
     public static var currentProductId: String = ""

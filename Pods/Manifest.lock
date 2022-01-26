@@ -27,6 +27,9 @@ PODS:
     - FirebaseAnalytics (~> 8.11.0)
   - Firebase/CoreOnly (8.11.0):
     - FirebaseCore (= 8.11.0)
+  - Firebase/Database (8.11.0):
+    - Firebase/CoreOnly
+    - FirebaseDatabase (~> 8.11.0)
   - Firebase/RemoteConfig (8.11.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 8.11.0)
@@ -62,6 +65,9 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/Logger (~> 7.7)
     - nanopb (~> 2.30908.0)
+  - FirebaseDatabase (8.11.0):
+    - FirebaseCore (~> 8.0)
+    - leveldb-library (~> 1.22)
   - FirebaseInstallations (8.11.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
@@ -133,6 +139,7 @@ PODS:
     - SwiftNIOTransportServices (< 2.0.0, >= 1.11.1)
     - SwiftProtobuf (< 2.0.0, >= 1.9.0)
   - GTMSessionFetcher/Core (1.7.0)
+  - leveldb-library (1.22.1)
   - Logging (1.4.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
@@ -220,6 +227,7 @@ DEPENDENCIES:
   - FBAEMKit
   - FBSDKCoreKit
   - Firebase/Analytics
+  - Firebase/Database
   - Firebase/RemoteConfig
   - Firebase/Storage
   - Google-Mobile-Ads-SDK
@@ -251,6 +259,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseDatabase
     - FirebaseInstallations
     - FirebaseRemoteConfig
     - FirebaseStorage
@@ -261,6 +270,7 @@ SPEC REPOS:
     - GoogleUtilities
     - gRPC-Swift
     - GTMSessionFetcher
+    - leveldb-library
     - Logging
     - nanopb
     - OneSignalXCFramework
@@ -307,6 +317,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 4e4b13031034e6561ed3bd1d47b6fdabbd6487c6
   FirebaseCore: 2f4f85b453cc8fea4bb2b37e370007d2bcafe3f0
   FirebaseCoreDiagnostics: 64d9709d804a6c25bd77841371c1fcfd909d5601
+  FirebaseDatabase: ff9b4c7bee14d9f561f26c64a28ac083989f03d5
   FirebaseInstallations: 044eede8a049bce71c4541ee68d6e4364fcbe774
   FirebaseRemoteConfig: a6a1ce9dabf404817ae2a44e8421d276660d9091
   FirebaseStorage: 4d05cb1112ff8822a0f9f5090da8bd6d550602ec
@@ -317,6 +328,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   gRPC-Swift: 8942047451bf81413077e6b94bf4213e47b181cc
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Logging: beeb016c9c80cf77042d62e83495816847ef108b
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   OneSignalXCFramework: 10648e60ff3d335fbffa62d9b44b700b56d49b51
@@ -342,6 +354,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   YandexMobileMetrica: 85ba4c1a6839985d58bf45ec7f915e433525b094
 
-PODFILE CHECKSUM: 88eb8f6f52d8eb4e3780de6fc7cadd0719ae71c6
+PODFILE CHECKSUM: 6c6a3479607b6dcd3e064b37966df5823266ba25
 
 COCOAPODS: 1.11.2

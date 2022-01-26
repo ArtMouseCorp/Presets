@@ -3,6 +3,7 @@ import Amplitude
 import OneSignal
 import AppsFlyerLib
 import Firebase
+import FirebaseDatabase
 import GoogleMobileAds
 import Purchases
 import AppTrackingTransparency
@@ -97,7 +98,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         State.subscriptionPlansConfig = RCValues.sharedInstance.subscriptionPlansPage()
         State.saleSubscriptionPage = RCValues.sharedInstance.saleSubscriptionPage()
         
-        State.currentPaywall = RCValues.sharedInstance.currentPaywall()
+        self.loadGlobalAppInstalls()
+//        State.currentPaywall = RCValues.sharedInstance.currentPaywall()
+    }
+    
+    private func loadGlobalAppInstalls() {
+        
+        guard State.isFirstLaunch() else { return }
+        
+        let appInstallsRef = Database.database().reference(withPath: "appInstalls")
+        
+        appInstallsRef.getData { error, snapshot in
+            
+            guard let globalAppInstall = snapshot.value as? Int, error == nil else {
+                return
+            }
+            
+            State.globalAppInstalls = globalAppInstall
+            
+            print("GLOBAL APP INSTALLS DEBUG | Fetched from Databse - \(globalAppInstall)")
+            State.globalAppInstalls += 1
+            
+            appInstallsRef.setValue(State.globalAppInstalls)
+            print("GLOBAL APP INSTALLS DEBUG | Sent to Databse - \(State.globalAppInstalls)")
+            
+        }
+        
     }
     
     private func connectRevenueCat() {

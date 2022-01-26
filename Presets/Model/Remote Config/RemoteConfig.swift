@@ -318,7 +318,7 @@ class RCValues {
         }
         
         let json = JSON(value)
-
+        
         let titleLabel: String              = json[RCValueKey.ThirdSubscriptionPage.titleLabel.rawValue].stringValue
         let subtitleLabel: String           = json[RCValueKey.ThirdSubscriptionPage.subtitleLabel.rawValue].stringValue
         let priceLabel: String              = json[RCValueKey.ThirdSubscriptionPage.priceLabel.rawValue].stringValue
@@ -350,16 +350,31 @@ class RCValues {
     func currentPaywall() -> BaseViewController {
         
         let key = RCValueKey.currentPaywall.rawValue
-        let currentPaywallNumber = RemoteConfig.remoteConfig()[key].numberValue.intValue
         
+        let remotePaywallNumber = RemoteConfig.remoteConfig()[key].numberValue.intValue
         let automaticPaywallDistribution = self.automaticPaywallDistribution()
         
+        
+        // LOGIC:
+        
+        // if automaticPaywallDistribution && isFirstLaunch
+        // Automatic distributed paywall
+        
+        // if automaticPaywallDistribution && !isFirstLaunch
+        // Default paywall
+        
+        // if !automaticPaywallDistribution
+        // Always from firebase
+        
+        
         guard automaticPaywallDistribution else {
-            State.setCurrentAutoPaywall(paywallNumber: -1)
-            print("PAYWALLS DEBUG | Fetched paywall number - \(currentPaywallNumber)")
             
-            switch currentPaywallNumber {
-    
+            // Show paywall specified in Firebase Remote Config
+            
+            print("PAYWALLS DEBUG | Fetched paywall number - \(remotePaywallNumber)")
+            
+            switch remotePaywallNumber {
+                
             case 0:
                 State.subscriptionConfig = self.organicSubscriptionPage()
                 SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
@@ -380,40 +395,48 @@ class RCValues {
                 State.subscriptionConfig = self.organicSubscriptionPage()
                 SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
                 return .load(from: .subscription)
-    
             }
             
         }
         
-        State.getCurrentAutoPaywall()
-        
-        var randomInt: Int = 0
-        if State.currentAutoPaywallNumber == -1 {
-            randomInt = Int.random(in: 1 ... 3)
-            State.setCurrentAutoPaywall(paywallNumber: randomInt)
-        } else {
-            randomInt = State.currentAutoPaywallNumber
+        guard State.isFirstLaunch() else {
+
+            // Show default paywall
+
+            print("PAYWALLS DEBUG | Show default paywall")
+            State.subscriptionConfig = self.organicSubscriptionPage()
+            SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
+            return .load(from: .subscription)
+
         }
-        print("PAYWALLS DEBUG | Random paywall number - \(randomInt)")
         
-        switch randomInt {
+        // Show automaticly distributed paywall
+        
+        print("GLOBAL APP INSTALLS DEBUG | Global install number - \(State.globalAppInstalls)")
+        
+        switch State.globalAppInstalls % 3 {
             
         case 1:
+            print("PAYWALLS DEBUG | Auto paywall number - 1")
             State.firstSubscriptionPage = self.firstSubscriptionPage()
             SkarbSDK.sendSource(broker: SKBroker.custom("first_paywall"), features: [:])
             return .load(from: .subscriptionFirst)
         case 2:
+            print("PAYWALLS DEBUG | Auto paywall number - 2")
             State.secondSubscriptionPage = self.secondSubscriptionPage()
             SkarbSDK.sendSource(broker: SKBroker.custom("second_paywall"), features: [:])
             return .load(from: .subscriptionSecond)
-        case 3:
+        case 0:
+            print("PAYWALLS DEBUG | Auto paywall number - 3")
             State.thirdSubscriptionPage = self.thirdSubscriptionPage()
             SkarbSDK.sendSource(broker: SKBroker.custom("third_paywall"), features: [:])
             return .load(from: .subscriptionThird)
         default:
+            print("PAYWALLS DEBUG | Auto paywall number - 0")
             State.subscriptionConfig = self.organicSubscriptionPage()
             SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
             return .load(from: .subscription)
+            
         }
         
     }
