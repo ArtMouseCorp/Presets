@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2803201427A2DADF00844635 /* BaseSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803201327A2DADF00844635 /* BaseSubscriptionViewController.swift */; };
 		2805FD9526F4BC820055BD6C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2805FD9426F4BC820055BD6C /* StoreKit.framework */; };
 		281FEB3226F395D900F115DE /* SKProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281FEB3126F395D900F115DE /* SKProduct.swift */; };
 		281FEB3426F454B800F115DE /* SubscriptionPlansPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281FEB3326F454B800F115DE /* SubscriptionPlansPage.swift */; };
@@ -134,6 +135,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2803201327A2DADF00844635 /* BaseSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSubscriptionViewController.swift; sourceTree = "<group>"; };
 		2805FD9426F4BC820055BD6C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		281FEB3126F395D900F115DE /* SKProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKProduct.swift; sourceTree = "<group>"; };
 		281FEB3326F454B800F115DE /* SubscriptionPlansPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansPage.swift; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 		4A46A56A26C5D30E005EBD85 /* Subscriptions */ = {
 			isa = PBXGroup;
 			children = (
+				2803201327A2DADF00844635 /* BaseSubscriptionViewController.swift */,
 				28837EDB27968FB5009D144B /* SaleOfferViewController.swift */,
 				4A02E90726C542FA00E3FCF0 /* SubscriptionViewController.swift */,
 				4A46A56826C5A9AD005EBD85 /* SubscriptionPlansViewController.swift */,
@@ -1049,6 +1052,7 @@
 				28837EE02796BF47009D144B /* String.swift in Sources */,
 				4AE7C3CB279870A200E0B5DE /* SubscriptionSecondViewController.swift in Sources */,
 				28DEEB422736652A00006A75 /* StorageManager.swift in Sources */,
+				2803201427A2DADF00844635 /* BaseSubscriptionViewController.swift in Sources */,
 				4AC3A86226C6E86200B1340A /* ManualViewController.swift in Sources */,
 				28AB3A9926C4EC2800201D37 /* RedGradientButton.swift in Sources */,
 				4A5A2C7D26C4880C00F78C2F /* UITextView.swift in Sources */,

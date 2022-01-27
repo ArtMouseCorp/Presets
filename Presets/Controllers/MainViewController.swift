@@ -49,10 +49,13 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        StoreManager.updateStatus()
         localize()
         configureCategories()
-        callPaywall()
+        
+        if !State.isSubscribed {
+            self.showPaywall()            
+        }
+        
         State.startSaleOffer()
     }
     
@@ -157,11 +160,6 @@ class MainViewController: BaseViewController {
         
         saleOfferView.isHidden = false
         timerStart()
-    }
-    
-    private func callPaywall() {
-        guard !State.isSubscribed else { return }
-        self.showPaywall()
     }
     
     private func timerStart() {

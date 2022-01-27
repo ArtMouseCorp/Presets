@@ -1,7 +1,7 @@
 import UIKit
 import Amplitude
 
- class SaleOfferViewController: BaseViewController {
+ class SaleOfferViewController: BaseSubscriptionViewController {
 
      // MARK: - @IBOutlets
      
@@ -188,7 +188,9 @@ import Amplitude
      // MARK: - @IBActions
      
      @IBAction func closeButtonPressed(_ sender: Any) {
-         self.dismiss(animated: true, completion: nil)
+         
+         self.close(showAd: false)
+         
          self.onClose?(timeLabelText) ?? ()
      }
 
