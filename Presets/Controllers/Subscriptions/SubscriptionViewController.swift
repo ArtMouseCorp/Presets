@@ -1,11 +1,10 @@
 import UIKit
-import GoogleMobileAds
 import Amplitude
 import StoreKit
 import Purchases
 import AVFoundation
 
-class SubscriptionViewController: BaseViewController {
+class SubscriptionViewController: BaseSubscriptionViewController {
     
     // MARK: - @IBOutlets
     
@@ -32,11 +31,11 @@ class SubscriptionViewController: BaseViewController {
     
     // Activity Indicators
     @IBOutlet weak var secondActivityIndicator: UIActivityIndicatorView!
+    
     // MARK: - Variables
     
     var didLayoutCalled = true
     
-    var interstitial: GADInterstitialAd?
     var pageConfig: OrganicSubscriptionPage = State.subscriptionConfig
     
     var closeTimer: Timer = Timer()
@@ -48,8 +47,6 @@ class SubscriptionViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         localize()
-        
-        createAndLoadInterstitialAd()
         configureGestures()
         firstOfferView.isHidden = true
         
@@ -150,32 +147,32 @@ class SubscriptionViewController: BaseViewController {
         closeTimer.invalidate()
     }
     
-    private func createAndLoadInterstitialAd() {
-        
-        let request = GADRequest()
-        
-        GADInterstitialAd.load(withAdUnitID: Keys.AdmMod.unitId, request: request) { [self] ad, error in
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ad
-            interstitial?.fullScreenContentDelegate = self
-        }
-        
-    }
-    
-    private func showInterstitialAd() {
-        
-        guard let interstitial = interstitial else {
-            print("Ad wasn't ready")
-            self.view.removeFromSuperview()
-            return
-        }
-        
-        interstitial.present(fromRootViewController: self)
-        Amplitude.instance().logEvent(AmplitudeEvents.afterSubscriptionAd)
-    }
+//    private func createAndLoadInterstitialAd() {
+//
+//        let request = GADRequest()
+//
+//        GADInterstitialAd.load(withAdUnitID: Keys.AdmMod.unitId, request: request) { [self] ad, error in
+//            if let error = error {
+//                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+//                return
+//            }
+//            interstitial = ad
+//            interstitial?.fullScreenContentDelegate = self
+//        }
+//
+//    }
+//
+//    private func showInterstitialAd() {
+//
+//        guard let interstitial = interstitial else {
+//            print("Ad wasn't ready")
+//            self.view.removeFromSuperview()
+//            return
+//        }
+//
+//        interstitial.present(fromRootViewController: self)
+//        Amplitude.instance().logEvent(AmplitudeEvents.afterSubscriptionAd)
+//    }
     
     func addGradient(to gradientView: UIView) {
         // Add gradient layer
@@ -278,12 +275,8 @@ class SubscriptionViewController: BaseViewController {
     @IBAction func closeButtonPressed(_ sender: Any) {
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
-        Amplitude.instance().logEvent(AmplitudeEvents.paywallClose)
-        if State.isSubscribed {
-            self.view.removeFromSuperview()
-        } else {
-            showInterstitialAd()
-        }
+        
+        self.close()
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
@@ -342,20 +335,4 @@ class SubscriptionViewController: BaseViewController {
         guard let url = URL(string: "https://artpoldev.com/terms.html") else { return }
         UIApplication.shared.open(url)
     }
-}
-
-// MARK: - GADFullScreenContentDelegate
-
-extension SubscriptionViewController: GADFullScreenContentDelegate {
-    
-    /// Tells the delegate that the ad presented full screen content.
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-        self.view.removeFromSuperview()
-    }
-    
-    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will dismiss full screen content.")
-    }
-    
 }

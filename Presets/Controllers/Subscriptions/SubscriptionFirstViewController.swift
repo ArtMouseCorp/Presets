@@ -1,8 +1,7 @@
 import UIKit
 import Amplitude
-import GoogleMobileAds
 
-class SubscriptionFirstViewController: BaseViewController {
+class SubscriptionFirstViewController: BaseSubscriptionViewController {
 
     // MARK: - @IBOutlets
     
@@ -29,8 +28,6 @@ class SubscriptionFirstViewController: BaseViewController {
     
     // MARK: - Variables
     
-    var interstitial: GADInterstitialAd?
-    
     let pageConfig: FirstSubscriptionPage = State.firstSubscriptionPage
     
     var trialProduct: StoreManager.Product?
@@ -41,7 +38,6 @@ class SubscriptionFirstViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         localize()
-        createAndLoadInterstitialAd()
         getProducts()
     }
     
@@ -74,33 +70,6 @@ class SubscriptionFirstViewController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + DispatchTimeInterval.seconds(pageConfig.closeDelay)) {
             self.closeButton.show()
         }
-    }
-    
-    private func createAndLoadInterstitialAd() {
-        
-        let request = GADRequest()
-        
-        GADInterstitialAd.load(withAdUnitID: Keys.AdmMod.unitId, request: request) { [self] ad, error in
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ad
-            interstitial?.fullScreenContentDelegate = self
-        }
-        
-    }
-    
-    private func showInterstitialAd() {
-        
-        guard let interstitial = interstitial else {
-            print("Ad wasn't ready")
-            self.view.removeFromSuperview()
-            return
-        }
-        
-        interstitial.present(fromRootViewController: self)
-        Amplitude.instance().logEvent(AmplitudeEvents.afterSubscriptionAd)
     }
     
     private func getProducts() {
@@ -173,14 +142,7 @@ class SubscriptionFirstViewController: BaseViewController {
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
         
-        Amplitude.instance().logEvent(AmplitudeEvents.paywallClose)
-        
-        guard State.isSubscribed else {
-            showInterstitialAd()
-            return
-        }
-        
-        self.view.removeFromSuperview()
+        self.close()
     }
     
     @IBAction func trialSwitchValueChanged(_ sender: Any) {
@@ -277,22 +239,6 @@ class SubscriptionFirstViewController: BaseViewController {
         
         guard let url = URL(string: "https://artpoldev.com/terms.html") else { return }
         UIApplication.shared.open(url)
-    }
-    
-}
-
-// MARK: - GADFullScreenContentDelegate
-
-extension SubscriptionFirstViewController: GADFullScreenContentDelegate {
-    
-    /// Tells the delegate that the ad presented full screen content.
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-        self.view.removeFromSuperview()
-    }
-    
-    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will dismiss full screen content.")
     }
     
 }

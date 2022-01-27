@@ -2,9 +2,8 @@ import UIKit
 import Purchases
 import StoreKit
 import Amplitude
-import GoogleMobileAds
 
-class SubscriptionPlansViewController: BaseViewController {
+class SubscriptionPlansViewController: BaseSubscriptionViewController {
     
     // MARK: - @IBOutlets
     
@@ -46,7 +45,6 @@ class SubscriptionPlansViewController: BaseViewController {
     
     var didLayoutCalled = true
     
-    var interstitial: GADInterstitialAd?
     var pageConfig: SubscriptionPlansPage = State.subscriptionPlansConfig
     
     var products: [StoreManager.Product] = []
@@ -57,7 +55,6 @@ class SubscriptionPlansViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureGestures()
-        createAndLoadInterstitialAd()
         localize()
         
         self.getProducts()
@@ -186,33 +183,6 @@ class SubscriptionPlansViewController: BaseViewController {
         
     }
     
-    private func createAndLoadInterstitialAd() {
-        
-        let request = GADRequest()
-        
-        GADInterstitialAd.load(withAdUnitID: Keys.AdmMod.unitId, request: request) { [self] ad, error in
-            if let error = error {
-                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                return
-            }
-            interstitial = ad
-            interstitial?.fullScreenContentDelegate = self
-        }
-        
-    }
-    
-    private func showInterstitialAd() {
-        
-        guard let interstitial = interstitial else {
-            print("Ad wasn't ready")
-            self.dismiss(animated: true)
-            return
-        }
-        
-        interstitial.present(fromRootViewController: self)
-        Amplitude.instance().logEvent(AmplitudeEvents.afterSubscriptionAd)
-    }
-    
     private func getProducts() {
         
         guard isConnectedToNetwork() else {
@@ -329,17 +299,11 @@ class SubscriptionPlansViewController: BaseViewController {
     // MARK: - @IBActions
     
     @IBAction func closeButtonPressed(_ sender: Any) {
-//        self.dismiss(animated: true)
         
         let selectionFeedbackGenerator = UISelectionFeedbackGenerator()
         selectionFeedbackGenerator.selectionChanged()
-        Amplitude.instance().logEvent(AmplitudeEvents.paywallClose)
         
-        if State.isSubscribed {
-            self.dismiss(animated: true)
-        } else {
-            showInterstitialAd()            
-        }
+        self.close()
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
@@ -403,19 +367,3 @@ class SubscriptionPlansViewController: BaseViewController {
     
 }
 
-// MARK: - GADFullScreenContentDelegate
-
-extension SubscriptionPlansViewController: GADFullScreenContentDelegate {
-    
-    /// Tells the delegate that the ad presented full screen content.
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-    }
-    
-    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will dismiss full screen content.")
-        self.dismiss(animated: false)
-        self.dismiss(animated: true)
-    }
-    
-}

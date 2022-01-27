@@ -1,4 +1,5 @@
 import UIKit
+import SkarbSDK
 
 extension UIViewController {
     
@@ -13,16 +14,21 @@ extension UIViewController {
     
     public func showPaywall(animated: Bool = true) {
         
-        let subscriptionView = State.currentPaywall
         
-        self.addChild(subscriptionView)
-        subscriptionView.view.frame = self.view.frame
-        subscriptionView.view.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
-        self.view.addSubview(subscriptionView.view)
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn) {
-            subscriptionView.view.transform = .identity
-        }
-        subscriptionView.didMove(toParent: self)
+        
+        let subscriptionView = RCValues.sharedInstance.currentPaywall()//BaseSubscriptionViewController.choosePaywall()//State.currentPaywall
+        subscriptionView.modalPresentationStyle = .fullScreen
+        
+        self.present(subscriptionView, animated: animated)
+        
+//        self.addChild(subscriptionView)
+//        subscriptionView.view.frame = self.view.frame
+//        subscriptionView.view.transform = CGAffineTransform(translationX: 0, y: self.view.frame.height)
+//        self.view.addSubview(subscriptionView.view)
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn) {
+//            subscriptionView.view.transform = .identity
+//        }
+//        subscriptionView.didMove(toParent: self)
     }
     
     public func showSettings() {

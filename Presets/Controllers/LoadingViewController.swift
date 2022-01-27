@@ -1,5 +1,4 @@
 import UIKit
-import FirebaseDatabase
 
 class LoadingViewController: BaseViewController {
     
@@ -7,14 +6,15 @@ class LoadingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        StoreManager.updateStatus()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             
             // Load data
-            State.currentPaywall = RCValues.sharedInstance.currentPaywall()
-            
+            RCValues.sharedInstance.currentPaywall()
+            RCValues.sharedInstance.currentPaywall()
             
             let mainNavController = UINavigationController.load(from: .mainNav)
             mainNavController.modalPresentationStyle = .fullScreen
