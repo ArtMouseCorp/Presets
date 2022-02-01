@@ -47,6 +47,8 @@ class SubscriptionThirdViewController: BaseSubscriptionViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.showCloseButton()
     }
     
@@ -93,7 +95,7 @@ class SubscriptionThirdViewController: BaseSubscriptionViewController {
         
         guard isConnectedToNetwork() else {
             showNetworkConnectionAlert {
-                self.view.removeFromSuperview()
+                self.close()
             }
              return
         }
@@ -110,7 +112,7 @@ class SubscriptionThirdViewController: BaseSubscriptionViewController {
         StoreManager.getProducts(for: [productId]) { products in
             
             guard let product = products.first else {
-                self.view.removeFromSuperview()
+                self.close()
                 return
             }
             
@@ -127,7 +129,7 @@ class SubscriptionThirdViewController: BaseSubscriptionViewController {
     private func updateSubscriptionsUI() {
         
         guard let product = product else {
-            self.view.removeFromSuperview()
+            self.close()
             return
         }
         
@@ -181,7 +183,7 @@ class SubscriptionThirdViewController: BaseSubscriptionViewController {
         Amplitude.instance().logEvent(AmplitudeEvents.subscriptionButtonTap)
         
         StoreManager.purchase(package: product.purchasesPackage) {
-            self.view.removeFromSuperview()
+            self.close()
         }
     }
     
@@ -201,7 +203,7 @@ class SubscriptionThirdViewController: BaseSubscriptionViewController {
         }
         
         StoreManager.restore() {
-            self.view.removeFromSuperview()
+            self.close()
         }
         
     }

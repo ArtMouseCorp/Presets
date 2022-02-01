@@ -53,6 +53,7 @@ import Amplitude
      override func viewWillAppear(_ animated: Bool) {
          configureUI()
          calculateSaleOfferEndDate()
+         State.currentPaywall = "subscription_sale_paywall"
      }
 
      override func viewWillDisappear(_ animated: Bool) {

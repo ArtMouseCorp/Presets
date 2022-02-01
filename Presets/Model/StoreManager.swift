@@ -82,18 +82,20 @@ struct StoreManager {
                 print("Purchase Success: \(package.product.productIdentifier)")
                 ProdinfireManager.sharedInstance.sendSubscribtionEvent(subscibedTo: package.product.productIdentifier)
                 
-                Amplitude.instance().logEvent("Subscription purchased",
+                Amplitude.instance().logEvent("subscription_purchase",
                                               withEventProperties: [
-                                                "Transaction identifier": transaction?.transactionIdentifier ?? "",
-                                                "Transaction date": transaction?.transactionDate ?? Date(),
-                                                "Transaction product identifier": transaction?.payment.productIdentifier ?? ""
+                                                "transaction_identifier": transaction?.transactionIdentifier ?? "",
+                                                "transaction_date": transaction?.transactionDate ?? Date(),
+                                                "transaction_product_identifier": transaction?.payment.productIdentifier ?? "",
+                                                "paywall_name": State.currentPaywall
                                               ])
                 
-                AppsFlyerLib.shared().logEvent("Subscription purchased",
+                AppsFlyerLib.shared().logEvent("subscription_purchase",
                                                withValues: [
-                                                "Transaction identifier": transaction?.transactionIdentifier ?? "",
-                                                "Transaction date": transaction?.transactionDate ?? Date(),
-                                                "Transaction product identifier": transaction?.payment.productIdentifier ?? ""
+                                                "transaction_identifier": transaction?.transactionIdentifier ?? "",
+                                                "transaction_date": transaction?.transactionDate ?? Date(),
+                                                "transaction_product_identifier": transaction?.payment.productIdentifier ?? "",
+                                                "paywall_name": State.currentPaywall
                                                ])
                 
                 State.isSubscribed = true

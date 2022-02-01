@@ -347,7 +347,7 @@ class RCValues {
         
     }
     
-    func currentPaywall() -> BaseViewController {
+    func currentPaywall() -> BaseSubscriptionViewController {
         
         let key = RCValueKey.currentPaywall.rawValue
         
@@ -378,22 +378,27 @@ class RCValues {
             case 0:
                 State.subscriptionConfig = self.organicSubscriptionPage()
                 SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
+                State.currentPaywall = "organic_paywall"
                 return .load(from: .subscription)
             case 1:
                 State.firstSubscriptionPage = self.firstSubscriptionPage()
                 SkarbSDK.sendSource(broker: SKBroker.custom("first_paywall"), features: [:])
+                State.currentPaywall = "first_paywall"
                 return .load(from: .subscriptionFirst)
             case 2:
                 State.secondSubscriptionPage = self.secondSubscriptionPage()
                 SkarbSDK.sendSource(broker: SKBroker.custom("second_paywall"), features: [:])
+                State.currentPaywall = "second_paywall"
                 return .load(from: .subscriptionSecond)
             case 3:
                 State.thirdSubscriptionPage = self.thirdSubscriptionPage()
                 SkarbSDK.sendSource(broker: SKBroker.custom("third_paywall"), features: [:])
+                State.currentPaywall = "third_paywall"
                 return .load(from: .subscriptionThird)
             default:
                 State.subscriptionConfig = self.organicSubscriptionPage()
                 SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
+                State.currentPaywall = "organic_paywall"
                 return .load(from: .subscription)
             }
             
@@ -406,6 +411,7 @@ class RCValues {
             print("PAYWALLS DEBUG | Show default paywall")
             State.subscriptionConfig = self.organicSubscriptionPage()
             SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
+            State.currentPaywall = "organic_paywall"
             return .load(from: .subscription)
 
         }
@@ -420,21 +426,25 @@ class RCValues {
             print("PAYWALLS DEBUG | Auto paywall number - 1")
             State.firstSubscriptionPage = self.firstSubscriptionPage()
             SkarbSDK.sendSource(broker: SKBroker.custom("first_paywall"), features: [:])
+            State.currentPaywall = "first_paywall"
             return .load(from: .subscriptionFirst)
         case 2:
             print("PAYWALLS DEBUG | Auto paywall number - 2")
             State.secondSubscriptionPage = self.secondSubscriptionPage()
             SkarbSDK.sendSource(broker: SKBroker.custom("second_paywall"), features: [:])
+            State.currentPaywall = "second_paywall"
             return .load(from: .subscriptionSecond)
         case 0:
             print("PAYWALLS DEBUG | Auto paywall number - 3")
             State.thirdSubscriptionPage = self.thirdSubscriptionPage()
             SkarbSDK.sendSource(broker: SKBroker.custom("third_paywall"), features: [:])
+            State.currentPaywall = "third_paywall"
             return .load(from: .subscriptionThird)
         default:
             print("PAYWALLS DEBUG | Auto paywall number - 0")
             State.subscriptionConfig = self.organicSubscriptionPage()
             SkarbSDK.sendSource(broker: SKBroker.custom("organic_paywall"), features: [:])
+            State.currentPaywall = "organic_paywall"
             return .load(from: .subscription)
             
         }

@@ -74,9 +74,12 @@ class SubscriptionPlansViewController: BaseSubscriptionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         configureUI()
+        State.currentPaywall = "subscription_plans_paywall"
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         showCloseButton()
     }
     

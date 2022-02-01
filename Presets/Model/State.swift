@@ -25,7 +25,7 @@ struct State {
     public static var secondSubscriptionPage: SecondSubscriptionPage = .default
     public static var thirdSubscriptionPage: ThirdSubscriptionPage = .default
     
-    public static var currentPaywall: BaseViewController = .load(from: .subscriptionFirst)
+    public static var currentPaywall: String = ""
     
     public static var appVersionState: AppVersionState = .same {
         didSet {

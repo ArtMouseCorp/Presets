@@ -71,6 +71,8 @@ class SubscriptionViewController: BaseSubscriptionViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         startCloseTimer()
     }
     
@@ -147,33 +149,6 @@ class SubscriptionViewController: BaseSubscriptionViewController {
         closeTimer.invalidate()
     }
     
-//    private func createAndLoadInterstitialAd() {
-//
-//        let request = GADRequest()
-//
-//        GADInterstitialAd.load(withAdUnitID: Keys.AdmMod.unitId, request: request) { [self] ad, error in
-//            if let error = error {
-//                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-//                return
-//            }
-//            interstitial = ad
-//            interstitial?.fullScreenContentDelegate = self
-//        }
-//
-//    }
-//
-//    private func showInterstitialAd() {
-//
-//        guard let interstitial = interstitial else {
-//            print("Ad wasn't ready")
-//            self.view.removeFromSuperview()
-//            return
-//        }
-//
-//        interstitial.present(fromRootViewController: self)
-//        Amplitude.instance().logEvent(AmplitudeEvents.afterSubscriptionAd)
-//    }
-    
     func addGradient(to gradientView: UIView) {
         // Add gradient layer
         let gradient = CAGradientLayer()
@@ -236,7 +211,7 @@ class SubscriptionViewController: BaseSubscriptionViewController {
         StoreManager.getProducts(for: [productId]) { products in
             
             guard let product = products.first else {
-                self.view.removeFromSuperview()
+                self.close()
                 return
             }
             
@@ -291,7 +266,7 @@ class SubscriptionViewController: BaseSubscriptionViewController {
         Amplitude.instance().logEvent(AmplitudeEvents.subscriptionButtonTap)
         
         StoreManager.purchase(package: self.package) {
-            self.view.removeFromSuperview()
+            self.close()
         }
         
     }
@@ -307,13 +282,13 @@ class SubscriptionViewController: BaseSubscriptionViewController {
         
         guard !State.isSubscribed else {
             showAlreadySubscribedAlert() {
-                self.view.removeFromSuperview()
+                self.close()
             }
             return
         }
         
         StoreManager.restore() {
-            self.view.removeFromSuperview()
+            self.close()
         }
         
     }
