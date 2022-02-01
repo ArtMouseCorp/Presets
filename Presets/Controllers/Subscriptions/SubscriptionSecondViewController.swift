@@ -61,6 +61,8 @@ class SubscriptionSecondViewController: BaseSubscriptionViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         self.showCloseButton()
     }
     
@@ -109,7 +111,7 @@ class SubscriptionSecondViewController: BaseSubscriptionViewController {
         
         guard isConnectedToNetwork() else {
             showNetworkConnectionAlert {
-                self.view.removeFromSuperview()
+                self.close()
             }
             return
         }
@@ -128,7 +130,7 @@ class SubscriptionSecondViewController: BaseSubscriptionViewController {
         StoreManager.getProducts(for: productIds) { products in
             
             guard products.count == 2 else {
-                self.view.removeFromSuperview()
+                self.close()
                 return
             }
             
@@ -149,7 +151,7 @@ class SubscriptionSecondViewController: BaseSubscriptionViewController {
             let firstProduct = firstProduct,
             let secondProduct = secondProduct
         else {
-            self.view.removeFromSuperview()
+            self.close()
             return
         }
         
@@ -239,7 +241,7 @@ class SubscriptionSecondViewController: BaseSubscriptionViewController {
         Amplitude.instance().logEvent(AmplitudeEvents.subscriptionButtonTap)
         
         StoreManager.purchase(package: product.purchasesPackage) {
-            self.view.removeFromSuperview()
+            self.close()
         }
 
     }

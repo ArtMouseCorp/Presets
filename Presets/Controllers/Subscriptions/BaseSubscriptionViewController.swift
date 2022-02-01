@@ -19,6 +19,10 @@ class BaseSubscriptionViewController: BaseViewController {
         self.createAndLoadInterstitialAd()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        Amplitude.instance().logEvent("paywall_appearance", withEventProperties: ["paywall_name": State.currentPaywall])
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         Amplitude.instance().logEvent(AmplitudeEvents.paywallClose)
     }

@@ -56,7 +56,6 @@ class MainViewController: BaseViewController {
             self.showPaywall()            
         }
         
-        State.startSaleOffer()
     }
     
     override func viewDidLayoutSubviews() {
@@ -149,6 +148,10 @@ class MainViewController: BaseViewController {
     private func calculateSaleOfferEndDate() {
         
         saleOfferView.isHidden = true
+        
+        guard !State.isSubscribed else { return }
+        
+        State.startSaleOffer()
         
         saleOfferStartDate = State.getStartSaleOfferDate()
         saleOfferEndDate = saleOfferStartDate.addingTimeInterval(TimeInterval(SALE_DURATION))
