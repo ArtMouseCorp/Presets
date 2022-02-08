@@ -46,6 +46,12 @@
 		28B13E00278D517700C84BBC /* grid-male.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF6278D517700C84BBC /* grid-male.jpg */; };
 		28B13E01278D517700C84BBC /* grid-blue-dusk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF8278D517700C84BBC /* grid-blue-dusk.jpg */; };
 		28B13E02278D517700C84BBC /* grid-christmas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DFA278D517700C84BBC /* grid-christmas.jpg */; };
+		28B72A8826F5D9A3002E2A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28B72A8726F5D9A2002E2A22 /* GoogleService-Info.plist */; };
+		28CA36A727B2ACCD00025056 /* grid-brown-retro.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA369E27B2ACCD00025056 /* grid-brown-retro.jpg */; };
+		28CA36A827B2ACCD00025056 /* grid-coconut-ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA36A027B2ACCD00025056 /* grid-coconut-ocean.jpg */; };
+		28CA36A927B2ACCD00025056 /* grid-pink-vanila.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA36A227B2ACCD00025056 /* grid-pink-vanila.jpg */; };
+		28CA36AA27B2ACCD00025056 /* grid-deep-minimal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA36A427B2ACCD00025056 /* grid-deep-minimal.jpg */; };
+		28CA36AB27B2ACCD00025056 /* grid-weekdays.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA36A627B2ACCD00025056 /* grid-weekdays.jpg */; };
 		28D84514273988E1006C0F17 /* ProdinfireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D84513273988E1006C0F17 /* ProdinfireManager.swift */; };
 		28D8453C273A8237006C0F17 /* grid-nordic.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84517273A8237006C0F17 /* grid-nordic.jpeg */; };
 		28D8453D273A8237006C0F17 /* grid-blvck.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84519273A8237006C0F17 /* grid-blvck.jpeg */; };
@@ -180,6 +186,11 @@
 		28B13DF8278D517700C84BBC /* grid-blue-dusk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-blue-dusk.jpg"; sourceTree = "<group>"; };
 		28B13DFA278D517700C84BBC /* grid-christmas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-christmas.jpg"; sourceTree = "<group>"; };
 		28C3E63826EB3848001C2985 /* Presets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Presets.entitlements; sourceTree = "<group>"; };
+		28CA369E27B2ACCD00025056 /* grid-brown-retro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-brown-retro.jpg"; sourceTree = "<group>"; };
+		28CA36A027B2ACCD00025056 /* grid-coconut-ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-coconut-ocean.jpg"; sourceTree = "<group>"; };
+		28CA36A227B2ACCD00025056 /* grid-pink-vanila.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-pink-vanila.jpg"; sourceTree = "<group>"; };
+		28CA36A427B2ACCD00025056 /* grid-deep-minimal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-deep-minimal.jpg"; sourceTree = "<group>"; };
+		28CA36A627B2ACCD00025056 /* grid-weekdays.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-weekdays.jpg"; sourceTree = "<group>"; };
 		28D84513273988E1006C0F17 /* ProdinfireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdinfireManager.swift; sourceTree = "<group>"; };
 		28D84517273A8237006C0F17 /* grid-nordic.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-nordic.jpeg"; sourceTree = "<group>"; };
 		28D84519273A8237006C0F17 /* grid-blvck.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-blvck.jpeg"; sourceTree = "<group>"; };
@@ -438,12 +449,57 @@
 			path = Christmas;
 			sourceTree = "<group>";
 		};
+		28CA369D27B2ACCD00025056 /* Brown Retro */ = {
+			isa = PBXGroup;
+			children = (
+				28CA369E27B2ACCD00025056 /* grid-brown-retro.jpg */,
+			);
+			path = "Brown Retro";
+			sourceTree = "<group>";
+		};
+		28CA369F27B2ACCD00025056 /* Coconut Ocean */ = {
+			isa = PBXGroup;
+			children = (
+				28CA36A027B2ACCD00025056 /* grid-coconut-ocean.jpg */,
+			);
+			path = "Coconut Ocean";
+			sourceTree = "<group>";
+		};
+		28CA36A127B2ACCD00025056 /* Pink Vanila */ = {
+			isa = PBXGroup;
+			children = (
+				28CA36A227B2ACCD00025056 /* grid-pink-vanila.jpg */,
+			);
+			path = "Pink Vanila";
+			sourceTree = "<group>";
+		};
+		28CA36A327B2ACCD00025056 /* Deep Minimal */ = {
+			isa = PBXGroup;
+			children = (
+				28CA36A427B2ACCD00025056 /* grid-deep-minimal.jpg */,
+			);
+			path = "Deep Minimal";
+			sourceTree = "<group>";
+		};
+		28CA36A527B2ACCD00025056 /* Weekdays */ = {
+			isa = PBXGroup;
+			children = (
+				28CA36A627B2ACCD00025056 /* grid-weekdays.jpg */,
+			);
+			path = Weekdays;
+			sourceTree = "<group>";
+		};
 		28D84515273A8237006C0F17 /* Presets */ = {
 			isa = PBXGroup;
 			children = (
 				28B13DF7278D517700C84BBC /* Blue Dusk */,
 				28B13DEF278D517700C84BBC /* Chocolate */,
 				28B13DF9278D517700C84BBC /* Christmas */,
+				28CA369D27B2ACCD00025056 /* Brown Retro */,
+				28CA369F27B2ACCD00025056 /* Coconut Ocean */,
+				28CA36A327B2ACCD00025056 /* Deep Minimal */,
+				28CA36A127B2ACCD00025056 /* Pink Vanila */,
+				28CA36A527B2ACCD00025056 /* Weekdays */,
 				28B13DF1278D517700C84BBC /* Color Autumn */,
 				28B13DF5278D517700C84BBC /* Male */,
 				28B13DF3278D517700C84BBC /* Muted */,
@@ -939,10 +995,14 @@
 				28D8454E273A8237006C0F17 /* grid-moody-blue.jpeg in Resources */,
 				2868AF1D26CFD068007FA1A5 /* presets.json in Resources */,
 				28D8454D273A8237006C0F17 /* grid-cream-white.jpeg in Resources */,
+				28B72A8826F5D9A3002E2A22 /* GoogleService-Info.plist in Resources */,
+				28CA36A827B2ACCD00025056 /* grid-coconut-ocean.jpg in Resources */,
 				28D8453C273A8237006C0F17 /* grid-nordic.jpeg in Resources */,
 				28B13DFD278D517700C84BBC /* grid-chocolate.jpg in Resources */,
 				28D84544273A8237006C0F17 /* grid-dark-moody.jpg in Resources */,
 				4A5A2C7026C47C1D00F78C2F /* EuclidCircularA-Medium.ttf in Resources */,
+				28CA36AA27B2ACCD00025056 /* grid-deep-minimal.jpg in Resources */,
+				28CA36A927B2ACCD00025056 /* grid-pink-vanila.jpg in Resources */,
 				28D84540273A8237006C0F17 /* grid-rich-black.jpeg in Resources */,
 				28D84545273A8237006C0F17 /* grid-dark-orange.jpeg in Resources */,
 				28B13DFC278D517700C84BBC /* grid-cappuccino.jpg in Resources */,
@@ -970,6 +1030,8 @@
 				28B13E02278D517700C84BBC /* grid-christmas.jpg in Resources */,
 				28DEEB462737055100006A75 /* GoogleService-Info.plist in Resources */,
 				28D8453E273A8237006C0F17 /* grid-night-bar.jpeg in Resources */,
+				28CA36AB27B2ACCD00025056 /* grid-weekdays.jpg in Resources */,
+				28CA36A727B2ACCD00025056 /* grid-brown-retro.jpg in Resources */,
 				4A27D3A126C69CCC00A4D069 /* PresetTableViewCell.xib in Resources */,
 				4A5A2C7426C47C4A00F78C2F /* EuclidCircularA-SemiBold.ttf in Resources */,
 				28D84548273A8237006C0F17 /* grid-boho-wedding.jpeg in Resources */,
