@@ -37,7 +37,6 @@
 		28940B0C26EC704F0025944D /* OrganicSubscriptionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28940B0B26EC704F0025944D /* OrganicSubscriptionPage.swift */; };
 		28AB3A9926C4EC2800201D37 /* RedGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB3A9826C4EC2800201D37 /* RedGradientButton.swift */; };
 		28AB3A9D26C5594900201D37 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB3A9C26C5594900201D37 /* Util.swift */; };
-		28B72A8826F5D9A3002E2A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28B72A8726F5D9A2002E2A22 /* GoogleService-Info.plist */; };
 		28D84514273988E1006C0F17 /* ProdinfireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D84513273988E1006C0F17 /* ProdinfireManager.swift */; };
 		28DEEB402736635600006A75 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 28DEEB3F2736635600006A75 /* StoreKitTestCertificate.cer */; };
 		28DEEB442736F05200006A75 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DEEB432736F05200006A75 /* UIImageView.swift */; };
@@ -633,7 +632,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B72A8826F5D9A3002E2A22 /* GoogleService-Info.plist in Resources */,
 				4A5A2C7026C47C1D00F78C2F /* EuclidCircularA-Medium.ttf in Resources */,
 				28DEEB402736635600006A75 /* StoreKitTestCertificate.cer in Resources */,
 				4A5A2C6E26C47BF900F78C2F /* EuclidCircularA-Bold.ttf in Resources */,
