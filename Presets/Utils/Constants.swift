@@ -83,6 +83,10 @@ enum Keys {
     internal enum Facebook {
         static let appId: String                = "281912480039810"
     }
+    
+    internal enum API {
+        static let apiKey: String               = "!G245JF7fh9s4tnFSwd83rJDK"
+    }
 }
 
 public func hapticFeedback(_ type: UINotificationFeedbackGenerator.FeedbackType) {

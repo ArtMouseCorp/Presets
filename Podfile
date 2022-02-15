@@ -10,7 +10,6 @@ pod 'AppsFlyerFramework'
 
 pod 'Firebase/Analytics'
 pod 'Firebase/RemoteConfig'
-pod 'Firebase/Storage'
 pod 'Firebase/Database'
 
 

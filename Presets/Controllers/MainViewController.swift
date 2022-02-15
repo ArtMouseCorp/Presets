@@ -142,7 +142,7 @@ class MainViewController: BaseViewController {
     
     func configureCategories() {
         self.categories = Preset.free.isEmpty ? [ALL, PREMIUM] : [ALL, FREE, PREMIUM]
-        self.categories.append(contentsOf: Preset.all.map {return $0.name} )
+        self.categories.append(contentsOf: Preset.all.map { return $0.name } )
     }
     
     private func calculateSaleOfferEndDate() {
@@ -246,7 +246,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.onPresetTap = {
                 
                 let presetVC = PresetViewController.load(from: .preset)
-                presetVC.presetId = State.selectedPreset.id
                 self.navigationController?.pushViewController(presetVC, animated: true)
                 
             }
@@ -274,14 +273,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             self.presetsCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             self.presetsCollectionView.reloadItems(at: [indexPath])
             
-        default: ()
+        default: break
             
         }
         
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        //        self.presetsCollectionView.reloadItems(at: [indexPath])
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -297,8 +292,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         self.selectedCategoryIndex = indexPath.row
         self.categoriesCollectionView.reloadData()
-//        self.categoriesCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-//        self.presetsCollectionView.reloadItems(at: [indexPath])
         
     }
     

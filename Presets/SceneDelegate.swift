@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
-        AEMReporter.configure(withNetworker: nil, appID: Keys.Facebook.appId)
+        AEMReporter.configure(withNetworker: nil, appID: Keys.Facebook.appId, reporter: nil)
         AEMReporter.enable()
         AEMReporter.handle(url)
         

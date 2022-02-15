@@ -21,7 +21,6 @@
 		285452F326C5722B0097B9B2 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F226C5722B0097B9B2 /* PopupViewController.swift */; };
 		285452F526C572440097B9B2 /* DefaultPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F426C572440097B9B2 /* DefaultPopupViewController.swift */; };
 		285452F726C577B00097B9B2 /* PopupBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285452F626C577B00097B9B2 /* PopupBackgroundView.swift */; };
-		2868AF1D26CFD068007FA1A5 /* presets.json in Resources */ = {isa = PBXBuildFile; fileRef = 2868AF1C26CFD068007FA1A5 /* presets.json */; };
 		2868AF2026CFD456007FA1A5 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2868AF1F26CFD456007FA1A5 /* Preset.swift */; };
 		2868AF2426CFE6C3007FA1A5 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2868AF2326CFE6C3007FA1A5 /* State.swift */; };
 		2868AF2626CFE6CF007FA1A5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2868AF2526CFE6CF007FA1A5 /* Language.swift */; };
@@ -37,42 +36,9 @@
 		28940B0C26EC704F0025944D /* OrganicSubscriptionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28940B0B26EC704F0025944D /* OrganicSubscriptionPage.swift */; };
 		28AB3A9926C4EC2800201D37 /* RedGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB3A9826C4EC2800201D37 /* RedGradientButton.swift */; };
 		28AB3A9D26C5594900201D37 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB3A9C26C5594900201D37 /* Util.swift */; };
-		28B13DFB278D517700C84BBC /* grid-nude.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DEC278D517700C84BBC /* grid-nude.jpg */; };
-		28B13DFC278D517700C84BBC /* grid-cappuccino.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DEE278D517700C84BBC /* grid-cappuccino.jpg */; };
-		28B13DFD278D517700C84BBC /* grid-chocolate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF0278D517700C84BBC /* grid-chocolate.jpg */; };
-		28B13DFE278D517700C84BBC /* grid-color-autumn.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF2278D517700C84BBC /* grid-color-autumn.jpg */; };
-		28B13DFF278D517700C84BBC /* grid-muted.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF4278D517700C84BBC /* grid-muted.jpg */; };
-		28B13E00278D517700C84BBC /* grid-male.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF6278D517700C84BBC /* grid-male.jpg */; };
-		28B13E01278D517700C84BBC /* grid-blue-dusk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DF8278D517700C84BBC /* grid-blue-dusk.jpg */; };
-		28B13E02278D517700C84BBC /* grid-christmas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28B13DFA278D517700C84BBC /* grid-christmas.jpg */; };
 		28B72A8826F5D9A3002E2A22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28B72A8726F5D9A2002E2A22 /* GoogleService-Info.plist */; };
-		28CA36A727B2ACCD00025056 /* grid-brown-retro.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA369E27B2ACCD00025056 /* grid-brown-retro.jpg */; };
-		28CA36A827B2ACCD00025056 /* grid-coconut-ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA36A027B2ACCD00025056 /* grid-coconut-ocean.jpg */; };
-		28CA36A927B2ACCD00025056 /* grid-pink-vanila.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA36A227B2ACCD00025056 /* grid-pink-vanila.jpg */; };
-		28CA36AA27B2ACCD00025056 /* grid-deep-minimal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA36A427B2ACCD00025056 /* grid-deep-minimal.jpg */; };
-		28CA36AB27B2ACCD00025056 /* grid-weekdays.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28CA36A627B2ACCD00025056 /* grid-weekdays.jpg */; };
 		28D84514273988E1006C0F17 /* ProdinfireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D84513273988E1006C0F17 /* ProdinfireManager.swift */; };
-		28D8453C273A8237006C0F17 /* grid-nordic.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84517273A8237006C0F17 /* grid-nordic.jpeg */; };
-		28D8453D273A8237006C0F17 /* grid-blvck.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84519273A8237006C0F17 /* grid-blvck.jpeg */; };
-		28D8453E273A8237006C0F17 /* grid-night-bar.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D8451B273A8237006C0F17 /* grid-night-bar.jpeg */; };
-		28D8453F273A8237006C0F17 /* grid-paradise.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D8451D273A8237006C0F17 /* grid-paradise.jpeg */; };
-		28D84540273A8237006C0F17 /* grid-rich-black.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D8451F273A8237006C0F17 /* grid-rich-black.jpeg */; };
-		28D84541273A8237006C0F17 /* grid-earthy-tones.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84521273A8237006C0F17 /* grid-earthy-tones.jpeg */; };
-		28D84542273A8237006C0F17 /* grid-boho.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84523273A8237006C0F17 /* grid-boho.jpeg */; };
-		28D84543273A8237006C0F17 /* grid-true-black.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84525273A8237006C0F17 /* grid-true-black.jpeg */; };
-		28D84544273A8237006C0F17 /* grid-dark-moody.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84527273A8237006C0F17 /* grid-dark-moody.jpg */; };
-		28D84545273A8237006C0F17 /* grid-dark-orange.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84529273A8237006C0F17 /* grid-dark-orange.jpeg */; };
-		28D84546273A8237006C0F17 /* grid-nature.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D8452B273A8237006C0F17 /* grid-nature.jpeg */; };
-		28D84547273A8237006C0F17 /* grid-amber.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D8452D273A8237006C0F17 /* grid-amber.jpeg */; };
-		28D84548273A8237006C0F17 /* grid-boho-wedding.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D8452F273A8237006C0F17 /* grid-boho-wedding.jpeg */; };
-		28D84549273A8237006C0F17 /* grid-coffee.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84531273A8237006C0F17 /* grid-coffee.jpeg */; };
-		28D8454A273A8237006C0F17 /* grid-minimal-style.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84533273A8237006C0F17 /* grid-minimal-style.jpeg */; };
-		28D8454B273A8237006C0F17 /* grid-vintage-film.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84535273A8237006C0F17 /* grid-vintage-film.jpeg */; };
-		28D8454C273A8237006C0F17 /* grid-summer.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84537273A8237006C0F17 /* grid-summer.jpeg */; };
-		28D8454D273A8237006C0F17 /* grid-cream-white.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D84539273A8237006C0F17 /* grid-cream-white.jpeg */; };
-		28D8454E273A8237006C0F17 /* grid-moody-blue.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 28D8453B273A8237006C0F17 /* grid-moody-blue.jpeg */; };
 		28DEEB402736635600006A75 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 28DEEB3F2736635600006A75 /* StoreKitTestCertificate.cer */; };
-		28DEEB422736652A00006A75 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DEEB412736652A00006A75 /* StorageManager.swift */; };
 		28DEEB442736F05200006A75 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DEEB432736F05200006A75 /* UIImageView.swift */; };
 		28DEEB462737055100006A75 /* GoogleService-Info (RELEASE).plist in Resources */ = {isa = PBXBuildFile; fileRef = 28DEEB452737055100006A75 /* GoogleService-Info (RELEASE).plist */; };
 		28DEEB4927372F9700006A75 /* PresetsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DEEB4727372F9700006A75 /* PresetsCollectionViewCell.swift */; };
@@ -155,7 +121,6 @@
 		285452F426C572440097B9B2 /* DefaultPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPopupViewController.swift; sourceTree = "<group>"; };
 		285452F626C577B00097B9B2 /* PopupBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupBackgroundView.swift; sourceTree = "<group>"; };
 		2860EB4F26F34C610016EB5B /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
-		2868AF1C26CFD068007FA1A5 /* presets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = presets.json; sourceTree = "<group>"; };
 		2868AF1F26CFD456007FA1A5 /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
 		2868AF2326CFE6C3007FA1A5 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		2868AF2526CFE6CF007FA1A5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -175,43 +140,10 @@
 		28940B0B26EC704F0025944D /* OrganicSubscriptionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganicSubscriptionPage.swift; sourceTree = "<group>"; };
 		28AB3A9826C4EC2800201D37 /* RedGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedGradientButton.swift; sourceTree = "<group>"; };
 		28AB3A9C26C5594900201D37 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		28B13DEC278D517700C84BBC /* grid-nude.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-nude.jpg"; sourceTree = "<group>"; };
-		28B13DEE278D517700C84BBC /* grid-cappuccino.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-cappuccino.jpg"; sourceTree = "<group>"; };
-		28B13DF0278D517700C84BBC /* grid-chocolate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-chocolate.jpg"; sourceTree = "<group>"; };
-		28B13DF2278D517700C84BBC /* grid-color-autumn.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-color-autumn.jpg"; sourceTree = "<group>"; };
-		28B13DF4278D517700C84BBC /* grid-muted.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-muted.jpg"; sourceTree = "<group>"; };
-		28B13DF6278D517700C84BBC /* grid-male.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-male.jpg"; sourceTree = "<group>"; };
-		28B13DF8278D517700C84BBC /* grid-blue-dusk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-blue-dusk.jpg"; sourceTree = "<group>"; };
-		28B13DFA278D517700C84BBC /* grid-christmas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-christmas.jpg"; sourceTree = "<group>"; };
 		28B72A8726F5D9A2002E2A22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28C3E63826EB3848001C2985 /* Presets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Presets.entitlements; sourceTree = "<group>"; };
-		28CA369E27B2ACCD00025056 /* grid-brown-retro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-brown-retro.jpg"; sourceTree = "<group>"; };
-		28CA36A027B2ACCD00025056 /* grid-coconut-ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-coconut-ocean.jpg"; sourceTree = "<group>"; };
-		28CA36A227B2ACCD00025056 /* grid-pink-vanila.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-pink-vanila.jpg"; sourceTree = "<group>"; };
-		28CA36A427B2ACCD00025056 /* grid-deep-minimal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-deep-minimal.jpg"; sourceTree = "<group>"; };
-		28CA36A627B2ACCD00025056 /* grid-weekdays.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-weekdays.jpg"; sourceTree = "<group>"; };
 		28D84513273988E1006C0F17 /* ProdinfireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdinfireManager.swift; sourceTree = "<group>"; };
-		28D84517273A8237006C0F17 /* grid-nordic.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-nordic.jpeg"; sourceTree = "<group>"; };
-		28D84519273A8237006C0F17 /* grid-blvck.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-blvck.jpeg"; sourceTree = "<group>"; };
-		28D8451B273A8237006C0F17 /* grid-night-bar.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-night-bar.jpeg"; sourceTree = "<group>"; };
-		28D8451D273A8237006C0F17 /* grid-paradise.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-paradise.jpeg"; sourceTree = "<group>"; };
-		28D8451F273A8237006C0F17 /* grid-rich-black.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-rich-black.jpeg"; sourceTree = "<group>"; };
-		28D84521273A8237006C0F17 /* grid-earthy-tones.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-earthy-tones.jpeg"; sourceTree = "<group>"; };
-		28D84523273A8237006C0F17 /* grid-boho.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-boho.jpeg"; sourceTree = "<group>"; };
-		28D84525273A8237006C0F17 /* grid-true-black.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-true-black.jpeg"; sourceTree = "<group>"; };
-		28D84527273A8237006C0F17 /* grid-dark-moody.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-dark-moody.jpg"; sourceTree = "<group>"; };
-		28D84529273A8237006C0F17 /* grid-dark-orange.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-dark-orange.jpeg"; sourceTree = "<group>"; };
-		28D8452B273A8237006C0F17 /* grid-nature.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-nature.jpeg"; sourceTree = "<group>"; };
-		28D8452D273A8237006C0F17 /* grid-amber.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-amber.jpeg"; sourceTree = "<group>"; };
-		28D8452F273A8237006C0F17 /* grid-boho-wedding.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-boho-wedding.jpeg"; sourceTree = "<group>"; };
-		28D84531273A8237006C0F17 /* grid-coffee.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-coffee.jpeg"; sourceTree = "<group>"; };
-		28D84533273A8237006C0F17 /* grid-minimal-style.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-minimal-style.jpeg"; sourceTree = "<group>"; };
-		28D84535273A8237006C0F17 /* grid-vintage-film.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-vintage-film.jpeg"; sourceTree = "<group>"; };
-		28D84537273A8237006C0F17 /* grid-summer.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-summer.jpeg"; sourceTree = "<group>"; };
-		28D84539273A8237006C0F17 /* grid-cream-white.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-cream-white.jpeg"; sourceTree = "<group>"; };
-		28D8453B273A8237006C0F17 /* grid-moody-blue.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "grid-moody-blue.jpeg"; sourceTree = "<group>"; };
 		28DEEB3F2736635600006A75 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
-		28DEEB412736652A00006A75 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		28DEEB432736F05200006A75 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		28DEEB452737055100006A75 /* GoogleService-Info (RELEASE).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (RELEASE).plist"; sourceTree = "<group>"; };
 		28DEEB4727372F9700006A75 /* PresetsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -341,8 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				4AF7613026DD58CD0060D705 /* tutorial.mov */,
-				2868AF1C26CFD068007FA1A5 /* presets.json */,
-				28D84515273A8237006C0F17 /* Presets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -355,7 +285,6 @@
 				2868AF2326CFE6C3007FA1A5 /* State.swift */,
 				2868AF2526CFE6CF007FA1A5 /* Language.swift */,
 				287D9A1826FB73E2009CC19F /* StoreManager.swift */,
-				28DEEB412736652A00006A75 /* StorageManager.swift */,
 				28D84513273988E1006C0F17 /* ProdinfireManager.swift */,
 			);
 			path = Model;
@@ -382,301 +311,6 @@
 				28815D7F27992F0C00483CC8 /* Subscription Pages */,
 			);
 			path = "Remote Config";
-			sourceTree = "<group>";
-		};
-		28B13DEB278D517700C84BBC /* Nude */ = {
-			isa = PBXGroup;
-			children = (
-				28B13DEC278D517700C84BBC /* grid-nude.jpg */,
-			);
-			path = Nude;
-			sourceTree = "<group>";
-		};
-		28B13DED278D517700C84BBC /* Сappuccino */ = {
-			isa = PBXGroup;
-			children = (
-				28B13DEE278D517700C84BBC /* grid-cappuccino.jpg */,
-			);
-			path = "Сappuccino";
-			sourceTree = "<group>";
-		};
-		28B13DEF278D517700C84BBC /* Chocolate */ = {
-			isa = PBXGroup;
-			children = (
-				28B13DF0278D517700C84BBC /* grid-chocolate.jpg */,
-			);
-			path = Chocolate;
-			sourceTree = "<group>";
-		};
-		28B13DF1278D517700C84BBC /* Color Autumn */ = {
-			isa = PBXGroup;
-			children = (
-				28B13DF2278D517700C84BBC /* grid-color-autumn.jpg */,
-			);
-			path = "Color Autumn";
-			sourceTree = "<group>";
-		};
-		28B13DF3278D517700C84BBC /* Muted */ = {
-			isa = PBXGroup;
-			children = (
-				28B13DF4278D517700C84BBC /* grid-muted.jpg */,
-			);
-			path = Muted;
-			sourceTree = "<group>";
-		};
-		28B13DF5278D517700C84BBC /* Male */ = {
-			isa = PBXGroup;
-			children = (
-				28B13DF6278D517700C84BBC /* grid-male.jpg */,
-			);
-			path = Male;
-			sourceTree = "<group>";
-		};
-		28B13DF7278D517700C84BBC /* Blue Dusk */ = {
-			isa = PBXGroup;
-			children = (
-				28B13DF8278D517700C84BBC /* grid-blue-dusk.jpg */,
-			);
-			path = "Blue Dusk";
-			sourceTree = "<group>";
-		};
-		28B13DF9278D517700C84BBC /* Christmas */ = {
-			isa = PBXGroup;
-			children = (
-				28B13DFA278D517700C84BBC /* grid-christmas.jpg */,
-			);
-			path = Christmas;
-			sourceTree = "<group>";
-		};
-		28CA369D27B2ACCD00025056 /* Brown Retro */ = {
-			isa = PBXGroup;
-			children = (
-				28CA369E27B2ACCD00025056 /* grid-brown-retro.jpg */,
-			);
-			path = "Brown Retro";
-			sourceTree = "<group>";
-		};
-		28CA369F27B2ACCD00025056 /* Coconut Ocean */ = {
-			isa = PBXGroup;
-			children = (
-				28CA36A027B2ACCD00025056 /* grid-coconut-ocean.jpg */,
-			);
-			path = "Coconut Ocean";
-			sourceTree = "<group>";
-		};
-		28CA36A127B2ACCD00025056 /* Pink Vanila */ = {
-			isa = PBXGroup;
-			children = (
-				28CA36A227B2ACCD00025056 /* grid-pink-vanila.jpg */,
-			);
-			path = "Pink Vanila";
-			sourceTree = "<group>";
-		};
-		28CA36A327B2ACCD00025056 /* Deep Minimal */ = {
-			isa = PBXGroup;
-			children = (
-				28CA36A427B2ACCD00025056 /* grid-deep-minimal.jpg */,
-			);
-			path = "Deep Minimal";
-			sourceTree = "<group>";
-		};
-		28CA36A527B2ACCD00025056 /* Weekdays */ = {
-			isa = PBXGroup;
-			children = (
-				28CA36A627B2ACCD00025056 /* grid-weekdays.jpg */,
-			);
-			path = Weekdays;
-			sourceTree = "<group>";
-		};
-		28D84515273A8237006C0F17 /* Presets */ = {
-			isa = PBXGroup;
-			children = (
-				28B13DF7278D517700C84BBC /* Blue Dusk */,
-				28B13DEF278D517700C84BBC /* Chocolate */,
-				28B13DF9278D517700C84BBC /* Christmas */,
-				28CA369D27B2ACCD00025056 /* Brown Retro */,
-				28CA369F27B2ACCD00025056 /* Coconut Ocean */,
-				28CA36A327B2ACCD00025056 /* Deep Minimal */,
-				28CA36A127B2ACCD00025056 /* Pink Vanila */,
-				28CA36A527B2ACCD00025056 /* Weekdays */,
-				28B13DF1278D517700C84BBC /* Color Autumn */,
-				28B13DF5278D517700C84BBC /* Male */,
-				28B13DF3278D517700C84BBC /* Muted */,
-				28B13DEB278D517700C84BBC /* Nude */,
-				28B13DED278D517700C84BBC /* Сappuccino */,
-				28D84516273A8237006C0F17 /* Nordic */,
-				28D84518273A8237006C0F17 /* BLVCK */,
-				28D8451A273A8237006C0F17 /* Night Bar */,
-				28D8451C273A8237006C0F17 /* Paradise */,
-				28D8451E273A8237006C0F17 /* Rich Black */,
-				28D84520273A8237006C0F17 /* Earthy Tones */,
-				28D84522273A8237006C0F17 /* Boho */,
-				28D84524273A8237006C0F17 /* True Black */,
-				28D84526273A8237006C0F17 /* Dark Moody */,
-				28D84528273A8237006C0F17 /* Dark Orange */,
-				28D8452A273A8237006C0F17 /* Nature */,
-				28D8452C273A8237006C0F17 /* Amber */,
-				28D8452E273A8237006C0F17 /* Boho Wedding */,
-				28D84530273A8237006C0F17 /* Coffee */,
-				28D84532273A8237006C0F17 /* Minimal Style */,
-				28D84534273A8237006C0F17 /* Vintage Film */,
-				28D84536273A8237006C0F17 /* Summer */,
-				28D84538273A8237006C0F17 /* Cream White */,
-				28D8453A273A8237006C0F17 /* Moody Blue */,
-			);
-			path = Presets;
-			sourceTree = "<group>";
-		};
-		28D84516273A8237006C0F17 /* Nordic */ = {
-			isa = PBXGroup;
-			children = (
-				28D84517273A8237006C0F17 /* grid-nordic.jpeg */,
-			);
-			path = Nordic;
-			sourceTree = "<group>";
-		};
-		28D84518273A8237006C0F17 /* BLVCK */ = {
-			isa = PBXGroup;
-			children = (
-				28D84519273A8237006C0F17 /* grid-blvck.jpeg */,
-			);
-			path = BLVCK;
-			sourceTree = "<group>";
-		};
-		28D8451A273A8237006C0F17 /* Night Bar */ = {
-			isa = PBXGroup;
-			children = (
-				28D8451B273A8237006C0F17 /* grid-night-bar.jpeg */,
-			);
-			path = "Night Bar";
-			sourceTree = "<group>";
-		};
-		28D8451C273A8237006C0F17 /* Paradise */ = {
-			isa = PBXGroup;
-			children = (
-				28D8451D273A8237006C0F17 /* grid-paradise.jpeg */,
-			);
-			path = Paradise;
-			sourceTree = "<group>";
-		};
-		28D8451E273A8237006C0F17 /* Rich Black */ = {
-			isa = PBXGroup;
-			children = (
-				28D8451F273A8237006C0F17 /* grid-rich-black.jpeg */,
-			);
-			path = "Rich Black";
-			sourceTree = "<group>";
-		};
-		28D84520273A8237006C0F17 /* Earthy Tones */ = {
-			isa = PBXGroup;
-			children = (
-				28D84521273A8237006C0F17 /* grid-earthy-tones.jpeg */,
-			);
-			path = "Earthy Tones";
-			sourceTree = "<group>";
-		};
-		28D84522273A8237006C0F17 /* Boho */ = {
-			isa = PBXGroup;
-			children = (
-				28D84523273A8237006C0F17 /* grid-boho.jpeg */,
-			);
-			path = Boho;
-			sourceTree = "<group>";
-		};
-		28D84524273A8237006C0F17 /* True Black */ = {
-			isa = PBXGroup;
-			children = (
-				28D84525273A8237006C0F17 /* grid-true-black.jpeg */,
-			);
-			path = "True Black";
-			sourceTree = "<group>";
-		};
-		28D84526273A8237006C0F17 /* Dark Moody */ = {
-			isa = PBXGroup;
-			children = (
-				28D84527273A8237006C0F17 /* grid-dark-moody.jpg */,
-			);
-			path = "Dark Moody";
-			sourceTree = "<group>";
-		};
-		28D84528273A8237006C0F17 /* Dark Orange */ = {
-			isa = PBXGroup;
-			children = (
-				28D84529273A8237006C0F17 /* grid-dark-orange.jpeg */,
-			);
-			path = "Dark Orange";
-			sourceTree = "<group>";
-		};
-		28D8452A273A8237006C0F17 /* Nature */ = {
-			isa = PBXGroup;
-			children = (
-				28D8452B273A8237006C0F17 /* grid-nature.jpeg */,
-			);
-			path = Nature;
-			sourceTree = "<group>";
-		};
-		28D8452C273A8237006C0F17 /* Amber */ = {
-			isa = PBXGroup;
-			children = (
-				28D8452D273A8237006C0F17 /* grid-amber.jpeg */,
-			);
-			path = Amber;
-			sourceTree = "<group>";
-		};
-		28D8452E273A8237006C0F17 /* Boho Wedding */ = {
-			isa = PBXGroup;
-			children = (
-				28D8452F273A8237006C0F17 /* grid-boho-wedding.jpeg */,
-			);
-			path = "Boho Wedding";
-			sourceTree = "<group>";
-		};
-		28D84530273A8237006C0F17 /* Coffee */ = {
-			isa = PBXGroup;
-			children = (
-				28D84531273A8237006C0F17 /* grid-coffee.jpeg */,
-			);
-			path = Coffee;
-			sourceTree = "<group>";
-		};
-		28D84532273A8237006C0F17 /* Minimal Style */ = {
-			isa = PBXGroup;
-			children = (
-				28D84533273A8237006C0F17 /* grid-minimal-style.jpeg */,
-			);
-			path = "Minimal Style";
-			sourceTree = "<group>";
-		};
-		28D84534273A8237006C0F17 /* Vintage Film */ = {
-			isa = PBXGroup;
-			children = (
-				28D84535273A8237006C0F17 /* grid-vintage-film.jpeg */,
-			);
-			path = "Vintage Film";
-			sourceTree = "<group>";
-		};
-		28D84536273A8237006C0F17 /* Summer */ = {
-			isa = PBXGroup;
-			children = (
-				28D84537273A8237006C0F17 /* grid-summer.jpeg */,
-			);
-			path = Summer;
-			sourceTree = "<group>";
-		};
-		28D84538273A8237006C0F17 /* Cream White */ = {
-			isa = PBXGroup;
-			children = (
-				28D84539273A8237006C0F17 /* grid-cream-white.jpeg */,
-			);
-			path = "Cream White";
-			sourceTree = "<group>";
-		};
-		28D8453A273A8237006C0F17 /* Moody Blue */ = {
-			isa = PBXGroup;
-			children = (
-				28D8453B273A8237006C0F17 /* grid-moody-blue.jpeg */,
-			);
-			path = "Moody Blue";
 			sourceTree = "<group>";
 		};
 		28F1330D26CA7BA500DB7142 /* Extensions */ = {
@@ -988,60 +622,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28B13E01278D517700C84BBC /* grid-blue-dusk.jpg in Resources */,
-				28B13E00278D517700C84BBC /* grid-male.jpg in Resources */,
-				28D84541273A8237006C0F17 /* grid-earthy-tones.jpeg in Resources */,
-				28D8454E273A8237006C0F17 /* grid-moody-blue.jpeg in Resources */,
-				2868AF1D26CFD068007FA1A5 /* presets.json in Resources */,
-				28D8454D273A8237006C0F17 /* grid-cream-white.jpeg in Resources */,
 				28B72A8826F5D9A3002E2A22 /* GoogleService-Info.plist in Resources */,
-				28CA36A827B2ACCD00025056 /* grid-coconut-ocean.jpg in Resources */,
-				28D8453C273A8237006C0F17 /* grid-nordic.jpeg in Resources */,
-				28B13DFD278D517700C84BBC /* grid-chocolate.jpg in Resources */,
-				28D84544273A8237006C0F17 /* grid-dark-moody.jpg in Resources */,
 				4A5A2C7026C47C1D00F78C2F /* EuclidCircularA-Medium.ttf in Resources */,
-				28CA36AA27B2ACCD00025056 /* grid-deep-minimal.jpg in Resources */,
-				28CA36A927B2ACCD00025056 /* grid-pink-vanila.jpg in Resources */,
-				28D84540273A8237006C0F17 /* grid-rich-black.jpeg in Resources */,
-				28D84545273A8237006C0F17 /* grid-dark-orange.jpeg in Resources */,
-				28B13DFC278D517700C84BBC /* grid-cappuccino.jpg in Resources */,
 				28DEEB402736635600006A75 /* StoreKitTestCertificate.cer in Resources */,
 				4A5A2C6E26C47BF900F78C2F /* EuclidCircularA-Bold.ttf in Resources */,
-				28B13DFE278D517700C84BBC /* grid-color-autumn.jpg in Resources */,
 				4A553F5726C41F98001150D2 /* LaunchScreen.storyboard in Resources */,
 				28F1337126CA9F7E00DB7142 /* swiftgen.yml in Resources */,
-				28D8453F273A8237006C0F17 /* grid-paradise.jpeg in Resources */,
-				28D8454C273A8237006C0F17 /* grid-summer.jpeg in Resources */,
-				28D84542273A8237006C0F17 /* grid-boho.jpeg in Resources */,
-				28D8453D273A8237006C0F17 /* grid-blvck.jpeg in Resources */,
 				4AF7613126DD58CD0060D705 /* tutorial.mov in Resources */,
 				28F1333A26CA8FA800DB7142 /* Localizable.strings in Resources */,
 				28F1335826CA90A200DB7142 /* InfoPlist.strings in Resources */,
 				4A5A2C6826C4798F00F78C2F /* Rubik-Bold.ttf in Resources */,
 				4A553F5426C41F98001150D2 /* Assets.xcassets in Resources */,
 				28DEEB4A27372F9700006A75 /* PresetsCollectionViewCell.xib in Resources */,
-				28D84546273A8237006C0F17 /* grid-nature.jpeg in Resources */,
-				28D84543273A8237006C0F17 /* grid-true-black.jpeg in Resources */,
-				28D84549273A8237006C0F17 /* grid-coffee.jpeg in Resources */,
 				4A5A2C6C26C479AA00F78C2F /* Rubik-Medium.ttf in Resources */,
 				2823317426C6DAE0002EB4C2 /* PresetImageCollectionViewCell.xib in Resources */,
-				28B13E02278D517700C84BBC /* grid-christmas.jpg in Resources */,
 				28DEEB462737055100006A75 /* GoogleService-Info (RELEASE).plist in Resources */,
-				28D8453E273A8237006C0F17 /* grid-night-bar.jpeg in Resources */,
-				28CA36AB27B2ACCD00025056 /* grid-weekdays.jpg in Resources */,
-				28CA36A727B2ACCD00025056 /* grid-brown-retro.jpg in Resources */,
 				4A27D3A126C69CCC00A4D069 /* PresetTableViewCell.xib in Resources */,
 				4A5A2C7426C47C4A00F78C2F /* EuclidCircularA-SemiBold.ttf in Resources */,
-				28D84548273A8237006C0F17 /* grid-boho-wedding.jpeg in Resources */,
 				4A5A2C6A26C4799E00F78C2F /* Rubik-Regular.ttf in Resources */,
-				28B13DFB278D517700C84BBC /* grid-nude.jpg in Resources */,
-				28D8454B273A8237006C0F17 /* grid-vintage-film.jpeg in Resources */,
 				4A553F5226C41F97001150D2 /* Main.storyboard in Resources */,
-				28B13DFF278D517700C84BBC /* grid-muted.jpg in Resources */,
-				28D8454A273A8237006C0F17 /* grid-minimal-style.jpeg in Resources */,
 				4A46A57226C5DEFE005EBD85 /* CategoryCollectionViewCell.xib in Resources */,
 				4A5A2C7226C47C3000F78C2F /* EuclidCircularA-Regular.ttf in Resources */,
-				28D84547273A8237006C0F17 /* grid-amber.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,7 +712,6 @@
 				2868AF2026CFD456007FA1A5 /* Preset.swift in Sources */,
 				28837EE02796BF47009D144B /* String.swift in Sources */,
 				4AE7C3CB279870A200E0B5DE /* SubscriptionSecondViewController.swift in Sources */,
-				28DEEB422736652A00006A75 /* StorageManager.swift in Sources */,
 				2803201427A2DADF00844635 /* BaseSubscriptionViewController.swift in Sources */,
 				4AC3A86226C6E86200B1340A /* ManualViewController.swift in Sources */,
 				28AB3A9926C4EC2800201D37 /* RedGradientButton.swift in Sources */,
