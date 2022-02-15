@@ -114,8 +114,12 @@ class DefaultPopupViewController: PopupViewController {
                 return
             }
             
-            State.selectedPreset.getDNGData(for: indexOfImagePreset) { data in
+            State.selectedPreset.loadDNG(for: indexOfImagePreset) { data in
                 
+                guard let data = data else {
+                    self.hideLoader()
+                    return
+                }
                 let activityController = UIActivityViewController(activityItems: [data] as [Any], applicationActivities: nil)
                 
                 self.hideLoader() {

@@ -33,11 +33,10 @@ public struct HPACKHeaders: ExpressibleByDictionaryLiteral {
             self.headers = httpHeaders.map { HPACKHeader(name: $0.name.lowercased(), value: $0.value) }
 
             let connectionHeaderValue = httpHeaders[canonicalForm: "connection"]
-            if !connectionHeaderValue.isEmpty {
-                self.headers.removeAll { header in
-                    return HPACKHeaders.illegalHeaders.contains(header.name) ||
-                        connectionHeaderValue.contains(header.name[...])
-                }
+            
+            self.headers.removeAll { header in
+                connectionHeaderValue.contains(header.name[...]) ||
+                    HPACKHeaders.illegalHeaders.contains(header.name)
             }
         } else {
             self.headers = httpHeaders.map { HPACKHeader(name: $0.name, value: $0.value) }
@@ -49,7 +48,7 @@ public struct HPACKHeaders: ExpressibleByDictionaryLiteral {
     public init(httpHeaders: HTTPHeaders) {
         self.init(httpHeaders: httpHeaders, normalizeHTTPHeaders: true)
     }
-    
+
     /// Construct a `HPACKHeaders` structure.
     ///
     /// The indexability of all headers is assumed to be the default, i.e. indexable and
@@ -86,7 +85,7 @@ public struct HPACKHeaders: ExpressibleByDictionaryLiteral {
         // We no longer use an allocator so we don't need this method anymore.
         self.init(headers)
     }
-    
+
     /// Internal initializer to make things easier for unit tests.
     @inlinable
     init(fullHeaders: [(HPACKIndexing, String, String)]) {
@@ -98,7 +97,7 @@ public struct HPACKHeaders: ExpressibleByDictionaryLiteral {
     init(headers: [HPACKHeader]) {
         self.headers = headers
     }
-    
+
     /// Add a header name/value pair to the block.
     ///
     /// This method is strictly additive: if there are other values for the given header name
@@ -174,7 +173,7 @@ public struct HPACKHeaders: ExpressibleByDictionaryLiteral {
             return nameToRemove.isEqualCaseInsensitiveASCIIBytes(to: header.name)
         }
     }
-    
+
     /// Retrieve all of the values for a given header field name from the block.
     ///
     /// This method uses case-insensitive comparisons for the header field name. It
@@ -198,7 +197,7 @@ public struct HPACKHeaders: ExpressibleByDictionaryLiteral {
                 array.append(header.value)
             }
         }
-        
+
         return array
     }
 
@@ -240,7 +239,7 @@ public struct HPACKHeaders: ExpressibleByDictionaryLiteral {
         }
         return false
     }
-    
+
     /// Retrieves the header values for the given header field in "canonical form": that is,
     /// splitting them on commas as extensively as possible such that multiple values received on the
     /// one line are returned as separate entries. Also respects the fact that Set-Cookie should not
@@ -254,15 +253,33 @@ public struct HPACKHeaders: ExpressibleByDictionaryLiteral {
         guard result.count > 0 else {
             return []
         }
-        
+
         // It's not safe to split Set-Cookie on comma.
-        guard name.lowercased() != "set-cookie" else {
+        if name.isEqualCaseInsensitiveASCIIBytes(to: "set-cookie") {
             return result
         }
-        
-        return result.flatMap { $0.split(separator: ",") }.map { String($0._trimWhitespace()) }
+
+        // We slightly overcommit here to try to reduce the amount of resizing we do.
+        var trimmedResults: [String] = []
+        trimmedResults.reserveCapacity(result.count * 4)
+
+        // This loop operates entirely on the UTF-8 views. This vastly reduces the cost of this slicing and dicing.
+        for field in result {
+            for entry in field.utf8._lazySplit(separator: UInt8(ascii: ",")) {
+                let trimmed = entry._trimWhitespace()
+                if trimmed.isEmpty {
+                    continue
+                }
+
+                // This constructor pair kinda sucks, but you can't create a String from a slice of UTF8View as
+                // cheaply as you can with a Substring, so we go through that initializer instead.
+                trimmedResults.append(String(Substring(trimmed)))
+            }
+        }
+
+        return trimmedResults
     }
-    
+
     /// Special internal function for use by tests.
     internal subscript(position: Int) -> (String, String) {
         precondition(position < self.headers.endIndex, "Position \(position) is beyond bounds of \(self.headers.endIndex)")
@@ -411,7 +428,7 @@ public enum HPACKIndexing: CustomStringConvertible {
     /// Header may not be written to the dynamic index table, and proxies must
     /// pass it on as-is without rewriting.
     case neverIndexed
-    
+
     public var description: String {
         switch self {
         case .indexable:
@@ -467,24 +484,89 @@ internal extension UInt8 {
 }
 
 /* private but inlinable */
-internal extension Character {
+internal extension UTF8.CodeUnit {
     @inlinable
     var isASCIIWhitespace: Bool {
-        return self == " " || self == "\t" || self == "\r" || self == "\n" || self == "\r\n"
+        switch self {
+        case UInt8(ascii: " "),
+             UInt8(ascii: "\t"):
+            return true
+        default:
+            return false
+        }
     }
 }
 
-extension Substring {
+extension Substring.UTF8View {
     @inlinable
-    func _trimWhitespace() -> Substring {
-        var me = self
-        while me.first?.isASCIIWhitespace == .some(true) {
-            me = me.dropFirst()
+    func _trimWhitespace() -> Substring.UTF8View {
+        guard let firstNonWhitespace = self.firstIndex(where: { !$0.isASCIIWhitespace }) else {
+           // The whole substring is ASCII whitespace.
+            return Substring().utf8
         }
-        while me.last?.isASCIIWhitespace == .some(true) {
-            me = me.dropLast()
+
+        // There must be at least one non-ascii whitespace character, so banging here is safe.
+        let lastNonWhitespace = self.lastIndex(where: { !$0.isASCIIWhitespace })!
+        return self[firstNonWhitespace...lastNonWhitespace]
+    }
+}
+
+extension String.UTF8View {
+    @inlinable
+    func _lazySplit(separator: UTF8.CodeUnit) -> LazyUTF8ViewSplitSequence {
+        return LazyUTF8ViewSplitSequence(self, separator: separator)
+    }
+
+    @usableFromInline
+    struct LazyUTF8ViewSplitSequence: Sequence {
+        @usableFromInline typealias Element = Substring.UTF8View
+
+        @usableFromInline var _baseView: String.UTF8View
+        @usableFromInline var _separator: UTF8.CodeUnit
+
+        @inlinable
+        init(_ baseView: String.UTF8View, separator: UTF8.CodeUnit) {
+            self._baseView = baseView
+            self._separator = separator
         }
-        return me
+
+        @inlinable
+        func makeIterator() -> Iterator {
+            return Iterator(self)
+        }
+
+        @usableFromInline
+        struct Iterator: IteratorProtocol {
+            @usableFromInline var _base: LazyUTF8ViewSplitSequence
+            @usableFromInline var _lastSplitIndex: Substring.UTF8View.Index
+
+            @inlinable
+            init(_ base: LazyUTF8ViewSplitSequence) {
+                self._base = base
+                self._lastSplitIndex = base._baseView.startIndex
+            }
+
+            @inlinable
+            mutating func next() -> Substring.UTF8View? {
+                let endIndex = self._base._baseView.endIndex
+
+                guard self._lastSplitIndex != endIndex else {
+                    return nil
+                }
+
+                let restSlice = self._base._baseView[self._lastSplitIndex...]
+
+                if let nextSplitIndex = restSlice.firstIndex(of: self._base._separator) {
+                    // The separator is present. We want to drop the separator, so we need to advance the index past this point.
+                    self._lastSplitIndex = self._base._baseView.index(after: nextSplitIndex)
+                    return restSlice[..<nextSplitIndex]
+                } else {
+                    // The separator isn't present, so we want the entire rest of the slice.
+                    self._lastSplitIndex = self._base._baseView.endIndex
+                    return restSlice
+                }
+            }
+        }
     }
 }
 

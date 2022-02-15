@@ -13,8 +13,8 @@ class LoadingViewController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             
             // Load data
-            RCValues.sharedInstance.currentPaywall()
-            RCValues.sharedInstance.currentPaywall()
+            _ = RCValues.sharedInstance.currentPaywall()
+            _ = RCValues.sharedInstance.currentPaywall()
             
             let mainNavController = UINavigationController.load(from: .mainNav)
             mainNavController.modalPresentationStyle = .fullScreen

@@ -14,7 +14,7 @@ struct State {
     public static var favouritePresets: [Int] = []
     public static var secondsTillTheEndOfOffer = 10800
     
-    public static var selectedPreset: Preset = .defaultPreset
+    public static var selectedPreset: Preset = .default
     
     public static var subscriptionConfig: OrganicSubscriptionPage = .default
     public static var subscriptionPlansConfig: SubscriptionPlansPage = .default

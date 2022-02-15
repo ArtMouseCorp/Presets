@@ -63,7 +63,7 @@ class OnboardingViewController: UIViewController {
             introduceSubtitle.localize(with: L10n.Onboarding.Subtitle.second)
             animateIn()
         case 2:
-            RCValues.sharedInstance.currentPaywall()
+            _ = RCValues.sharedInstance.currentPaywall()
             imageTopConstraint.constant = 0
             imageLeftConstraint.constant = 0
             imageRightConstraint.constant = 0

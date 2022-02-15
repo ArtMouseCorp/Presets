@@ -72,15 +72,6 @@ class BaseSubscriptionViewController: BaseViewController {
 
 extension BaseSubscriptionViewController: GADFullScreenContentDelegate {
     
-    /// Tells the delegate that the ad presented full screen content.
-    func adDidPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did present full screen content.")
-    }
-    
-    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will dismiss full screen content.")
-    }
-    
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
         self.dismiss(animated: true)

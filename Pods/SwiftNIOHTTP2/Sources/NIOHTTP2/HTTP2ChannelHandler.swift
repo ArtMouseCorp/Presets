@@ -81,6 +81,10 @@ public final class NIOHTTP2Handler: ChannelDuplexHandler {
     /// to determine buffering strategies.
     private var channelWritable: Bool = true
 
+    /// This variable is set to `true` when we are inside `unbufferAndFlushAutomaticFrames` and protects us from reentering the method
+    /// which can cause an infinite recursion.
+    private var isUnbufferingAndFlushingAutomaticFrames = false
+
     /// The mode for this parser to operate in: client or server.
     public enum ParserMode {
         /// Client mode
@@ -229,9 +233,10 @@ extension NIOHTTP2Handler {
         var result: StateMachineResultWithEffect
 
         switch frame.payload {
-        case .alternativeService, .origin:
-            // TODO(cory): Implement
-            fatalError("Currently some frames are unhandled.")
+        case .alternativeService(let origin, let field):
+            result = self.stateMachine.receiveAlternativeService(origin: origin, field: field)
+        case .origin(let origins):
+            result = self.stateMachine.receiveOrigin(origins: origins)
         case .data(let dataBody):
             result = self.stateMachine.receiveData(streamID: frame.streamID, contentLength: dataBody.data.readableBytes, flowControlledBytes: flowControlledLength, isEndStreamSet: dataBody.endStream)
         case .goAway(let lastStreamID, _, _):
@@ -326,7 +331,7 @@ extension NIOHTTP2Handler {
         // The user may choose to fire a more specific error if they wish.
         let goAwayFrame = HTTP2Frame(streamID: .rootStream, payload: .goAway(lastStreamID: .maxID, errorCode: reason, opaqueData: nil))
         self.writeUnbufferedFrame(context: context, frame: goAwayFrame)
-        context.flush()
+        self.flushIfNecessary(context: context)
         context.fireErrorCaught(underlyingError)
     }
 
@@ -337,7 +342,7 @@ extension NIOHTTP2Handler {
         // the user's issue.
         let rstStreamFrame = HTTP2Frame(streamID: streamID, payload: .rstStream(reason))
         self.writeBufferedFrame(context: context, frame: rstStreamFrame, promise: nil)
-        context.flush()
+        self.flushIfNecessary(context: context)
         context.fireErrorCaught(underlyingError)
     }
 
@@ -375,7 +380,7 @@ extension NIOHTTP2Handler {
 
         let initialSettingsFrame = HTTP2Frame(streamID: .rootStream, payload: .settings(.settings(self.initialSettings)))
         self.writeUnbufferedFrame(context: context, frame: initialSettingsFrame)
-        context.flush()
+        self.flushIfNecessary(context: context)
     }
 
     /// Write a frame that is allowed to be buffered (that is, that participates in the outbound frame buffer).
@@ -418,9 +423,12 @@ extension NIOHTTP2Handler {
         let result: StateMachineResultWithEffect
 
         switch frame.payload {
-        case .alternativeService, .origin:
-            // TODO(cory): Implement
-            fatalError("Currently some frames are unhandled.")
+        case .alternativeService(let origin, let field):
+            // Returns 'Never'; alt service frames are not currently handled.
+            self.stateMachine.sendAlternativeService(origin: origin, field: field)
+        case .origin(let origins):
+            // Returns 'Never'; origin frames are not currently handled.
+            self.stateMachine.sendOrigin(origins: origins)
         case .data(let data):
             // TODO(cory): Correctly account for padding data.
             result = self.stateMachine.sendData(streamID: frame.streamID, contentLength: data.data.readableBytes, flowControlledBytes: data.data.readableBytes, isEndStreamSet: data.endStream)
@@ -451,8 +459,11 @@ extension NIOHTTP2Handler {
         switch result.result {
         case .ignoreFrame:
             preconditionFailure("Cannot be asked to ignore outbound frames.")
-        case .connectionError(let underlyingError, _), .streamError(_, let underlyingError, _):
-            self.outboundErrorTriggered(context: context, promise: promise, underlyingError: underlyingError)
+        case .connectionError(let underlyingError, _):
+            self.outboundConnectionErrorTriggered(context: context, promise: promise, underlyingError: underlyingError)
+            return
+        case .streamError(streamID: let streamID, underlyingError: let underlyingError, _):
+            self.outboundStreamErrorTriggered(context: context, promise: promise, streamID: streamID, underlyingError: underlyingError)
             return
         case .succeed:
             self.writeBuffer.clear()
@@ -470,10 +481,10 @@ extension NIOHTTP2Handler {
         do {
             extraFrameData = try self.frameEncoder.encode(frame: frame, to: &self.writeBuffer)
         } catch InternalError.codecError {
-            self.outboundErrorTriggered(context: context, promise: promise, underlyingError: NIOHTTP2Errors.unableToSerializeFrame())
+            self.outboundConnectionErrorTriggered(context: context, promise: promise, underlyingError: NIOHTTP2Errors.unableToSerializeFrame())
             return
         } catch {
-            self.outboundErrorTriggered(context: context, promise: promise, underlyingError: error)
+            self.outboundConnectionErrorTriggered(context: context, promise: promise, underlyingError: error)
             return
         }
 
@@ -488,10 +499,16 @@ extension NIOHTTP2Handler {
         }
     }
 
-    /// A stream or connection error was hit while attempting to send a frame.
-    private func outboundErrorTriggered(context: ChannelHandlerContext, promise: EventLoopPromise<Void>?, underlyingError: Error) {
+    /// A connection error was hit while attempting to send a frame.
+    private func outboundConnectionErrorTriggered(context: ChannelHandlerContext, promise: EventLoopPromise<Void>?, underlyingError: Error) {
         promise?.fail(underlyingError)
         context.fireErrorCaught(underlyingError)
+    }
+
+    /// A stream error was hit while attempting to send a frame.
+    private func outboundStreamErrorTriggered(context: ChannelHandlerContext, promise: EventLoopPromise<Void>?, streamID: HTTP2StreamID, underlyingError: Error) {
+        promise?.fail(underlyingError)
+        context.fireErrorCaught(NIOHTTP2Errors.streamError(streamID: streamID, baseError: underlyingError))
     }
 }
 
@@ -559,6 +576,13 @@ extension NIOHTTP2Handler {
     }
 
     private func unbufferAndFlushAutomaticFrames(context: ChannelHandlerContext) {
+        if self.isUnbufferingAndFlushingAutomaticFrames {
+            // Don't allow infinite recursion through this method.
+            return
+        }
+        
+        self.isUnbufferingAndFlushingAutomaticFrames = true
+    
         loop: while true {
             switch self.outboundBuffer.nextFlushedWritableFrame(channelWritable: self.channelWritable) {
             case .noFrame:
@@ -569,8 +593,15 @@ extension NIOHTTP2Handler {
                 self.processOutboundFrame(context: context, frame: frame, promise: promise)
             }
         }
+        
+        self.isUnbufferingAndFlushingAutomaticFrames = false
+        self.flushIfNecessary(context: context)
+    }
 
+    /// Emits a flush if a frame has been written.
+    private func flushIfNecessary(context: ChannelHandlerContext) {
         if self.wroteFrame {
+            self.wroteFrame = false
             context.flush()
         }
     }

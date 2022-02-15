@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         connectFacebook(for: application, with: launchOptions)
         
         _ = RCValues.sharedInstance
-        _ = StorageManager.sharedInstance
         
         fetchData()
         
@@ -41,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        AEMReporter.configure(withNetworker: nil, appID: Keys.Facebook.appId)
+        AEMReporter.configure(withNetworker: nil, appID: Keys.Facebook.appId, reporter: nil)
         AEMReporter.enable()
         AEMReporter.handle(url)
         
@@ -91,8 +90,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Custom functions
     
     private func fetchData() {
-        Preset.get()
-        Preset.getFavorites()
+
+        Preset.load()
+        
+//        Preset.getFavorites()
         
         State.subscriptionConfig = RCValues.sharedInstance.organicSubscriptionPage()
         State.subscriptionPlansConfig = RCValues.sharedInstance.subscriptionPlansPage()

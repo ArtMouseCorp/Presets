@@ -101,7 +101,6 @@ extension UserPresetsViewController: UITableViewDelegate, UITableViewDataSource 
         guard let preset = Preset.all.first(where: {$0.id == presetId}) else { return }
         State.selectedPreset = preset
         let presetVC = PresetViewController.load(from: .preset)
-        presetVC.presetId = presetId
         self.navigationController?.pushViewController(presetVC, animated: true)
     }
     

@@ -1,7 +1,7 @@
 import UIKit
 
 class PresetViewController: BaseViewController {
-
+    
     // MARK: - @IBOutlets
     
     // Views
@@ -25,9 +25,8 @@ class PresetViewController: BaseViewController {
     
     // MARK: - Variables
     
-    var inMyPresets = false
+    var isFavorite = false
     var didLayoutSubviews = true
-    var presetId = 0
     var isTapped = false
     
     var imagesURLs: [URL] = []
@@ -47,7 +46,7 @@ class PresetViewController: BaseViewController {
         
         localize()
         
-        inMyPresets = State.favouritePresets.contains(presetId)
+        self.isFavorite = State.selectedPreset.isFavorite()
         
         
         howToUseButton.layer.cornerRadius = 8
@@ -104,25 +103,25 @@ class PresetViewController: BaseViewController {
     }
     
     private func fetchImages() {
-        State.selectedPreset.loadPresetImages() {
-            self.imagesURLs = State.selectedPreset.imagesURLs
-            self.collectionView.reloadData()
-            
-            let presetsCount = self.imagesURLs.count
-            let presetNoun = getNoun(
-                number: presetsCount,
-                one: L10n.Preset.Count.one,
-                two: L10n.Preset.Count.two,
-                five: L10n.Preset.Count.five
-            )
-            
-            self.presetsCountLabel.text = "\(presetsCount) \(presetNoun)"
-        }
+        
+        self.imagesURLs = State.selectedPreset.getPreviewURLs()
+        
+        self.collectionView.reloadData()
+        
+        let presetsCount = self.imagesURLs.count
+        let presetNoun = getNoun(
+            number: presetsCount,
+            one: L10n.Preset.Count.one,
+            two: L10n.Preset.Count.two,
+            five: L10n.Preset.Count.five
+        )
+        
+        self.presetsCountLabel.text = "\(presetsCount) \(presetNoun)"
     }
     
     func updateUI() {
-
-        if inMyPresets {
+        
+        if isFavorite {
             
             addToMyButton.isUserInteractionEnabled = false
             
@@ -145,16 +144,16 @@ class PresetViewController: BaseViewController {
             
         }
         
-        inMyPresets = !inMyPresets
-
+        isFavorite = !isFavorite
+        
     }
     
     var visibleCurrentCellIndexPath: IndexPath? {
         for cell in self.collectionView.visibleCells {
             let indexPath = self.collectionView.indexPath(for: cell)
             return indexPath
-         }
-         return nil
+        }
+        return nil
     }
     
     // MARK: - @IBActions
@@ -175,7 +174,7 @@ class PresetViewController: BaseViewController {
             return
         }
         
-        State.favouritePresets.append(presetId)
+        State.favouritePresets.append(State.selectedPreset.id)
         userDefaults.set(State.favouritePresets, forKey: UDKeys.favouritePresets)
         hapticFeedback(.success)
         self.updateUI()
@@ -195,7 +194,7 @@ class PresetViewController: BaseViewController {
         } else {
             self.showPaywall()
         }
-            
+        
     }
     
     @IBAction func howToUseButtonPressed(_ sender: Any) {
@@ -206,7 +205,7 @@ class PresetViewController: BaseViewController {
         let manualVC = ManualViewController.load(from: .manual)
         self.navigationController?.pushViewController(manualVC, animated: true)
     }
-
+    
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
@@ -247,15 +246,15 @@ extension PresetViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         guard let collectionView = scrollView as? UICollectionView else { return }
         guard collectionView == self.collectionView else { return }
-
+        
         let xPoint = scrollView.contentOffset.x + scrollView.frame.width / 2
         let yPoint = scrollView.frame.height / 2
         let center = CGPoint(x: xPoint, y: yPoint)
-
+        
         guard let indexPath = self.collectionView.indexPathForItem(at: center) else { return }
         
         dots.currentPage = indexPath.row
         
     }
-
+    
 }

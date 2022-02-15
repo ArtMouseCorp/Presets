@@ -32,20 +32,10 @@ class PresetTableViewCell: UITableViewCell {
         presetImage.layer.cornerRadius = 8
         presetButton.layer.cornerRadius = 8
     }
-
-    override func prepareForReuse() {
-//        self.presetImage.image = UIImage()
-//        self.activityIndicator.startAnimating()
-    }
     
     // MARK: - Custom functions
     
     public func configure(with preset: Preset, button: ButtonType) {
-        
-//        self.presetButton.isHidden = true
-//        self.presetImage.image = UIImage()
-//        self.activityIndicator.startAnimating()
-        
         
         switch button {
         case .delete:
@@ -73,12 +63,7 @@ class PresetTableViewCell: UITableViewCell {
         
         self.activityIndicator.stopAnimating()
         self.presetButton.isHidden = false
-        self.presetImage.image = preset.getTitleImage()
-        
-//        self.presetImage.load(from: preset.titleImageURL) {
-//            self.activityIndicator.stopAnimating()
-//            self.presetButton.isHidden = false
-//        }
+        self.presetImage.image = preset.getPreviewImage()
         
     }
     

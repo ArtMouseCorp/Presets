@@ -111,15 +111,11 @@ class RCValues {
         
         let jsonValue = RemoteConfig.remoteConfig()["\(key)_\(lang)"].jsonValue
         
-        print("JSON Value: ", jsonValue)
-        
         guard let value = jsonValue else {
             return SubscriptionPlansPage.default
         }
         
         let json = JSON(value)
-        
-        print("JSON: ", json)
         
         let titleLabel: String              = json[RCValueKey.SubscriptionPlansPage.titleLabel.rawValue].stringValue
         let subtitleLabel: String           = json[RCValueKey.SubscriptionPlansPage.subtitleLabel.rawValue].stringValue
