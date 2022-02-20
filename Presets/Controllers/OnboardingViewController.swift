@@ -73,8 +73,10 @@ class OnboardingViewController: UIViewController {
             introduceSubtitle.localize(with: L10n.Onboarding.Subtitle.third)
             animateIn()
         default:
-            mainVC.modalPresentationStyle = .fullScreen
-            self.present(mainVC, animated: true, completion: nil)
+            let paywall = RCValues.sharedInstance.currentPaywall()
+            paywall.source = .launch
+            paywall.modalPresentationStyle = .fullScreen
+            self.present(paywall, animated: true)
             return
         }
         

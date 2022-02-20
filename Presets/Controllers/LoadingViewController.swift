@@ -16,9 +16,16 @@ class LoadingViewController: BaseViewController {
             _ = RCValues.sharedInstance.currentPaywall()
             _ = RCValues.sharedInstance.currentPaywall()
             
-            let mainNavController = UINavigationController.load(from: .mainNav)
-            mainNavController.modalPresentationStyle = .fullScreen
-            self.present(mainNavController, animated: true, completion: nil)
+            if !State.isSubscribed {
+                let paywall = RCValues.sharedInstance.currentPaywall()
+                paywall.source = .launch
+                paywall.modalPresentationStyle = .fullScreen
+                self.present(paywall, animated: true)
+            } else {
+                let mainNavController = UINavigationController.load(from: .mainNav)
+                mainNavController.modalPresentationStyle = .fullScreen
+                self.present(mainNavController, animated: true, completion: nil)
+            }
             
         }
     }

@@ -92,8 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func fetchData() {
 
         Preset.load()
-        
-//        Preset.getFavorites()
+        Preset.getFavorites()
         
         State.subscriptionConfig = RCValues.sharedInstance.organicSubscriptionPage()
         State.subscriptionPlansConfig = RCValues.sharedInstance.subscriptionPlansPage()

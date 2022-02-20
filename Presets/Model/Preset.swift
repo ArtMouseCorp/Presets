@@ -1,4 +1,5 @@
 import UIKit
+import Alamofire
 
 class Preset: Codable, Equatable {
     
@@ -29,6 +30,7 @@ class Preset: Codable, Equatable {
     public static var all: [Preset] = []
     public static var free: [Preset] = []
     public static var premium: [Preset] = []
+    public static var favorites: [Preset] = []
     
     public func setPreviewImage(to image: UIImage) {
         self.previewImage = image
@@ -45,7 +47,29 @@ class Preset: Codable, Equatable {
     public func isFavorite() -> Bool {
         return State.favouritePresets.contains(self.id)
     }
- 
+    
+    public static func getFavorites() {
+        self.favorites.removeAll()
+        State.favouritePresets = userDefaults.array(forKey: UDKeys.favouritePresets) as? [Int] ?? []
+        State.favouritePresets.forEach { id in
+            if let preset = self.all.first(where: { $0.id == id }) {
+                self.favorites.append(preset)
+            }
+        }
+    }
+    
+    func addToFavorites() {
+        State.favouritePresets.append(self.id)
+        userDefaults.set(State.favouritePresets, forKey: UDKeys.favouritePresets)
+        Preset.getFavorites()
+    }
+    
+    func removeFromFavorites() {
+        State.favouritePresets.removeAll(where: { $0 == self.id })
+        userDefaults.set(State.favouritePresets, forKey: UDKeys.favouritePresets)
+        Preset.getFavorites()
+    }
+    
 }
 
 // MARK: - Network Request
@@ -55,45 +79,38 @@ extension Preset {
     public static func load() {
         
         let urlString = "https://artpoldev.com/api/presets/presets.php?api_key=" + Keys.API.apiKey
-        guard let url = URL(string: urlString) else { fatalError() }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data, error == nil else {
-                print("ERROR | FETCHING PRESETS FROM API | Error: \(error!)")
+        AF.request(urlString, method: .get).responseDecodable(of: [Preset].self) { response in
+            
+            guard let presets = response.value, response.error == nil else {
+                print("ERROR | FETCHING PRESETS FROM API | Error: \(response.error!)")
                 return
             }
-
-            do {
-                let presets = try JSONDecoder().decode([Preset].self, from: data)
-                
-                presets.forEach { preset in
-                    if let url = URL(string: preset.preview), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                        preset.setPreviewImage(to: image)
-                    }
-                    
-                    if preset.isFree {
-                        self.free.append(preset)
-                    } else {
-                        self.premium.append(preset)
-                    }
-                    
-                    preset.previewsURLs.removeAll()
-                    preset.previews.forEach { preview in
-                        
-                        if let url = URL(string: preview) {
-                            preset.previewsURLs.append(url)
-                        }
-                        
-                    }
+            
+            presets.forEach { preset in
+                if let url = URL(string: preset.preview), let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                    preset.setPreviewImage(to: image)
                 }
                 
-                self.all = presets
+                if preset.isFree {
+                    self.free.append(preset)
+                } else {
+                    self.premium.append(preset)
+                }
                 
-            } catch {
-                print("ERROR | FETCHING PRESETS FROM API | Error: \(error)")
+                preset.previewsURLs.removeAll()
+                preset.previews.forEach { preview in
+                    
+                    if let url = URL(string: preview) {
+                        preset.previewsURLs.append(url)
+                    }
+                    
+                }
             }
-
-        }.resume()
+            
+            self.all = presets
+            
+        }
         
     }
     

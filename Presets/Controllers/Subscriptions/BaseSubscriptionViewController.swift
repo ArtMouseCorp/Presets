@@ -11,6 +11,13 @@ class BaseSubscriptionViewController: BaseViewController {
     
     public var sourceViewController: BaseViewController!
     
+    var source: Source = .default
+    
+    enum Source {
+        case launch
+        case `default`
+    }
+    
     // MARK: - Awake functions
     
     override func viewDidLoad() {
@@ -48,7 +55,12 @@ class BaseSubscriptionViewController: BaseViewController {
         
         guard let interstitial = interstitial else {
             print("Ad wasn't ready")
-            self.dismiss(animated: true)
+            if source == .launch {
+                let mainNavVC = UINavigationController.load(from: .mainNav)
+                (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(to: mainNavVC)
+            } else {
+                self.dismiss(animated: true)
+            }
             return
         }
         
@@ -65,7 +77,12 @@ class BaseSubscriptionViewController: BaseViewController {
             return
         }
         
-        self.dismiss(animated: true)
+        if source == .launch {
+            let mainNavVC = UINavigationController.load(from: .mainNav)
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(to: mainNavVC)
+        } else {
+            self.dismiss(animated: true)
+        }
     }
     
 }
@@ -74,8 +91,12 @@ extension BaseSubscriptionViewController: GADFullScreenContentDelegate {
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
-        self.dismiss(animated: true)
-    }
+        if source == .launch {
+            let mainNavVC = UINavigationController.load(from: .mainNav)
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(to: mainNavVC)
+        } else {
+            self.dismiss(animated: true)
+        }    }
     
 }
 

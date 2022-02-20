@@ -52,9 +52,9 @@ class MainViewController: BaseViewController {
         localize()
         configureCategories()
         
-        if !State.isSubscribed {
-            self.showPaywall()            
-        }
+//        if !State.isSubscribed {
+//            self.showPaywall()            
+//        }
         
     }
     

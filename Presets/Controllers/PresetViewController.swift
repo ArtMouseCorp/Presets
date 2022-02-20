@@ -174,8 +174,7 @@ class PresetViewController: BaseViewController {
             return
         }
         
-        State.favouritePresets.append(State.selectedPreset.id)
-        userDefaults.set(State.favouritePresets, forKey: UDKeys.favouritePresets)
+        State.selectedPreset.addToFavorites()
         hapticFeedback(.success)
         self.updateUI()
     }
